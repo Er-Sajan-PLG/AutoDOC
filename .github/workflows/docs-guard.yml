@@ -1,0 +1,11 @@
+name: Docs Guard
+on: [pull_request]
+jobs:
+  check-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Impact Analysis
+        run: python scripts/ci/doc_impact.py || exit 1
+      - name: Check API Contract
+        run: python scripts/ci/check_api_contract.py || exit 1

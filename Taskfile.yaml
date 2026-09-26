@@ -1,0 +1,28 @@
+version: '3'
+
+tasks:
+  docs:init:
+    desc: Detect project, generate project-profile, bootstrap inventory
+    cmds:
+      - python scripts/init/bootstrap.py
+  docs:impact:
+    desc: Run change analyzer against current diff
+    cmds:
+      - python scripts/intelligence/change_analyzer.py --staged
+  docs:sync:
+    desc: Regenerate all factual docs
+    cmds:
+      - python scripts/doc-sync/generate-all.py
+  docs:lint:
+    desc: markdownlint + frontmatter + style
+    cmds:
+      - markdownlint docs/**/*.md
+      - python scripts/validate/frontmatter_validator.py
+  docs:verify:
+    desc: full consistency + completeness + traceability
+    cmds:
+      - python scripts/verify/docs_verify_all.py
+  docs:health:
+    desc: run health engine locally
+    cmds:
+      - python scripts/health/docs_health_engine.py

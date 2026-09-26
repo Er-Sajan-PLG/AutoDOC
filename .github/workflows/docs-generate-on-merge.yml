@@ -1,0 +1,18 @@
+name: Docs Generate On Merge
+on:
+  push:
+    branches: [main]
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Regenerate docs
+        run: python scripts/doc-sync/generate-all.py
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "docs(auto): regenerate factual documentation [skip ci]" || echo "No changes to commit"
+          git push

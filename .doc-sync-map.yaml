@@ -1,0 +1,22 @@
+# The Documentation Sync Map - Core of the system
+mappings:
+  api:
+    source: "src/api/**/*.py"
+    target: "docs/07-api/api-reference.md"
+    action: "generate"
+    script: "scripts/doc-sync/generate-api-docs.py"
+  config:
+    source: "schemas/config.schema.json"
+    target: "docs/12-development/configuration-reference.md"
+    action: "generate"
+    script: "scripts/doc-sync/generate-config-docs.py"
+  migrations:
+    source: "migrations/*.sql"
+    target: "docs/08-data/schema-reference.md"
+    action: "generate"
+    script: "scripts/doc-sync/generate-data-dictionary.py"
+  living_state:
+    sources: ["src/**", "tests/**"]
+    targets: ["CURRENT-STATE.md", "NEXT-ACTION.md", "RECENT-CHANGES.md"]
+    action: "update"
+    script: "scripts/doc-sync/update-doc-state.py"

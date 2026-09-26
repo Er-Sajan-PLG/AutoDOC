@@ -1,0 +1,28 @@
+---
+id: UNIQUE-ID
+title: ""
+type: policy|standard|specification|design|decision|plan|procedure|runbook|playbook|guide|reference|register|record|report|evidence|notice|agreement
+category: ""
+status: draft|in-review|approved|deprecated|superseded|archived
+owner: "@team-or-username"
+authors: []
+reviewers: []
+approvers: []
+classification: public|internal|restricted|confidential
+applies_to: []
+related: []
+source_of_truth: false
+auto_generated: false
+generated_from: []
+last_updated: YYYY-MM-DD
+last_reviewed: YYYY-MM-DD
+next_review: YYYY-MM-DD
+created: YYYY-MM-DD
+version: 1.0
+tags: []
+changelog_ref: false
+testable: false
+tested_at: null
+supersedes: null
+superseded_by: null
+---
