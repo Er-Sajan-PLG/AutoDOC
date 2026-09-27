@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:autodoc:frontmatter:1",
+  "title": "AutoDOC controlled document metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "type", "owner", "reviewer", "classification", "status", "version", "effective_date", "next_review", "source_of_truth", "supersedes", "related", "criticality", "review_days", "last_verified", "last_reviewed", "last_updated", "auto_generated"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "type": {"type": "string", "enum": ["SPEC", "DEC", "DES", "PROC", "POL", "REF", "REC", "EVD", "TPL"]},
+    "owner": {"type": "string", "pattern": "^@"},
+    "reviewer": {"type": "string", "pattern": "^@"},
+    "classification": {"type": "string", "enum": ["public", "internal", "restricted", "confidential"]},
+    "status": {"type": "string", "enum": ["draft", "in-review", "approved", "deprecated", "superseded", "archived"]},
+    "version": {"type": "string"},
+    "effective_date": {"type": "string", "format": "date"},
+    "next_review": {"type": "string", "format": "date"},
+    "source_of_truth": {"type": "string", "minLength": 1},
+    "supersedes": {"type": ["string", "null"]},
+    "related": {"type": "array", "items": {"type": "string"}},
+    "criticality": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+    "review_days": {"type": "integer", "minimum": 1},
+    "last_verified": {"type": "string", "format": "date"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "last_updated": {"type": "string", "format": "date"},
+    "auto_generated": {"type": "boolean"}
+  }
+}

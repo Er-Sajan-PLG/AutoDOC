@@ -1,0 +1,7 @@
+{
+  "tools": [
+    {"name": "add", "module": "tools.calculator", "function": "add", "description": "Add two integers"},
+    {"name": "read_prompt", "module": "tools.file_ops", "function": "read_prompt", "description": "Read an allowlisted prompt file"}
+  ],
+  "not_implemented": ["web_search: no authorized provider or network policy"]
+}

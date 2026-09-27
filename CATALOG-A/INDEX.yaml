@@ -1,0 +1,4519 @@
+{
+  "version": 1,
+  "note": "Inventory of possible documents. Applicability labels are suggestions, not a mandate or evidence of adoption.",
+  "domains": [
+    {
+      "domain": "A01-PRODUCT",
+      "purpose": "Product strategy and vision",
+      "documents": [
+        {
+          "id": "DOC-A01-001",
+          "name": "Product vision",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record product vision for product strategy and vision.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A01-001.md"
+        },
+        {
+          "id": "DOC-A01-002",
+          "name": "Business case",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record business case for product strategy and vision.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A01-002.md"
+        },
+        {
+          "id": "DOC-A01-003",
+          "name": "Product requirements",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record product requirements for product strategy and vision.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A01-003.md"
+        },
+        {
+          "id": "DOC-A01-004",
+          "name": "Roadmap",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record roadmap for product strategy and vision.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A01-004.md"
+        },
+        {
+          "id": "DOC-A01-005",
+          "name": "Scope statement",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record scope statement for product strategy and vision.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A01-005.md"
+        },
+        {
+          "id": "DOC-A01-006",
+          "name": "Stakeholder RACI",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record stakeholder raci for product strategy and vision.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A01-006.md"
+        }
+      ]
+    },
+    {
+      "domain": "A02-REQUIREMENTS",
+      "purpose": "Requirements engineering",
+      "documents": [
+        {
+          "id": "DOC-A02-001",
+          "name": "SRS",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record srs for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A02-001.md"
+        },
+        {
+          "id": "DOC-A02-002",
+          "name": "NFR catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record nfr catalog for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A02-002.md"
+        },
+        {
+          "id": "DOC-A02-003",
+          "name": "Use case",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record use case for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A02-003.md"
+        },
+        {
+          "id": "DOC-A02-004",
+          "name": "User story",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record user story for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A02-004.md"
+        },
+        {
+          "id": "DOC-A02-005",
+          "name": "Acceptance criteria",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record acceptance criteria for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A02-005.md"
+        },
+        {
+          "id": "DOC-A02-006",
+          "name": "Traceability matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record traceability matrix for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A02-006.md"
+        },
+        {
+          "id": "DOC-A02-007",
+          "name": "Requirements change log",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record requirements change log for requirements engineering.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A02-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A03-ARCHITECTURE",
+      "purpose": "Systems architecture",
+      "documents": [
+        {
+          "id": "DOC-A03-001",
+          "name": "C4 context",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record c4 context for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-001.md"
+        },
+        {
+          "id": "DOC-A03-002",
+          "name": "C4 container",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record c4 container for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-002.md"
+        },
+        {
+          "id": "DOC-A03-003",
+          "name": "C4 component",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record c4 component for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-003.md"
+        },
+        {
+          "id": "DOC-A03-004",
+          "name": "C4 code",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record c4 code for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-004.md"
+        },
+        {
+          "id": "DOC-A03-005",
+          "name": "ADR",
+          "type": "DEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record adr for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/DECISIONS/DOC-A03-005.md"
+        },
+        {
+          "id": "DOC-A03-006",
+          "name": "Quality attribute scenarios",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record quality attribute scenarios for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-006.md"
+        },
+        {
+          "id": "DOC-A03-007",
+          "name": "Deployment view",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record deployment view for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-007.md"
+        },
+        {
+          "id": "DOC-A03-008",
+          "name": "Data flow",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data flow for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-008.md"
+        },
+        {
+          "id": "DOC-A03-009",
+          "name": "Network topology",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record network topology for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A03-009.md"
+        },
+        {
+          "id": "DOC-A03-010",
+          "name": "Trust boundaries",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record trust boundaries for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-010.md"
+        },
+        {
+          "id": "DOC-A03-011",
+          "name": "Integration landscape",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record integration landscape for systems architecture.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A03-011.md"
+        }
+      ]
+    },
+    {
+      "domain": "A04-DESIGN",
+      "purpose": "Detailed technical design",
+      "documents": [
+        {
+          "id": "DOC-A04-001",
+          "name": "Component design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record component design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-001.md"
+        },
+        {
+          "id": "DOC-A04-002",
+          "name": "State machine",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record state machine for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-002.md"
+        },
+        {
+          "id": "DOC-A04-003",
+          "name": "Algorithm design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record algorithm design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-003.md"
+        },
+        {
+          "id": "DOC-A04-004",
+          "name": "Authentication design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record authentication design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-004.md"
+        },
+        {
+          "id": "DOC-A04-005",
+          "name": "Authorization design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record authorization design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-005.md"
+        },
+        {
+          "id": "DOC-A04-006",
+          "name": "Session design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record session design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-006.md"
+        },
+        {
+          "id": "DOC-A04-007",
+          "name": "Database design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record database design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-007.md"
+        },
+        {
+          "id": "DOC-A04-008",
+          "name": "Caching design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record caching design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-008.md"
+        },
+        {
+          "id": "DOC-A04-009",
+          "name": "Queue worker design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record queue worker design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-009.md"
+        },
+        {
+          "id": "DOC-A04-010",
+          "name": "Retry circuit breaker",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record retry circuit breaker for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-010.md"
+        },
+        {
+          "id": "DOC-A04-011",
+          "name": "Feature flag design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record feature flag design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-011.md"
+        },
+        {
+          "id": "DOC-A04-012",
+          "name": "Migration design",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record migration design for detailed technical design.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A04-012.md"
+        }
+      ]
+    },
+    {
+      "domain": "A05-DATA",
+      "purpose": "Data and information management",
+      "documents": [
+        {
+          "id": "DOC-A05-001",
+          "name": "Data model",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data model for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-001.md"
+        },
+        {
+          "id": "DOC-A05-002",
+          "name": "Database schema",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record database schema for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-002.md"
+        },
+        {
+          "id": "DOC-A05-003",
+          "name": "Data dictionary",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data dictionary for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-003.md"
+        },
+        {
+          "id": "DOC-A05-004",
+          "name": "Data lineage",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data lineage for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-004.md"
+        },
+        {
+          "id": "DOC-A05-005",
+          "name": "Data classification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data classification for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-005.md"
+        },
+        {
+          "id": "DOC-A05-006",
+          "name": "Retention policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record retention policy for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A05-006.md"
+        },
+        {
+          "id": "DOC-A05-007",
+          "name": "ETL specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record etl specification for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-007.md"
+        },
+        {
+          "id": "DOC-A05-008",
+          "name": "Data quality",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data quality for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-008.md"
+        },
+        {
+          "id": "DOC-A05-009",
+          "name": "PII inventory",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record pii inventory for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A05-009.md"
+        },
+        {
+          "id": "DOC-A05-010",
+          "name": "Disposal procedure",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record disposal procedure for data and information management.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A05-010.md"
+        }
+      ]
+    },
+    {
+      "domain": "A06-SECURITY",
+      "purpose": "Security engineering",
+      "documents": [
+        {
+          "id": "DOC-A06-001",
+          "name": "Threat model",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record threat model for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DOC-A06-001.md"
+        },
+        {
+          "id": "DOC-A06-002",
+          "name": "Security architecture",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record security architecture for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-002.md"
+        },
+        {
+          "id": "DOC-A06-003",
+          "name": "Security requirements",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record security requirements for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-003.md"
+        },
+        {
+          "id": "DOC-A06-004",
+          "name": "Cryptography specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record cryptography specification for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-004.md"
+        },
+        {
+          "id": "DOC-A06-005",
+          "name": "Key management",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record key management for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-005.md"
+        },
+        {
+          "id": "DOC-A06-006",
+          "name": "Secret management",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record secret management for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-006.md"
+        },
+        {
+          "id": "DOC-A06-007",
+          "name": "Access control matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record access control matrix for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-007.md"
+        },
+        {
+          "id": "DOC-A06-008",
+          "name": "Vulnerability management",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record vulnerability management for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-008.md"
+        },
+        {
+          "id": "DOC-A06-009",
+          "name": "Penetration test report",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record penetration test report for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A06-009.md"
+        },
+        {
+          "id": "DOC-A06-010",
+          "name": "Incident response plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record incident response plan for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-010.md"
+        }
+      ]
+    },
+    {
+      "domain": "A07-PRIVACY",
+      "purpose": "Privacy and compliance",
+      "documents": [
+        {
+          "id": "DOC-A07-001",
+          "name": "ROPA",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record ropa for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A07-001.md"
+        },
+        {
+          "id": "DOC-A07-002",
+          "name": "DPIA",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dpia for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A07-002.md"
+        },
+        {
+          "id": "DOC-A07-003",
+          "name": "Consent management",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record consent management for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A07-003.md"
+        },
+        {
+          "id": "DOC-A07-004",
+          "name": "Data processing agreement",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data processing agreement for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A07-004.md"
+        },
+        {
+          "id": "DOC-A07-005",
+          "name": "Subprocessor inventory",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record subprocessor inventory for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A07-005.md"
+        },
+        {
+          "id": "DOC-A07-006",
+          "name": "Regulatory control mapping",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record regulatory control mapping for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A07-006.md"
+        },
+        {
+          "id": "DOC-A07-007",
+          "name": "Privacy request log",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record privacy request log for privacy and compliance.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A07-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A08-APIS",
+      "purpose": "APIs and interfaces",
+      "documents": [
+        {
+          "id": "DOC-A08-001",
+          "name": "OpenAPI",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record openapi for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-001.md"
+        },
+        {
+          "id": "DOC-A08-002",
+          "name": "GraphQL schema",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record graphql schema for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-002.md"
+        },
+        {
+          "id": "DOC-A08-003",
+          "name": "Protobuf contract",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record protobuf contract for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-003.md"
+        },
+        {
+          "id": "DOC-A08-004",
+          "name": "AsyncAPI",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record asyncapi for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-004.md"
+        },
+        {
+          "id": "DOC-A08-005",
+          "name": "Webhook contract",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record webhook contract for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-005.md"
+        },
+        {
+          "id": "DOC-A08-006",
+          "name": "Error catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record error catalog for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A08-006.md"
+        },
+        {
+          "id": "DOC-A08-007",
+          "name": "Rate limits",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record rate limits for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-007.md"
+        },
+        {
+          "id": "DOC-A08-008",
+          "name": "SDK guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record sdk guide for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-008.md"
+        },
+        {
+          "id": "DOC-A08-009",
+          "name": "Integration guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record integration guide for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-009.md"
+        },
+        {
+          "id": "DOC-A08-010",
+          "name": "Compatibility matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record compatibility matrix for apis and interfaces.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "api",
+            "web",
+            "saas"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A08-010.md"
+        }
+      ]
+    },
+    {
+      "domain": "A09-DEVELOPMENT",
+      "purpose": "Development process",
+      "documents": [
+        {
+          "id": "DOC-A09-001",
+          "name": "Coding standard",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record coding standard for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A09-001.md"
+        },
+        {
+          "id": "DOC-A09-002",
+          "name": "Git workflow",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record git workflow for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A09-002.md"
+        },
+        {
+          "id": "DOC-A09-003",
+          "name": "Pull request guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record pull request guide for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A09-003.md"
+        },
+        {
+          "id": "DOC-A09-004",
+          "name": "Code review policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record code review policy for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A09-004.md"
+        },
+        {
+          "id": "DOC-A09-005",
+          "name": "Contributing guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record contributing guide for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A09-005.md"
+        },
+        {
+          "id": "DOC-A09-006",
+          "name": "Dependency policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dependency policy for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A09-006.md"
+        },
+        {
+          "id": "DOC-A09-007",
+          "name": "RFC",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record rfc for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A09-007.md"
+        },
+        {
+          "id": "DOC-A09-008",
+          "name": "Technical debt register",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record technical debt register for development process.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A09-008.md"
+        }
+      ]
+    },
+    {
+      "domain": "A10-BUILD",
+      "purpose": "Build and supply chain",
+      "documents": [
+        {
+          "id": "DOC-A10-001",
+          "name": "Pipeline architecture",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record pipeline architecture for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A10-001.md"
+        },
+        {
+          "id": "DOC-A10-002",
+          "name": "SBOM",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record sbom for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A10-002.md"
+        },
+        {
+          "id": "DOC-A10-003",
+          "name": "Build provenance",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record build provenance for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A10-003.md"
+        },
+        {
+          "id": "DOC-A10-004",
+          "name": "SLSA assessment",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record slsa assessment for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A10-004.md"
+        },
+        {
+          "id": "DOC-A10-005",
+          "name": "Artifact signing",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record artifact signing for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A10-005.md"
+        },
+        {
+          "id": "DOC-A10-006",
+          "name": "License inventory",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record license inventory for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A10-006.md"
+        },
+        {
+          "id": "DOC-A10-007",
+          "name": "Quality gates",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record quality gates for build and supply chain.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A10-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A11-TESTING",
+      "purpose": "Testing and quality",
+      "documents": [
+        {
+          "id": "DOC-A11-001",
+          "name": "Test strategy",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record test strategy for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-001.md"
+        },
+        {
+          "id": "DOC-A11-002",
+          "name": "Test plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record test plan for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-002.md"
+        },
+        {
+          "id": "DOC-A11-003",
+          "name": "Unit test specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record unit test specification for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-003.md"
+        },
+        {
+          "id": "DOC-A11-004",
+          "name": "Integration test specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record integration test specification for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-004.md"
+        },
+        {
+          "id": "DOC-A11-005",
+          "name": "End to end test specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record end to end test specification for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-005.md"
+        },
+        {
+          "id": "DOC-A11-006",
+          "name": "Contract test specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record contract test specification for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-006.md"
+        },
+        {
+          "id": "DOC-A11-007",
+          "name": "Security test specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record security test specification for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-007.md"
+        },
+        {
+          "id": "DOC-A11-008",
+          "name": "Chaos test specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record chaos test specification for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-008.md"
+        },
+        {
+          "id": "DOC-A11-009",
+          "name": "Performance test plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record performance test plan for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-009.md"
+        },
+        {
+          "id": "DOC-A11-010",
+          "name": "Accessibility test plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record accessibility test plan for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-010.md"
+        },
+        {
+          "id": "DOC-A11-011",
+          "name": "Migration test plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record migration test plan for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-011.md"
+        },
+        {
+          "id": "DOC-A11-012",
+          "name": "UAT plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record uat plan for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-012.md"
+        },
+        {
+          "id": "DOC-A11-013",
+          "name": "Defect taxonomy",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record defect taxonomy for testing and quality.",
+          "when": "active development",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A11-013.md"
+        }
+      ]
+    },
+    {
+      "domain": "A12-PERFORMANCE",
+      "purpose": "Performance and reliability",
+      "documents": [
+        {
+          "id": "DOC-A12-001",
+          "name": "SLI SLO SLA",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record sli slo sla for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A12-001.md"
+        },
+        {
+          "id": "DOC-A12-002",
+          "name": "Error budget policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record error budget policy for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A12-002.md"
+        },
+        {
+          "id": "DOC-A12-003",
+          "name": "Capacity model",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record capacity model for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A12-003.md"
+        },
+        {
+          "id": "DOC-A12-004",
+          "name": "Scaling policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record scaling policy for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A12-004.md"
+        },
+        {
+          "id": "DOC-A12-005",
+          "name": "Load shedding",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record load shedding for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A12-005.md"
+        },
+        {
+          "id": "DOC-A12-006",
+          "name": "Latency budget",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record latency budget for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A12-006.md"
+        },
+        {
+          "id": "DOC-A12-007",
+          "name": "Cost model",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record cost model for performance and reliability.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A12-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A13-INFRASTRUCTURE",
+      "purpose": "Infrastructure and environments",
+      "documents": [
+        {
+          "id": "DOC-A13-001",
+          "name": "Infrastructure as code guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record infrastructure as code guide for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A13-001.md"
+        },
+        {
+          "id": "DOC-A13-002",
+          "name": "Network design",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record network design for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A13-002.md"
+        },
+        {
+          "id": "DOC-A13-003",
+          "name": "Kubernetes architecture",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record kubernetes architecture for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A13-003.md"
+        },
+        {
+          "id": "DOC-A13-004",
+          "name": "DNS certificate inventory",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dns certificate inventory for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A13-004.md"
+        },
+        {
+          "id": "DOC-A13-005",
+          "name": "Environment matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record environment matrix for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A13-005.md"
+        },
+        {
+          "id": "DOC-A13-006",
+          "name": "Golden image",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record golden image for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A13-006.md"
+        },
+        {
+          "id": "DOC-A13-007",
+          "name": "Platform catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record platform catalog for infrastructure and environments.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A13-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A14-CONFIGURATION",
+      "purpose": "Configuration and change",
+      "documents": [
+        {
+          "id": "DOC-A14-001",
+          "name": "Configuration item register",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record configuration item register for configuration and change.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A14-001.md"
+        },
+        {
+          "id": "DOC-A14-002",
+          "name": "CMDB",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record cmdb for configuration and change.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A14-002.md"
+        },
+        {
+          "id": "DOC-A14-003",
+          "name": "Change advisory record",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record change advisory record for configuration and change.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A14-003.md"
+        },
+        {
+          "id": "DOC-A14-004",
+          "name": "RFC process",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record rfc process for configuration and change.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A14-004.md"
+        },
+        {
+          "id": "DOC-A14-005",
+          "name": "Environment variable schema",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record environment variable schema for configuration and change.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A14-005.md"
+        },
+        {
+          "id": "DOC-A14-006",
+          "name": "Drift detection",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record drift detection for configuration and change.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A14-006.md"
+        }
+      ]
+    },
+    {
+      "domain": "A15-RELEASE",
+      "purpose": "Release and deployment",
+      "documents": [
+        {
+          "id": "DOC-A15-001",
+          "name": "Release plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record release plan for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A15-001.md"
+        },
+        {
+          "id": "DOC-A15-002",
+          "name": "Release manifest",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record release manifest for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A15-002.md"
+        },
+        {
+          "id": "DOC-A15-003",
+          "name": "Changelog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record changelog for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A15-003.md"
+        },
+        {
+          "id": "DOC-A15-004",
+          "name": "Release notes",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record release notes for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A15-004.md"
+        },
+        {
+          "id": "DOC-A15-005",
+          "name": "Deployment runbook",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record deployment runbook for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A15-005.md"
+        },
+        {
+          "id": "DOC-A15-006",
+          "name": "Rollback procedure",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record rollback procedure for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A15-006.md"
+        },
+        {
+          "id": "DOC-A15-007",
+          "name": "Canary analysis",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record canary analysis for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A15-007.md"
+        },
+        {
+          "id": "DOC-A15-008",
+          "name": "Operational readiness review",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record operational readiness review for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A15-008.md"
+        },
+        {
+          "id": "DOC-A15-009",
+          "name": "Go no go record",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record go no go record for release and deployment.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A15-009.md"
+        }
+      ]
+    },
+    {
+      "domain": "A16-OPERATIONS",
+      "purpose": "Operations and observability",
+      "documents": [
+        {
+          "id": "DOC-A16-001",
+          "name": "Operations manual",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record operations manual for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A16-001.md"
+        },
+        {
+          "id": "DOC-A16-002",
+          "name": "Service catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record service catalog for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A16-002.md"
+        },
+        {
+          "id": "DOC-A16-003",
+          "name": "Runbook",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record runbook for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A16-003.md"
+        },
+        {
+          "id": "DOC-A16-004",
+          "name": "Playbook",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record playbook for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A16-004.md"
+        },
+        {
+          "id": "DOC-A16-005",
+          "name": "On call policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record on call policy for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A16-005.md"
+        },
+        {
+          "id": "DOC-A16-006",
+          "name": "Escalation tree",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record escalation tree for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A16-006.md"
+        },
+        {
+          "id": "DOC-A16-007",
+          "name": "Observability strategy",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record observability strategy for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A16-007.md"
+        },
+        {
+          "id": "DOC-A16-008",
+          "name": "Metric catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record metric catalog for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A16-008.md"
+        },
+        {
+          "id": "DOC-A16-009",
+          "name": "Log standard",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record log standard for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A16-009.md"
+        },
+        {
+          "id": "DOC-A16-010",
+          "name": "Alert catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record alert catalog for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A16-010.md"
+        },
+        {
+          "id": "DOC-A16-011",
+          "name": "Synthetic monitoring",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record synthetic monitoring for operations and observability.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A16-011.md"
+        }
+      ]
+    },
+    {
+      "domain": "A17-INCIDENTS",
+      "purpose": "Incident and problem management",
+      "documents": [
+        {
+          "id": "DOC-A17-001",
+          "name": "Incident response",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record incident response for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A17-001.md"
+        },
+        {
+          "id": "DOC-A17-002",
+          "name": "Severity matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record severity matrix for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A17-002.md"
+        },
+        {
+          "id": "DOC-A17-003",
+          "name": "Incident timeline",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record incident timeline for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A17-003.md"
+        },
+        {
+          "id": "DOC-A17-004",
+          "name": "Postmortem",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record postmortem for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A17-004.md"
+        },
+        {
+          "id": "DOC-A17-005",
+          "name": "Root cause analysis",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record root cause analysis for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A17-005.md"
+        },
+        {
+          "id": "DOC-A17-006",
+          "name": "CAPA register",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record capa register for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A17-006.md"
+        },
+        {
+          "id": "DOC-A17-007",
+          "name": "Known error database",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record known error database for incident and problem management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A17-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A18-DISASTER-RECOVERY",
+      "purpose": "Disaster recovery and continuity",
+      "documents": [
+        {
+          "id": "DOC-A18-001",
+          "name": "DR plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dr plan for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A18-001.md"
+        },
+        {
+          "id": "DOC-A18-002",
+          "name": "Business continuity plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record business continuity plan for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A18-002.md"
+        },
+        {
+          "id": "DOC-A18-003",
+          "name": "RTO RPO",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record rto rpo for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A18-003.md"
+        },
+        {
+          "id": "DOC-A18-004",
+          "name": "Backup strategy",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record backup strategy for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A18-004.md"
+        },
+        {
+          "id": "DOC-A18-005",
+          "name": "Restore procedure",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record restore procedure for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A18-005.md"
+        },
+        {
+          "id": "DOC-A18-006",
+          "name": "Failover runbook",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record failover runbook for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A18-006.md"
+        },
+        {
+          "id": "DOC-A18-007",
+          "name": "DR test record",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dr test record for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A18-007.md"
+        },
+        {
+          "id": "DOC-A18-008",
+          "name": "Cyber recovery",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record cyber recovery for disaster recovery and continuity.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A18-008.md"
+        }
+      ]
+    },
+    {
+      "domain": "A19-VENDORS",
+      "purpose": "Vendor and third party",
+      "documents": [
+        {
+          "id": "DOC-A19-001",
+          "name": "Vendor inventory",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record vendor inventory for vendor and third party.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A19-001.md"
+        },
+        {
+          "id": "DOC-A19-002",
+          "name": "SLA register",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record sla register for vendor and third party.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A19-002.md"
+        },
+        {
+          "id": "DOC-A19-003",
+          "name": "Concentration risk",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record concentration risk for vendor and third party.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A19-003.md"
+        },
+        {
+          "id": "DOC-A19-004",
+          "name": "Vendor offboarding",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record vendor offboarding for vendor and third party.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A19-004.md"
+        },
+        {
+          "id": "DOC-A19-005",
+          "name": "Integration failure modes",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record integration failure modes for vendor and third party.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A19-005.md"
+        }
+      ]
+    },
+    {
+      "domain": "A20-GOVERNANCE",
+      "purpose": "Governance risk and compliance",
+      "documents": [
+        {
+          "id": "DOC-A20-001",
+          "name": "Risk register",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record risk register for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A20-001.md"
+        },
+        {
+          "id": "DOC-A20-002",
+          "name": "Control catalog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record control catalog for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A20-002.md"
+        },
+        {
+          "id": "DOC-A20-003",
+          "name": "Control evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record control evidence for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A20-003.md"
+        },
+        {
+          "id": "DOC-A20-004",
+          "name": "Audit pack",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record audit pack for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A20-004.md"
+        },
+        {
+          "id": "DOC-A20-005",
+          "name": "Policy exception",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record policy exception for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A20-005.md"
+        },
+        {
+          "id": "DOC-A20-006",
+          "name": "Governance RACI",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record governance raci for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A20-006.md"
+        },
+        {
+          "id": "DOC-A20-007",
+          "name": "Board report",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record board report for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A20-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A21-AI-ML",
+      "purpose": "AI ML and agents",
+      "documents": [
+        {
+          "id": "DOC-A21-001",
+          "name": "Model card",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record model card for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-001.md"
+        },
+        {
+          "id": "DOC-A21-002",
+          "name": "Model registry",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record model registry for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-002.md"
+        },
+        {
+          "id": "DOC-A21-003",
+          "name": "Prompt registry",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record prompt registry for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-003.md"
+        },
+        {
+          "id": "DOC-A21-004",
+          "name": "Tool authorization matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record tool authorization matrix for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-004.md"
+        },
+        {
+          "id": "DOC-A21-005",
+          "name": "Agent behavior specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record agent behavior specification for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-005.md"
+        },
+        {
+          "id": "DOC-A21-006",
+          "name": "AI safety policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record ai safety policy for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A21-006.md"
+        },
+        {
+          "id": "DOC-A21-007",
+          "name": "Sandbox specification",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record sandbox specification for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-007.md"
+        },
+        {
+          "id": "DOC-A21-008",
+          "name": "Autonomy levels",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record autonomy levels for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-008.md"
+        },
+        {
+          "id": "DOC-A21-009",
+          "name": "AI incident log",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record ai incident log for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A21-009.md"
+        },
+        {
+          "id": "DOC-A21-010",
+          "name": "Evaluation gate",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record evaluation gate for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-010.md"
+        },
+        {
+          "id": "DOC-A21-011",
+          "name": "RAG architecture",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record rag architecture for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-011.md"
+        },
+        {
+          "id": "DOC-A21-012",
+          "name": "Human in the loop",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record human in the loop for ai ml and agents.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A21-012.md"
+        }
+      ]
+    },
+    {
+      "domain": "A22-USER-SUPPORT",
+      "purpose": "User and support",
+      "documents": [
+        {
+          "id": "DOC-A22-001",
+          "name": "User guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record user guide for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-001.md"
+        },
+        {
+          "id": "DOC-A22-002",
+          "name": "Admin guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record admin guide for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-002.md"
+        },
+        {
+          "id": "DOC-A22-003",
+          "name": "Operator manual",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record operator manual for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-003.md"
+        },
+        {
+          "id": "DOC-A22-004",
+          "name": "API quickstart",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record api quickstart for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-004.md"
+        },
+        {
+          "id": "DOC-A22-005",
+          "name": "Troubleshooting guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record troubleshooting guide for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-005.md"
+        },
+        {
+          "id": "DOC-A22-006",
+          "name": "Help center",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record help center for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-006.md"
+        },
+        {
+          "id": "DOC-A22-007",
+          "name": "Support playbook",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record support playbook for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-007.md"
+        },
+        {
+          "id": "DOC-A22-008",
+          "name": "FAQ",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record faq for user and support.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A22-008.md"
+        }
+      ]
+    },
+    {
+      "domain": "A23-LIFECYCLE",
+      "purpose": "Lifecycle management",
+      "documents": [
+        {
+          "id": "DOC-A23-001",
+          "name": "Deprecation policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record deprecation policy for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DOC-A23-001.md"
+        },
+        {
+          "id": "DOC-A23-002",
+          "name": "Version support matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record version support matrix for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A23-002.md"
+        },
+        {
+          "id": "DOC-A23-003",
+          "name": "Migration guide",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record migration guide for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A23-003.md"
+        },
+        {
+          "id": "DOC-A23-004",
+          "name": "Data export import",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record data export import for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A23-004.md"
+        },
+        {
+          "id": "DOC-A23-005",
+          "name": "Retirement runbook",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record retirement runbook for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DOC-A23-005.md"
+        },
+        {
+          "id": "DOC-A23-006",
+          "name": "Destruction record",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record destruction record for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DOC-A23-006.md"
+        },
+        {
+          "id": "DOC-A23-007",
+          "name": "Tombstone page",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record tombstone page for lifecycle management.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A23-007.md"
+        }
+      ]
+    },
+    {
+      "domain": "A24-EVIDENCE",
+      "purpose": "Evidence packs",
+      "documents": [
+        {
+          "id": "DOC-A24-001",
+          "name": "Build evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record build evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-001.md"
+        },
+        {
+          "id": "DOC-A24-002",
+          "name": "Release evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record release evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-002.md"
+        },
+        {
+          "id": "DOC-A24-003",
+          "name": "Access review evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record access review evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-003.md"
+        },
+        {
+          "id": "DOC-A24-004",
+          "name": "Backup evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record backup evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-004.md"
+        },
+        {
+          "id": "DOC-A24-005",
+          "name": "DR test evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dr test evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-005.md"
+        },
+        {
+          "id": "DOC-A24-006",
+          "name": "Pen test evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record pen test evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-006.md"
+        },
+        {
+          "id": "DOC-A24-007",
+          "name": "Training evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record training evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-007.md"
+        },
+        {
+          "id": "DOC-A24-008",
+          "name": "Incident evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record incident evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-008.md"
+        },
+        {
+          "id": "DOC-A24-009",
+          "name": "Privacy request evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record privacy request evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-009.md"
+        },
+        {
+          "id": "DOC-A24-010",
+          "name": "Model evaluation evidence",
+          "type": "EVD",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record model evaluation evidence for evidence packs.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "source-dependent",
+          "template": "TEMPLATES/EVIDENCE/DOC-A24-010.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "source": "frontmatter related/supersedes",
+  "note": "AUTO-GENERATED; semantics require human review.",
+  "edges": [
+    {
+      "from": "DEV-AGENT-ALIAS-001",
+      "to": "CURRENT-STATE-MD",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-ALIAS-002",
+      "to": "NEXT-ACTION-MD",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-ALIAS-003",
+      "to": "RECENT-CHANGES-MD",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-ALIAS-004",
+      "to": "DEV-AGENT-006",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-ALIAS-005",
+      "to": "DEV-AGENT-003",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-ALIAS-006",
+      "to": "DEV-AGENT-004",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-ALIAS-007",
+      "to": "DEV-AGENT-005",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-VIEW-008",
+      "to": "DEV-AGENT-001",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-VIEW-008",
+      "to": "DOC-ARC-001",
+      "kind": "related"
+    },
+    {
+      "from": "DEV-AGENT-VIEW-008",
+      "to": "DOC-P2-001",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-ARC-001",
+      "to": "DOC-AUTO-001",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-ARC-001",
+      "to": "DOC-CAT-001",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-ARC-001",
+      "to": "DOC-CI-001",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-GOV-001",
+      "to": "DOC-ARC-001",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-GOV-001",
+      "to": "DOC-CAT-001",
+      "kind": "related"
+    },
+    {
+      "from": "EX-AGENT-001",
+      "to": "EXAMPLE-PROJECT-DOCS-ARCHITECTURE-MD",
+      "kind": "related"
+    },
+    {
+      "from": "EX-HEALTH-RUNBOOK-001",
+      "to": "EX-API-001",
+      "kind": "related"
+    }
+  ]
+}

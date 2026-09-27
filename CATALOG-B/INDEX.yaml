@@ -1,0 +1,1281 @@
+{
+  "version": 1,
+  "note": "Inventory of possible documents. Applicability labels are suggestions, not a mandate or evidence of adoption.",
+  "domains": [
+    {
+      "domain": "B01-FOUNDATION",
+      "purpose": "Context and goals",
+      "documents": [
+        {
+          "id": "DEV-B01-001",
+          "name": "Problem statement",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record problem statement for context and goals.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-001.md"
+        },
+        {
+          "id": "DEV-B01-002",
+          "name": "Goals and non goals",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record goals and non goals for context and goals.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-002.md"
+        },
+        {
+          "id": "DEV-B01-003",
+          "name": "Scope",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record scope for context and goals.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-003.md"
+        },
+        {
+          "id": "DEV-B01-004",
+          "name": "Stakeholder map",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record stakeholder map for context and goals.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-004.md"
+        },
+        {
+          "id": "DEV-B01-005",
+          "name": "Success metrics",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record success metrics for context and goals.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-005.md"
+        }
+      ]
+    },
+    {
+      "domain": "B02-RESEARCH",
+      "purpose": "Discovery and exploration",
+      "documents": [
+        {
+          "id": "DEV-B02-001",
+          "name": "Research notes",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record research notes for discovery and exploration.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B02-001.md"
+        },
+        {
+          "id": "DEV-B02-002",
+          "name": "Competitive analysis",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record competitive analysis for discovery and exploration.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B02-002.md"
+        },
+        {
+          "id": "DEV-B02-003",
+          "name": "Spike",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record spike for discovery and exploration.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B02-003.md"
+        },
+        {
+          "id": "DEV-B02-004",
+          "name": "Assumption log",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record assumption log for discovery and exploration.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DEV-B02-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B03-PLANNING",
+      "purpose": "Planning and delivery",
+      "documents": [
+        {
+          "id": "DEV-B03-001",
+          "name": "Milestones",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record milestones for planning and delivery.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B03-001.md"
+        },
+        {
+          "id": "DEV-B03-002",
+          "name": "Task backlog",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record task backlog for planning and delivery.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DEV-B03-002.md"
+        },
+        {
+          "id": "DEV-B03-003",
+          "name": "Risks and dependencies",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record risks and dependencies for planning and delivery.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B03-003.md"
+        },
+        {
+          "id": "DEV-B03-004",
+          "name": "Delivery plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record delivery plan for planning and delivery.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B03-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B04-ARCHITECTURE",
+      "purpose": "Early architecture",
+      "documents": [
+        {
+          "id": "DEV-B04-001",
+          "name": "System overview",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record system overview for early architecture.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DEV-B04-001.md"
+        },
+        {
+          "id": "DEV-B04-002",
+          "name": "ADR",
+          "type": "DEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record adr for early architecture.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/DECISIONS/DEV-B04-002.md"
+        },
+        {
+          "id": "DEV-B04-003",
+          "name": "C4 sketch",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record c4 sketch for early architecture.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DEV-B04-003.md"
+        },
+        {
+          "id": "DEV-B04-004",
+          "name": "Threat model",
+          "type": "DES",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record threat model for early architecture.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/ARCHITECTURE/DEV-B04-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B05-CONTRACTS",
+      "purpose": "Implementation contracts",
+      "documents": [
+        {
+          "id": "DEV-B05-001",
+          "name": "Module contract",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record module contract for implementation contracts.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B05-001.md"
+        },
+        {
+          "id": "DEV-B05-002",
+          "name": "Type definitions",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record type definitions for implementation contracts.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B05-002.md"
+        },
+        {
+          "id": "DEV-B05-003",
+          "name": "Error handling",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record error handling for implementation contracts.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B05-003.md"
+        },
+        {
+          "id": "DEV-B05-004",
+          "name": "API contract",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record api contract for implementation contracts.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B05-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B06-IMPLEMENTATION",
+      "purpose": "Implementation guidance",
+      "documents": [
+        {
+          "id": "DEV-B06-001",
+          "name": "Coding plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record coding plan for implementation guidance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B06-001.md"
+        },
+        {
+          "id": "DEV-B06-002",
+          "name": "Implementation log",
+          "type": "REC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record implementation log for implementation guidance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/RECORDS/DEV-B06-002.md"
+        },
+        {
+          "id": "DEV-B06-003",
+          "name": "Debugging notes",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record debugging notes for implementation guidance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B06-003.md"
+        },
+        {
+          "id": "DEV-B06-004",
+          "name": "Migration plan",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record migration plan for implementation guidance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B06-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B07-TESTING",
+      "purpose": "Validation",
+      "documents": [
+        {
+          "id": "DEV-B07-001",
+          "name": "Test strategy",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record test strategy for validation.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B07-001.md"
+        },
+        {
+          "id": "DEV-B07-002",
+          "name": "Acceptance criteria",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record acceptance criteria for validation.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B07-002.md"
+        },
+        {
+          "id": "DEV-B07-003",
+          "name": "Test results",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record test results for validation.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B07-003.md"
+        },
+        {
+          "id": "DEV-B07-004",
+          "name": "UAT",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record uat for validation.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Core",
+          "required_for": [
+            "general"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B07-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B08-TRACKING",
+      "purpose": "Handoff and tracking",
+      "documents": [
+        {
+          "id": "DEV-B08-001",
+          "name": "Current state",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record current state for handoff and tracking.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B08-001.md"
+        },
+        {
+          "id": "DEV-B08-002",
+          "name": "Next action",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record next action for handoff and tracking.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B08-002.md"
+        },
+        {
+          "id": "DEV-B08-003",
+          "name": "Recent changes",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record recent changes for handoff and tracking.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B08-003.md"
+        },
+        {
+          "id": "DEV-B08-004",
+          "name": "Handoff notes",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record handoff notes for handoff and tracking.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B08-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B09-AGENT-CONTEXT",
+      "purpose": "AI agent context",
+      "documents": [
+        {
+          "id": "DEV-B09-001",
+          "name": "AGENTS.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record agents.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-001.md"
+        },
+        {
+          "id": "DEV-B09-002",
+          "name": "CLAUDE.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record claude.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-002.md"
+        },
+        {
+          "id": "DEV-B09-003",
+          "name": "Cursor rules",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record cursor rules for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-003.md"
+        },
+        {
+          "id": "DEV-B09-004",
+          "name": "AI-CONTEXT.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record ai-context.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-004.md"
+        },
+        {
+          "id": "DEV-B09-005",
+          "name": "SYSTEM-PROMPT-FOR-CODING-AGENT.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record system-prompt-for-coding-agent.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-005.md"
+        },
+        {
+          "id": "DEV-B09-006",
+          "name": "AGENT-WORKFLOW.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record agent-workflow.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-006.md"
+        },
+        {
+          "id": "DEV-B09-007",
+          "name": "CURRENT-STATE.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record current-state.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-007.md"
+        },
+        {
+          "id": "DEV-B09-008",
+          "name": "NEXT-ACTION.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record next-action.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-008.md"
+        },
+        {
+          "id": "DEV-B09-009",
+          "name": "RECENT-CHANGES.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record recent-changes.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-009.md"
+        },
+        {
+          "id": "DEV-B09-010",
+          "name": "AGENT-MEMORY.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record agent-memory.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-010.md"
+        },
+        {
+          "id": "DEV-B09-011",
+          "name": "CONTEXT-SNAPSHOT.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record context-snapshot.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-011.md"
+        },
+        {
+          "id": "DEV-B09-012",
+          "name": "TASK-FOR-AGENT.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record task-for-agent.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-012.md"
+        },
+        {
+          "id": "DEV-B09-013",
+          "name": "TOOL-USAGE-GUIDE-FOR-AGENT.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record tool-usage-guide-for-agent.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-013.md"
+        },
+        {
+          "id": "DEV-B09-014",
+          "name": "ANTI-PATTERNS-FOR-AGENT.md",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record anti-patterns-for-agent.md for ai agent context.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Recommended",
+          "required_for": [
+            "ai-agent"
+          ],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/AGENT-CONTEXT/DEV-B09-014.md"
+        }
+      ]
+    },
+    {
+      "domain": "B10-SETUP",
+      "purpose": "Project setup",
+      "documents": [
+        {
+          "id": "DEV-B10-001",
+          "name": "Local setup",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record local setup for project setup.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B10-001.md"
+        },
+        {
+          "id": "DEV-B10-002",
+          "name": "Environment matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record environment matrix for project setup.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B10-002.md"
+        },
+        {
+          "id": "DEV-B10-003",
+          "name": "Dependency setup",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record dependency setup for project setup.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B10-003.md"
+        },
+        {
+          "id": "DEV-B10-004",
+          "name": "Developer onboarding",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record developer onboarding for project setup.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B10-004.md"
+        }
+      ]
+    },
+    {
+      "domain": "B11-META",
+      "purpose": "Documentation governance",
+      "documents": [
+        {
+          "id": "DEV-B11-001",
+          "name": "Documentation index",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record documentation index for documentation governance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B11-001.md"
+        },
+        {
+          "id": "DEV-B11-002",
+          "name": "Ownership matrix",
+          "type": "SPEC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record ownership matrix for documentation governance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B11-002.md"
+        },
+        {
+          "id": "DEV-B11-003",
+          "name": "Freshness policy",
+          "type": "POL",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record freshness policy for documentation governance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/POLICIES/DEV-B11-003.md"
+        },
+        {
+          "id": "DEV-B11-004",
+          "name": "Document control procedure",
+          "type": "PROC",
+          "audience": "project team",
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record document control procedure for documentation governance.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "priority": "Contextual",
+          "required_for": [],
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/PROCEDURES/DEV-B11-004.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "note": "This matrix applies to instantiated AutoDOC Markdown, not uninstantiated catalog templates. No backup reviewer is configured.",
+  "owners": {
+    "@Er-Sajan-PLG": {
+      "role": "repository owner",
+      "backup": null,
+      "paths": ["docs/**", "CONTROL/**", "EXAMPLE-PROJECT/docs/**", "examples/ai-agent-example/docs/**", "examples/local-tools-example/docs/**", "CURRENT-STATE.md", "NEXT-ACTION.md", "RECENT-CHANGES.md", "AGENTS.md", "CLAUDE.md", "AGENT-MEMORY.md", "ANTI-PATTERNS-FOR-AGENT.md", "CONTEXT-SNAPSHOT.md", "TASK-FOR-AGENT.md"]
+    }
+  }
+}
