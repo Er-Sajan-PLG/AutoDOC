@@ -1,26 +1,64 @@
+# Install with: pip install pre-commit && pre-commit install
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+  - repo: local
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-json
-    -   id: check-toml
--   repo: local
-    hooks:
-    -   id: doc-frontmatter-check
-        name: Validate Frontmatter
-        entry: python scripts/validate/frontmatter_validator.py
+      - id: doc-state-sync
+        name: Refresh observable living-state blocks from staged sources
+        entry: python scripts/doc-sync/update-doc-state.py --staged
         language: system
-        types: [markdown]
-    -   id: doc-drift-check
-        name: Check Documentation Drift
+        pass_filenames: false
+        always_run: true
+      - id: doc-guards
+        name: Check local links, tribal instructions and key markers
+        entry: python scripts/doc-control/guards.py --staged
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-map-check
+        name: Validate sync map and review target references
+        entry: python scripts/doc-control/check_sync_map.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-inventory-check
+        name: Compare human inventory with controlled frontmatter
+        entry: python scripts/doc-sync/generate-all.py --check --only human-inventory
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-frontmatter-check
+        name: Validate controlled Markdown metadata
+        entry: python scripts/validate/frontmatter_validator.py --staged
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-drift-check
+        name: Check generated targets match their sources
         entry: python scripts/doc-sync/check-doc-drift.py
         language: system
         pass_filenames: false
-    -   id: doc-state-sync
-        name: Auto-update living state
-        entry: python scripts/doc-sync/update-doc-state.py
+        always_run: true
+      - id: doc-impact-check
+        name: Check staged review and living-state impact
+        entry: python scripts/intelligence/change_analyzer.py --staged
         language: system
         pass_filenames: false
+        always_run: true
+      - id: doc-library-check
+        name: Check catalog templates
+        entry: python scripts/doc-control/library.py --check
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-ownership-check
+        name: Check controlled document ownership
+        entry: python scripts/doc-control/check_ownership.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-completeness-check
+        name: Check instantiated starter documents
+        entry: python scripts/doc-control/completeness.py
+        language: system
+        pass_filenames: false
+        always_run: true

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "purpose": "Document control and metadata for instantiated documents in AutoDOC",
+  "artifacts": [
+    {
+      "id": "DOC-CTL-001",
+      "path": "CONTROL/metadata/FRONT-MATTER-SCHEMA.json",
+      "purpose": "Required metadata and allowed values"
+    },
+    {
+      "id": "DOC-CTL-002",
+      "path": "docs/.doc-sync-map.yaml",
+      "purpose": "Source-to-target generation and human review rules"
+    },
+    {
+      "id": "DOC-CTL-003",
+      "path": "CONTROL/metadata/MASTER-INDEX.json",
+      "purpose": "Generated index of instantiated controlled documents"
+    },
+    {
+      "id": "DOC-CTL-004",
+      "path": "CONTROL/policies/DOCUMENTATION-POLICY.md",
+      "purpose": "Human responsibilities and enforcement limits"
+    },
+    {
+      "id": "DOC-CTL-005",
+      "path": "CONTROL/policies/FRESHNESS-SLA-POLICY.md",
+      "purpose": "Review intervals and escalation"
+    },
+    {
+      "id": "DOC-CTL-006",
+      "path": "CONTROL/metadata/OWNERSHIP-MATRIX.yaml",
+      "purpose": "Primary document ownership and declared backup status"
+    }
+  ]
+}

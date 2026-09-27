@@ -1,28 +1,26 @@
+# Taskfile requires the go-task binary. If unavailable, use `make ci` (canonical).
 version: '3'
-
 tasks:
-  docs:init:
-    desc: Detect project, generate project-profile, bootstrap inventory
-    cmds:
-      - python scripts/init/bootstrap.py
-  docs:impact:
-    desc: Run change analyzer against current diff
-    cmds:
-      - python scripts/intelligence/change_analyzer.py --staged
-  docs:sync:
-    desc: Regenerate all factual docs
-    cmds:
-      - python scripts/doc-sync/generate-all.py
-  docs:lint:
-    desc: markdownlint + frontmatter + style
-    cmds:
-      - markdownlint docs/**/*.md
-      - python scripts/validate/frontmatter_validator.py
-  docs:verify:
-    desc: full consistency + completeness + traceability
-    cmds:
-      - python scripts/verify/docs_verify_all.py
-  docs:health:
-    desc: run health engine locally
-    cmds:
-      - python scripts/health/docs_health_engine.py
+  setup: {cmds: ['make setup']}
+  lint: {cmds: ['make lint']}
+  docs:lint: {cmds: ['make lint']}
+  docs:generate: {cmds: ['make docs:generate']}
+  docs:drift: {cmds: ['make docs:drift']}
+  docs:metadata: {cmds: ['make docs:metadata']}
+  docs:inventory: {cmds: ['make docs:inventory']}
+  docs:ownership: {cmds: ['make docs:ownership']}
+  docs:freshness: {cmds: ['make docs:freshness']}
+  docs:sync: {cmds: ['make docs:sync']}
+  docs:impact: {cmds: ['make docs:impact BASE={{.BASE | default "origin/master"}}']}
+  docs:staged: {cmds: ['make docs:staged']}
+  docs:verify: {cmds: ['make docs:verify']}
+  docs:health: {cmds: ['make docs:health']}
+  docs:check: {cmds: ['make docs:check']}
+  docs:index: {cmds: ['make docs:index']}
+  docs:self-doc: {cmds: ['make docs:self-doc']}
+  evidence: {cmds: ['make evidence']}
+  check-evidence: {cmds: ['make check-evidence']}
+  test: {cmds: ['make test']}
+  ci: {cmds: ['make ci']}
+  docs:init: {cmds: ['python scripts/init-project.py --name "{{.NAME}}" --type "{{.TYPE | default "generic"}}" --output "{{.OUTPUT}}"']}
+  docs:adopt: {cmds: ['python scripts/adopt.py --project-path "{{.OUTPUT}}"']}

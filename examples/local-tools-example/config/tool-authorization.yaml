@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "tools": [
+    {"name": "math.add", "status": "allow", "risk": "low", "requires_confirmation": false, "description": "Add two integers"},
+    {"name": "text.upper", "status": "allow", "risk": "low", "requires_confirmation": false, "description": "Uppercase bounded text"},
+    {"name": "files.read", "status": "allow", "risk": "low", "requires_confirmation": false, "description": "Read bounded files below data/"},
+    {"name": "shell.run_script", "status": "blocked", "risk": "medium", "requires_confirmation": true, "description": "No shell execution is implemented"},
+    {"name": "network.fetch", "status": "blocked", "risk": "high", "requires_confirmation": true, "description": "All network access denied"}
+  ]
+}

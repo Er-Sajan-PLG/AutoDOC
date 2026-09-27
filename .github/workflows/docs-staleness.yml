@@ -1,0 +1,32 @@
+# Nightly and Monday checks surface overdue human review; maintainers triage logs and artifacts.
+name: AutoDOC nightly freshness
+on:
+  schedule:
+    - cron: '0 2 * * *'
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Nightly drift and local-link verification
+        run: |
+          python scripts/doc-sync/check-doc-drift.py
+          python scripts/doc-control/guards.py
+          python scripts/doc-control/check_ownership.py
+      - run: python scripts/doc-sync/engine.py freshness
+      - name: Measure documentation health
+        if: always()
+        run: python scripts/doc-control/health.py --output "$RUNNER_TEMP/autodoc-health.json" --markdown-output "$RUNNER_TEMP/DOCS-HEALTH-$(date -u +%F).md"
+      - name: Upload measured health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autodoc-health
+          path: |
+            ${{ runner.temp }}/autodoc-health.json
+            ${{ runner.temp }}/DOCS-HEALTH-*.md
+          if-no-files-found: ignore

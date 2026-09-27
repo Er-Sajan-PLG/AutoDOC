@@ -1,0 +1,7 @@
+{
+  "routes": [
+    {"method": "GET", "path": "/tasks", "description": "List tasks", "response": "200: JSON array of tasks"},
+    {"method": "POST", "path": "/tasks", "description": "Create a task from a JSON object with a nonempty title", "response": "201: created task; 400: invalid input"},
+    {"method": "GET", "path": "/health", "description": "Check service health", "response": "200: JSON status"}
+  ]
+}

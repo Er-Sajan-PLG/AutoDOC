@@ -1,0 +1,5 @@
+{
+  "alerts": [
+    {"id": "service-unhealthy", "condition": "GET /health returns non-200 in the demo check", "severity": "medium", "runbook": "EXAMPLE-PROJECT/docs/HEALTH-RUNBOOK.md"}
+  ]
+}

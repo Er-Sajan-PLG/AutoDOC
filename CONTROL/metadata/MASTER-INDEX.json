@@ -1,0 +1,741 @@
+{
+  "version": 1,
+  "documents": [
+    {
+      "id": "DEV-AGENT-003",
+      "path": "AGENT-MEMORY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-001",
+      "path": "AGENTS.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-004",
+      "path": "ANTI-PATTERNS-FOR-AGENT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-002",
+      "path": "CLAUDE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-005",
+      "path": "CONTEXT-SNAPSHOT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P2-004",
+      "path": "CONTROL/GOVERNANCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "POL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "CONTROL-POLICIES-DOCUMENTATION-POLICY-MD",
+      "path": "CONTROL/policies/DOCUMENTATION-POLICY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "POL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "CONTROL-POLICIES-FRESHNESS-SLA-POLICY-MD",
+      "path": "CONTROL/policies/FRESHNESS-SLA-POLICY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "POL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "CURRENT-STATE-MD",
+      "path": "CURRENT-STATE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-AGENT-001",
+      "path": "EXAMPLE-PROJECT/docs/AI-CONTEXT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-API-001",
+      "path": "EXAMPLE-PROJECT/docs/API-REFERENCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EXAMPLE-PROJECT-DOCS-ARCHITECTURE-MD",
+      "path": "EXAMPLE-PROJECT/docs/ARCHITECTURE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-CFG-001",
+      "path": "EXAMPLE-PROJECT/docs/CONFIG-REFERENCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-DATA-001",
+      "path": "EXAMPLE-PROJECT/docs/DATA-DICTIONARY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-HEALTH-RUNBOOK-001",
+      "path": "EXAMPLE-PROJECT/docs/HEALTH-RUNBOOK.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "PROC",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "NEXT-ACTION-MD",
+      "path": "NEXT-ACTION.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "RECENT-CHANGES-MD",
+      "path": "RECENT-CHANGES.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-006",
+      "path": "TASK-FOR-AGENT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "TPL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-GOV-001",
+      "path": "docs/00-governance/ADOPTION.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REC",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P3-GOV-002",
+      "path": "docs/00-governance/BRANCH-PROTECTION.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P2-003",
+      "path": "docs/00-governance/DOCUMENT-CONTROL.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "POL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P2-002",
+      "path": "docs/00-governance/DOCUMENTATION-STRATEGY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P2-001",
+      "path": "docs/00-governance/ENGINE-COVERAGE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P3-GOV-003",
+      "path": "docs/00-governance/EVIDENCE-SIGNING.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P3-GOV-004",
+      "path": "docs/00-governance/LICENSE-CHOICE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P3-GOV-005",
+      "path": "docs/00-governance/LICENSE-DECISION.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P3-GOV-001",
+      "path": "docs/00-governance/LIMITATIONS.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-00",
+      "path": "docs/00-governance/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CAT-NAV-001",
+      "path": "docs/01-catalogs/CATALOG-INDEX.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CAT-VIEW-A",
+      "path": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-A.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CAT-VIEW-B",
+      "path": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CAT-VIEW-C",
+      "path": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-C.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-01",
+      "path": "docs/01-product/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-02",
+      "path": "docs/02-discovery/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-03",
+      "path": "docs/03-requirements/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P2-005",
+      "path": "docs/04-guides/HOW-AUTODOC-WORKS.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-04",
+      "path": "docs/04-spikes/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-ARC-001",
+      "path": "docs/05-architecture/AUTODOC-ARCHITECTURE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "DES",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-05",
+      "path": "docs/05-architecture/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-06",
+      "path": "docs/06-design/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-07",
+      "path": "docs/07-api/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-005",
+      "path": "docs/08-agent-context/AGENT-MEMORY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-VIEW-008",
+      "path": "docs/08-agent-context/AI-CONTEXT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-006",
+      "path": "docs/08-agent-context/ANTI-PATTERNS-FOR-AGENT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-007",
+      "path": "docs/08-agent-context/CONTEXT-SNAPSHOT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-001",
+      "path": "docs/08-agent-context/CURRENT-STATE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-002",
+      "path": "docs/08-agent-context/NEXT-ACTION.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-003",
+      "path": "docs/08-agent-context/RECENT-CHANGES.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DEV-AGENT-ALIAS-004",
+      "path": "docs/08-agent-context/TASK-FOR-AGENT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-08",
+      "path": "docs/08-data/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-09",
+      "path": "docs/09-ai/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-10",
+      "path": "docs/10-security/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-11",
+      "path": "docs/11-privacy-legal/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-12",
+      "path": "docs/12-development/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-13",
+      "path": "docs/13-testing/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-14",
+      "path": "docs/14-build-supply-chain/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-15",
+      "path": "docs/15-release/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-16",
+      "path": "docs/16-deployment/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-17",
+      "path": "docs/17-operations/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-18",
+      "path": "docs/18-runbooks/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-19",
+      "path": "docs/19-playbooks/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-20",
+      "path": "docs/20-incidents/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-21",
+      "path": "docs/21-continuity/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-22",
+      "path": "docs/22-support-user/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-23",
+      "path": "docs/23-governance-risk/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-24",
+      "path": "docs/24-analytics-experiments/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-25",
+      "path": "docs/25-gtm-trust/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-26",
+      "path": "docs/26-lifecycle/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "IDX-27",
+      "path": "docs/27-knowledge/_index.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CODE-001",
+      "path": "docs/META/CODE-INVENTORY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-COV-001",
+      "path": "docs/META/COMPLETENESS-REPORT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-DEP-001",
+      "path": "docs/META/DEPENDENCIES.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-OUT-001",
+      "path": "docs/META/OUTLINE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-TEST-001",
+      "path": "docs/META/TEST-INVENTORY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-AUTO-001",
+      "path": "docs/generated/AUTOMATION-REFERENCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CAT-001",
+      "path": "docs/generated/CATALOG-REFERENCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-CI-001",
+      "path": "docs/generated/WORKFLOW-REFERENCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-ALERT-001",
+      "path": "docs/operations/ALERT-CATALOG.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-REL-001",
+      "path": "docs/reference/DOC-RELATIONSHIPS.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-ENV-001",
+      "path": "docs/reference/ENVIRONMENT.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-DEP-001",
+      "path": "docs/reference/EXAMPLE-DEPENDENCIES.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOCS-TEMPLATES-ADR-TEMPLATE-MD",
+      "path": "docs/templates/adr-template.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "TPL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOCS-TEMPLATES-AGENT-SPEC-MD",
+      "path": "docs/templates/agent-spec.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "TPL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOCS-TEMPLATES-INCIDENT-RECORD-MD",
+      "path": "docs/templates/incident-record.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "TPL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOCS-TEMPLATES-PRD-MD",
+      "path": "docs/templates/prd.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "TPL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOCS-TEMPLATES-RUNBOOK-TEMPLATE-MD",
+      "path": "docs/templates/runbook-template.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "TPL",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-AGENT-DES-001",
+      "path": "examples/ai-agent-example/docs/AI/AGENT-DESIGN.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "DES",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-AGENT-MODEL-001",
+      "path": "examples/ai-agent-example/docs/AI/MODEL-CONFIG.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-AGENT-PROMPT-001",
+      "path": "examples/ai-agent-example/docs/AI/PROMPT-REGISTRY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-AGENT-TOOL-001",
+      "path": "examples/ai-agent-example/docs/AI/TOOL-INVENTORY.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-LOCAL-DES-001",
+      "path": "examples/local-tools-example/docs/DESIGN.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "DES",
+      "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "EX-LOCAL-TOOLS-001",
+      "path": "examples/local-tools-example/docs/TOOL-AUTHORIZATION.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    }
+  ]
+}

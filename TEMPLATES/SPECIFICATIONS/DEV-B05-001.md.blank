@@ -1,0 +1,37 @@
+---
+id: REPLACE-WITH-UNIQUE-INSTANCE-ID
+title: "Module contract"
+type: SPEC
+owner: "@assign-owner"
+reviewer: "@assign-reviewer"
+classification: internal
+status: draft
+version: "0.1"
+effective_date: 2026-09-26
+next_review: 2026-12-25
+source_of_truth: human
+supersedes: null
+related: []
+criticality: high
+review_days: 90
+last_verified: 1970-01-01
+last_reviewed: 1970-01-01
+last_updated: 2026-09-26
+auto_generated: false
+---
+
+# Module contract
+
+> Blank instance for Module contract (`DEV-B05-001`). Replace metadata including dates; the sample date is **not** verification.
+
+## Purpose and scope
+
+<!-- Fill in. -->
+
+## Details and decisions
+
+<!-- Fill in. -->
+
+## Verification and references
+
+<!-- Link evidence. -->

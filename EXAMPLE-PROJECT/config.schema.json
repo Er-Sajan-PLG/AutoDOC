@@ -1,0 +1,6 @@
+{
+  "properties": {
+    "PORT": {"type": "integer", "default": 8000, "description": "HTTP listen port"},
+    "DB_PATH": {"type": "string", "default": "tasks.db", "description": "SQLite file path"}
+  }
+}

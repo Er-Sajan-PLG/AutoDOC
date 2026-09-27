@@ -1,0 +1,466 @@
+{
+  "version": 1,
+  "generated": [
+    {
+      "id": "api",
+      "sources": [
+        "EXAMPLE-PROJECT/routes.json"
+      ],
+      "target": "EXAMPLE-PROJECT/docs/API-REFERENCE.md",
+      "generator": "api"
+    },
+    {
+      "id": "config",
+      "sources": [
+        "EXAMPLE-PROJECT/config.schema.json"
+      ],
+      "target": "EXAMPLE-PROJECT/docs/CONFIG-REFERENCE.md",
+      "generator": "config"
+    },
+    {
+      "id": "env",
+      "sources": [
+        "EXAMPLE-PROJECT/config.schema.json"
+      ],
+      "target": "EXAMPLE-PROJECT/.env.example",
+      "generator": "env"
+    },
+    {
+      "id": "env-reference",
+      "sources": [
+        "EXAMPLE-PROJECT/.env.example"
+      ],
+      "target": "docs/reference/ENVIRONMENT.md",
+      "generator": "environment_reference"
+    },
+    {
+      "id": "alerts",
+      "sources": [
+        "EXAMPLE-PROJECT/monitoring/alerts.yaml",
+        "EXAMPLE-PROJECT/docs/HEALTH-RUNBOOK.md"
+      ],
+      "target": "docs/operations/ALERT-CATALOG.md",
+      "generator": "alert_catalog"
+    },
+    {
+      "id": "example-dependencies",
+      "sources": [
+        "EXAMPLE-PROJECT/pyproject.toml"
+      ],
+      "target": "docs/reference/EXAMPLE-DEPENDENCIES.md",
+      "generator": "dependencies"
+    },
+    {
+      "id": "data",
+      "sources": [
+        "EXAMPLE-PROJECT/db/schema.sql"
+      ],
+      "target": "EXAMPLE-PROJECT/docs/DATA-DICTIONARY.md",
+      "generator": "sql"
+    },
+    {
+      "id": "engine",
+      "sources": [
+        "scripts/doc-sync/*.py",
+        "scripts/doc-control/*.py",
+        "scripts/intelligence/*.py",
+        "scripts/validate/*.py",
+        "docs/.doc-sync-map.yaml"
+      ],
+      "target": "docs/generated/AUTOMATION-REFERENCE.md",
+      "generator": "automation"
+    },
+    {
+      "id": "catalog",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml",
+        "CATALOG-C/INDEX.yaml"
+      ],
+      "target": "docs/generated/CATALOG-REFERENCE.md",
+      "generator": "catalog"
+    },
+    {
+      "id": "workflows",
+      "sources": [
+        ".github/workflows/*.yml"
+      ],
+      "target": "docs/generated/WORKFLOW-REFERENCE.md",
+      "generator": "workflows"
+    },
+    {
+      "id": "outline",
+      "sources": [
+        "README.md",
+        "QUICK-START.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "IMPLEMENTATION-GUIDE.md",
+        "docs/**/*.md",
+        "TEMPLATES/**/*"
+      ],
+      "target": "docs/META/OUTLINE.md",
+      "generator": "outline"
+    },
+    {
+      "id": "code-inventory",
+      "sources": [
+        "scripts/**/*.py",
+        "engine/**/*.py",
+        "EXAMPLE-PROJECT/src/*.py"
+      ],
+      "target": "docs/META/CODE-INVENTORY.md",
+      "generator": "code_inventory"
+    },
+    {
+      "id": "test-inventory",
+      "sources": [
+        "tests/test_*.py"
+      ],
+      "target": "docs/META/TEST-INVENTORY.md",
+      "generator": "test_inventory"
+    },
+    {
+      "id": "dependencies",
+      "sources": [
+        "pyproject.toml"
+      ],
+      "target": "docs/META/DEPENDENCIES.md",
+      "generator": "dependencies"
+    },
+    {
+      "id": "completeness",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml",
+        "TEMPLATES/**/*.md",
+        "docs/.doc-sync-map.yaml"
+      ],
+      "target": "docs/META/COMPLETENESS-REPORT.md",
+      "generator": "completeness"
+    },
+    {
+      "id": "human-inventory",
+      "sources": [
+        "docs/**/*.md",
+        "CONTROL/**/*.md",
+        "EXAMPLE-PROJECT/docs/*.md",
+        "CURRENT-STATE.md",
+        "NEXT-ACTION.md",
+        "RECENT-CHANGES.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "AGENT-MEMORY.md",
+        "ANTI-PATTERNS-FOR-AGENT.md",
+        "CONTEXT-SNAPSHOT.md",
+        "TASK-FOR-AGENT.md",
+        "examples/ai-agent-example/docs/**/*.md",
+        "examples/local-tools-example/docs/*.md"
+      ],
+      "target": "docs/00-governance/INVENTORY.yaml",
+      "generator": "human_inventory"
+    },
+    {
+      "id": "relationship-visualization",
+      "sources": [
+        "docs/.doc-sync-map.yaml",
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml",
+        "docs/**/*.md",
+        "CONTROL/**/*.md",
+        "EXAMPLE-PROJECT/docs/*.md",
+        "CURRENT-STATE.md",
+        "NEXT-ACTION.md",
+        "RECENT-CHANGES.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "AGENT-MEMORY.md",
+        "ANTI-PATTERNS-FOR-AGENT.md",
+        "CONTEXT-SNAPSHOT.md",
+        "TASK-FOR-AGENT.md",
+        "examples/ai-agent-example/docs/**/*.md",
+        "examples/local-tools-example/docs/*.md"
+      ],
+      "target": "docs/reference/DOC-RELATIONSHIPS.md",
+      "generator": "relationship_visualization"
+    },
+    {
+      "id": "relationships",
+      "sources": [
+        "docs/**/*.md",
+        "CONTROL/**/*.md",
+        "EXAMPLE-PROJECT/docs/*.md",
+        "CURRENT-STATE.md",
+        "NEXT-ACTION.md",
+        "RECENT-CHANGES.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "AGENT-MEMORY.md",
+        "ANTI-PATTERNS-FOR-AGENT.md",
+        "CONTEXT-SNAPSHOT.md",
+        "TASK-FOR-AGENT.md",
+        "examples/ai-agent-example/docs/**/*.md",
+        "examples/local-tools-example/docs/*.md"
+      ],
+      "target": "CONTROL/metadata/RELATIONSHIP-GRAPH.yaml",
+      "generator": "relationship_graph"
+    },
+    {
+      "id": "agent-tools",
+      "sources": [
+        "examples/ai-agent-example/src/tools.json",
+        "examples/ai-agent-example/src/tools/*.py"
+      ],
+      "target": "examples/ai-agent-example/docs/AI/TOOL-INVENTORY.md",
+      "generator": "agent_tools"
+    },
+    {
+      "id": "agent-prompts",
+      "sources": [
+        "examples/ai-agent-example/src/prompts/*.md"
+      ],
+      "target": "examples/ai-agent-example/docs/AI/PROMPT-REGISTRY.md",
+      "generator": "agent_prompts"
+    },
+    {
+      "id": "agent-model",
+      "sources": [
+        "examples/ai-agent-example/src/models.json"
+      ],
+      "target": "examples/ai-agent-example/docs/AI/MODEL-CONFIG.md",
+      "generator": "agent_model"
+    },
+    {
+      "id": "catalog-view-a",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml"
+      ],
+      "target": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-A.md",
+      "generator": "catalog_view",
+      "view": "A"
+    },
+    {
+      "id": "catalog-view-b",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml"
+      ],
+      "target": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md",
+      "generator": "catalog_view",
+      "view": "B"
+    },
+    {
+      "id": "catalog-view-c",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml"
+      ],
+      "target": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-C.md",
+      "generator": "catalog_view",
+      "view": "C"
+    },
+    {
+      "id": "catalog-navigation",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml"
+      ],
+      "target": "docs/01-catalogs/CATALOG-INDEX.md",
+      "generator": "catalog_navigation"
+    },
+    {
+      "id": "local-tool-reference",
+      "sources": [
+        "examples/local-tools-example/config/tool-authorization.yaml"
+      ],
+      "target": "examples/local-tools-example/docs/TOOL-AUTHORIZATION.md",
+      "generator": "local_tool_reference"
+    },
+    {
+      "id": "index",
+      "sources": [
+        "docs/**/*.md",
+        "CONTROL/**/*.md",
+        "EXAMPLE-PROJECT/docs/*.md",
+        "CURRENT-STATE.md",
+        "NEXT-ACTION.md",
+        "RECENT-CHANGES.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "AGENT-MEMORY.md",
+        "ANTI-PATTERNS-FOR-AGENT.md",
+        "CONTEXT-SNAPSHOT.md",
+        "TASK-FOR-AGENT.md",
+        "examples/ai-agent-example/docs/**/*.md",
+        "examples/local-tools-example/docs/*.md"
+      ],
+      "target": "CONTROL/metadata/MASTER-INDEX.json",
+      "generator": "master_index"
+    }
+  ],
+  "review": [
+    {
+      "id": "api-implementation",
+      "sources": [
+        "EXAMPLE-PROJECT/src/*.py",
+        "EXAMPLE-PROJECT/routes.json"
+      ],
+      "targets": [
+        "EXAMPLE-PROJECT/docs/ARCHITECTURE.md"
+      ],
+      "level": "block"
+    },
+    {
+      "id": "engine-policy",
+      "sources": [
+        "scripts/doc-sync/*.py",
+        "docs/.doc-sync-map.yaml"
+      ],
+      "targets": [
+        "CONTROL/policies/DOCUMENTATION-POLICY.md"
+      ],
+      "level": "warn"
+    },
+    {
+      "id": "self-architecture",
+      "sources": [
+        "scripts/doc-sync/*.py",
+        "scripts/doc-control/*.py",
+        "scripts/intelligence/*.py",
+        "scripts/validate/*.py",
+        "docs/.doc-sync-map.yaml",
+        ".github/workflows/*.yml",
+        "engine/**/*.py",
+        "docs/03-standards/**",
+        "TEMPLATES/**",
+        "pyproject.toml"
+      ],
+      "targets": [
+        "docs/05-architecture/AUTODOC-ARCHITECTURE.md"
+      ],
+      "level": "block"
+    },
+    {
+      "id": "catalog-adoption",
+      "sources": [
+        "CATALOG-A/INDEX.yaml",
+        "CATALOG-B/INDEX.yaml",
+        "CATALOG-C/INDEX.yaml",
+        "TEMPLATES/**"
+      ],
+      "targets": [
+        "docs/00-governance/ADOPTION.md"
+      ],
+      "level": "block"
+    },
+    {
+      "id": "workflow-governance",
+      "sources": [
+        ".github/workflows/*.yml"
+      ],
+      "targets": [
+        "CONTROL/policies/DOCUMENTATION-POLICY.md"
+      ],
+      "level": "warn"
+    },
+    {
+      "id": "agent-safety",
+      "sources": [
+        "examples/ai-agent-example/src/**/*.py",
+        "examples/ai-agent-example/src/tools.json",
+        "examples/ai-agent-example/src/models.json"
+      ],
+      "targets": [
+        "examples/ai-agent-example/docs/AI/AGENT-DESIGN.md"
+      ],
+      "level": "block"
+    },
+    {
+      "id": "alerts-runbook",
+      "sources": [
+        "EXAMPLE-PROJECT/monitoring/alerts.yaml"
+      ],
+      "targets": [
+        "EXAMPLE-PROJECT/docs/HEALTH-RUNBOOK.md"
+      ],
+      "level": "block"
+    },
+    {
+      "id": "local-tool-safety",
+      "sources": [
+        "examples/local-tools-example/src/**/*.py",
+        "examples/local-tools-example/config/tool-authorization.yaml"
+      ],
+      "targets": [
+        "examples/local-tools-example/docs/DESIGN.md"
+      ],
+      "level": "block"
+    },
+    {
+      "id": "agent-context",
+      "sources": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "scripts/doc-sync/update-doc-state.py",
+        "engine/**/*.py"
+      ],
+      "targets": [
+        "docs/08-agent-context/AI-CONTEXT.md"
+      ],
+      "level": "warn"
+    },
+    {
+      "id": "engine-coverage-review",
+      "sources": [
+        "engine/extractors/*.py",
+        "scripts/doc-sync/engine.py",
+        "docs/.doc-sync-map.yaml"
+      ],
+      "targets": [
+        "docs/00-governance/ENGINE-COVERAGE.md"
+      ],
+      "level": "block"
+    }
+  ],
+  "living": {
+    "sources": [
+      "EXAMPLE-PROJECT/src/*.py",
+      "EXAMPLE-PROJECT/web/*.js",
+      "EXAMPLE-PROJECT/routes.json",
+      "EXAMPLE-PROJECT/db/*.sql",
+      "scripts/**/*.py",
+      "CATALOG-*/INDEX.yaml",
+      ".github/workflows/*.yml",
+      "docs/.doc-sync-map.yaml",
+      "engine/**/*.py",
+      "pyproject.toml",
+      "docs/03-standards/**",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "TEMPLATES/**",
+      "CONTROL/metadata/FRONT-MATTER-SCHEMA.json",
+      "examples/ai-agent-example/src/**",
+      "EXAMPLE-PROJECT/monitoring/*.yaml",
+      "EXAMPLE-PROJECT/pyproject.toml",
+      "examples/local-tools-example/src/**/*.py"
+    ],
+    "targets": [
+      "CURRENT-STATE.md",
+      "NEXT-ACTION.md",
+      "RECENT-CHANGES.md"
+    ]
+  },
+  "changelog": {
+    "sources": [
+      "EXAMPLE-PROJECT/src/*.py",
+      "EXAMPLE-PROJECT/web/*.js",
+      "EXAMPLE-PROJECT/routes.json",
+      "scripts/**/*.py",
+      "engine/**/*.py",
+      "examples/ai-agent-example/src/**",
+      "examples/local-tools-example/src/**/*.py"
+    ],
+    "target": "CHANGELOG.md"
+  }
+}

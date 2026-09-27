@@ -1,0 +1,6 @@
+# Owner paths are declared below. Required approvals still need branch protection.
+* @Er-Sajan-PLG
+/docs/ @Er-Sajan-PLG
+/CONTROL/ @Er-Sajan-PLG
+/TEMPLATES/ @Er-Sajan-PLG
+/EXAMPLE-PROJECT/docs/ @Er-Sajan-PLG

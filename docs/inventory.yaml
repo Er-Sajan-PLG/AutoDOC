@@ -1,12 +1,5 @@
-# Master Document Inventory
-documents:
-  - id: DOCFORGE-001
-    path: DOCFORGE.md
-    type: reference
-    owner: "@docs-governance"
-    status: approved
-    classification: public
-    last_reviewed: "2026-09-26"
-    next_review: "2027-09-26"
-    criticality: high
-    enforcement: required
+{
+  "note": "This is a pointer, not a duplicated inventory. MASTER-INDEX.json is generated from controlled Markdown frontmatter.",
+  "instantiated_documents": "CONTROL/metadata/MASTER-INDEX.json",
+  "possible_document_types": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml", "CATALOG-C/INDEX.yaml"]
+}

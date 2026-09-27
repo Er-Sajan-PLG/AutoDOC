@@ -1,11 +1,43 @@
-name: Docs Guard
-on: [pull_request]
+# Canonical repository verification is make ci; artifacts retain actual unsigned run output.
+name: AutoDOC guard
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
 jobs:
-  check-drift:
+  check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v3
-      - name: Run Impact Analysis
-        run: python scripts/ci/doc_impact.py || exit 1
-      - name: Check API Contract
-        run: python scripts/ci/check_api_contract.py || exit 1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install tested development dependencies
+        run: python -m pip install -e '.[dev]'
+      - name: Canonical documentation, impact, tests and unsigned evidence verification
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || 'origin/master' }}
+        run: make ci
+      - name: Upload actual test-run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autodoc-test-evidence
+          path: evidence/out/test-evidence.json
+          if-no-files-found: ignore
+      - name: Upload scoped evidence pack
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autodoc-evidence-pack
+          path: evidence/out/
+          if-no-files-found: ignore
+      - name: Check review and living-state impact on PRs
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: python scripts/intelligence/change_analyzer.py --base "$BASE"

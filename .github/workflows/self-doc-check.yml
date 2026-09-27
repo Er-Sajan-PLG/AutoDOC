@@ -1,0 +1,31 @@
+# Dedicated self-documentation co-change check for AutoDOC implementation edits on PRs.
+name: AutoDOC self-documentation
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'engine/**'
+      - 'CATALOG-*/**'
+      - 'TEMPLATES/**'
+      - '.github/workflows/**'
+      - 'docs/.doc-sync-map.yaml'
+      - 'CONTROL/**'
+      - 'docs/03-standards/**'
+jobs:
+  impact:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require mapped architecture and adoption review paths
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: python scripts/intelligence/change_analyzer.py --base "$BASE"
+      - run: python scripts/doc-control/check_sync_map.py
+      - run: python scripts/doc-sync/check-doc-drift.py

@@ -1,0 +1,20 @@
+# No unreviewed commits are pushed by automation. Publish a diff as an artifact instead.
+name: AutoDOC generation preview
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/doc-sync/generate-all.py
+      - name: Save generated-only diff for review, never push a bot commit
+        run: git diff --binary -- EXAMPLE-PROJECT/docs EXAMPLE-PROJECT/.env.example docs/generated docs/META docs/00-governance/INVENTORY.yaml CONTROL/metadata examples/ai-agent-example/docs > "$RUNNER_TEMP/autodoc-generated.patch"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-doc-preview
+          path: ${{ runner.temp }}/autodoc-generated.patch

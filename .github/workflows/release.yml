@@ -1,0 +1,30 @@
+# Fail closed without an owner-chosen license; snapshot actual docs for tagged releases only.
+name: AutoDOC release snapshot
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing version tag checked out at the same commit'
+        required: true
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify and snapshot (blocks until LICENSE exists)
+        env:
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: python scripts/doc-control/release_snapshot.py --tag "$TAG" --output "$RUNNER_TEMP/autodoc-release"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: autodoc-release-snapshot
+          path: ${{ runner.temp }}/autodoc-release/
