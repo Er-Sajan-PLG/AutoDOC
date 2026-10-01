@@ -59,6 +59,12 @@
       "generator": "automation"
     },
     {
+      "id": "triggers",
+      "sources": ["CONTROL/metadata/TRIGGERS.json", ".github/workflows/*.yml", "Makefile"],
+      "target": "docs/generated/TRIGGER-REFERENCE.md",
+      "generator": "triggers"
+    },
+    {
       "id": "catalog",
       "sources": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml", "CATALOG-C/INDEX.yaml"],
       "target": "docs/generated/CATALOG-REFERENCE.md",

@@ -41,6 +41,7 @@ flowchart LR
     n0b54de0353e873a4["CONTROL/**/*.md"]
     n44de050a3c5f46b2["CONTROL/metadata/MASTER-INDEX.json"]
     nde346fe6ced5b4df["CONTROL/metadata/RELATIONSHIP-GRAPH.yaml"]
+    n831cd3f5f954e0bd["CONTROL/metadata/TRIGGERS.json"]
     n223622eab45a9f7a["CURRENT-STATE-MD"]
     n75ca5c97804d7b24["CURRENT-STATE.md"]
     n1d6c24cad3d9296f["DEV-AGENT-001"]
@@ -347,6 +348,7 @@ flowchart LR
     n3367410ddc982315["EXAMPLE-PROJECT/web/*.js"]
     nb60c6a93e9f74ee5["GOVERNANCE.md"]
     n12e21af52e21f366["IMPLEMENTATION-GUIDE.md"]
+    n76ed074a9305c040["Makefile"]
     n014bf24f463e810e["NEXT-ACTION-MD"]
     ned299b6b6eebb707["NEXT-ACTION.md"]
     nb6857fb9c197367e["QUICK-START.md"]
@@ -1165,6 +1167,7 @@ flowchart LR
     n498a56f1369ff3fe["docs/META/TEST-INVENTORY.md"]
     n08c6b8dfc8ba0143["docs/generated/AUTOMATION-REFERENCE.md"]
     n1cbc4f6e510ca1fa["docs/generated/CATALOG-REFERENCE.md"]
+    n50f65dbfb1d93d50["docs/generated/TRIGGER-REFERENCE.md"]
     n76cdb30ae4f59fe2["docs/generated/WORKFLOW-REFERENCE.md"]
     n8abea82641d4b970["docs/operations/ALERT-CATALOG.md"]
     needcd9deb4bda49d["docs/reference/DOC-RELATIONSHIPS.md"]
@@ -1189,6 +1192,7 @@ flowchart LR
     n08fd583c6839626b["scripts/intelligence/*.py"]
     n1861a1cb5f749b40["scripts/validate/*.py"]
     n8f2cc361b0771c18["tests/test_*.py"]
+    n201c51ddce9e86e0 -->|generates| n50f65dbfb1d93d50
     n201c51ddce9e86e0 -->|generates| n76cdb30ae4f59fe2
     n15ddb8a678d370b0 -->|generates| n44de050a3c5f46b2
     n15ddb8a678d370b0 -->|generates| nde346fe6ced5b4df
@@ -1230,6 +1234,7 @@ flowchart LR
     n0b54de0353e873a4 -->|generates| nde346fe6ced5b4df
     n0b54de0353e873a4 -->|generates| nb1b9944cd1ff19b1
     n0b54de0353e873a4 -->|generates| needcd9deb4bda49d
+    n831cd3f5f954e0bd -->|generates| n50f65dbfb1d93d50
     n75ca5c97804d7b24 -->|generates| n44de050a3c5f46b2
     n75ca5c97804d7b24 -->|generates| nde346fe6ced5b4df
     n75ca5c97804d7b24 -->|generates| nb1b9944cd1ff19b1
@@ -2064,6 +2069,7 @@ flowchart LR
     n3367410ddc982315 -->|generates| nb89605aa9b400bdc
     nb60c6a93e9f74ee5 -->|generates| nbaf97e36c13ba394
     n12e21af52e21f366 -->|generates| nbaf97e36c13ba394
+    n76ed074a9305c040 -->|generates| n50f65dbfb1d93d50
     ned299b6b6eebb707 -->|generates| n44de050a3c5f46b2
     ned299b6b6eebb707 -->|generates| nde346fe6ced5b4df
     ned299b6b6eebb707 -->|generates| nb1b9944cd1ff19b1

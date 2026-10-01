@@ -103,3 +103,19 @@
   (`SHOW=<language>`) and never committed, because a drift-checked target that depends on the
   machine cannot be reproducible. `docs/META/CODE-INVENTORY.md` became the per-language inventory,
   and the automation reference now carries each mapping's exactness and limits.
+- Declared the event model instead of implying it (§7): `CONTROL/metadata/TRIGGERS.json` names each
+  event, what it runs, what may stop a merge, what is only triage, and what never happens (no
+  network from a gate, no bot commit, no scheduled required check). `scripts/intelligence/triggers.py
+  --check` verifies the declaration against the repository and runs in `make ci`: every workflow
+  must be claimed by a declared job, every declared job exists with the declared trigger events and
+  filters, every declared command resolves to a file or Make target, exactly one event blocks and
+  one check is required, and a required check may not be path-, tag- or branch-filtered — the
+  pending-forever trap. The rendered plan is a mapped generated document
+  (`docs/generated/TRIGGER-REFERENCE.md`), so editing a workflow without updating the model fails
+  the build; `make docs-triggers` prints the same view with the declared phase's severities.
+  The scheduled workflow now matches its posture: every check reports even when an earlier one
+  fails and one closing summary makes the run red for triage. External link checking arrived as
+  the one network-touching check (`make docs-links-external`), deliberately absent from `make ci`:
+  scheduled, one connection at a time, at least a second between requests to the same host, capped
+  per run, treating auth and rate-limit answers as reachable, skipping local and reserved example
+  hosts as documented-not-deployed, and warn-only unless an owner asks for `--strict`.

@@ -148,6 +148,23 @@ Authoritative catalogs / source files / Markdown metadata
   (`make docs-languages SHOW=<language>`) and never committed, because a drift-checked target that
   depends on the machine cannot be reproducible.
 
+- **Triggers are declared and verified, never implied** (`CONTROL/metadata/TRIGGERS.json`,
+  `scripts/intelligence/triggers.py`, `docs/generated/TRIGGER-REFERENCE.md`). One model states
+  which event runs what, what may stop a merge, what is only triage, and what never happens: no
+  network access from a blocking event, no bot commit, no scheduled run as a required check.
+  `triggers.py --check` is part of `make ci`, so the model cannot drift from the repository: every
+  workflow must be claimed by a declared job, every declared command must resolve to a file or a
+  Make target, and a required check may not be path-, tag- or branch-filtered (a filtered required
+  check can stay pending forever). The scheduled workflow consequently runs every check even when
+  an earlier one fails, turns red once at the end for a human to read, and is never merged against.
+
+- **The one network-touching check is scheduled, rate-limited and warn-only**
+  (`scripts/doc-control/check_external_links.py`, `make docs-links-external`). It is deliberately
+  absent from `make ci`: a third-party host may not fail a pull request. It opens one connection at
+  a time with a per-host delay and a hard cap, treats auth and rate-limit answers as reachable, and
+  skips local or reserved example hosts because those document a local endpoint rather than a
+  dependency. It exits 0 by default and 1 only when an owner opts into `--strict`.
+
 - **The catalog states what it can and cannot verify** (`CATALOG-SCHEMA.json`, `CATALOG-RULES.json`).
   Each type carries the reader question it answers, who reads it, the lifecycle events that make
   it stale, the checks that apply to it, and a `support` level: `checked` (named checks run),
@@ -195,7 +212,9 @@ Authoritative catalogs / source files / Markdown metadata
 ## Verification and references
 Run `make ci` (or `python -m unittest discover -s tests -v` offline), `python scripts/doc-sync/check-doc-drift.py`,
 `python scripts/doc-control/library.py --check`, and the metadata, ownership and freshness checks.
-The actual workflow names and fingerprints are in `docs/generated/WORKFLOW-REFERENCE.md`.
+The actual workflow names and fingerprints are in `docs/generated/WORKFLOW-REFERENCE.md`, and the
+event model with the required check is in `docs/generated/TRIGGER-REFERENCE.md` (verify it with
+`python scripts/intelligence/triggers.py --check`).
 Review `CONTROL/policies/DOCUMENTATION-POLICY.md` for the enforcement matrix and limits.
 
 ## Phase 3 trust boundaries

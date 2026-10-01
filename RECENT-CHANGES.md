@@ -34,6 +34,8 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
+- 5d385cf 2026-10-01 Regenerate the test inventory for the language tests
+- 6d1c444 2026-10-01 Integrate each language's own tool, and label every generator with its exactness
 - 5d3f155 2026-10-01 Refresh the living plan: the phase, kinds and traits are no longer pending
 - 0fe3ec3 2026-10-01 Ask the facts no file can answer, and keep them undetermined until declared
 - 74d0544 2026-10-01 Infer kinds as evidence and declare them as answers, never as guesses
@@ -43,25 +45,25 @@ auto_generated: false
 
 ## Changed paths at update time
 
+- `.github/workflows/docs-staleness.yml`
 - `CHANGELOG.md`
-- `CONTROL/metadata/CONTEXT-MODEL.json`
-- `EXAMPLE-PROJECT/docs/API-REFERENCE.md`
-- `EXAMPLE-PROJECT/docs/CONFIG-REFERENCE.md`
-- `EXAMPLE-PROJECT/docs/DATA-DICTIONARY.md`
+- `CONTROL/metadata/MASTER-INDEX.json`
+- `CONTROL/policies/DOCUMENTATION-POLICY.md`
 - `Makefile`
 - `README.md`
 - `docs/.doc-sync-map.yaml`
+- `docs/00-governance/BRANCH-PROTECTION.md`
 - `docs/00-governance/ENGINE-COVERAGE.md`
 - `docs/00-governance/LIMITATIONS.md`
-- `docs/01-catalogs/CATALOG-INDEX.md`
-- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-A.md`
-- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md`
-- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-C.md`
+- `docs/04-guides/HOW-AUTODOC-WORKS.md`
 - `docs/05-architecture/AUTODOC-ARCHITECTURE.md`
 - `docs/META/CODE-INVENTORY.md`
 - `docs/META/COMPLETENESS-REPORT.md`
-- `docs/META/DEPENDENCIES.md`
 - `docs/META/OUTLINE.md`
 - `docs/META/TEST-INVENTORY.md`
-- … and 18 more; use git diff --cached --name-only.
+- `docs/generated/AUTOMATION-REFERENCE.md`
+- `docs/generated/WORKFLOW-REFERENCE.md`
+- `docs/reference/DOC-RELATIONSHIPS.md`
+- `docs/reference/EXIT-CODES.md`
+- … and 2 more; use git diff --cached --name-only.
 <!-- auto:end -->

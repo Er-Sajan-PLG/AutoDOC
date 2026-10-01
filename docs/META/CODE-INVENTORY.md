@@ -31,7 +31,7 @@ Per-language inventory of the mapped sources. Every generator declares its exact
 | Language | Files | Generator | Exactness | What it can and cannot see |
 | --- | ---: | --- | --- | --- |
 | javascript | 1 | L0 | — | No generator is declared for this language: it is read at L0 — file and manifest facts only — because AutoDOC integrates a language's own tool and never hand-rolls a parser for it. |
-| python | 33 | python | exact | Module-level declarations, signatures and first docstring lines from parsed source: definitions created at runtime, generated code and non-module sources are invisible. |
+| python | 35 | python | exact | Module-level declarations, signatures and first docstring lines from parsed source: definitions created at runtime, generated code and non-module sources are invisible. |
 
 ## Python declarations (exact, in-process)
 
@@ -88,6 +88,18 @@ Extracted with the interpreter's own parser. Signatures and first docstring line
 | `scripts/doc-control/check_catalog.py` | 311 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` | Profiles are deltas of the default core set, and every change states a reason. |
 | `scripts/doc-control/check_catalog.py` | 360 | function | `index_documents` | `(index)` | — |
 | `scripts/doc-control/check_catalog.py` | 364 | function | `check` | `(indices=None)` | Return (errors, warnings) for the schema, the rules and their cross-references. |
+| `scripts/doc-control/check_external_links.py` | 38 | function | `model_defaults` | `()` | The rate limits declared in the trigger model; the CLI defaults must equal them. |
+| `scripts/doc-control/check_external_links.py` | 49 | function | `controlled_documents` | `(root=ROOT)` | The controlled Markdown set. Templates are excluded: their links are placeholders. |
+| `scripts/doc-control/check_external_links.py` | 65 | function | `extract` | `(text)` | (line, url) pairs from prose, not from fenced code blocks. Order preserved, deduped later. |
+| `scripts/doc-control/check_external_links.py` | 84 | function | `targets` | `(documents)` | One entry per distinct URL, keeping where it was first seen. |
+| `scripts/doc-control/check_external_links.py` | 97 | function | `is_placeholder` | `(url)` | True for a URL that documents a local or reserved name, never a reachable dependency. |
+| `scripts/doc-control/check_external_links.py` | 106 | function | `checkable` | `(entries)` | Split distinct URLs into what a scheduled run checks and what it skips, with the reason. |
+| `scripts/doc-control/check_external_links.py` | 117 | function | `classify` | `(status)` | Four honest buckets; 'restricted' means the host answered but would not show the page. |
+| `scripts/doc-control/check_external_links.py` | 128 | function | `probe` | `(url, timeout=DEFAULTS['timeout_seconds'])` | One request: HEAD, then GET when the host refuses HEAD. Returns (status, error). |
+| `scripts/doc-control/check_external_links.py` | 144 | function | `check_links` | `(entries, probe_=probe, delay=DEFAULTS['per_host_seconds'], max_links=None, timeout=DEFAULTS['timeout_seconds'], clock=time.monotonic, sleep=time.sleep)` | Check links, one at a time, at least `delay` seconds apart per host. |
+| `scripts/doc-control/check_external_links.py` | 165 | function | `report` | `(entries, results, skipped, delay, max_links, timeout)` | — |
+| `scripts/doc-control/check_external_links.py` | 200 | function | `main` | `(argv=None, probe_=None, documents=None)` | — |
+| `scripts/doc-control/check_external_links.py` | 240 | function | `cli` | `(argv=None, probe_=None, documents=None)` | The exit-code contract: 2 for a configuration problem, 3 for a tool failure, never 1. |
 | `scripts/doc-control/check_ownership.py` | 11 | function | `check` | `()` | — |
 | `scripts/doc-control/check_sync_map.py` | 10 | function | `check` | `()` | — |
 | `scripts/doc-control/completeness.py` | 9 | function | `check` | `()` | — |
@@ -118,46 +130,47 @@ Extracted with the interpreter's own parser. Signatures and first docstring line
 | `scripts/doc-sync/engine.py` | 22 | function | `safe_path` | `(value)` | — |
 | `scripts/doc-sync/engine.py` | 29 | function | `load_map` | `()` | — |
 | `scripts/doc-sync/engine.py` | 57 | function | `paths` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 135 | function | `header` | `(doc_id, title, source, generator)` | — |
-| `scripts/doc-sync/engine.py` | 151 | function | `api` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 161 | function | `config` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 170 | function | `env` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 176 | function | `sql` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 188 | function | `automation` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 210 | function | `catalog` | `(entry)` | Index catalog domains and stable IDs, without implying adoption of every type. |
-| `scripts/doc-sync/engine.py` | 233 | function | `workflows` | `(entry)` | List workflow declarations with a hash, so any CI edit requires review. |
-| `scripts/doc-sync/engine.py` | 256 | function | `outline` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 272 | function | `code_inventory` | `(entry)` | Per-language inventory: what each language gets, and what it is read at today. |
-| `scripts/doc-sync/engine.py` | 302 | function | `test_inventory` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 312 | function | `dependencies` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 328 | function | `completeness` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 352 | function | `agent_tools` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 370 | function | `agent_prompts` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 383 | function | `agent_model` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 399 | function | `local_tool_reference` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 409 | function | `environment_reference` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 419 | function | `alert_catalog` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 428 | function | `catalog_facets` | `()` | Partition 260 A/B type IDs into complementary development/system/product views. |
-| `scripts/doc-sync/engine.py` | 444 | function | `catalog_view` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 471 | function | `catalog_navigation` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 483 | function | `human_inventory` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 497 | function | `relationship_graph` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 510 | function | `master_index` | `(entry)` | — |
-| `scripts/doc-sync/engine.py` | 519 | function | `check_supersedes_cycles` | `(links)` | A supersession chain must terminate (related links may intentionally be cyclic). |
-| `scripts/doc-sync/engine.py` | 531 | function | `relationship_visualization` | `(entry)` | Mermaid of real frontmatter and mapped source relationships only. |
-| `scripts/doc-sync/engine.py` | 577 | function | `generate` | `(check=False, only=None, findings=None)` | — |
-| `scripts/doc-sync/engine.py` | 618 | function | `git` | `(*args)` | — |
-| `scripts/doc-sync/engine.py` | 622 | function | `changed` | `(base=None, staged=False)` | — |
-| `scripts/doc-sync/engine.py` | 630 | function | `matches` | `(file, pattern)` | — |
-| `scripts/doc-sync/engine.py` | 634 | function | `impact` | `(base=None, staged=False)` | — |
-| `scripts/doc-sync/engine.py` | 660 | function | `parse_frontmatter` | `(path)` | — |
-| `scripts/doc-sync/engine.py` | 664 | function | `parse_frontmatter_text` | `(text)` | — |
-| `scripts/doc-sync/engine.py` | 682 | function | `controlled` | `()` | — |
-| `scripts/doc-sync/engine.py` | 695 | function | `validate_staged` | `()` | Read Git index blobs, not potentially different worktree copies, for staged metadata. |
-| `scripts/doc-sync/engine.py` | 731 | function | `validate` | `(freshness=False, now=None, findings=None)` | — |
-| `scripts/doc-sync/engine.py` | 813 | function | `replace_block` | `(text, body)` | — |
-| `scripts/doc-sync/engine.py` | 822 | function | `update_state` | `(base=None, staged=False)` | Update observable blocks only; preserve manually reviewed context and next action. |
-| `scripts/doc-sync/engine.py` | 853 | function | `main` | `()` | — |
+| `scripts/doc-sync/engine.py` | 139 | function | `header` | `(doc_id, title, source, generator)` | — |
+| `scripts/doc-sync/engine.py` | 155 | function | `api` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 165 | function | `config` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 174 | function | `env` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 180 | function | `sql` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 192 | function | `automation` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 214 | function | `catalog` | `(entry)` | Index catalog domains and stable IDs, without implying adoption of every type. |
+| `scripts/doc-sync/engine.py` | 237 | function | `workflows` | `(entry)` | List workflow declarations with a hash, so any CI edit requires review. |
+| `scripts/doc-sync/engine.py` | 260 | function | `outline` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 276 | function | `code_inventory` | `(entry)` | Per-language inventory: what each language gets, and what it is read at today. |
+| `scripts/doc-sync/engine.py` | 306 | function | `test_inventory` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 316 | function | `dependencies` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 332 | function | `trigger_reference` | `(entry)` | The declared trigger model, rendered by the module that also verifies it. |
+| `scripts/doc-sync/engine.py` | 340 | function | `completeness` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 364 | function | `agent_tools` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 382 | function | `agent_prompts` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 395 | function | `agent_model` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 411 | function | `local_tool_reference` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 421 | function | `environment_reference` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 431 | function | `alert_catalog` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 440 | function | `catalog_facets` | `()` | Partition 260 A/B type IDs into complementary development/system/product views. |
+| `scripts/doc-sync/engine.py` | 456 | function | `catalog_view` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 483 | function | `catalog_navigation` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 495 | function | `human_inventory` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 509 | function | `relationship_graph` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 522 | function | `master_index` | `(entry)` | — |
+| `scripts/doc-sync/engine.py` | 531 | function | `check_supersedes_cycles` | `(links)` | A supersession chain must terminate (related links may intentionally be cyclic). |
+| `scripts/doc-sync/engine.py` | 543 | function | `relationship_visualization` | `(entry)` | Mermaid of real frontmatter and mapped source relationships only. |
+| `scripts/doc-sync/engine.py` | 589 | function | `generate` | `(check=False, only=None, findings=None)` | — |
+| `scripts/doc-sync/engine.py` | 630 | function | `git` | `(*args)` | — |
+| `scripts/doc-sync/engine.py` | 634 | function | `changed` | `(base=None, staged=False)` | — |
+| `scripts/doc-sync/engine.py` | 642 | function | `matches` | `(file, pattern)` | — |
+| `scripts/doc-sync/engine.py` | 646 | function | `impact` | `(base=None, staged=False)` | — |
+| `scripts/doc-sync/engine.py` | 672 | function | `parse_frontmatter` | `(path)` | — |
+| `scripts/doc-sync/engine.py` | 676 | function | `parse_frontmatter_text` | `(text)` | — |
+| `scripts/doc-sync/engine.py` | 694 | function | `controlled` | `()` | — |
+| `scripts/doc-sync/engine.py` | 707 | function | `validate_staged` | `()` | Read Git index blobs, not potentially different worktree copies, for staged metadata. |
+| `scripts/doc-sync/engine.py` | 743 | function | `validate` | `(freshness=False, now=None, findings=None)` | — |
+| `scripts/doc-sync/engine.py` | 825 | function | `replace_block` | `(text, body)` | — |
+| `scripts/doc-sync/engine.py` | 834 | function | `update_state` | `(base=None, staged=False)` | Update observable blocks only; preserve manually reviewed context and next action. |
+| `scripts/doc-sync/engine.py` | 865 | function | `main` | `()` | — |
 | `scripts/doc-sync/languages.py` | 68 | function | `profiler_module` | `()` | The language vocabulary lives in the profiler; this module never keeps a second copy. |
 | `scripts/doc-sync/languages.py` | 76 | function | `generator` | `(language)` | The declared generator for a language, or None when the language is L0. |
 | `scripts/doc-sync/languages.py` | 81 | function | `available` | `(language, path=None)` | Return (True, None) when the generator can run here, else (False, reason). |
@@ -245,3 +258,16 @@ Extracted with the interpreter's own parser. Signatures and first docstring line
 | `scripts/intelligence/recommend.py` | 605 | function | `report` | `(data)` | — |
 | `scripts/intelligence/recommend.py` | 679 | function | `build` | `(args)` | — |
 | `scripts/intelligence/recommend.py` | 706 | function | `main` | `()` | — |
+| `scripts/intelligence/triggers.py` | 40 | function | `load` | `(path=None)` | — |
+| `scripts/intelligence/triggers.py` | 47 | function | `context_module` | `()` | — |
+| `scripts/intelligence/triggers.py` | 55 | function | `read_workflow` | `(path)` | Read the fields the model claims: workflow name, trigger keys, filters, job names. |
+| `scripts/intelligence/triggers.py` | 102 | function | `workflows` | `()` | Every workflow file, read; an unreadable one maps to None and is reported, never skipped. |
+| `scripts/intelligence/triggers.py` | 107 | function | `make_targets` | `()` | — |
+| `scripts/intelligence/triggers.py` | 112 | function | `resolve_command` | `(command)` | (True, None) when a declared command names something that exists, else (False, reason). |
+| `scripts/intelligence/triggers.py` | 133 | function | `check` | `(model=None, workflows_=None)` | Every rule the model claims, checked against the repository. Returns a list of errors. |
+| `scripts/intelligence/triggers.py` | 223 | function | `phase_rows` | `(model=None)` | The declared phase's severity per check family — what the gate actually enforces today. |
+| `scripts/intelligence/triggers.py` | 237 | function | `rate_limit_text` | `(limit)` | The limits as prose, from the numbers the link checker's defaults must equal. |
+| `scripts/intelligence/triggers.py` | 245 | function | `posture_text` | `(event)` | — |
+| `scripts/intelligence/triggers.py` | 255 | function | `render` | `(model=None, rows=None, title=True)` | The reference as a Markdown body. `title=False` is for the engine, which writes its own |
+| `scripts/intelligence/triggers.py` | 305 | function | `main` | `(argv=None)` | — |
+| `scripts/intelligence/triggers.py` | 333 | function | `cli` | `(argv=None)` | The exit-code contract: 2 for a configuration problem, 3 for a tool failure, never 1. |

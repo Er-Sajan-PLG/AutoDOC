@@ -35,6 +35,8 @@ All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make gene
 | PEP 621 manifests | Declared dependency references | Direct declarations, no resolution | `test_phase2.py` |
 | Python AST and ATX Markdown | Per-language code inventory and outline | Parsed declarations/headings, not behavior | `test_phase2.py`, `test_languages.py` |
 | Declared toolchain (`go doc -all .`) | On-demand language reference (`make docs-languages SHOW=go`) | Runs the language's own tool inside the repository, offline and with a timeout; an absent tool is reported, never replaced | `test_languages.py` |
+| `CONTROL/metadata/TRIGGERS.json` + workflows | Trigger reference (`docs/generated/TRIGGER-REFERENCE.md`), `make docs-triggers` | Workflow names, trigger keys, filters and job names only; a job produced by a reusable workflow is unverified | `test_triggers.py` |
+| Controlled Markdown | Scheduled external link triage, `make docs-links-external` | Line-based extraction; fenced code skipped, local and example hosts skipped as documented-not-deployed, one request per host per second, capped, warn-only | `test_external_links.py` |
 | Catalog rules file | `CATALOG-A/B/INDEX.yaml` | Seeds names; derives type, tier, `phase_min`, `applies_when`, maturity | `test_catalog.py` |
 | Repository files | `profile.json` three-valued facts | File presence only; `unknown` when nothing could be read | `test_profile.py` |
 | `autodoc.toml` `[facts]` traits | declared personal-data / payments / safety values | Declaration only; no detector exists, and unanswered is `unknown`, never false | `test_profile.py`, `test_resolver.py` |
@@ -66,6 +68,19 @@ hanging tool is reported with its reason. Python is extracted in-process with th
 own parser; Go integrates `go doc -all .`. A reference produced by an external toolchain is
 printed on demand and never committed to a drift-checked target, because the same repository on
 two machines would disagree.
+
+## The event contract
+`CONTROL/metadata/TRIGGERS.json` is the one place that says when AutoDOC runs: the local hook
+(convenience, bypassable), the pull request (the only gate, and never needing the network), the
+default branch (a generated-diff artifact, never a bot commit), the schedule (triage only) and a
+release tag (a snapshot). `triggers.py --check` holds the declaration to the repository — every
+workflow file must be claimed, every declared command must resolve, exactly one event may block,
+and a required check may not be filtered — and the rendered form is a mapped generated document,
+so editing a workflow without updating the model fails the build rather than silently changing
+when checks run. The scheduled workflow is built to match: each check reports even when an earlier
+one fails, and a single closing step makes the run red for triage. The external link check is the
+only thing that opens a network connection, it is scheduled, rate-limited and warn-only, and it is
+deliberately absent from `make ci`.
 
 ## Implemented validators
 Metadata (required fields, enums, unique IDs), relationship IDs and supersedes cycles,

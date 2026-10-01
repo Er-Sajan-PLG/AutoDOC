@@ -30,6 +30,6 @@ Derived from workflow files. A listing or green check does not establish branch 
 | --- | --- | --- | --- | --- |
 | `.github/workflows/docs-generation-preview.yml` | AutoDOC generation preview | preview | No unreviewed commits are pushed by automation. Publish a diff as an artifact instead. | `11fccfcbf8db5c956575c5ea14935402361d835fe4e7f5e4cd7354a4e1e9ffca` |
 | `.github/workflows/docs-guard.yml` | AutoDOC guard | check | Canonical repository verification is make ci; artifacts retain actual unsigned run output. | `e74e86a02a7bba761327ba3843ce79c1b8d6f618faea9246f4aeefaafcc851de` |
-| `.github/workflows/docs-staleness.yml` | AutoDOC nightly freshness | freshness | Nightly and Monday checks surface overdue human review; maintainers triage logs and artifacts. | `d34add794786d9214ac53cddb585790fc3df941e670c41e889a4bc1bdec424f4` |
+| `.github/workflows/docs-staleness.yml` | AutoDOC nightly freshness | freshness | Nightly and Monday triage: every check reports even if an earlier one fails, and the final step | `a96fe110764b14686e401f7e3628add513dffaacaa2b3c4b69466b4cf1b65d91` |
 | `.github/workflows/release.yml` | AutoDOC release snapshot | snapshot | Fail closed without an owner-chosen license; snapshot actual docs for tagged releases only. | `2522c417afe7710331a1fcc185d63ce4a4d284e679fe7877c20e2dbc7a42d321` |
 | `.github/workflows/self-doc-check.yml` | AutoDOC self-documentation | impact | Dedicated self-documentation co-change check for AutoDOC implementation edits on PRs. | `897851f18fde35a7124012a19ca4f8258ec29d8f416c6d117ed6ce781a86f3fa` |

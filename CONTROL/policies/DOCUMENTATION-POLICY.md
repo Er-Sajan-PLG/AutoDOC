@@ -78,6 +78,8 @@ use `1970-01-01` as a sentinel so freshness warns until a real review updates th
 | Exit codes | any AutoDOC command | `docs/reference/EXIT-CODES.md` | `0` success, `1` findings, `2` usage or configuration error |
 | Instantiated starter docs | Required sections | `completeness.py` | Fail unfilled starter docs |
 | Approved title-only stubs | Controlled Markdown | `stub_check.py` | Fail approved docs with no section or content beyond the title; drafts warn |
+| Event triggers | `CONTROL/metadata/TRIGGERS.json` + workflows | `triggers.py --check` | Fail an undeclared workflow, an unresolvable declared command, or a required check a filter could stop from reporting |
+| External links (scheduled) | Controlled Markdown | `check_external_links.py` | Warn-only: rate-limited, capped, run on the schedule, never part of the pull-request gate |
 
 Other requested controls (SBOM signing, API extraction in arbitrary languages, model evaluation,
 external compliance evidence and automatic issue creation) need real project integrations and

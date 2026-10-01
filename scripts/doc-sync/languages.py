@@ -275,5 +275,12 @@ def main():
 if __name__ == '__main__':
     try:
         raise SystemExit(main())
-    except ValueError as error:
-        raise SystemExit(f'Language coverage error: {error}')
+    except (KeyboardInterrupt, SystemExit):
+        raise
+    except (ValueError, KeyError, OSError) as error:
+        print(f'Language coverage error: {error}', file=sys.stderr)
+        raise SystemExit(2)
+    except Exception as error:  # noqa: BLE001 - keep a crash off exit 1
+        print(f'Internal error: {type(error).__name__}: {error}', file=sys.stderr)
+        print('This is a tool failure, not a finding about this repository.', file=sys.stderr)
+        raise SystemExit(3)

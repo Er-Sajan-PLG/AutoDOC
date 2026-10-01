@@ -66,6 +66,6 @@ File coverage is not project adoption or compliance evidence. Template examples 
 
 **Totals:** 265 types; 265 canonical, 265 blank, 265 synthetic example templates.
 
-**Mapped generated targets:** 27. A target can serve several types; no per-type extractor coverage is implied.
+**Mapped generated targets:** 28. A target can serve several types; no per-type extractor coverage is implied.
 
 **Not yet implemented:** arbitrary TypeScript types, arbitrary SQL dialects, container and monitoring inventories, signed attestations, and external audit evidence.

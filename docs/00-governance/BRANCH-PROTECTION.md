@@ -34,5 +34,11 @@ status check, and changes nothing; `make docs-require-check APPLY=1` performs th
 must be run by a repository owner with admin rights. It is dry-run by default because it edits
 repository settings, not files.
 
+The trigger model behind this table — which event runs what, what may block, and what is only
+triage — is declared in `CONTROL/metadata/TRIGGERS.json`, rendered into
+`docs/generated/TRIGGER-REFERENCE.md`, and verified against the workflows by
+`python scripts/intelligence/triggers.py --check` (part of `make ci`), so this document cannot
+drift from the wiring it describes.
+
 The pre-push hook (`make hooks-install`) runs the same enforcement locally. It is a convenience
 that `git push --no-verify` bypasses, so the required check above remains the real gate.

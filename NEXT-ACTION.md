@@ -63,4 +63,11 @@ by checked-in files and must not be claimed as complete.
    baseline and `promote` showing the delta and an optional baseline before it writes the phase.
    Then render templates on demand instead of committing 780 variants, and dogfood on a
    repository that is not this one.
+7. Done. Event triggers are declared in `CONTROL/metadata/TRIGGERS.json` and verified by
+   `triggers.py --check` (in `make ci`): one blocking event, one required check, no undeclared
+   workflow, no filtered required check, and no network from a gate. The scheduled workflow reports
+   every check and summarises once; the external link check is scheduled, rate-limited and
+   warn-only. Next in this direction: adopters' repositories need their own trigger model, which is
+   part of `adopt` in step 6.
+
 A heuristic generator may warn by default only if its output names what it cannot see.

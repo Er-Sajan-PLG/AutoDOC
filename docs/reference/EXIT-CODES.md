@@ -47,6 +47,9 @@ non-`1` exit (`tests/test_enforcement_contract.py`).
 | `scripts/doc-sync/engine.py freshness` | No critical review overdue | A critical document is overdue | Missing or invalid frontmatter |
 | `scripts/doc-control/guards.py`, `stub_check.py` | Clean | Findings | — (a crash is not a code path, it is a bug) |
 | `scripts/intelligence/context.py` | Declared context and model are valid | — | Any rejected declaration |
+| `scripts/intelligence/triggers.py --check` | The declared event model matches the workflows, hook and Makefile | — (the model has no findings to report; it either matches or it does not) | An undeclared workflow, an unresolvable declared command, a filtered required check, or an unreadable model; `3` if the tool itself fails |
+| `scripts/doc-control/check_external_links.py` | Warn-only: every checked link was reachable or restricted, or skipped by design | With `--strict`, a missing or errored link | Usage or configuration error; `3` if the tool itself fails |
+| `scripts/doc-sync/languages.py --show` | The requested reference was generated | The language has no generator, or its tool is unavailable, failed, or timed out | Usage or configuration error; `3` if the tool itself fails |
 
 ## What a code does not say
 
@@ -77,4 +80,7 @@ so an entry must not be able to hide it.
 The pre-push hook (`make hooks-install`, from `scripts/hooks/pre-push`) runs `make docs-enforce`
 for convenience. It is bypassable with `git push --no-verify`, so it is not a gate. The
 required CI check (`AutoDOC guard / check`, wired to `make ci`) is the gate that cannot be
-skipped; see `docs/00-governance/BRANCH-PROTECTION.md` and `make docs-require-check`.
+skipped; see `docs/00-governance/BRANCH-PROTECTION.md` and `make docs-require-check`. Which event
+runs what, and what may block, is declared in `CONTROL/metadata/TRIGGERS.json` and verified by
+`triggers.py --check`; the scheduled workflow is triage only, and the external link check is the
+one command that uses the network — scheduled, rate-limited, warn-only, and absent from `make ci`.

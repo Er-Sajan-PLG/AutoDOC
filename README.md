@@ -19,6 +19,9 @@ Pre-commit ──> PR check ──> Merge preview ──> Release gate ──> N
 - Labels every generator `exact` or `heuristic` (with its limits in the file), and integrates a
   language's own tool rather than hand-rolling a parser: `make docs-languages` says what each
   language gets here and what stays at L0.
+- Declares when it runs instead of implying it: one trigger model (`make docs-triggers`), verified
+  against the workflows in `make ci`, where the pull request is the only gate and the one network
+  check is scheduled, rate-limited and warn-only.
 
 ## Quick start (Python 3.11+)
 

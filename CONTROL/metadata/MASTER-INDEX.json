@@ -386,6 +386,14 @@
       "last_reviewed": "2026-09-26"
     },
     {
+      "id": "DOC-TRG-001",
+      "path": "docs/generated/TRIGGER-REFERENCE.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "approved",
+      "type": "REF",
+      "last_reviewed": "2026-09-26"
+    },
+    {
       "id": "DOC-CI-001",
       "path": "docs/generated/WORKFLOW-REFERENCE.md",
       "owner": "@Er-Sajan-PLG",

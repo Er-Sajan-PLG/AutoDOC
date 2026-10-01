@@ -76,5 +76,14 @@ L0** — file and manifest facts only — because AutoDOC integrates a language'
 reimplementing one. `make docs-languages` prints that situation for this repository, including
 which declared generator cannot run on this machine. A reference produced by an external toolchain
 is printed on demand and never committed: the same repository on two machines would disagree, and
-a generated target that depends on the environment cannot be drift-checked. The catalog tiers are a reviewable proposal, not a
+a generated target that depends on the environment cannot be drift-checked. What runs when is declared, not inferred: `CONTROL/metadata/TRIGGERS.json` names each event,
+its commands, what may block and what may only warn, and `triggers.py --check` verifies the
+workflows, the hook and the Makefile against it. The workflow reader is line-based and reads names,
+trigger keys, filters and job names; a job produced by a reusable workflow, or a workflow the
+reader cannot parse, is reported as unverified rather than passed. The scheduled run is triage: it
+surfaces overdue review, drift and link rot for a human, and it is not a merge gate. The external
+link check is honest about its reach — it is line-based (fenced code is skipped, indented code and
+HTML bodies are read as prose), it opens one connection at a time with a per-host delay and a cap,
+treats 401/403/405/429 as reachable, skips local and reserved example hosts as documented rather
+than deployed, and never fails a build unless an owner asks for `--strict`. The catalog tiers are a reviewable proposal, not a
 measurement of any project's obligations, and a member of a tier is a *possible* document.

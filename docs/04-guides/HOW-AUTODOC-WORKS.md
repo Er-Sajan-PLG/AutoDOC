@@ -29,8 +29,15 @@ auto_generated: false
    Commit factual outputs together with source in the PR.
 4. **Release:** a tag workflow snapshots controlled docs only after licensing. The CI pack is unsigned
    and not an immutable external archive or build attestation.
-5. **Scheduled:** run nightly freshness/health checks and triage warnings. No automatic issue creation
-   is currently configured.
+5. **Scheduled:** run nightly freshness/health checks plus the rate-limited external link check,
+   triage the warnings, and read the closing summary of the run. No automatic issue creation is
+   currently configured, and no scheduled run is a merge gate.
+
+The event model behind those five stages is declared once in `CONTROL/metadata/TRIGGERS.json`,
+rendered into `docs/generated/TRIGGER-REFERENCE.md`, printed by `make docs-triggers`, and verified
+against the workflows, the hook and the Makefile by `triggers.py --check` (part of `make ci`). The
+pull request is the only event that blocks a merge; the external link check is the only check that
+opens the network, and it is scheduled, rate-limited and warn-only.
 
 `docs/.doc-sync-map.yaml` is the single authoritative mapping. Its JSON syntax is valid YAML.
 See `docs/00-governance/ENGINE-COVERAGE.md` for supported input formats and honest gaps.

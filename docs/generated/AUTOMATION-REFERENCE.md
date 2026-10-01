@@ -40,6 +40,7 @@ Every mapping states its generator's exactness and limits, so a reader can judge
 | example-dependencies | dependencies | exact | Declared requirements; resolved, inherited or vendored dependencies are not seen. | EXAMPLE-PROJECT/pyproject.toml | docs/reference/EXAMPLE-DEPENDENCIES.md |
 | data | sql | exact | The supported SQLite DDL subset; unsupported DDL fails generation rather than being guessed at. | EXAMPLE-PROJECT/db/schema.sql | EXAMPLE-PROJECT/docs/DATA-DICTIONARY.md |
 | engine | automation | exact | The sync map and the files its own sources list; a script or mapping outside them is not listed. | scripts/doc-sync/*.py, scripts/doc-control/*.py, scripts/intelligence/*.py, scripts/validate/*.py, docs/.doc-sync-map.yaml | docs/generated/AUTOMATION-REFERENCE.md |
+| triggers | triggers | exact | The declared event model and the workflow files as written: names, trigger keys, filters and job names. A job produced by a reusable workflow, or a workflow the line reader cannot parse, is reported as unverified. | CONTROL/metadata/TRIGGERS.json, .github/workflows/*.yml, Makefile | docs/generated/TRIGGER-REFERENCE.md |
 | catalog | catalog | exact | The three catalog indices as written. | CATALOG-A/INDEX.yaml, CATALOG-B/INDEX.yaml, CATALOG-C/INDEX.yaml | docs/generated/CATALOG-REFERENCE.md |
 | workflows | workflows | heuristic | Job names are read by pattern from the workflow text; a job declared inline, quoted or produced by a reusable workflow is not seen, and only the first jobs block is read. | .github/workflows/*.yml | docs/generated/WORKFLOW-REFERENCE.md |
 | outline | outline | heuristic | ATX headings outside fenced code; setext headings, headings inside HTML blocks and included files are not expanded. | README.md, QUICK-START.md, CONTRIBUTING.md, GOVERNANCE.md, IMPLEMENTATION-GUIDE.md, docs/**/*.md, TEMPLATES/**/* | docs/META/OUTLINE.md |
@@ -64,6 +65,7 @@ Every mapping states its generator's exactness and limits, so a reader can judge
 
 - `scripts/doc-control/build_catalogs.py`
 - `scripts/doc-control/check_catalog.py`
+- `scripts/doc-control/check_external_links.py`
 - `scripts/doc-control/check_ownership.py`
 - `scripts/doc-control/check_sync_map.py`
 - `scripts/doc-control/completeness.py`
@@ -86,4 +88,5 @@ Every mapping states its generator's exactness and limits, so a reader can judge
 - `scripts/intelligence/enforce.py`
 - `scripts/intelligence/profile.py`
 - `scripts/intelligence/recommend.py`
+- `scripts/intelligence/triggers.py`
 - `scripts/validate/frontmatter_validator.py`

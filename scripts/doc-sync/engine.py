@@ -129,6 +129,10 @@ GENERATOR_LABELS = {
     'master_index': {'exactness': 'exact', 'limits':
                      'Frontmatter fields of the controlled documents the same convention '
                      'discovers.'},
+    'triggers': {'exactness': 'exact', 'limits':
+                 'The declared event model and the workflow files as written: names, trigger '
+                 'keys, filters and job names. A job produced by a reusable workflow, or a '
+                 'workflow the line reader cannot parse, is reported as unverified.'},
 }
 
 
@@ -323,6 +327,14 @@ def dependencies(entry):
         if not deps:
             lines.append(f'| `{path.relative_to(ROOT)}` | {name} | {version} | runtime | (none declared) |')
     return '\n'.join(lines) + '\n'
+
+
+def trigger_reference(entry):
+    """The declared trigger model, rendered by the module that also verifies it."""
+    sys.path.insert(0, str(ROOT / 'scripts/intelligence'))
+    import triggers  # the one implementation of the plan, so the CLI and this file agree
+    return (header('DOC-TRG-001', 'Trigger reference', 'CONTROL/metadata/TRIGGERS.json',
+                   generator='triggers') + triggers.render(title=False))
 
 
 def completeness(entry):
@@ -571,7 +583,7 @@ GENERATORS = {'api': api, 'config': config, 'env': env, 'sql': sql, 'automation'
               'catalog_view': catalog_view, 'catalog_navigation': catalog_navigation,
               'environment_reference': environment_reference, 'alert_catalog': alert_catalog,
               'local_tool_reference': local_tool_reference,
-              'relationship_visualization': relationship_visualization}
+              'relationship_visualization': relationship_visualization, 'triggers': trigger_reference}
 
 
 def generate(check=False, only=None, findings=None):

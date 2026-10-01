@@ -1,6 +1,6 @@
 PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 BASE ?= origin/master
-.PHONY: help setup lint generate check test ci docs-verify docs-drift docs-metadata docs-ownership docs-inventory docs-freshness docs-sync docs-health docs-stubs docs-catalog docs-profile docs-recommend docs-hint docs-languages docs-explain docs-enforce docs-baseline docs-require-check hooks-install docs-staged-impact evidence check-evidence self-doc report
+.PHONY: help setup lint generate check test ci docs-verify docs-drift docs-metadata docs-ownership docs-inventory docs-freshness docs-sync docs-health docs-stubs docs-catalog docs-profile docs-recommend docs-hint docs-languages docs-triggers docs-links-external docs-explain docs-enforce docs-baseline docs-require-check hooks-install docs-staged-impact evidence check-evidence self-doc report
 
 help: ## Show available commands and their purposes
 	@awk '$$0 !~ /^[[:space:]]/ && $$0 !~ /^#/ && index($$0, "## " ) {i=index($$0, "## " ); n=substr($$0,1,i-1); sub(/:[^:]*$$/,"",n); gsub(/\\:/,":",n); gsub(/[[:space:]]+$$/,"",n); printf "%-22s %s\n",n,substr($$0,i+3)}' $(MAKEFILE_LIST)
@@ -68,6 +68,12 @@ docs-explain: ## Explain one catalog type (usage: make docs-explain DOC=DOC-A08-
 docs-enforce: ## Enforce obligations and structural checks at the declared phase's severity
 	$(PYTHON) scripts/intelligence/enforce.py
 
+docs-triggers: ## Show which event runs what, and what the required gate actually blocks
+	$(PYTHON) scripts/intelligence/triggers.py
+
+docs-links-external: ## Check external links the scheduled way: rate-limited and warn-only (opens the network)
+	$(PYTHON) scripts/doc-control/check_external_links.py
+
 docs-baseline: ## Record current findings as the adoption baseline (machine-generated JSON)
 	$(PYTHON) scripts/intelligence/enforce.py --write-baseline
 
@@ -90,8 +96,9 @@ docs-verify: docs-metadata docs-inventory docs-ownership docs-freshness docs-syn
 
 check: docs-verify ## PR-equivalent local checks (use staged-impact separately for staged changes)
 
-self-doc: ## Check map, inventory, ownership, and staged (or BASE-to-HEAD) self-documentation impact
+self-doc: ## Check map, inventory, triggers, ownership, and staged (or BASE-to-HEAD) impact
 	$(PYTHON) scripts/doc-control/check_sync_map.py
+	$(PYTHON) scripts/intelligence/triggers.py --check
 	$(PYTHON) scripts/doc-control/check_ownership.py
 	$(PYTHON) scripts/doc-sync/generate-all.py --check --only catalog
 	@if git diff --cached --quiet; then $(PYTHON) scripts/intelligence/change_analyzer.py --base "$(BASE)"; else $(PYTHON) scripts/intelligence/change_analyzer.py --staged; fi

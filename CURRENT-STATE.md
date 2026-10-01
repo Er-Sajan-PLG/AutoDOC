@@ -28,6 +28,12 @@ A catalog entry represents a possible document, not a completed compliance oblig
 
 The demo includes structured agent context and CI can retain actual test-run evidence as an artifact.
 
+When AutoDOC runs is declared, not implied: one event model (`CONTROL/metadata/TRIGGERS.json`,
+rendered into `docs/generated/TRIGGER-REFERENCE.md`) names the local hook, the pull request, the
+default branch, the schedule and a release tag, and `triggers.py --check` holds it to the workflows
+in `make ci`. The pull request is the only blocking event; the one check that opens the network is
+scheduled, rate-limited and warn-only.
+
 A health command measures catalog template triples, instantiated docs, deadlines and drift.
 The human inventory, relationship graph, catalog views and code/test/dependency outlines are generated.
 CI packages actual test-run evidence without claiming a signed build or license approval.
@@ -79,7 +85,7 @@ flow, hazard analysis and the deeper privacy set are not applicable here.
 
 <!-- auto:start -->
 - Catalog types: 265 (not necessarily instantiated).
-- Controlled docs: 65 (23 generated, 42 human-owned).
+- Controlled docs: 66 (24 generated, 42 human-owned).
 - Overdue human-owned docs: 0.
 - Open gaps: see `docs/00-governance/ENGINE-COVERAGE.md`; this block does not infer intent.
 <!-- auto:end -->
