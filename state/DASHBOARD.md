@@ -24,15 +24,15 @@
 post-merge continuity test on a cold clone of `master` (passed: state-only read, cold numbers,
 `make ci` exit 0, `AutoDOC guard` green on `master`); the branch-protection apply is not possible
 from this sandbox (App lacks Administration) and stays the owner's command.
+
 `A476` — session `20261001-1242-A476` (**PAUSED (awaiting owner)**): the owner decision round — all
 six verdicts executed or recorded (P-003 → `c7980f9`, P-001 → `039e508`, P-002 → `3ad5a57`, P-004
-owner-run payload, P-005/P-006 records, shutdown/self-check → `5dd9112`…`ce4feba`); awaiting the
-owner's close. Four sessions are
-**PAUSED (awaiting owner)** (`20261001-1228` lifecycle, `20261001-1219` cold-clone, `20261001-1242`
-decision round, `20261001-1408` post-merge test);
-three are **landed — awaiting owner close** (`20261001-1110`, `-1120`, `-1130`). **No session is
-complete** — only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before
-starting work.
+owner-run payload, P-005/P-006 records, shutdown/self-check → `5dd9112`…`ce4feba`).
+
+Four sessions are **PAUSED (awaiting owner)** (`20261001-1228` lifecycle, `20261001-1219`
+cold-clone, `20261001-1242` decision round, `20261001-1408` post-merge test); three are
+**landed — awaiting owner close** (`20261001-1110`, `-1120`, `-1130`). **No session is complete** —
+only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before starting work.
 
 ## Alerts
 
@@ -49,11 +49,12 @@ starting work.
 4. Environment resets recur (ten recoveries today, #11–#20: HEAD back to `19ca0d4`, wedged index,
    dirty-tree variant, venv deleted). #17 is logged in the lifecycle session; #18, #19 and #20 in
    the decision-round session. Recovery recipe is in the audit session's summary; never force-push.
-5. **Continuity verified before and after the merge:** the merged `master` itself was tested cold
-   (depth-1 clone, state-only read, cold `python3` numbers, `make ci` exit 0) — for the pre-merge
-   check see `state/sessions/20261001-1219-A476-cold-clone-test.md`. A cold clone of this branch, read by a stranger, can state the position,
-   the gates and the whole pending decision round, and can verify the numbers with system `python3`
-   and no install (`state/sessions/20261001-1219-A476-cold-clone-test.md`).
+5. **Continuity verified before and after the merge.** Pre-merge: a cold clone of the session
+   branch, read by a stranger, could state the position, the gates and the whole decision round,
+   and verify the numbers with system `python3` and no install
+   (`state/sessions/20261001-1219-A476-cold-clone-test.md`). Post-merge: the same bar was met by
+   the merged `master` itself — depth-1 clone, state-only read, cold numbers, `make ci` exit 0
+   (`state/sessions/20261001-1408-A476-post-merge-test.md`).
 
 6. **Sessions await the owner's close** (ADR-009, MACP local rule 8): no `A476` session is complete.
    Two are `PAUSED (awaiting owner)` (lifecycle, cold-clone), three are `landed — awaiting owner
