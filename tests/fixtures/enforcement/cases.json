@@ -1,0 +1,349 @@
+{
+  "note": "Contract cases for the enforcement layer. The harness patches the four collector modules so every case is deterministic; expectations are the golden output. 'checks' are raw findings as the checkers return them, 'baseline' entries are what a previous --write-baseline run would have written.",
+  "cases": [
+    {
+      "id": "undeclared-advisory-no-pins",
+      "why": "An undeclared phase reports, never fails, and says so in the header.",
+      "config": "schema = 1\n",
+      "checks": [
+        {
+          "rule": "stubs",
+          "location": "docs/a.md",
+          "detail": "approved document has no content beyond its title"
+        }
+      ],
+      "expect": {
+        "exit": 0,
+        "report_contains": [
+          "Advisory: phase undeclared, nothing is enforced except pins: none",
+          "Informational",
+          "reported, never failed"
+        ],
+        "findings_contain": [
+          {
+            "rule": "stubs",
+            "severity": "report"
+          }
+        ]
+      }
+    },
+    {
+      "id": "undeclared-pinned-check-violated",
+      "why": "A pin is a deliberate policy and applies even with no phase declared.",
+      "config": "schema = 1\n\n[severity]\n\"links.local\" = \"error\"\n",
+      "checks": [
+        {
+          "rule": "links.local",
+          "location": "docs/a.md",
+          "detail": "broken local link missing.md"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "report_contains": [
+          "Advisory: phase undeclared, nothing is enforced except pins: links.local = \"error\"",
+          "[error] links.local"
+        ],
+        "findings_contain": [
+          {
+            "rule": "links.local",
+            "severity": "error"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pin-stricter-than-phase-block",
+      "why": "A pin may be stricter than the phase default: build reports tribal, this repo pins it.",
+      "config": "schema = 1\nphase = \"build\"\n\n[severity]\ntribal = \"error\"\n",
+      "checks": [
+        {
+          "rule": "tribal",
+          "location": "docs/a.md",
+          "detail": "undocumented tribal instruction"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "report_contains": ["[error] tribal", "Severity pins: tribal = \"error\""]
+      }
+    },
+    {
+      "id": "pin-weaker-than-phase-block",
+      "why": "A pin wins over the phase block in both directions; drift is off at beta here.",
+      "config": "schema = 1\nphase = \"beta\"\n\n[severity]\ndrift = \"off\"\n",
+      "checks": [
+        {
+          "rule": "drift",
+          "location": "docs/META/OUTLINE.md",
+          "detail": "generated from scripts/**"
+        }
+      ],
+      "expect": {
+        "exit": 0,
+        "report_contains": [
+          "Off at this phase, so not run: drift",
+          "None at warning or error severity"
+        ]
+      }
+    },
+    {
+      "id": "baseline-does-not-hide-other-rule",
+      "why": "An entry for rule A at path X must not suppress rule B at path X.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "baseline": [
+        {
+          "rule": "drift",
+          "location": "docs/x.md",
+          "detail": "generated from a source",
+          "recorded_at": "2026-09-01"
+        }
+      ],
+      "checks": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link missing.md"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "suppressed": 0,
+        "report_contains": ["[error] links.local"]
+      }
+    },
+    {
+      "id": "baseline-does-not-hide-other-location",
+      "why": "An entry for rule A at path X must not suppress rule A at path Y.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "baseline": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link a.md",
+          "recorded_at": "2026-09-01"
+        }
+      ],
+      "checks": [
+        {
+          "rule": "links.local",
+          "location": "docs/y.md",
+          "detail": "broken local link a.md"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "suppressed": 0
+      }
+    },
+    {
+      "id": "baseline-fingerprint-distinguishes-a-different-problem",
+      "why": "Same rule, same path, different broken target is a new violation, not the old one.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "baseline": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link old.md",
+          "recorded_at": "2026-09-01"
+        }
+      ],
+      "checks": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link new.md"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "suppressed": 0,
+        "report_contains": ["broken local link new.md"]
+      }
+    },
+    {
+      "id": "finding-fixed-after-baselining",
+      "why": "Fixing a violation leaves a stale entry: a warning, exit 0, never a red build.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "baseline": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link old.md",
+          "recorded_at": "2026-09-01"
+        }
+      ],
+      "checks": [],
+      "expect": {
+        "exit": 0,
+        "stale": 1,
+        "report_contains": ["warning, not a failure", "1 entr(ies) no longer match anything"]
+      }
+    },
+    {
+      "id": "entry-deleted-makes-the-finding-return",
+      "why": "Deleting a baseline entry (or never recording it) cannot silence the finding.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "baseline": [],
+      "checks": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link old.md"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "suppressed": 0,
+        "report_contains": ["[error] links.local"]
+      }
+    },
+    {
+      "id": "recorded-entry-suppresses-and-reports-its-age",
+      "why": "A recorded finding is suppressed, counted, and its age is shown.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "baseline": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link old.md",
+          "recorded_at": "2026-09-01"
+        }
+      ],
+      "checks": [
+        {
+          "rule": "links.local",
+          "location": "docs/x.md",
+          "detail": "broken local link old.md"
+        }
+      ],
+      "expect": {
+        "exit": 0,
+        "suppressed": 1,
+        "report_contains": [
+          "1 finding(s) recorded during adoption are suppressed",
+          "recorded 2026-09-01"
+        ]
+      }
+    },
+    {
+      "id": "security-findings-are-never-baselined",
+      "why": "A committed key stays in git history, so an entry must not be able to hide it.",
+      "config": "schema = 1\nphase = \"build\"\n\n[severity]\n\"secrets.inline\" = \"error\"\n",
+      "baseline": [
+        {
+          "rule": "secrets.inline",
+          "location": "app/config.py",
+          "detail": "private key marker detected",
+          "recorded_at": "2026-09-01"
+        }
+      ],
+      "checks": [
+        {
+          "rule": "secrets.inline",
+          "location": "app/config.py",
+          "detail": "private key marker detected"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "suppressed": 0,
+        "report_contains": ["never baselined", "[error] secrets.inline"]
+      }
+    },
+    {
+      "id": "build-fails-structural-breakage-off-drift",
+      "why": "The refined table: build fails placeholders and links, with drift and freshness off.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "checks": [
+        {
+          "rule": "placeholders",
+          "location": "docs/draft.md",
+          "detail": "draft has no content beyond its title"
+        },
+        {
+          "rule": "drift",
+          "location": "docs/META/OUTLINE.md",
+          "detail": "generated from scripts/**"
+        },
+        {
+          "rule": "freshness.review",
+          "location": "docs/old.md",
+          "detail": "overdue review (warning)"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "report_contains": [
+          "[error] placeholders",
+          "Off at this phase, so not run: drift, freshness.critical, freshness.review"
+        ],
+        "report_not_contains": ["[error] drift", "[warn] freshness.review"]
+      }
+    },
+    {
+      "id": "live-mature-fail-drift-and-freshness",
+      "why": "The same two findings fail from live onward.",
+      "config": "schema = 1\nphase = \"live\"\n",
+      "checks": [
+        {
+          "rule": "drift",
+          "location": "docs/META/OUTLINE.md",
+          "detail": "generated from scripts/**"
+        },
+        {
+          "rule": "freshness.review",
+          "location": "docs/old.md",
+          "detail": "overdue review (warning)"
+        }
+      ],
+      "expect": {
+        "exit": 1,
+        "report_contains": ["[error] drift", "[error] freshness.review"]
+      }
+    },
+    {
+      "id": "sunset-shrinks-to-its-profile",
+      "why": "Sunset switches every structural family off; only the sunset documents remain.",
+      "config": "schema = 1\nphase = \"sunset\"\n",
+      "checks": [
+        {
+          "rule": "placeholders",
+          "location": "docs/draft.md",
+          "detail": "draft has no content beyond its title"
+        },
+        {
+          "rule": "freshness.critical",
+          "location": "docs/old.md",
+          "detail": "overdue review (critical)"
+        }
+      ],
+      "expect": {
+        "exit": 0,
+        "report_contains": ["Off at this phase, so not run", "placeholders"]
+      }
+    },
+    {
+      "id": "heuristic-generator-warns-never-fails",
+      "why": "A heuristic generator is labeled and warns by default; the warning never fails a build.",
+      "config": "schema = 1\nphase = \"build\"\n",
+      "checks": [
+        {
+          "rule": "generator.heuristic",
+          "location": "docs/generated/WORKFLOW-REFERENCE.md",
+          "detail": "the `workflows` generator is heuristic: job names are read by pattern"
+        }
+      ],
+      "expect": {
+        "exit": 0,
+        "report_contains": ["[warn] generator.heuristic", "workflows"],
+        "findings_contain": [
+          {
+            "rule": "generator.heuristic",
+            "severity": "warn"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -16,7 +16,7 @@ criticality: medium
 review_days: 180
 last_verified: 2026-09-26
 last_reviewed: 2026-09-26
-last_updated: 2026-09-26
+last_updated: 2026-10-01
 auto_generated: false
 ---
 # AutoDOC agent instructions
@@ -25,6 +25,9 @@ auto_generated: false
 AutoDOC is a self-updating, self-documenting documentation engine, not a compliance certificate.
 
 ## Working sequence
+0. Read [`docs/00-governance/MACP.md`](docs/00-governance/MACP.md) and follow it: it is the
+   agent workflow, and it points at [`state/DASHBOARD.md`](state/DASHBOARD.md) first. Register a
+   session under `state/sessions/` before starting work, and log as you go.
 1. Read `CURRENT-STATE.md`, `NEXT-ACTION.md`, `RECENT-CHANGES.md`, and `CONTEXT-SNAPSHOT.md`.
 2. Consult `docs/.doc-sync-map.yaml` for the source-to-target contract; inspect source and tests.
 3. Make the smallest source change, add tests, regenerate, and review human-owned impact.
@@ -33,3 +36,5 @@ AutoDOC is a self-updating, self-documenting documentation engine, not a complia
 ## Hard constraints
 Never rename AutoDOC, edit generated docs by hand, fabricate evidence, or overwrite human
 priorities. Controlled files need metadata and ownership. See `ANTI-PATTERNS-FOR-AGENT.md`.
+`state/**` is coordination data, not a controlled document set: no generator may write there, and
+no agent may record an owner decision there or in the machine files on the owner's behalf.

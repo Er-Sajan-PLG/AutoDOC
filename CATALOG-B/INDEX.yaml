@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "Inventory of possible documents. Applicability labels are suggestions, not a mandate or evidence of adoption.",
+  "note": "Inventory of possible documents. Applicability labels are suggestions, not a mandate or evidence of adoption. Derived fields come from CONTROL/metadata/CATALOG-RULES.json: severity_by_phase is authored, phase_min is derived from it, and support/checks state what AutoDOC can actually verify for the type.",
   "domains": [
     {
       "domain": "B01-FOUNDATION",
@@ -10,16 +10,31 @@
           "id": "DEV-B01-001",
           "name": "Problem statement",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "Every project needs a stated reason to exist.",
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What problem does this project solve, and for whom?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record problem statement for context and goals.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -33,16 +48,31 @@
           "id": "DEV-B01-002",
           "name": "Goals and non goals",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "Non-goals prevent the scope creep that no check can detect.",
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What is this trying to achieve, and what is it deliberately not doing?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record goals and non goals for context and goals.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -56,16 +86,31 @@
           "id": "DEV-B01-003",
           "name": "Scope",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "The boundary of what the system covers.",
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "Where is the boundary of this system?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record scope for context and goals.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -79,16 +124,23 @@
           "id": "DEV-B01-004",
           "name": "Stakeholder map",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record stakeholder map for context and goals.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -102,16 +154,23 @@
           "id": "DEV-B01-005",
           "name": "Success metrics",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record success metrics for context and goals.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -120,6 +179,42 @@
           "related": [],
           "mode": "human-review",
           "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-005.md"
+        },
+        {
+          "id": "DEV-B01-006",
+          "name": "README",
+          "type": "SPEC",
+          "tier": "core",
+          "tier_reason": "The first and most-read document: what it is, why it exists and whether it works.",
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What is this, why does it exist, and how do I know it works?",
+          "reader": "external-users",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "links.local"
+          ],
+          "events": [
+            "release",
+            "onboarding"
+          ],
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record readme for context and goals.",
+          "when": "active development",
+          "maturity": "Project-Phase",
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DEV-B01-006.md"
         }
       ]
     },
@@ -131,14 +226,23 @@
           "id": "DEV-B02-001",
           "name": "Research notes",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record research notes for discovery and exploration.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -152,14 +256,23 @@
           "id": "DEV-B02-002",
           "name": "Competitive analysis",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record competitive analysis for discovery and exploration.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -173,14 +286,23 @@
           "id": "DEV-B02-003",
           "name": "Spike",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record spike for discovery and exploration.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -194,14 +316,23 @@
           "id": "DEV-B02-004",
           "name": "Assumption log",
           "type": "REC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record assumption log for discovery and exploration.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -221,14 +352,23 @@
           "id": "DEV-B03-001",
           "name": "Milestones",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record milestones for planning and delivery.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -242,14 +382,23 @@
           "id": "DEV-B03-002",
           "name": "Task backlog",
           "type": "REC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record task backlog for planning and delivery.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -263,14 +412,23 @@
           "id": "DEV-B03-003",
           "name": "Risks and dependencies",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record risks and dependencies for planning and delivery.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -284,14 +442,23 @@
           "id": "DEV-B03-004",
           "name": "Delivery plan",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record delivery plan for planning and delivery.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -311,16 +478,35 @@
           "id": "DEV-B04-001",
           "name": "System overview",
           "type": "DES",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "One map of the parts, for newcomers and agents.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What are the parts of this system and how do they fit together?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "api-change",
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record system overview for early architecture.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -334,16 +520,34 @@
           "id": "DEV-B04-002",
           "name": "ADR",
           "type": "DEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "Decisions are the highest-churn human knowledge in a repository.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "always"
+          ],
+          "question": "Why was this decision made, and what did we give up?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record adr for early architecture.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -357,16 +561,23 @@
           "id": "DEV-B04-003",
           "name": "C4 sketch",
           "type": "DES",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "has_deploy"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record c4 sketch for early architecture.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -380,16 +591,23 @@
           "id": "DEV-B04-004",
           "name": "Threat model",
           "type": "DES",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "has_deploy"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record threat model for early architecture.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -409,14 +627,34 @@
           "id": "DEV-B05-001",
           "name": "Module contract",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "Module boundaries are where changes break neighbours.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What does this module promise to its callers?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "api-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record module contract for implementation contracts.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -430,14 +668,23 @@
           "id": "DEV-B05-002",
           "name": "Type definitions",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record type definitions for implementation contracts.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -451,14 +698,23 @@
           "id": "DEV-B05-003",
           "name": "Error handling",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record error handling for implementation contracts.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -472,14 +728,23 @@
           "id": "DEV-B05-004",
           "name": "API contract",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "has_public_api_surface"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record api contract for implementation contracts.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -499,14 +764,23 @@
           "id": "DEV-B06-001",
           "name": "Coding plan",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record coding plan for implementation guidance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -520,14 +794,23 @@
           "id": "DEV-B06-002",
           "name": "Implementation log",
           "type": "REC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record implementation log for implementation guidance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -541,14 +824,23 @@
           "id": "DEV-B06-003",
           "name": "Debugging notes",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record debugging notes for implementation guidance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -562,14 +854,23 @@
           "id": "DEV-B06-004",
           "name": "Migration plan",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "has_persistent_state"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record migration plan for implementation guidance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -589,16 +890,34 @@
           "id": "DEV-B07-001",
           "name": "Test strategy",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "States how confidence is established; the canonical form of this type.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "has_tests"
+          ],
+          "question": "How do we establish confidence that this works?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "release"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record test strategy for validation.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -612,16 +931,23 @@
           "id": "DEV-B07-002",
           "name": "Acceptance criteria",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "has_tests"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record acceptance criteria for validation.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -635,16 +961,23 @@
           "id": "DEV-B07-003",
           "name": "Test results",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "has_tests"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record test results for validation.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -658,16 +991,23 @@
           "id": "DEV-B07-004",
           "name": "UAT",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "assess"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record uat for validation.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Core",
-          "required_for": [
-            "general"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -687,14 +1027,31 @@
           "id": "DEV-B08-001",
           "name": "Current state",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What is true right now?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record current state for handoff and tracking.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -708,14 +1065,31 @@
           "id": "DEV-B08-002",
           "name": "Next action",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What is the next thing to do, and by whom?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record next action for handoff and tracking.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -729,14 +1103,31 @@
           "id": "DEV-B08-003",
           "name": "Recent changes",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": "What changed lately, and why?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record recent changes for handoff and tracking.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -750,14 +1141,23 @@
           "id": "DEV-B08-004",
           "name": "Handoff notes",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record handoff notes for handoff and tracking.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -777,16 +1177,35 @@
           "id": "DEV-B09-001",
           "name": "AGENTS.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "The context file an agent reads first.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": "What must an agent know before touching this repository?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "onboarding",
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record agents.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -800,16 +1219,23 @@
           "id": "DEV-B09-002",
           "name": "CLAUDE.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record claude.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -823,16 +1249,23 @@
           "id": "DEV-B09-003",
           "name": "Cursor rules",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record cursor rules for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -846,16 +1279,23 @@
           "id": "DEV-B09-004",
           "name": "AI-CONTEXT.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record ai-context.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -869,16 +1309,23 @@
           "id": "DEV-B09-005",
           "name": "SYSTEM-PROMPT-FOR-CODING-AGENT.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record system-prompt-for-coding-agent.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -892,16 +1339,23 @@
           "id": "DEV-B09-006",
           "name": "AGENT-WORKFLOW.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record agent-workflow.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -915,16 +1369,23 @@
           "id": "DEV-B09-007",
           "name": "CURRENT-STATE.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record current-state.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -938,16 +1399,23 @@
           "id": "DEV-B09-008",
           "name": "NEXT-ACTION.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record next-action.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -961,16 +1429,23 @@
           "id": "DEV-B09-009",
           "name": "RECENT-CHANGES.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record recent-changes.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -984,16 +1459,23 @@
           "id": "DEV-B09-010",
           "name": "AGENT-MEMORY.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record agent-memory.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1007,16 +1489,23 @@
           "id": "DEV-B09-011",
           "name": "CONTEXT-SNAPSHOT.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record context-snapshot.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1030,16 +1519,23 @@
           "id": "DEV-B09-012",
           "name": "TASK-FOR-AGENT.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record task-for-agent.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1053,16 +1549,23 @@
           "id": "DEV-B09-013",
           "name": "TOOL-USAGE-GUIDE-FOR-AGENT.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record tool-usage-guide-for-agent.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1076,16 +1579,23 @@
           "id": "DEV-B09-014",
           "name": "ANTI-PATTERNS-FOR-AGENT.md",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "uses_agents"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record anti-patterns-for-agent.md for ai agent context.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Recommended",
-          "required_for": [
-            "ai-agent"
-          ],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1105,14 +1615,35 @@
           "id": "DEV-B10-001",
           "name": "Local setup",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "Nobody can run the project without it.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "always"
+          ],
+          "question": "How do I get this running on my machine?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "onboarding",
+            "dependency-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record local setup for project setup.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1126,14 +1657,23 @@
           "id": "DEV-B10-002",
           "name": "Environment matrix",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record environment matrix for project setup.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1147,14 +1687,34 @@
           "id": "DEV-B10-003",
           "name": "Dependency setup",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "core",
+          "tier_reason": "Direct dependencies and where their versions are pinned; the most common onboarding failure.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "always"
+          ],
+          "question": "How do I install the declared dependencies, and where are the versions pinned?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "dependency-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record dependency setup for project setup.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1168,14 +1728,23 @@
           "id": "DEV-B10-004",
           "name": "Developer onboarding",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record developer onboarding for project setup.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1195,14 +1764,23 @@
           "id": "DEV-B11-001",
           "name": "Documentation index",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record documentation index for documentation governance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1216,14 +1794,23 @@
           "id": "DEV-B11-002",
           "name": "Ownership matrix",
           "type": "SPEC",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record ownership matrix for documentation governance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1237,14 +1824,23 @@
           "id": "DEV-B11-003",
           "name": "Freshness policy",
           "type": "POL",
-          "audience": "project team",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record freshness policy for documentation governance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",
@@ -1258,14 +1854,23 @@
           "id": "DEV-B11-004",
           "name": "Document control procedure",
           "type": "PROC",
-          "audience": "project team",
+          "tier": "contextual",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
+          "applies_when": [
+            "always"
+          ],
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record document control procedure for documentation governance.",
           "when": "active development",
           "maturity": "Project-Phase",
-          "priority": "Contextual",
-          "required_for": [],
           "required_content": [
             "Purpose and scope",
             "Details and decisions",

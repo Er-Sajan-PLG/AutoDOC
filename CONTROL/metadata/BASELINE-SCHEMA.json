@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:autodoc:baseline:1",
+  "title": "AutoDOC adoption baseline",
+  "description": "Machine-generated record of findings observed during adoption, written by `enforce.py --write-baseline`. Entries are keyed by rule, location and a fingerprint of the detail, and carry the date they were recorded; AutoDOC fails only findings that are new, warns about entries that no longer match, and --write-baseline prunes them. Security findings (secrets.inline) are never recorded. Human-edited configuration stays in autodoc.toml; this file is never hand-edited.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "recorded_at", "phase", "entries"],
+  "properties": {
+    "schema": {"type": "integer", "const": 1},
+    "recorded_at": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "phase": {"type": ["string", "null"]},
+    "note": {"type": "string"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "rule", "location", "recorded_at"],
+        "properties": {
+          "key": {"type": "string", "minLength": 3, "description": "rule|path|fingerprint(detail)"},
+          "recorded_at": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "rule": {"type": "string", "minLength": 1},
+          "location": {"type": "string", "minLength": 1},
+          "detail": {"type": "string"}
+        }
+      }
+    }
+  }
+}

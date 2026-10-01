@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "note": "Event model: which event runs what, what is allowed to stop a merge, and what is only triage. The pull request is the only gate; everything else warns earlier (and can be bypassed) or reports later (and never blocks). A new workflow must be declared here, or `triggers.py --check` fails: an undeclared trigger is an unreviewed trigger.",
+  "principle": [
+    "One gate. The required pull-request check is the only thing that stops a merge, and it never needs the network.",
+    "Early is a convenience, late is triage. A local hook can be bypassed; a scheduled run is read, not merged against.",
+    "No trigger is invisible. Every workflow file is claimed by an event here, and every declared command resolves to a file or a Make target.",
+    "A flaky event never blocks: anything that opens a network connection is scheduled, rate-limited and warn-only."
+  ],
+  "events": [
+    {
+      "id": "local",
+      "label": "Before a commit or push",
+      "when": "developer machine, if the hook is installed",
+      "posture": "convenience",
+      "blocking": false,
+      "network": false,
+      "bypass": "git push --no-verify",
+      "failure": "the push is stopped locally; nothing is said to anyone else",
+      "runs": ["make docs-enforce"],
+      "wiring": ["scripts/hooks/pre-push", "Makefile:docs-enforce"],
+      "jobs": []
+    },
+    {
+      "id": "pull_request",
+      "label": "On every pull request",
+      "when": "opened, updated, or reopened",
+      "posture": "gate",
+      "blocking": true,
+      "network": false,
+      "bypass": null,
+      "failure": "the merge is blocked until the required check passes",
+      "required_check": "AutoDOC guard / check",
+      "runs": [
+        "make ci",
+        "python scripts/intelligence/change_analyzer.py --base \"$BASE\""
+      ],
+      "wiring": [".github/workflows/docs-guard.yml"],
+      "jobs": [
+        {
+          "name": "AutoDOC guard / check",
+          "job": "check",
+          "workflow": ".github/workflows/docs-guard.yml",
+          "events": ["pull_request", "push", "workflow_dispatch"],
+          "required": true,
+          "paths_filtered": false,
+          "tag_filtered": false,
+          "branch_filtered": false,
+          "commands": [
+            "make ci",
+            "python scripts/intelligence/change_analyzer.py --base \"$BASE\""
+          ]
+        },
+        {
+          "name": "impact",
+          "job": "impact",
+          "workflow": ".github/workflows/self-doc-check.yml",
+          "events": ["pull_request"],
+          "required": false,
+          "paths_filtered": true,
+          "tag_filtered": false,
+          "branch_filtered": false,
+          "commands": [
+            "python scripts/intelligence/change_analyzer.py --base \"$BASE\"",
+            "python scripts/doc-control/check_sync_map.py",
+            "python scripts/doc-sync/check-doc-drift.py"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "default_branch",
+      "label": "After merge to the default branch",
+      "when": "push to master, or manual dispatch",
+      "posture": "report",
+      "blocking": false,
+      "network": false,
+      "bypass": null,
+      "failure": "the generated diff is published as an artifact for review; no bot commit is pushed",
+      "runs": ["python scripts/doc-sync/generate-all.py"],
+      "wiring": [".github/workflows/docs-generation-preview.yml"],
+      "jobs": [
+        {
+          "name": "preview",
+          "job": "preview",
+          "workflow": ".github/workflows/docs-generation-preview.yml",
+          "events": ["push", "workflow_dispatch"],
+          "required": false,
+          "paths_filtered": false,
+          "tag_filtered": false,
+          "branch_filtered": true,
+          "commands": ["python scripts/doc-sync/generate-all.py"]
+        }
+      ]
+    },
+    {
+      "id": "scheduled",
+      "label": "Nightly, and Monday morning",
+      "when": "cron 0 2 * * * and 0 9 * * 1, or manual dispatch",
+      "posture": "advisory",
+      "blocking": false,
+      "network": true,
+      "rate_limit": {
+        "per_host_seconds": 1.0,
+        "max_links": 200,
+        "timeout_seconds": 10
+      },
+      "bypass": null,
+      "failure": "the run is red for triage; no pull request is affected",
+      "runs": [
+        "python scripts/doc-sync/check-doc-drift.py",
+        "python scripts/doc-control/guards.py",
+        "python scripts/doc-control/check_ownership.py",
+        "python scripts/doc-sync/engine.py freshness",
+        "python scripts/doc-control/health.py",
+        "python scripts/doc-control/check_external_links.py"
+      ],
+      "wiring": [".github/workflows/docs-staleness.yml"],
+      "jobs": [
+        {
+          "name": "freshness",
+          "job": "freshness",
+          "workflow": ".github/workflows/docs-staleness.yml",
+          "events": ["schedule", "workflow_dispatch"],
+          "required": false,
+          "paths_filtered": false,
+          "tag_filtered": false,
+          "branch_filtered": false,
+          "network": true,
+          "commands": [
+            "python scripts/doc-sync/check-doc-drift.py",
+            "python scripts/doc-control/guards.py",
+            "python scripts/doc-control/check_ownership.py",
+            "python scripts/doc-sync/engine.py freshness",
+            "python scripts/doc-control/health.py",
+            "python scripts/doc-control/check_external_links.py"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "release",
+      "label": "On a release tag",
+      "when": "push of a v*.*.* tag, or manual dispatch with the tag",
+      "posture": "release",
+      "blocking": false,
+      "network": false,
+      "bypass": null,
+      "failure": "no snapshot is produced; the release itself is not blocked by this workflow",
+      "runs": ["python scripts/doc-control/release_snapshot.py --tag \"$TAG\""],
+      "wiring": [".github/workflows/release.yml"],
+      "jobs": [
+        {
+          "name": "snapshot",
+          "job": "snapshot",
+          "workflow": ".github/workflows/release.yml",
+          "events": ["push", "workflow_dispatch"],
+          "required": false,
+          "paths_filtered": false,
+          "tag_filtered": true,
+          "branch_filtered": false,
+          "commands": ["python scripts/doc-control/release_snapshot.py --tag \"$TAG\""]
+        }
+      ]
+    }
+  ],
+  "never": [
+    "No network access from a blocking event: external link checks run only on the schedule, warn-only.",
+    "No automatic issue creation and no bot commit: the generation preview publishes a diff artifact instead.",
+    "No scheduled run is a required check: a nightly red is triage, never a merge gate.",
+    "No check is silently skipped: an undeclared workflow, or a required check that a path filter can prevent from reporting, fails the trigger check."
+  ]
+}

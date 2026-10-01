@@ -3,33 +3,25 @@
   "generated": [
     {
       "id": "api",
-      "sources": [
-        "EXAMPLE-PROJECT/routes.json"
-      ],
+      "sources": ["EXAMPLE-PROJECT/routes.json"],
       "target": "EXAMPLE-PROJECT/docs/API-REFERENCE.md",
       "generator": "api"
     },
     {
       "id": "config",
-      "sources": [
-        "EXAMPLE-PROJECT/config.schema.json"
-      ],
+      "sources": ["EXAMPLE-PROJECT/config.schema.json"],
       "target": "EXAMPLE-PROJECT/docs/CONFIG-REFERENCE.md",
       "generator": "config"
     },
     {
       "id": "env",
-      "sources": [
-        "EXAMPLE-PROJECT/config.schema.json"
-      ],
+      "sources": ["EXAMPLE-PROJECT/config.schema.json"],
       "target": "EXAMPLE-PROJECT/.env.example",
       "generator": "env"
     },
     {
       "id": "env-reference",
-      "sources": [
-        "EXAMPLE-PROJECT/.env.example"
-      ],
+      "sources": ["EXAMPLE-PROJECT/.env.example"],
       "target": "docs/reference/ENVIRONMENT.md",
       "generator": "environment_reference"
     },
@@ -44,17 +36,13 @@
     },
     {
       "id": "example-dependencies",
-      "sources": [
-        "EXAMPLE-PROJECT/pyproject.toml"
-      ],
+      "sources": ["EXAMPLE-PROJECT/pyproject.toml"],
       "target": "docs/reference/EXAMPLE-DEPENDENCIES.md",
       "generator": "dependencies"
     },
     {
       "id": "data",
-      "sources": [
-        "EXAMPLE-PROJECT/db/schema.sql"
-      ],
+      "sources": ["EXAMPLE-PROJECT/db/schema.sql"],
       "target": "EXAMPLE-PROJECT/docs/DATA-DICTIONARY.md",
       "generator": "sql"
     },
@@ -71,20 +59,20 @@
       "generator": "automation"
     },
     {
+      "id": "triggers",
+      "sources": ["CONTROL/metadata/TRIGGERS.json", ".github/workflows/*.yml", "Makefile"],
+      "target": "docs/generated/TRIGGER-REFERENCE.md",
+      "generator": "triggers"
+    },
+    {
       "id": "catalog",
-      "sources": [
-        "CATALOG-A/INDEX.yaml",
-        "CATALOG-B/INDEX.yaml",
-        "CATALOG-C/INDEX.yaml"
-      ],
+      "sources": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml", "CATALOG-C/INDEX.yaml"],
       "target": "docs/generated/CATALOG-REFERENCE.md",
       "generator": "catalog"
     },
     {
       "id": "workflows",
-      "sources": [
-        ".github/workflows/*.yml"
-      ],
+      "sources": [".github/workflows/*.yml"],
       "target": "docs/generated/WORKFLOW-REFERENCE.md",
       "generator": "workflows"
     },
@@ -107,24 +95,21 @@
       "sources": [
         "scripts/**/*.py",
         "engine/**/*.py",
-        "EXAMPLE-PROJECT/src/*.py"
+        "EXAMPLE-PROJECT/src/*.py",
+        "EXAMPLE-PROJECT/web/*.js"
       ],
       "target": "docs/META/CODE-INVENTORY.md",
       "generator": "code_inventory"
     },
     {
       "id": "test-inventory",
-      "sources": [
-        "tests/test_*.py"
-      ],
+      "sources": ["tests/test_*.py"],
       "target": "docs/META/TEST-INVENTORY.md",
       "generator": "test_inventory"
     },
     {
       "id": "dependencies",
-      "sources": [
-        "pyproject.toml"
-      ],
+      "sources": ["pyproject.toml"],
       "target": "docs/META/DEPENDENCIES.md",
       "generator": "dependencies"
     },
@@ -216,64 +201,46 @@
     },
     {
       "id": "agent-prompts",
-      "sources": [
-        "examples/ai-agent-example/src/prompts/*.md"
-      ],
+      "sources": ["examples/ai-agent-example/src/prompts/*.md"],
       "target": "examples/ai-agent-example/docs/AI/PROMPT-REGISTRY.md",
       "generator": "agent_prompts"
     },
     {
       "id": "agent-model",
-      "sources": [
-        "examples/ai-agent-example/src/models.json"
-      ],
+      "sources": ["examples/ai-agent-example/src/models.json"],
       "target": "examples/ai-agent-example/docs/AI/MODEL-CONFIG.md",
       "generator": "agent_model"
     },
     {
       "id": "catalog-view-a",
-      "sources": [
-        "CATALOG-A/INDEX.yaml",
-        "CATALOG-B/INDEX.yaml"
-      ],
+      "sources": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml"],
       "target": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-A.md",
       "generator": "catalog_view",
       "view": "A"
     },
     {
       "id": "catalog-view-b",
-      "sources": [
-        "CATALOG-A/INDEX.yaml",
-        "CATALOG-B/INDEX.yaml"
-      ],
+      "sources": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml"],
       "target": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md",
       "generator": "catalog_view",
       "view": "B"
     },
     {
       "id": "catalog-view-c",
-      "sources": [
-        "CATALOG-A/INDEX.yaml",
-        "CATALOG-B/INDEX.yaml"
-      ],
+      "sources": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml"],
       "target": "docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-C.md",
       "generator": "catalog_view",
       "view": "C"
     },
     {
       "id": "catalog-navigation",
-      "sources": [
-        "CATALOG-A/INDEX.yaml",
-        "CATALOG-B/INDEX.yaml"
-      ],
+      "sources": ["CATALOG-A/INDEX.yaml", "CATALOG-B/INDEX.yaml"],
       "target": "docs/01-catalogs/CATALOG-INDEX.md",
       "generator": "catalog_navigation"
     },
     {
       "id": "local-tool-reference",
-      "sources": [
-        "examples/local-tools-example/config/tool-authorization.yaml"
-      ],
+      "sources": ["examples/local-tools-example/config/tool-authorization.yaml"],
       "target": "examples/local-tools-example/docs/TOOL-AUTHORIZATION.md",
       "generator": "local_tool_reference"
     },
@@ -302,24 +269,14 @@
   "review": [
     {
       "id": "api-implementation",
-      "sources": [
-        "EXAMPLE-PROJECT/src/*.py",
-        "EXAMPLE-PROJECT/routes.json"
-      ],
-      "targets": [
-        "EXAMPLE-PROJECT/docs/ARCHITECTURE.md"
-      ],
+      "sources": ["EXAMPLE-PROJECT/src/*.py", "EXAMPLE-PROJECT/routes.json"],
+      "targets": ["EXAMPLE-PROJECT/docs/ARCHITECTURE.md"],
       "level": "block"
     },
     {
       "id": "engine-policy",
-      "sources": [
-        "scripts/doc-sync/*.py",
-        "docs/.doc-sync-map.yaml"
-      ],
-      "targets": [
-        "CONTROL/policies/DOCUMENTATION-POLICY.md"
-      ],
+      "sources": ["scripts/doc-sync/*.py", "docs/.doc-sync-map.yaml"],
+      "targets": ["CONTROL/policies/DOCUMENTATION-POLICY.md"],
       "level": "warn"
     },
     {
@@ -336,9 +293,7 @@
         "TEMPLATES/**",
         "pyproject.toml"
       ],
-      "targets": [
-        "docs/05-architecture/AUTODOC-ARCHITECTURE.md"
-      ],
+      "targets": ["docs/05-architecture/AUTODOC-ARCHITECTURE.md"],
       "level": "block"
     },
     {
@@ -347,21 +302,17 @@
         "CATALOG-A/INDEX.yaml",
         "CATALOG-B/INDEX.yaml",
         "CATALOG-C/INDEX.yaml",
+        "CONTROL/metadata/CATALOG-RULES.json",
+        "CONTROL/metadata/CATALOG-SCHEMA.json",
         "TEMPLATES/**"
       ],
-      "targets": [
-        "docs/00-governance/ADOPTION.md"
-      ],
+      "targets": ["docs/00-governance/ADOPTION.md"],
       "level": "block"
     },
     {
       "id": "workflow-governance",
-      "sources": [
-        ".github/workflows/*.yml"
-      ],
-      "targets": [
-        "CONTROL/policies/DOCUMENTATION-POLICY.md"
-      ],
+      "sources": [".github/workflows/*.yml"],
+      "targets": ["CONTROL/policies/DOCUMENTATION-POLICY.md"],
       "level": "warn"
     },
     {
@@ -371,19 +322,13 @@
         "examples/ai-agent-example/src/tools.json",
         "examples/ai-agent-example/src/models.json"
       ],
-      "targets": [
-        "examples/ai-agent-example/docs/AI/AGENT-DESIGN.md"
-      ],
+      "targets": ["examples/ai-agent-example/docs/AI/AGENT-DESIGN.md"],
       "level": "block"
     },
     {
       "id": "alerts-runbook",
-      "sources": [
-        "EXAMPLE-PROJECT/monitoring/alerts.yaml"
-      ],
-      "targets": [
-        "EXAMPLE-PROJECT/docs/HEALTH-RUNBOOK.md"
-      ],
+      "sources": ["EXAMPLE-PROJECT/monitoring/alerts.yaml"],
+      "targets": ["EXAMPLE-PROJECT/docs/HEALTH-RUNBOOK.md"],
       "level": "block"
     },
     {
@@ -392,9 +337,7 @@
         "examples/local-tools-example/src/**/*.py",
         "examples/local-tools-example/config/tool-authorization.yaml"
       ],
-      "targets": [
-        "examples/local-tools-example/docs/DESIGN.md"
-      ],
+      "targets": ["examples/local-tools-example/docs/DESIGN.md"],
       "level": "block"
     },
     {
@@ -405,9 +348,7 @@
         "scripts/doc-sync/update-doc-state.py",
         "engine/**/*.py"
       ],
-      "targets": [
-        "docs/08-agent-context/AI-CONTEXT.md"
-      ],
+      "targets": ["docs/08-agent-context/AI-CONTEXT.md"],
       "level": "warn"
     },
     {
@@ -417,9 +358,7 @@
         "scripts/doc-sync/engine.py",
         "docs/.doc-sync-map.yaml"
       ],
-      "targets": [
-        "docs/00-governance/ENGINE-COVERAGE.md"
-      ],
+      "targets": ["docs/00-governance/ENGINE-COVERAGE.md"],
       "level": "block"
     }
   ],
@@ -445,11 +384,7 @@
       "EXAMPLE-PROJECT/pyproject.toml",
       "examples/local-tools-example/src/**/*.py"
     ],
-    "targets": [
-      "CURRENT-STATE.md",
-      "NEXT-ACTION.md",
-      "RECENT-CHANGES.md"
-    ]
+    "targets": ["CURRENT-STATE.md", "NEXT-ACTION.md", "RECENT-CHANGES.md"]
   },
   "changelog": {
     "sources": [

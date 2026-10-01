@@ -16,12 +16,16 @@ criticality: medium
 review_days: 180
 last_verified: 2026-09-26
 last_reviewed: 2026-09-26
-last_updated: 2026-09-26
+last_updated: 2026-10-01
 auto_generated: false
 ---
 # Agent memory
 
 ## Patterns that work
+- Coordination: read [`docs/00-governance/MACP.md`](docs/00-governance/MACP.md) and
+  [`state/DASHBOARD.md`](state/DASHBOARD.md) before starting; register in `state/REGISTRY.md` and
+  log the session under `state/sessions/` in real time. `state/**` is coordination data, outside
+  the controlled-document set.
 - Sources are listed in `docs/.doc-sync-map.yaml`; renderers return bytes determined by those sources.
 - Compare in memory before writing. Run `python scripts/doc-sync/generate-all.py --check` in CI.
 - Use Python AST for Python symbols; avoid regex-based parsing of arbitrary programming languages.

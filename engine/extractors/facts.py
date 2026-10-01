@@ -48,6 +48,39 @@ def python_symbols(path: Path):
     return rows
 
 
+def python_api(path: Path):
+    """Public declarations with a one-line summary, from the interpreter's own parser.
+
+    Extends `python_symbols` with the first docstring line, which is what a reader of a reference
+    actually wants. The technique is the same and has the same limit: a definition that exists at
+    runtime but not in the source tree is invisible, and a docstring is quoted, never interpreted.
+    """
+    tree = ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+    rows = []
+
+    def summary(node):
+        text = ast.get_docstring(node) or ''
+        return text.strip().splitlines()[0].strip() if text.strip() else '—'
+
+    def record(node, prefix=''):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            signature = ast.unparse(node.args)
+            annotation = ' -> ' + ast.unparse(node.returns) if node.returns else ''
+            kind = 'async function' if isinstance(node, ast.AsyncFunctionDef) else 'function'
+            rows.append((node.lineno, kind, prefix + node.name,
+                         '(' + signature + ')' + annotation, summary(node)))
+        elif isinstance(node, ast.ClassDef):
+            rows.append((node.lineno, 'class', prefix + node.name, '', summary(node)))
+            for child in node.body:
+                if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    record(child, prefix + node.name + '.')
+
+    for node in tree.body:
+        if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+            record(node)
+    return rows
+
+
 def python_tests(path: Path):
     tree = ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
     tests = []

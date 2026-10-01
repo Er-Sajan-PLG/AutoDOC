@@ -76,12 +76,24 @@ class AgentExampleTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'altered'):
                 pack.verify(base / 'pack')
 
-    def test_release_blocks_without_owner_license_choice(self):
+    def test_release_gate_requires_the_license_file(self):
         with tempfile.TemporaryDirectory() as folder:
-            with self.assertRaisesRegex(ValueError, 'License not selected'):
-                snapshot.snapshot('v1.0.0', Path(folder))
+            with self.assertRaisesRegex(ValueError, 'LICENSE is missing'):
+                snapshot.require_license(Path(folder))
+            (Path(folder) / 'LICENSE').write_text('fixture text\n')
+            self.assertEqual(snapshot.require_license(Path(folder)).name, 'LICENSE')
             with self.assertRaisesRegex(ValueError, 'semantic version'):
                 snapshot.snapshot('anything', Path(folder))
+
+    def test_the_owner_license_choice_is_recorded_in_the_tree(self):
+        text = (ROOT / 'LICENSE').read_text(encoding='utf-8')
+        self.assertIn('Apache License', text)
+        self.assertIn('Version 2.0, January 2004', text)
+        self.assertIn('APPENDIX', text, 'the canonical text, not a summary')
+        pyproject = (ROOT / 'pyproject.toml').read_text(encoding='utf-8')
+        self.assertIn('license = "Apache-2.0"', pyproject)
+        self.assertIn('license-files = ["LICENSE"]', pyproject)
+        self.assertEqual(snapshot.require_license(ROOT), ROOT / 'LICENSE')
 
 
 if __name__ == '__main__':

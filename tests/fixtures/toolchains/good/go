@@ -1,0 +1,11 @@
+#!/bin/sh
+# Fixture stand-in for the Go toolchain. It proves the runner's contract — where the tool runs,
+# what it receives, what it prints — without pretending Go is installed on this machine.
+echo "args: $*"
+echo "cwd: $(pwd)"
+echo "GOPROXY=${GOPROXY:-unset} GOFLAGS=${GOFLAGS:-unset} GOTOOLCHAIN=${GOTOOLCHAIN:-unset}"
+if [ -n "${AWS_SECRET_ACCESS_KEY:-}" ]; then echo "secret: LEAKED"; else echo "secret: not passed"; fi
+echo
+echo "package service"
+echo
+echo "func Add(a int, b int) int"

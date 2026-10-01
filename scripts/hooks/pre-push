@@ -1,0 +1,6 @@
+#!/bin/sh
+# AutoDOC pre-push enforcement. Convenience only: `git push --no-verify` bypasses it, and the
+# required CI check is the real gate. This runs the fast policy pass, not the full test suite.
+set -e
+git rev-parse --show-toplevel >/dev/null 2>&1 || exit 0
+exec make docs-enforce

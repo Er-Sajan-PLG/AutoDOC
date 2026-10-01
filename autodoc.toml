@@ -1,0 +1,132 @@
+# AutoDOC declared context. Read with tomllib (Python 3.11+), so the runtime stays
+# standard-library-only. Humans edit TOML here; machines write JSON elsewhere. Nothing in this
+# file is inferred: every value is a declaration, and every fact override carries a reason.
+
+schema = 1
+
+phase = "build"
+#
+# Phase is a declaration, never an automatic transition. `make docs-hint` suggested `build`
+# (source files and a README exist, no tags, under a year of history) and the owner confirmed
+# it. Under build: missing required documents warn (a baseline is allowed), recommended ones are
+# informational, structural breakage fails, and drift and freshness are off.
+#   idea | prototype | build | beta | live | mature | sunset
+
+phase_declared = "2026-09-30"
+# Date the current phase was declared. The report shows how old the declaration is and suggests
+# a review once it is over a year old; `autodoc promote` will write it. A date without a phase
+# is rejected.
+
+profile = "oss-library"
+# Which catalog profile decides the core set (CONTROL/metadata/PROFILES.json): default | startup |
+# oss-library | internal-service | regulated. This repository is a public tool others consume, so
+# the OSS profile applies: it adds the social documents (code of conduct, vulnerability
+# disclosure, dependency policy) and drops the runbook. The profile's membership is authored
+# data awaiting owner review, and [satisfied_by]/[not_applicable] remain the escape hatch.
+
+audience = ["contributors", "external-users"]
+# external-users | contributors | operators | auditors | successors.
+# This repository is read by the people who use the tool and the people who work on it; declaring
+# the audience is a commitment, not a detection, and it is what the catalog's `reader` field is
+# checked against.
+kinds = ["library"]
+# What this project is, from CONTROL/metadata/CONTEXT-MODEL.json. `make docs-hint` suggested
+# application and library: the library evidence is this package's own manifest, while the
+# application evidence is EXAMPLE-PROJECT/src/app.py, an example inside the repository rather
+# than a program this project ships. The owner read the hint and declared library only — kinds
+# are a declaration, never an inference, and kind-gated documents are undetermined until the
+# question is answered rather than silently not applicable.
+obligations = []   # e.g. ["gdpr", "soc2"]: declared duties only, never inferred
+
+[facts]
+# Override a detected fact only when detection is wrong for this repository, and say why.
+# The detector reads a licence file or a published marker; it cannot see a Git remote's
+# visibility, so the owner states the fact. Every override carries a reason, and the audit lists
+# it next to the detected value.
+is_public = { value = true, reason = "published on GitHub at STEMORG2026/AutoDOC" }
+
+# Demo-fact cleanup (owner decision, 2026-10-01): the only contract-shaped files here belong to
+# the demo fixture, so neither API fact describes this repository. Detection still reports them —
+# the override records why the repository itself answers "no".
+has_http_api = { value = "false", reason = "The only HTTP contract here is the demo fixture's EXAMPLE-PROJECT/routes.json; AutoDOC ships engine modules and Make targets, not a service." }
+has_public_api_surface = { value = "false", reason = "Detection matched only the demo fixture; AutoDOC publishes no contract-file API surface of its own (its public surface is its Python modules, described in prose)." }
+
+# Owner decision 4 (2026-10-01): the remaining demo-only facts answer "no" for the repository.
+# Detection still reports them from the example material; the overrides record why the shipped
+# project itself answers no, and the audit lists each next to the detected value.
+has_persistent_state = { value = "false", reason = "The only schema in the repository is the demo fixture's EXAMPLE-PROJECT/db/schema.sql; AutoDOC persists nothing between runs (reports are files the user asked for), so it has no data model of its own to document." }
+has_env = { value = "false", reason = "Detection matched only the demo fixture's EXAMPLE-PROJECT/.env.example and config.schema.json. The engine reads ambient variables — GITHUB_RUN_ID/GITHUB_SHA for CI evidence, PATH/LANG for toolchain probes — but that is process environment, not a configuration contract: the only configuration is autodoc.toml." }
+has_ai = { value = "false", reason = "The only AI-shaped files are under examples/ai-agent-example, a synthetic example shipped as a fixture; AutoDOC makes no model calls, hosts no model and trains nothing." }
+# `has_network_listener` needs no override: the detector matched its own source (this module's
+# pattern literals), and owner decision 4 fixed that at the source instead — the detector now
+# excludes its own module and answers false here, while a repository that really listens (the
+# go-service fixture) still detects true. The regression test pins both halves.
+
+# Declared traits. These are facts about the world, not about the file tree, so no detector exists
+# for them and none can be added: `handles_personal_data` is not the same as "the schema has an
+# email column", and a `payments/` directory is code, not a live payment flow. Until one is
+# declared its value is `unknown`, and the documents that depend on it are undetermined —
+# reported, never silently not applicable.
+handles_personal_data = { value = "false", reason = "AutoDOC reads repository files on the machine running it and writes reports to the same checkout; it has no accounts, no telemetry and no store of personal data." }
+handles_payments = { value = "false", reason = "AutoDOC never touches money, card or account data; it is a static documentation checker with no runtime service." }
+safety_critical = { value = "false", reason = "AutoDOC reports documentation findings; a wrong or missing finding can block a merge or mislead a reader, but cannot cause physical harm." }
+
+[not_applicable]
+# A skipped document is a decision with a reason, not a failure. Bare string or { reason = "..." }.
+# Example: "DOC-A07-001" = "the service stores no personal data"
+
+[satisfied_by]
+# Where a requirement is already answered, when that is not a file this repository owns
+# (a wiki page, a docs site). A URL is recorded and existence-checked only by a human; local
+# paths are verified by the checker.
+# Example: "DOC-A06-001" = ["https://wiki.example.com/architecture/threat-model"]
+#
+# Owner decision 3 (2026-10-01): the open core decisions are closed at their existing homes.
+# The charter answers the three foundation questions; the architecture, coverage and quick-start
+# documents already carry the contract, strategy and setup content, and CONTRIBUTING gained the
+# Dependencies section the policy row asks for. Each target is a file this repository owns and
+# keeps reviewed, so a local path with the checker behind it is the honest declaration.
+"DEV-B01-001" = ["docs/00-governance/PROJECT-CHARTER.md"]
+"DEV-B01-002" = ["docs/00-governance/PROJECT-CHARTER.md"]
+"DEV-B01-003" = ["docs/00-governance/PROJECT-CHARTER.md"]
+"DEV-B05-001" = ["docs/05-architecture/AUTODOC-ARCHITECTURE.md"]
+"DEV-B07-001" = ["docs/00-governance/ENGINE-COVERAGE.md"]
+"DEV-B10-003" = ["QUICK-START.md"]
+"DOC-A09-006" = ["CONTRIBUTING.md"]
+
+[instantiated]
+# catalog type id -> the controlled document that satisfies it. Derived from the adoption record
+# (docs/00-governance/ADOPTION.md); a mapping is a claim that the file really is that document.
+"DEV-B04-001" = "docs/05-architecture/AUTODOC-ARCHITECTURE.md"
+"DEV-B08-001" = "CURRENT-STATE.md"
+"DEV-B08-002" = "NEXT-ACTION.md"
+"DEV-B08-003" = "RECENT-CHANGES.md"
+"DEV-B09-001" = "AGENTS.md"
+"DEV-B10-001" = "QUICK-START.md"
+"DEV-B11-003" = "CONTROL/policies/FRESHNESS-SLA-POLICY.md"
+"DOC-A09-005" = "CONTRIBUTING.md"
+# Owner decision 3 (2026-10-01). The ADR row was expected to be [not_applicable], but the checker
+# reports every skip on an `always` row as a stale decision (its predicate is true by definition),
+# so the row is closed with a real decision record instead — the honest option the review page
+# offered first, and the one that leaves no permanent warning behind.
+"DEV-B01-006" = "README.md"
+"DEV-B04-002" = "docs/adr/0001-zero-runtime-dependencies.md"
+"DOC-A06-008" = "SECURITY.md"
+"DOC-A09-009" = "CODE_OF_CONDUCT.md"
+
+[severity]
+# Override the phase default for a rule. Only rules something honours are accepted; a severity
+# for an unhonoured rule is inert data and is rejected. Only deliberate policy is pinned here:
+# a pin that merely repeats the phase block is noise, and one that contradicts it hides the
+# phase (the report lists pins, and the phase block is stated in the same report).
+#
+# `stubs` and `tribal` are stricter than the build default on purpose: an approved document
+# with no content is a broken promise, and an instruction nobody outside can follow should not
+# pass review. `freshness.*` is off under build, but this repository keeps review dates and an
+# SLA policy, so overdue reviews are enforced here. `recommend.*` is deliberately not pinned:
+# every core decision is now recorded (owner decision 4, 2026-10-01), so the phase default is
+# what applies and a pin would only duplicate it.
+stubs = "error"
+tribal = "error"
+"freshness.critical" = "error"
+"freshness.review" = "warn"

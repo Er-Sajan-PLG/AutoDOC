@@ -35,4 +35,6 @@ permissions or release credentials to untrusted PR checks.
 
 ## Evidence and release
 Only record executed tests/builds and actual materials, with a commit and digests. An unsigned
-record is not a cryptographic attestation. Choose a license before publishing or enabling release.
+record is not a cryptographic attestation. The license is Apache-2.0 (owner decision,
+2026-10-01; `LICENSE`), so a release now requires a `vX.Y.Z` tag at the same commit and a clean
+tree rather than a licensing decision.

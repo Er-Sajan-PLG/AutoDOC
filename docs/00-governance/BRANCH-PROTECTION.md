@@ -28,3 +28,17 @@ owner decisions. `AutoDOC self-documentation / impact` is path-filtered and **ca
 sole required check (it may not run on unrelated PRs). The nightly freshness workflow is
 scheduled and not a PR required check. Verify current check names in GitHub before enabling;
 this document does not change repository settings or assert they are enabled.
+
+`make docs-require-check` prints the exact payload and the `gh api` command for the required
+status check, and changes nothing; `make docs-require-check APPLY=1` performs the update and
+must be run by a repository owner with admin rights. It is dry-run by default because it edits
+repository settings, not files.
+
+The trigger model behind this table — which event runs what, what may block, and what is only
+triage — is declared in `CONTROL/metadata/TRIGGERS.json`, rendered into
+`docs/generated/TRIGGER-REFERENCE.md`, and verified against the workflows by
+`python scripts/intelligence/triggers.py --check` (part of `make ci`), so this document cannot
+drift from the wiring it describes.
+
+The pre-push hook (`make hooks-install`) runs the same enforcement locally. It is a convenience
+that `git push --no-verify` bypasses, so the required check above remains the real gate.

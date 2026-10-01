@@ -34,29 +34,38 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
-- 82bb397 2026-09-26 Initial commit: AutoDOC scaffolding
+- f43ad56 2026-10-01 chore(state): record the owner round and reconcile after decision 4
+- c7980f9 2026-10-01 Close the last core decision: the demo-only facts answer no, and the detector stops matching itself
+- 56be338 2026-10-01 chore(state): register the decision-round walkthrough session
+- 14310ea 2026-10-01 chore(state): hand off paused, with the self-check result
+- c57b149 2026-10-01 fix(state): sessions close only on the owner's word; persist before presenting
+- 8ae8d81 2026-10-01 chore(state): reconcile after the cold-clone continuity test
+- b3a4490 2026-10-01 test(state): cold-clone continuity test — verdict, gaps, and the dossier that closes them
+- 312b40a 2026-10-01 chore(state): correct the recovery-note timestamps to the real clock
+- 2aefa09 2026-10-01 chore(state): record recovery #15 and reconcile the dashboard tip
+- 407d3d4 2026-10-01 chore(state): record the decision-3 landing and green PR gates
+- f39e20f 2026-10-01 chore(state): reconcile after closing the open core decisions
+- 1a65f5d 2026-10-01 Close the open core decisions at their existing homes (owner decision 3)
+- 891dcc8 2026-10-01 chore(state): record the audit landing and green PR gates
+- 3bb53b6 2026-10-01 chore(state): reconcile after the MACP bootstrap audit
+- d26d798 2026-10-01 Transcribe the full MACP protocol and remove the reconstructed sections
+- f417a8f 2026-10-01 Log the MACP landing and hand off with the session state reconciled
+- 868588e 2026-10-01 Adopt MACP: protocol in governance, state/ bootstrapped, session registered
+- c02d733 2026-10-01 Apply the three flag decisions: detector, rules, config, page and tests
+- f37d98a 2026-10-01 Apply the owner's three core-list flags and show the final counts
+- d384d4e 2026-10-01 Correct the core-list review and answer the owner's three fact questions
 
 ## Changed paths at update time
 
-- `.github/CODEOWNERS`
-- `.github/PULL_REQUEST_TEMPLATE.md`
-- `.github/workflows/docs-generation-preview.yml`
-- `.github/workflows/docs-guard.yml`
-- `.github/workflows/docs-staleness.yml`
-- `.github/workflows/release.yml`
-- `.github/workflows/self-doc-check.yml`
-- `.gitignore`
-- `.pre-commit-config.yaml`
-- `AGENT-MEMORY.md`
-- `AGENTS.md`
-- `ANTI-PATTERNS-FOR-AGENT.md`
-- `AUTODOC.md`
-- `CATALOG-A/INDEX.yaml`
-- `CATALOG-B/INDEX.yaml`
-- `CATALOG-C/INDEX.yaml`
-- `CHANGELOG.md`
-- `CLAUDE.md`
-- `CONTEXT-SNAPSHOT.md`
-- `CONTRIBUTING.md`
-- … and 944 more; use git diff --cached --name-only.
+- `CONTROL/metadata/CATALOG-RULES.json`
+- `CONTROL/metadata/MASTER-INDEX.json`
+- `CONTROL/metadata/PROFILES.json`
+- `docs/00-governance/ADOPTION.md`
+- `docs/00-governance/CORE-LIST-REVIEW.md`
+- `docs/00-governance/INVENTORY.yaml`
+- `docs/META/OUTLINE.md`
+- `state/BLOCKERS.md`
+- `state/DEBT.md`
+- `state/DECISIONS.md`
+- `state/sessions/20261001-1242-A476-decision-round.md`
 <!-- auto:end -->

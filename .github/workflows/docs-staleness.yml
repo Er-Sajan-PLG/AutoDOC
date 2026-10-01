@@ -1,4 +1,6 @@
-# Nightly and Monday checks surface overdue human review; maintainers triage logs and artifacts.
+# Nightly and Monday triage: every check reports even if an earlier one fails, and the final step
+# makes the run red for a human to read. Nothing in this workflow is a merge gate, and the only
+# network access is the scheduled external link check — rate-limited and warn-only by design.
 name: AutoDOC nightly freshness
 on:
   schedule:
@@ -12,15 +14,31 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Nightly drift and local-link verification
-        run: |
-          python scripts/doc-sync/check-doc-drift.py
-          python scripts/doc-control/guards.py
-          python scripts/doc-control/check_ownership.py
-      - run: python scripts/doc-sync/engine.py freshness
+      - name: Generated-document drift
+        id: drift
+        continue-on-error: true
+        run: python scripts/doc-sync/check-doc-drift.py
+      - name: Guarded paths and metadata
+        id: guards
+        continue-on-error: true
+        run: python scripts/doc-control/guards.py
+      - name: Ownership
+        id: ownership
+        continue-on-error: true
+        run: python scripts/doc-control/check_ownership.py
+      - name: Overdue review
+        id: freshness
+        continue-on-error: true
+        run: python scripts/doc-sync/engine.py freshness
       - name: Measure documentation health
+        id: health
         if: always()
+        continue-on-error: true
         run: python scripts/doc-control/health.py --output "$RUNNER_TEMP/autodoc-health.json" --markdown-output "$RUNNER_TEMP/DOCS-HEALTH-$(date -u +%F).md"
+      - name: External links (rate-limited, warn-only)
+        id: links
+        continue-on-error: true
+        run: python scripts/doc-control/check_external_links.py
       - name: Upload measured health report
         if: always()
         uses: actions/upload-artifact@v4
@@ -30,3 +48,14 @@ jobs:
             ${{ runner.temp }}/autodoc-health.json
             ${{ runner.temp }}/DOCS-HEALTH-*.md
           if-no-files-found: ignore
+      - name: Summarise the triage run
+        if: always()
+        env:
+          FAILED: ${{ steps.drift.outcome == 'failure' || steps.guards.outcome == 'failure' || steps.ownership.outcome == 'failure' || steps.freshness.outcome == 'failure' || steps.health.outcome == 'failure' || steps.links.outcome == 'failure' }}
+        run: |
+          if [ "$FAILED" = "true" ]; then
+            echo 'One or more scheduled checks failed; read the step logs above.'
+            echo 'This run is triage, not a gate: no pull request is affected.'
+            exit 1
+          fi
+          echo 'All scheduled checks passed.'

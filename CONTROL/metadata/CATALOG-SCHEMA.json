@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:autodoc:catalog:1",
+  "title": "AutoDOC catalog index",
+  "description": "Schema for CATALOG-A/INDEX.yaml and CATALOG-B/INDEX.yaml. The index is generated from CONTROL/metadata/CATALOG-RULES.json; this schema and check_catalog.py verify it. The validator implements a keyword subset and fails on any keyword it does not implement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "note", "domains"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "purpose", "documents"],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "pattern": "^[AB][0-9]{2}-[A-Z0-9-]+$"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "documents": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "name",
+                "type",
+                "tier",
+                "tier_reason",
+                "severity_by_phase",
+                "phase_min",
+                "applies_when",
+                "question",
+                "reader",
+                "support",
+                "checks",
+                "events",
+                "owner",
+                "owner_type",
+                "purpose",
+                "when",
+                "maturity",
+                "required_content",
+                "related",
+                "mode",
+                "template"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(DOC|DEV)-[AB][0-9]{2}-[0-9]{3}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["SPEC", "DEC", "DES", "PROC", "POL", "REF", "REC", "EVD", "TPL"]
+                },
+                "tier": {
+                  "type": "string",
+                  "enum": ["core", "extended", "contextual"]
+                },
+                "tier_reason": {
+                  "type": ["string", "null"],
+                  "minLength": 1
+                },
+                "applies_when": {
+                  "type": ["array", "object"],
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|phase>=[a-z]+|obligation:[a-z][a-z0-9-]*)$"
+                  },
+                  "properties": {
+                    "all": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|phase>=[a-z]+|obligation:[a-z][a-z0-9-]*)$"
+                      }
+                    },
+                    "any": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|phase>=[a-z]+|obligation:[a-z][a-z0-9-]*)$"
+                      }
+                    }
+                  },
+                  "description": "Predicate tokens: a detectable fact, `always`/`assess`, `kind:<id>` (answered only by declared kinds), `phase>=<id>` (true from that phase on; undetermined while undeclared) or `obligation:<id>`."
+                },
+                "owner": {
+                  "type": "string",
+                  "pattern": "^@"
+                },
+                "owner_type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "purpose": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "when": {
+                  "type": "string",
+                  "enum": ["active development", "pre-release", "post-release"]
+                },
+                "maturity": {
+                  "type": "string",
+                  "enum": ["Project-Phase", "Hardened", "Product-Grade"]
+                },
+                "required_content": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "related": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mode": {
+                  "type": "string",
+                  "enum": ["human-review", "source-dependent"]
+                },
+                "template": {
+                  "type": "string",
+                  "pattern": "^TEMPLATES/[A-Z-]+/(DOC|DEV)-[AB][0-9]{2}-[0-9]{3}\\.md$"
+                },
+                "phase_min": {
+                  "type": ["string", "null"],
+                  "description": "Derived from severity_by_phase by the generator: the first phase at which this type is not off. Never authored, so it cannot disagree with the map."
+                },
+                "severity_by_phase": {
+                  "type": "object",
+                  "description": "Authored, sparse: the phases where this type is off. Any phase not named here takes the declared phase block's severity for its tier. A phase later than one that is not off must not be off (requiredness is monotone).",
+                  "additionalProperties": false,
+                  "properties": {
+                    "idea": {
+                      "enum": ["off", "report", "warn", "error"]
+                    },
+                    "prototype": {
+                      "enum": ["off", "report", "warn", "error"]
+                    },
+                    "build": {
+                      "enum": ["off", "report", "warn", "error"]
+                    },
+                    "beta": {
+                      "enum": ["off", "report", "warn", "error"]
+                    },
+                    "live": {
+                      "enum": ["off", "report", "warn", "error"]
+                    },
+                    "mature": {
+                      "enum": ["off", "report", "warn", "error"]
+                    },
+                    "sunset": {
+                      "enum": ["off", "report", "warn", "error"]
+                    }
+                  }
+                },
+                "question": {
+                  "type": ["string", "null"],
+                  "minLength": 1,
+                  "description": "The reader question this document answers. Required (non-null) for any type a profile can list; null means the entry has not been admitted yet."
+                },
+                "reader": {
+                  "type": ["string", "null"],
+                  "enum": [
+                    "external-users",
+                    "contributors",
+                    "operators",
+                    "auditors",
+                    "successors",
+                    null
+                  ],
+                  "description": "Who reads it, from the context model's audience vocabulary."
+                },
+                "support": {
+                  "enum": ["checked", "template-only", "human"],
+                  "description": "What AutoDOC actually does for this type: checked (the checks below run), template-only (a template exists, nothing is verified), human (no detector is possible; a person must judge)."
+                },
+                "checks": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "presence",
+                      "drift",
+                      "stubs",
+                      "placeholders",
+                      "links.local",
+                      "secrets.inline",
+                      "tribal",
+                      "freshness.critical",
+                      "freshness.review"
+                    ]
+                  },
+                  "description": "The check families that apply to this type. A claim of support=checked needs at least one; file-level families still run over the whole repository."
+                },
+                "events": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  },
+                  "description": "Lifecycle events that make this document need attention. The vocabulary is declared in CATALOG-RULES.json; an empty list means review is periodic."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
