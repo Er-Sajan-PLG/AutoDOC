@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MODEL = ROOT / 'CONTROL/metadata/CONTEXT-MODEL.json'
 SEVERITIES = ('off', 'report', 'warn', 'error')
 CHECK_FAMILIES = ('drift', 'stubs', 'placeholders', 'links.local', 'secrets.inline',
-                  'tribal', 'freshness.critical', 'freshness.review')
+                  'tribal', 'generator.heuristic', 'freshness.critical', 'freshness.review')
 SCHEMA = ROOT / 'CONTROL/metadata/CONTEXT-SCHEMA.json'
 PROFILES = ROOT / 'CONTROL/metadata/PROFILES.json'
 CATALOG_CHECK = ROOT / 'scripts/doc-control/check_catalog.py'
@@ -27,8 +27,6 @@ PROFILER = ROOT / 'scripts/intelligence/profile.py'
 DEFAULTS = {'version': 1, 'phase': None, 'phase_declared': None, 'profile': None, 'audience': [],
             'kinds': [], 'obligations': [], 'facts': {}, 'not_applicable': {}, 'satisfied_by': {},
             'instantiated': {}, 'severity': {}, 'resolved_aliases': {}, 'alias_problems': []}
-CODE_LANGUAGES = ('python', 'javascript', 'typescript', 'go', 'rust', 'java', 'csharp', 'c',
-                  'cpp', 'ruby', 'shell', 'sql', 'terraform')
 
 
 def load_module(name, path):
@@ -371,7 +369,8 @@ def phase_hints(root, profile_document=None, today=None):
         match = re.fullmatch(r'v?(\d+)\.\d+\.\d+', tag.strip())
         if match and int(match.group(1)) >= 1:
             major_tags.append(tag.strip())
-    has_source = bool(profile_document and any(language in CODE_LANGUAGES
+    code_languages = load_module('autodoc_profiler', PROFILER).CODE_LANGUAGES
+    has_source = bool(profile_document and any(language in code_languages
                                                for language in profile_document['languages']))
     readme = any((root / name).is_file() for name in
                  ('README.md', 'README.rst', 'README.txt', 'Readme.md', 'readme.md'))

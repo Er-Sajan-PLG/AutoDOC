@@ -88,3 +88,18 @@
   leaves exactly those documents **undetermined**, reported and never read as `false`. Both
   reports state each trait's answer, `--hint` prints the open questions, and this repository
   answers all three `false` with reasons.
+- Made generation honest per language and per generator (§6): every generator now declares its
+  exactness (`exact` or `heuristic`) and its limits in one table, the label travels in the marker
+  of every generated Markdown file, `header()` requires it so a new generator cannot ship
+  unlabeled, and a heuristic generator warns by default as `generator.heuristic` — advisory at
+  build, pin-able, never silently trusted. Per-language references integrate the language's own
+  tool instead of reimplementing it: Python is extracted in-process with the interpreter's parser
+  (exact, with docstring summaries), and Go integrates `go doc -all .` behind a probe. The runner
+  executes the tool inside the repository with a scrubbed environment (the caller's variables are
+  never inherited), the toolchain's offline flags, no shell and a timeout, and a missing, failing
+  or hanging tool is reported with its reason rather than replaced or faked. A language with no
+  generator is L0 — file and manifest facts only — and both reports say so; `make docs-languages`
+  prints the per-language situation, and a reference from an external toolchain is on demand
+  (`SHOW=<language>`) and never committed, because a drift-checked target that depends on the
+  machine cannot be reproducible. `docs/META/CODE-INVENTORY.md` became the per-language inventory,
+  and the automation reference now carries each mapping's exactness and limits.

@@ -68,5 +68,13 @@ facts about the world, so they carry a stated reason instead of a detector, are 
 evidence, and an unanswered trait is never read as `false`. Profiling this repository reports `has_public_api_surface`,
 `has_persistent_state`, `has_env` and `has_ai` because the synthetic examples contain those
 files, which is exactly why the report demands a recorded decision instead of assuming the
-project owns an API or a database. The catalog tiers are a reviewable proposal, not a
+project owns an API or a database. Generated references are labeled, not trusted: every generator states whether it is `exact` or
+`heuristic` and what it cannot see, and a heuristic generator warns by default. Per-language
+coverage is honest about its reach: Python is extracted in-process with the interpreter's parser,
+Go integrates `go doc -all .` when the toolchain is present, and **every other language is read at
+L0** — file and manifest facts only — because AutoDOC integrates a language's own tool instead of
+reimplementing one. `make docs-languages` prints that situation for this repository, including
+which declared generator cannot run on this machine. A reference produced by an external toolchain
+is printed on demand and never committed: the same repository on two machines would disagree, and
+a generated target that depends on the environment cannot be drift-checked. The catalog tiers are a reviewable proposal, not a
 measurement of any project's obligations, and a member of a tier is a *possible* document.

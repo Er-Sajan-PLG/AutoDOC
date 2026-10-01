@@ -16,6 +16,9 @@ Pre-commit ──> PR check ──> Merge preview ──> Release gate ──> N
 - Can snapshot controlled docs at release **after** the owner chooses a license (currently blocked).
 - Asks for the facts no file can answer (personal data, payments, safety) instead of guessing,
   and leaves their documents undetermined until the owner declares them in `autodoc.toml`.
+- Labels every generator `exact` or `heuristic` (with its limits in the file), and integrates a
+  language's own tool rather than hand-rolling a parser: `make docs-languages` says what each
+  language gets here and what stays at L0.
 
 ## Quick start (Python 3.11+)
 

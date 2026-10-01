@@ -51,6 +51,11 @@ LANGUAGES = {'.py': 'python', '.js': 'javascript', '.ts': 'typescript', '.tsx': 
              '.cs': 'csharp', '.c': 'c', '.h': 'c', '.cpp': 'cpp', '.sh': 'shell',
              '.sql': 'sql', '.yaml': 'yaml', '.yml': 'yaml', '.json': 'json', '.md': 'markdown',
              '.toml': 'toml', '.tf': 'terraform'}
+# The languages that are code, as opposed to the data and prose formats LANGUAGES also counts.
+# One vocabulary, used by the phase hint here and by the per-language generator registry, so a
+# language cannot be "code" in one place and a data format in another.
+CODE_LANGUAGES = ('python', 'javascript', 'typescript', 'go', 'rust', 'java', 'csharp', 'c',
+                  'cpp', 'ruby', 'shell', 'sql', 'terraform')
 AI_DEPENDENCIES = {'openai', 'anthropic', '@anthropic-ai/sdk', 'langchain', 'llama-index',
                    'transformers', 'llama-cpp-python', 'google-generativeai', 'ollama', 'ai'}
 WEB_DEPENDENCIES = {'fastapi', 'flask', 'django', 'starlette', 'uvicorn', 'gunicorn', 'aiohttp',

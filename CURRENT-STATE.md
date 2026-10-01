@@ -66,7 +66,12 @@ fact that cannot be read makes a type **undetermined** rather than silently sati
 `beta` adds drift and freshness as warnings; `live` and `mature` fail all four; `sunset` shrinks
 to the sunset profile. This repository declares `build` (2026-09-30), so its 16 applicable
 core types are surveyed against that phase: 7 are acknowledged, and the missing required ones
-warn rather than fail. Traits follow the same rule: `handles_personal_data`, `handles_payments`
+warn rather than fail. Generated references are labeled too: each generator declares `exact` or
+`heuristic` and what it cannot see, the label travels with the file, and a heuristic generator
+warns by default. Per-language references integrate the language's own tool (`ast` for Python,
+`go doc` for Go), run it inside the repository with a scrubbed environment and a timeout, and
+report a missing tool instead of replacing it; `make docs-languages` shows what each language gets
+here, with every other language named as L0. Traits follow the same rule: `handles_personal_data`, `handles_payments`
 and `safety_critical` are declared in `[facts]`, never inferred — no detector exists for a fact
 about the world — and an unanswered trait leaves the documents that depend on it undetermined.
 This repository answers all three `false` with a reason, so the PII inventory, cardholder data

@@ -58,6 +58,7 @@
         "links.local": "report",
         "secrets.inline": "report",
         "tribal": "report",
+        "generator.heuristic": "report",
         "freshness.critical": "off",
         "freshness.review": "off"
       }
@@ -75,6 +76,7 @@
         "links.local": "error",
         "secrets.inline": "error",
         "tribal": "report",
+        "generator.heuristic": "warn",
         "freshness.critical": "off",
         "freshness.review": "off"
       }
@@ -91,6 +93,7 @@
         "links.local": "error",
         "secrets.inline": "error",
         "tribal": "report",
+        "generator.heuristic": "warn",
         "freshness.critical": "warn",
         "freshness.review": "warn"
       }
@@ -107,6 +110,7 @@
         "links.local": "error",
         "secrets.inline": "error",
         "tribal": "report",
+        "generator.heuristic": "warn",
         "freshness.critical": "error",
         "freshness.review": "error"
       }
@@ -124,6 +128,7 @@
         "links.local": "off",
         "secrets.inline": "off",
         "tribal": "off",
+        "generator.heuristic": "off",
         "freshness.critical": "off",
         "freshness.review": "off"
       }
@@ -201,6 +206,14 @@
       "purpose": "instructions that depend on undocumented private knowledge",
       "exactness": "heuristic",
       "limits": "Markdown only, and only known phrase patterns such as \"ask John\" or \"just ask\"; undocumented knowledge in any other form is not seen."
+    },
+    {
+      "id": "generator.heuristic",
+      "honored": true,
+      "description": "A generator whose output is a bounded extraction, labeled with what it can miss; advisory by default and never silently trusted.",
+      "purpose": "generated targets whose generator extracts heuristically instead of integrating an exact tool",
+      "exactness": "exact",
+      "limits": "Says that the generator is heuristic, and names its limits; it cannot tell whether this run of it is wrong."
     },
     {
       "id": "freshness.critical",

@@ -56,7 +56,10 @@ by checked-in files and must not be claimed as complete.
 5. Done. Enforcement is one policy: `scripts/intelligence/enforce.py` runs obligations and the
    structural families at the severity the declared phase sets, with a baseline for adoption,
    documented exit codes, a pre-push hook and a dry-run branch-protection helper. `make ci` runs it.
-6. Next: `init`, `adopt`, `promote` and `add` — scaffolding per phase, with `adopt` writing the
+6. Partly done. Per-language references: Python is extracted in-process (exact) and Go's
+   toolchain is integrated behind a probe; every other language is reported as L0 with the reason.
+   Next in this step: more integrated toolchains (JavaScript/TypeScript and Rust have canonical
+   tools to wire), then `init`, `adopt`, `promote` and `add` — scaffolding per phase, with `adopt` writing the
    baseline and `promote` showing the delta and an optional baseline before it writes the phase.
    Then render templates on demand instead of committing 780 variants, and dogfood on a
    repository that is not this one.

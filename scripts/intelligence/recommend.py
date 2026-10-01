@@ -37,6 +37,38 @@ profiler = load_module('autodoc_profiler', 'scripts/intelligence/profile.py')
 MODEL = context_module.load_model()
 
 
+def languages_module():
+    """The per-language generator registry, loaded on first use.
+
+    Reports state what each code language in the repository gets — an exact integration, a
+    declared generator whose toolchain is missing here, or L0 — so the generator side is never
+    silent about a language it cannot read.
+    """
+    global _LANGUAGES
+    if _LANGUAGES is None:
+        _LANGUAGES = load_module('autodoc_languages', 'scripts/doc-sync/languages.py')
+    return _LANGUAGES
+
+
+_LANGUAGES = None
+
+
+def language_summary(profile_document, probe=True):
+    counts = (profile_document or {}).get('languages') or {}
+    rows = languages_module().rows(counts, probe=probe)
+    return {'rows': rows, 'languages': [row['language'] for row in rows],
+            'l0': [row['language'] for row in rows if not row['generator']],
+            'unavailable': [row['language'] for row in rows
+                            if row['generator'] and not row.get('available', True)],
+            'note': 'A language with a declared generator is read by integrating its own tool; a '
+                    'language without one is read at L0 — file and manifest facts only — and '
+                    'never guessed at.'}
+
+
+def language_line(summary):
+    return languages_module().line(summary.get('rows') or [])
+
+
 def catalog():
     """Return every catalog entry as a dict in stable id order."""
     documents = []
@@ -587,6 +619,7 @@ def report(data):
              + (f", {len(profile['removed'])} removed" if profile['removed'] else '') + ')',
              kind_line(kinds, groups),
              trait_line(data.get('traits') or {}, groups),
+             language_line(data.get('languages') or {}),
              f"- {summary['readiness']}",
              f"- Open core decisions: {summary['open_core_decisions']}",
              f"- Undetermined types (unknown fact): {summary['undetermined_types']}",
@@ -662,6 +695,7 @@ def build(args):
     return {'version': 2, 'repo': profile_document['repo'], 'phase': context['phase'],
             'kinds': kind_summary(profile_document, context),
             'traits': trait_summary(profile_document, context),
+            'languages': language_summary(profile_document),
             'enforcement': enforcement, 'ecosystems': profile_document['ecosystems'],
             'unknown_facts': unknown, 'facts': profile_document['facts'],
             'profile': profile_document, 'catalog_profile': score_profile(placement),

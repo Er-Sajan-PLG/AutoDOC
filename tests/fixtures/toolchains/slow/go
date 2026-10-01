@@ -1,0 +1,3 @@
+#!/bin/sh
+# Fixture stand-in that never finishes, so the runner's timeout is exercised.
+sleep 30

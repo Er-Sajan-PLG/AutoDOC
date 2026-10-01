@@ -135,6 +135,19 @@ Authoritative catalogs / source files / Markdown metadata
   forms are exercised rather than merely allowed: the PII inventory, the new Cardholder data flow
   and Hazard analysis (each core, required once its trait is true), and the deeper privacy set.
 
+- **Generators are labeled, and languages are integrated, never reimplemented**
+  (`scripts/doc-sync/engine.py`, `scripts/doc-sync/languages.py`). Every generator declares its
+  exactness and its limits in one table; the label travels with the generated file, a heuristic
+  generator warns by default (`generator.heuristic`), and `header()` requires the label so a new
+  generator cannot ship unlabeled. Per-language references go further: a language gets a generator
+  only where its own tool can be integrated (Python in-process with the interpreter parser, Go via
+  `go doc -all .`), the tool runs inside the repository with a scrubbed environment, offline flags,
+  no shell and a timeout, and a missing, failing or hanging tool is reported with its reason rather
+  than replaced by a hand-rolled parser. A language with no generator is L0 — file and manifest
+  facts only — and every report names it. External-tool references are on demand
+  (`make docs-languages SHOW=<language>`) and never committed, because a drift-checked target that
+  depends on the machine cannot be reproducible.
+
 - **The catalog states what it can and cannot verify** (`CATALOG-SCHEMA.json`, `CATALOG-RULES.json`).
   Each type carries the reader question it answers, who reads it, the lifecycle events that make
   it stale, the checks that apply to it, and a `support` level: `checked` (named checks run),

@@ -33,7 +33,8 @@ All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make gene
 | Demo SQLite DDL | Data dictionary | Simple CREATE TABLE columns only | `test_phase2.py` |
 | Example alert JSON-compatible YAML | Alert catalog | Condition, severity, existing runbook required | `test_phase3.py` |
 | PEP 621 manifests | Declared dependency references | Direct declarations, no resolution | `test_phase2.py` |
-| Python AST and ATX Markdown | Code/test inventory and outline | Parsed declarations/headings, not behavior | `test_phase2.py` |
+| Python AST and ATX Markdown | Per-language code inventory and outline | Parsed declarations/headings, not behavior | `test_phase2.py`, `test_languages.py` |
+| Declared toolchain (`go doc -all .`) | On-demand language reference (`make docs-languages SHOW=go`) | Runs the language's own tool inside the repository, offline and with a timeout; an absent tool is reported, never replaced | `test_languages.py` |
 | Catalog rules file | `CATALOG-A/B/INDEX.yaml` | Seeds names; derives type, tier, `phase_min`, `applies_when`, maturity | `test_catalog.py` |
 | Repository files | `profile.json` three-valued facts | File presence only; `unknown` when nothing could be read | `test_profile.py` |
 | `autodoc.toml` `[facts]` traits | declared personal-data / payments / safety values | Declaration only; no detector exists, and unanswered is `unknown`, never false | `test_profile.py`, `test_resolver.py` |
@@ -46,6 +47,25 @@ All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make gene
 | Catalogs/workflow files | Three views, CI inventory, completeness | Stable IDs and file hashes | `test_engine.py`, `test_phase3.py` |
 | Frontmatter + sync map | Master/human inventories; JSON + Mermaid graph | References and actual mapped paths | `test_engine.py`, `test_phase3.py` |
 | Local tool matrix/prompt files | Allowlist, prompt and model inventories | No LLM, shell or network tool execution | `test_local_tools.py`, `test_agent_example.py` |
+
+## The generation contract
+Every generator declares its exactness and its limits in one table in `scripts/doc-sync/engine.py`:
+`exact` is the authoritative record of what it reads, `heuristic` is a bounded extraction that can
+miss something of the kind it reports. The label and its limits are written into every generated
+Markdown file, so a reader can judge the output without reading the generator; a heuristic
+generator emits an advisory `generator.heuristic` finding by default, which the phase severity or
+a `[severity]` pin can turn down but never turns into silent trust. No mapping may name a
+generator without a label, and the label table is asserted to match the generator registry.
+
+Per-language references follow the same rule and one more: a language gets a generator only where
+its **own tool** can be integrated — AutoDOC never hand-rolls a parser for a language whose
+toolchain exists — and a language with no generator is reported as **L0** (file and manifest facts
+only) rather than guessed at. The runner executes the tool inside the repository with a scrubbed
+environment, the toolchain's offline flags, no shell and a timeout, and a missing, failing or
+hanging tool is reported with its reason. Python is extracted in-process with the interpreter's
+own parser; Go integrates `go doc -all .`. A reference produced by an external toolchain is
+printed on demand and never committed to a drift-checked target, because the same repository on
+two machines would disagree.
 
 ## Implemented validators
 Metadata (required fields, enums, unique IDs), relationship IDs and supersedes cycles,

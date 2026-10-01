@@ -1,6 +1,6 @@
 PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 BASE ?= origin/master
-.PHONY: help setup lint generate check test ci docs-verify docs-drift docs-metadata docs-ownership docs-inventory docs-freshness docs-sync docs-health docs-stubs docs-catalog docs-profile docs-recommend docs-hint docs-explain docs-enforce docs-baseline docs-require-check hooks-install docs-staged-impact evidence check-evidence self-doc report
+.PHONY: help setup lint generate check test ci docs-verify docs-drift docs-metadata docs-ownership docs-inventory docs-freshness docs-sync docs-health docs-stubs docs-catalog docs-profile docs-recommend docs-hint docs-languages docs-explain docs-enforce docs-baseline docs-require-check hooks-install docs-staged-impact evidence check-evidence self-doc report
 
 help: ## Show available commands and their purposes
 	@awk '$$0 !~ /^[[:space:]]/ && $$0 !~ /^#/ && index($$0, "## " ) {i=index($$0, "## " ); n=substr($$0,1,i-1); sub(/:[^:]*$$/,"",n); gsub(/\\:/,":",n); gsub(/[[:space:]]+$$/,"",n); printf "%-22s %s\n",n,substr($$0,i+3)}' $(MAKEFILE_LIST)
@@ -54,6 +54,9 @@ docs-profile: ## Detect project facts (flags) from file presence
 
 docs-recommend: ## List catalog types that apply here, with reasons and recorded decisions
 	$(PYTHON) scripts/intelligence/recommend.py
+
+docs-languages: ## Show which generator each code language gets; SHOW=<language> renders one
+	$(PYTHON) scripts/doc-sync/languages.py $(if $(SHOW),--show "$(SHOW)",)
 
 docs-hint: ## Suggest a phase and kinds from evidence; a hint never sets enforcement
 	$(PYTHON) scripts/intelligence/recommend.py --hint
