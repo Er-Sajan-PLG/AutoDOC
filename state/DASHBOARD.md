@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T12:35Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `b3a4490`
+**Last reconciled:** 2026-10-01T12:32Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `c57b149` + the handoff-log commit
 
 ## Project
 
@@ -40,11 +40,12 @@ Register yourself in `REGISTRY.md` before starting work.
    the gates and the whole pending decision round, and can verify the numbers with system `python3`
    and no install (`state/sessions/20261001-1219-A476-cold-clone-test.md`).
 
-6. **Sessions await the owner's close** (ADR-009, MACP local rule 8): the landed `A476` sessions are
-   **not** complete — they are `landed`/`PAUSED (awaiting owner)`, and their plans are kept until the
-   owner closes them. Only the owner's word moves a session to CLOSED. The two process rules that
-   came with this correction are **persist before presenting** (decision rounds live in
-   `DECISIONS.md` § Pending, never only in chat) and the **handoff self-check**.
+6. **Sessions await the owner's close** (ADR-009, MACP local rule 8): no `A476` session is complete.
+   One is `PAUSED (awaiting owner)`; three are `landed — awaiting owner close`; their plans are kept.
+   Only the owner's word moves a session to CLOSED. Two companion rules came with this correction:
+   **persist before presenting** (decision rounds live in `DECISIONS.md` § Pending, never only in
+   chat) and the **handoff self-check** (local rule 10) — performed on the pushed branch this time,
+   not requested from the owner.
 
 ## Recently landed (sessions await the owner's close)
 

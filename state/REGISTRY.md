@@ -1,12 +1,12 @@
 # REGISTRY — who is working here and what they own
 
-**Last reconciled:** 2026-10-01T12:31Z
+**Last reconciled:** 2026-10-01T12:32Z
 
 ## Active — work in flight, or landed and awaiting the owner
 
 | Agent ID | Model / type | Branch | Task (one line) | Started (UTC) | Claimed paths | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Session-lifecycle correction: sessions close only on the owner's word; persist-before-present; handoff self-check | 2026-10-01T12:28Z | `state/**`, `docs/00-governance/MACP.md` | **ACTIVE** (work in flight) |
+| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Session-lifecycle correction: sessions close only on the owner's word; persist-before-present; handoff self-check | 2026-10-01T12:28Z | `state/**`, `docs/00-governance/MACP.md` (released) | **PAUSED** (awaiting owner) |
 | `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test (verdict, gap fixes, the P-001…P-006 dossier) | 2026-10-01T12:19Z | `state/**` only | **PAUSED** (awaiting owner) |
 
 ## Landed — awaiting the owner's close (no claims held)
