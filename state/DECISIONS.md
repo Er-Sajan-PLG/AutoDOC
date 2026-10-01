@@ -15,7 +15,18 @@ files is marked **accepted — recording pending**; an agent never marks an owne
 | ADR-004 | Enforcement is **one policy** keyed to the declared phase: undeclared → advisory only; per-check overrides; baseline for adoption, with deleted entries resurfacing and stale entries prunable | Owner | 2026-09-30/2026-10-01 | accepted, recorded | `autodoc.toml`, `scripts/intelligence/enforce.py`, `CONTROL/metadata/CONTEXT-MODEL.json`; commit `90478d4` |
 | ADR-005 | Every generator is labeled **`exact` or `heuristic`**; a heuristic result carries its label and a warning instead of pretending to be exact | Owner | 2026-10-01 | accepted, recorded | `scripts/doc-sync/engine.py` (`GENERATOR_LABELS`), §6 commits `6d1c444`, `5d385cf` |
 | ADR-006 | Facts are capability-named and three-valued; personal-data, payment and safety traits are **declaration-only, never inferred**; undeclared phase is advisory | Owner | standing | accepted, recorded | `CONTROL/metadata/CONTEXT-MODEL.json`, `PROFILES.json`, `autodoc.toml` |
+| ADR-007 | Documentation is enforced at the declared phase — `build` (warn) for this repository — and the phase ladder is promoted by an explicit event (`promote <phase>`), not by inference | Owner | 2026-09-30 | accepted, recorded | `autodoc.toml` (`phase = "build"`), `docs/00-governance/CORE-LIST-REVIEW.md` Part 0 |
+| ADR-010 | **Decision 4 (P-003) executed**: the demo-only facts are declared **false** with reasons (`has_persistent_state`, `has_env`, `has_ai`), and the `has_network_listener` self-match is fixed at its source — the detector excludes its own module, so no override was needed (a deliberate deviation from the "four overrides" wording, pinned by a regression test). The last open core decision `DOC-A05-001` closes as not applicable: readiness **15/15, 0 open**; beta cliff 4 → 2 | Owner | 2026-10-01 | accepted, recorded | `autodoc.toml`, `scripts/intelligence/profile.py`, `tests/test_profile.py`; commit `c7980f9` |
+| ADR-011 | **Decision 5 (P-004)**: branch protection on `master` carries one required check — payload `{"strict": true, "contexts": ["AutoDOC guard / check"]}`, applied by the owner with `APPLY=1 make docs-require-check`; the check name is verified live on PR #2 | Owner | 2026-10-01 | accepted — application owner-run | `Makefile` target `docs-require-check`, `docs/00-governance/BRANCH-PROTECTION.md` |
+| ADR-012 | **Decision 6 (P-005)**: the declared phase stays `build`; after decision 4 the promotion delta is 2 core rows (License, Changelog), and promotion remains a deliberate event (`autodoc promote`'s delta view is not implemented, so it is a manual edit with those numbers) | Owner | 2026-10-01 | accepted, recorded | `autodoc.toml` (`phase = "build"` unchanged); this file, item P-005 |
+| ADR-013 | **Decision 7 (P-006)**: the five smalls are deferred — `audience` consumer (D-004; first if any is picked), JS/TS + Rust toolchains (D-002), external dogfood repository (D-009), template rendering on demand (D-003), evidence signing (D-007); none gates anything | Owner | 2026-10-01 | accepted, recorded | `state/DEBT.md` |
 ## Pending — owner decisions awaiting a verdict
+
+**Decided 2026-10-01 — the owner stated "proceed with recomendation", adopting all six
+recommendations.** Execution is tracked in the table above: P-003 → ADR-010 (executed), P-004 →
+ADR-011 (owner-run application), P-005 → ADR-012, P-006 → ADR-013, P-001 → ADR-002 status flip on
+execution, P-002 → ADR-008 status flip on acknowledgement. The dossiers below are kept as the
+record of what was presented.
 
 **Added 2026-10-01 by the cold-clone continuity test** (session `20261001-1219-A476`): the round
 below previously existed only in chat, so a new agent could see *that* decisions were pending but
@@ -79,5 +90,3 @@ unconsumed (D-004 — the remaining "declared without a consumer" hole), JS/TS +
 (D-002), external dogfood repository (D-009), template rendering on demand instead of 780 committed
 variants (D-003), evidence signing (D-007). None gates anything. *Recommendation: defer all; if one
 is picked now, `audience` first, toolchains second.*
-
-| ADR-007 | Documentation is enforced at the declared phase — `build` (warn) for this repository — and the phase ladder is promoted by an explicit event (`promote <phase>`), not by inference | Owner | 2026-09-30 | accepted, recorded | `autodoc.toml` (`phase = "build"`), `docs/00-governance/CORE-LIST-REVIEW.md` Part 0 |

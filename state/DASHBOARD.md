@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T12:43Z · **Reconciled by:** A476 (decision-round session `20261001-1242-A476`, ACTIVE) · **Tip at reconciliation:** `14310ea`
+**Last reconciled:** 2026-10-01T13:08Z · **Reconciled by:** A476 (decision-round session `20261001-1242-A476`, ACTIVE) · **Tip at reconciliation:** `c7980f9`
 
 ## Project
 
@@ -11,8 +11,8 @@
 | Declared phase | `build` (warn) — declared 2026-09-30, never inferred |
 | Kinds / profile | `library` / `oss-library` (26 core types) |
 | Catalog | 24 core · 49 extended · 265 types (prose still says 260 — D-001) · 16 detected facts · 3 declared traits |
-| Build-ready | **15/16** · open core decisions **1** (`DOC-A05-001` Data model — waits on decision 4's fact override) |
-| Promotion cliff | Promoting to `beta` today would fail **4** core rows (`DOC-A05-001`, License, Env var schema, Changelog); **2** after decision 4 |
+| Build-ready | **15/15** · open core decisions **0** (owner decision 4 closed the last one, `DOC-A05-001` Data model, as not applicable) |
+| Promotion cliff | Promoting to `beta` today would fail **2** core rows (License `DOC-A10-008`, Changelog `DOC-A15-003`); both gated on `is_public` |
 | Stack | Python 3.11, **zero runtime dependencies**; pytest + pre-commit for dev; SQLite and a 3-route HTTP server only in the synthetic demo |
 | Docs | 68 controlled (24 generated, 44 human-owned); 361 Markdown files tracked |
 | Tests | 242 passed + 182 subtests, ~27 s (audit run, 2026-10-01) |
@@ -28,12 +28,13 @@ only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before s
 
 ## Alerts
 
-1. **Owner confirmation pending (B-001)** on `docs/00-governance/CORE-LIST-REVIEW.md` v1.3 and its
-   final counts. Recording `owner_reviewed`, page → `approved`, and caveat removal are **gated on the
-   owner's confirmation**; no agent may record it.
-2. Nothing is failing: the gate is green (`make ci` exit 0), tests 242/242, catalog valid,
-   resolver at 15/16 with one open decision.
-3. **Decision-3 deviation needs acknowledgement:** the ADR row was closed with a real ADR
+1. **Owner confirmation of B-001 given** ("proceed with recomendation", 2026-10-01): the v1.3
+   core-list page is confirmed, and the recording — `owner_reviewed` notes, page → `approved`,
+   caveat removal, D-011 — is **in progress** in this session.
+2. Nothing is failing: the gate is green (`make ci` exit 0), tests 243/243, catalog valid,
+   resolver at **15/15 with zero open decisions**.
+3. **Decision-3 deviation acknowledged** (owner: keep, 2026-10-01; the status update is in
+   progress): the ADR row was closed with a real ADR
    (`docs/adr/0001-zero-runtime-dependencies.md`) instead of the queued `[not_applicable]`, because
    the resolver reports every skip on an `always` row as a permanent stale-decision warning.
    Reversible; see the decision-3 session summary.
@@ -56,6 +57,7 @@ only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before s
 
 | Date | Work | Commits |
 | --- | --- | --- |
+| 2026-10-01 | Owner decision 4 executed: the demo-only facts are declared false with reasons; the detector's self-match is fixed at its source (no override, regression-tested); the last open core decision closes — **15/15, 0 open**; beta cliff 4 → 2 | `c7980f9` |
 | 2026-10-01 | Session-lifecycle correction (owner instruction): MACP local rules 8–10 + ADR-009 — sessions close only on the owner's word; persist-before-present; handoff self-check; all sessions/plans relabelled; deleted plans restored where possible | `c57b149` + handoff-log `14310ea` |
 | 2026-10-01 | Cold-clone continuity test: verdict (a new agent can continue from `state/` alone), five gap fixes, and the pending-decision dossier P-001…P-006 in `DECISIONS.md` | `b3a4490` + reconcile commit |
 | 2026-10-01 | Owner decision 3 executed: 11 of 12 open core decisions closed (charter, README, ADR, module contract, test strategy, dependency setup/policy, SECURITY.md, CODE_OF_CONDUCT.md); readiness 4/16 → **15/16** | `1a65f5d` + reconcile commit |
@@ -67,18 +69,14 @@ only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before s
 
 ## Next actions (source of truth: `NEXT-ACTION.md`)
 
-1. **Owner: confirm or correct** the v1.3 core-list page and counts (B-001), and acknowledge the
-   ADR-row deviation from decision 3.
-2. On confirmation: record `owner_reviewed` in `CATALOG-RULES.json` + `PROFILES.json` (note names the
-   flagged rows and their resolutions), page → `approved`, remove the caveat from NEXT-ACTION and
-   ADOPTION, clear B-001, and refresh the stale statements D-011.
-3. **The owner decision round is written up in full in `state/DECISIONS.md` § Pending** —
-   P-001 (confirm the review), P-002 (ADR deviation), P-003 (decision 4: the four fact
-   overrides/self-match, with the consumer table and the consumer-level effects), P-004 (branch
-   protection payload), P-005 (phase and the promotion cliff), P-006 (deferred smalls). Present and
-   execute one item at a time; only the owner states each decision. **Being walked with the owner
-   now** (session `20261001-1242-A476`, ACTIVE). (Resets and the recovery recipe are in Alerts
-   above.)
+1. **Execute the owner's stated round** (session `20261001-1242-A476`, ACTIVE; all six verdicts given
+   as "proceed with recomendation"): P-003 done (`c7980f9`); **P-001 recording next** — `owner_reviewed`
+   in `CATALOG-RULES.json` + `PROFILES.json`, page → `approved`, caveat off NEXT-ACTION + ADOPTION,
+   D-011, clear B-001; then P-002 (ADR-008 status, clear B-002), P-004 (owner-run protection apply),
+   P-005/P-006 (recorded).
+2. The round's decision records are in `state/DECISIONS.md` — ADR-010…ADR-013 and the § Pending note;
+   each execution updates its ADR status in the commit that lands it.
+3. Resets and the recovery recipe are in Alerts above; never force-push.
 
 This dashboard summarizes; it never overrides `NEXT-ACTION.md` or an owner instruction. Sessions
 are closed only by the owner.
