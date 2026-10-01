@@ -6,6 +6,7 @@ title, files touched, status, branch.
 
 | Session (file) | ID | Agent | Date (UTC) | Title | Files touched | Status | Branch |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| `state/sessions/20261001-1130-A476-decision-3.md` | `20261001-1130-A476` | A476 | 2026-10-01 | Owner decision 3: close the open core decisions (11 of 12; 4/16 → 15/16 build-ready) | `PROJECT-CHARTER.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `docs/adr/0001-*.md`, `CONTRIBUTING.md`, `QUICK-START.md`, `AUTODOC-ARCHITECTURE.md`, `ENGINE-COVERAGE.md`, `autodoc.toml`, generated metadata, `state/**` | COMPLETED | `arena/01a0f476-autodoc` |
 | `state/sessions/20261001-1120-A476-bootstrap-audit.md` | `20261001-1120-A476` | A476 | 2026-10-01 | Full MACP transcription + Section 7 bootstrap audit + reconcile | `docs/00-governance/MACP.md`; `state/**` | COMPLETED | `arena/01a0f476-autodoc` |
 | `state/sessions/20261001-1110-A476-macp-adoption.md` | `20261001-1110-A476` | A476 | 2026-10-01 | Adopt MACP: protocol doc, `state/` bootstrap, session registration | `docs/00-governance/MACP.md`; `state/**`; `AGENTS.md`; `CLAUDE.md`; `AGENT-MEMORY.md` | COMPLETED | `arena/01a0f476-autodoc` |
 
@@ -26,5 +27,5 @@ from this table's live rows (the row stays, the file moves). Nothing archived ye
 
 ## Keywords
 
-`macp`, `bootstrap`, `audit`, `protocol`, `core-list`, `license`, `enforcement`, `catalog`,
-`profiles`, `phase`, `recovery` — search these before opening a session file.
+`macp`, `bootstrap`, `audit`, `protocol`, `core-list`, `decision-3`, `charter`, `security`, `conduct`,
+`adr`, `dependencies`, `license`, `enforcement`, `catalog`, `profiles`, `phase`, `recovery` — search these before opening a session file.
