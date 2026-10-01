@@ -4,7 +4,7 @@
 | --- | --- |
 | Objective | Make MACP the operating protocol of this repository: the protocol text lives in governance, `state/` exists with real (not placeholder) content, and every future agent can start from it |
 | Owner of the work | `A476` (session `20261001-1110-A476-macp-adoption.md`) |
-| Status | **COMPLETED (W1)** — the owner supplied the full protocol, so W2 (the deferred parts) was
+| Status | **landed — awaiting owner close** (kept per MACP local rule 8). — the owner supplied the full protocol, so W2 (the deferred parts) was
 replaced by session `20261001-1120-A476`, which transcribed Sections 2–7 and ran the Section 7
 audit. This file is kept only because its last line (the owner gate) is still live; delete it
 when B-001 clears. |

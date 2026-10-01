@@ -60,6 +60,16 @@ they are recorded here so no agent has to guess:
    startup, before Step 9's work begins. From then on, Section 2 applies: `DASHBOARD.md`,
    `REGISTRY.md` and `INDEX.md` are not touched during active work — Section 4's shutdown sequence
    and its reconciliation step update them.
+8. **Sessions are closed by the owner.** An agent's session moves `ACTIVE` → `PAUSED (awaiting
+   owner)` at a handoff. Only the owner's word closes a session; until then its plan is kept (not
+   deleted) and no file says `COMPLETED`. "Landed and green" is not completion.
+9. **Persist before presenting.** Decision rounds, options and recommendations an agent puts to the
+   owner are written into `state/DECISIONS.md` § Pending in the same change that presents them.
+   Chat is never the only copy of anything the next agent needs.
+10. **Handoff self-check.** Before handing off, the agent reads DASHBOARD → REGISTRY → BLOCKERS →
+    `DECISIONS.md` § Pending as a stranger would, and confirms the next actions and pending
+    decisions are executable from state alone. If they are not, the handoff is incomplete — fix
+    state first; never wait for the owner to discover the gap.
 
 ═══════════════════════════════════════════════════════════════
                     CORE PHILOSOPHY

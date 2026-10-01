@@ -1,42 +1,42 @@
 # REGISTRY — who is working here and what they own
 
-**Last reconciled:** 2026-10-01T11:44Z
+**Last reconciled:** 2026-10-01T12:31Z
 
-## Active
-
-None. Agent `A476` completed the cold-clone test and released its claims; no other agent is
-registered. The next agent starts by opening a new session file and adding itself here
-(Section 1 Step 8).
+## Active — work in flight, or landed and awaiting the owner
 
 | Agent ID | Model / type | Branch | Task (one line) | Started (UTC) | Claimed paths | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| — | — | — | — | — | — | — |
+| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Session-lifecycle correction: sessions close only on the owner's word; persist-before-present; handoff self-check | 2026-10-01T12:28Z | `state/**`, `docs/00-governance/MACP.md` | **ACTIVE** (work in flight) |
+| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test (verdict, gap fixes, the P-001…P-006 dossier) | 2026-10-01T12:19Z | `state/**` only | **PAUSED** (awaiting owner) |
 
-## Completed
+## Landed — awaiting the owner's close (no claims held)
 
-| Agent ID | Session | Model / type | Branch | Task | Completed (UTC) | Claims released |
+| Agent ID | Session | Model / type | Branch | Task | Landed (UTC) | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `A476` | `sessions/20261001-1110-A476-macp-adoption.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Adopt MACP: protocol in governance, bootstrap `state/`, register | 2026-10-01T11:13Z | `state/**`, `docs/00-governance/MACP.md`, `AGENTS.md`, `CLAUDE.md`, `AGENT-MEMORY.md` |
-| `A476` | `sessions/20261001-1120-A476-bootstrap-audit.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Transcribe the full protocol (Sections 2–7 + REMEMBER), complete the Section 7 bootstrap audit, reconcile state | 2026-10-01T11:29Z | `state/**`, `docs/00-governance/MACP.md` |
-| `A476` | `sessions/20261001-1130-A476-decision-3.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Decision 3: close the open core decisions via the Part 1b paths (11 of 12 closed; resolver 4/16 → 15/16) | 2026-10-01T11:44Z | the new documents and `autodoc.toml`; `state/**` |
-| `A476` | `sessions/20261001-1219-A476-cold-clone-test.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test: verdict, five gap fixes, decision dossier P-001…P-006, re-test on a second clone | 2026-10-01T12:34Z | `state/**` only |
+| `A476` | `sessions/20261001-1110-A476-macp-adoption.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Adopt MACP: protocol in governance, bootstrap `state/`, register | 2026-10-01T11:13Z | landed — awaiting owner |
+| `A476` | `sessions/20261001-1120-A476-bootstrap-audit.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Transcribe the full protocol; Section 7 audit; reconcile | 2026-10-01T11:29Z | landed — awaiting owner |
+| `A476` | `sessions/20261001-1130-A476-decision-3.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Close the open core decisions (11 of 12; 4/16 → 15/16) | 2026-10-01T11:44Z | landed — awaiting owner |
 
-No inactive agent needs removing — the table above is the whole history.
+## Closed by the owner
+
+None yet. Only the owner's word moves a row here (MACP local rule 8).
 
 ## Non-agent owner
 
 | Who | Role | Scope |
 | --- | --- | --- |
-| `@Er-Sajan-PLG` | Repository owner and sole reviewer | Approves governed documents, records owner decisions, merges PRs. No backup reviewer is configured. |
+| `@Er-Sajan-PLG` | Repository owner and sole reviewer | Approves governed documents, records owner decisions, closes sessions, merges PRs. No backup reviewer is configured. |
 
 ## Rules in force here
 
-- An **active** claim wins: do not edit claimed paths; add a `[COORDINATION]` note to both session
-  files and choose different work, or wait.
-- **Shared files** (build config, `Makefile`, `pyproject.toml`, workflows, `CONTROL/metadata/**`)
-  always require a `[COORDINATION]` note in both sessions before an edit.
-- A claim held by an agent `INACTIVE` for **>24h** may be taken over; record the takeover in your
-  session and in `INDEX.md`.
-- Only the owner records owner decisions. Agents propose and implement; the owner confirms.
-- Step 8 registration is the one startup write to this file; Section 2 forbids further writes until
-  shutdown (Section 4 reconciles).
+- **Sessions close only on the owner's word** (local rule 8): agents mark `PAUSED (awaiting owner)`;
+  `COMPLETED`/`CLOSED` are the owner's labels, and a session's plan stays until then.
+- **Persist before presenting** (local rule 9): decision rounds live in `DECISIONS.md` § Pending,
+  never only in chat.
+- **Handoff self-check** (local rule 10): before handing off, read the state as a stranger; if the
+  next actions cannot be executed from state alone, fix state first.
+- An **active** claim wins; shared files (`Makefile`, `pyproject.toml`, workflows,
+  `CONTROL/metadata/**`) need a `[COORDINATION]` note in both sessions.
+- A claim held by an agent `INACTIVE` for **>24h** may be taken over; record the takeover.
+- Only the owner records owner decisions. Agents propose and implement; the owner decides, and
+  takes decisions one at a time.

@@ -40,7 +40,13 @@ Register yourself in `REGISTRY.md` before starting work.
    the gates and the whole pending decision round, and can verify the numbers with system `python3`
    and no install (`state/sessions/20261001-1219-A476-cold-clone-test.md`).
 
-## Recently completed
+6. **Sessions await the owner's close** (ADR-009, MACP local rule 8): the landed `A476` sessions are
+   **not** complete — they are `landed`/`PAUSED (awaiting owner)`, and their plans are kept until the
+   owner closes them. Only the owner's word moves a session to CLOSED. The two process rules that
+   came with this correction are **persist before presenting** (decision rounds live in
+   `DECISIONS.md` § Pending, never only in chat) and the **handoff self-check**.
+
+## Recently landed (sessions await the owner's close)
 
 | Date | Work | Commits |
 | --- | --- | --- |
@@ -66,4 +72,5 @@ Register yourself in `REGISTRY.md` before starting work.
    execute one item at a time; only the owner states each decision. (Resets and the recovery recipe
    are in Alerts above.)
 
-This dashboard summarizes; it never overrides `NEXT-ACTION.md` or an owner instruction.
+This dashboard summarizes; it never overrides `NEXT-ACTION.md` or an owner instruction. Sessions
+are closed only by the owner.
