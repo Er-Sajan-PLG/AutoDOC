@@ -14,4 +14,69 @@ files is marked **accepted — recording pending**; an agent never marks an owne
 | ADR-004 | Enforcement is **one policy** keyed to the declared phase: undeclared → advisory only; per-check overrides; baseline for adoption, with deleted entries resurfacing and stale entries prunable | Owner | 2026-09-30/2026-10-01 | accepted, recorded | `autodoc.toml`, `scripts/intelligence/enforce.py`, `CONTROL/metadata/CONTEXT-MODEL.json`; commit `90478d4` |
 | ADR-005 | Every generator is labeled **`exact` or `heuristic`**; a heuristic result carries its label and a warning instead of pretending to be exact | Owner | 2026-10-01 | accepted, recorded | `scripts/doc-sync/engine.py` (`GENERATOR_LABELS`), §6 commits `6d1c444`, `5d385cf` |
 | ADR-006 | Facts are capability-named and three-valued; personal-data, payment and safety traits are **declaration-only, never inferred**; undeclared phase is advisory | Owner | standing | accepted, recorded | `CONTROL/metadata/CONTEXT-MODEL.json`, `PROFILES.json`, `autodoc.toml` |
+## Pending — owner decisions awaiting a verdict
+
+**Added 2026-10-01 by the cold-clone continuity test** (session `20261001-1219-A476`): the round
+below previously existed only in chat, so a new agent could see *that* decisions were pending but
+not the substance needed to present or execute them. Each item states what it is, what it changes,
+the options and the recommended one. No agent acts on an item until the owner states it, and the
+owner takes them **one at a time**.
+
+**P-001 — Confirm the core-list review (clears B-001).** The page
+`docs/00-governance/CORE-LIST-REVIEW.md` (v1.3, `draft`) is reviewed and correct; what is missing is
+the recorded verdict. On "confirmed": write dated `owner_reviewed` notes into
+`CONTROL/metadata/CATALOG-RULES.json` and `PROFILES.json` naming the flagged rows and their
+resolutions (A: `DOC-A08-001` → `has_http_api`, `DOC-A22-004` kept on `has_public_api_surface`,
+demo overrides added; B: `DEV-B08-001/002/003` → extended; C: dependency question split); page →
+`approved`; remove the caveat from `NEXT-ACTION.md` and `ADOPTION.md` and refresh their stale
+figures (D-011). **Two repository-state figures on the page are pre-decision-3 and must be
+refreshed in that commit**: "4/16 → 16/16 build-ready" is now **15/16 with 1 open decision**, and
+the beta cliff "12 of 24" is now **4 of 24** (see P-005). Membership numbers are unchanged.
+*Recommendation: confirm.*
+
+**P-002 — Acknowledge the ADR-row deviation (clears B-002).** Decision 3 closed `DEV-B04-002` ADR
+with a real record (`docs/adr/0001-zero-runtime-dependencies.md`) instead of the queued
+`[not_applicable]`, because the resolver marks every skip on an `always` row as a permanent stale
+decision. Options: keep the ADR (default), revert to `[not_applicable]` (accepting a permanent
+warning), or edit the ADR's content/status. *Recommendation: keep.*
+
+**P-003 — Decision 4: fact overrides and the detector self-match.** Four changes, all "the fact is
+true only because of synthetic material, not because of AutoDOC":
+
+| Fact | Detected from | Current consumers (of the fact) | After declaring `false` |
+| --- | --- | --- | --- |
+| `has_persistent_state` | only `EXAMPLE-PROJECT/db/schema.sql` (demo) | `DOC-A05-001` Data model (core), `DOC-A05-002/003` (extended), `DOC-A18-004` (extended), and the A05/A18 domain defaults | **closes the last open decision**: `DOC-A05-001` (and the A05/A18 rows) become not-applicable; readiness 15/16 → **15/15** |
+| `has_env` | only the demo's `.env.example` + `config.schema.json` | `DOC-A14-005` Env var schema (core, off-until-beta), `DOC-A14-006` (extended) | `DOC-A14-005` not-applicable: beta cliff 4 → 2 |
+| `has_ai` | only `examples/ai-agent-example` (synthetic) | the 12 `A21-AI-ML` rows (5 recommended, 7 contextual) | those rows not-applicable; no gate effect |
+| `has_network_listener` | the detector's **own source** (`scripts/intelligence/profile.py` holds the pattern literals `gunicorn`, `ListenAndServe`) **and** `tests/fixtures/repos/go-service` | `DOC-A06-001` Threat model (extended) | row not-applicable; no gate effect |
+
+Nuances: the engine *does* read ambient variables — `GITHUB_RUN_ID`/`GITHUB_SHA` for CI evidence,
+`PATH`/`LANG` for toolchain probes — but that is not a configuration contract (configuration is
+`autodoc.toml`), and the `has_env` reason should say so; declaring `true` instead would make
+`DOC-A14-005` (Env var schema) an obligation at beta for an interface the project does not support.
+The detector fix should exclude the detector's own module from its scan; whether `tests/fixtures/**`
+is excluded from repository-level detection is a policy choice — the honest minimum is the
+self-exclusion plus a reason naming the fixtures. *Recommendation: apply all four; it completes
+12/12 decisions.*
+
+**P-004 — Decision 5: branch protection.** `make docs-require-check` prints the payload;
+`APPLY=1` PUTs it with `gh` (repository-admin rights, owner-run by design). Payload:
+`{"strict": true, "contexts": ["AutoDOC guard / check"]}` on `master` — one required check, no
+review or push restrictions. The check name is verified live on PR #2. *Recommendation: apply.*
+
+**P-005 — Decision 6: phase.** Currently `build` (declared 2026-09-30): required docs warn,
+structural breakage fails, drift/freshness off. If promoted to `beta` **today**, four core rows
+would fail: `DOC-A05-001` Data model, `DOC-A10-008` License, `DOC-A14-005` Env var schema,
+`DOC-A15-003` Changelog. After P-003, **two** remain (License, Changelog — both gated on
+`is_public`, both potentially closeable later by mapping the existing `LICENSE`/`CHANGELOG.md`
+files, subject to a mechanism check). The designed `autodoc promote` delta view is not implemented
+yet, so promotion is a manual `phase`/`phase_declared` edit with these numbers as the delta.
+*Recommendation: stay on `build` until P-003 and P-004 land.*
+
+**P-006 — Decision 7: deferred smalls.** Each already lives in `DEBT.md`: `audience` declared but
+unconsumed (D-004 — the remaining "declared without a consumer" hole), JS/TS + Rust toolchains
+(D-002), external dogfood repository (D-009), template rendering on demand instead of 780 committed
+variants (D-003), evidence signing (D-007). None gates anything. *Recommendation: defer all; if one
+is picked now, `audience` first, toolchains second.*
+
 | ADR-007 | Documentation is enforced at the declared phase — `build` (warn) for this repository — and the phase ladder is promoted by an explicit event (`promote <phase>`), not by inference | Owner | 2026-09-30 | accepted, recorded | `autodoc.toml` (`phase = "build"`), `docs/00-governance/CORE-LIST-REVIEW.md` Part 0 |

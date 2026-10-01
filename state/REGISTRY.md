@@ -4,12 +4,9 @@
 
 ## Active
 
-None. Agent `A476` completed decision 3 and released its claims; no other agent is registered.
-The next agent starts by opening a new session file and adding itself here (Section 1 Step 8).
-
 | Agent ID | Model / type | Branch | Task (one line) | Started (UTC) | Claimed paths | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| — | — | — | — | — | — | — |
+| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test: verify a new agent can continue from `state/` alone, then close the gaps | 2026-10-01T12:19Z | `state/**` | IN-PROGRESS from 2026-10-01T12:19Z |
 
 ## Completed
 

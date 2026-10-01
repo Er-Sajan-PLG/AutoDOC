@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T11:56Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `407d3d4` + the state note recording it
+**Last reconciled:** 2026-10-01T12:30Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** see the final reconcile commit note below
 
 ## Project
 
@@ -12,6 +12,7 @@
 | Kinds / profile | `library` / `oss-library` (26 core types) |
 | Catalog | 24 core · 49 extended · 265 types (prose still says 260 — D-001) · 16 detected facts · 3 declared traits |
 | Build-ready | **15/16** · open core decisions **1** (`DOC-A05-001` Data model — waits on decision 4's fact override) |
+| Promotion cliff | Promoting to `beta` today would fail **4** core rows (`DOC-A05-001`, License, Env var schema, Changelog); **2** after decision 4 |
 | Stack | Python 3.11, **zero runtime dependencies**; pytest + pre-commit for dev; SQLite and a 3-route HTTP server only in the synthetic demo |
 | Docs | 68 controlled (24 generated, 44 human-owned); 361 Markdown files tracked |
 | Tests | 242 passed + 182 subtests, ~27 s (audit run, 2026-10-01) |
@@ -54,8 +55,11 @@ Register yourself in `REGISTRY.md` before starting work.
 2. On confirmation: record `owner_reviewed` in `CATALOG-RULES.json` + `PROFILES.json` (note names the
    flagged rows and their resolutions), page → `approved`, remove the caveat from NEXT-ACTION and
    ADOPTION, clear B-001, and refresh the stale statements D-011.
-3. **Decision 4** — fact overrides (`has_persistent_state`, `has_ai`, `has_env` false), which closes
-   `DOC-A05-001`, plus the `has_network_listener` self-match fix. **Decision 5** — branch protection
-   `APPLY=1`. **Decision 6** — stay on `build`. **Decision 7** — defer smalls.
+3. **The owner decision round is written up in full in `state/DECISIONS.md` § Pending** —
+   P-001 (confirm the review), P-002 (ADR deviation), P-003 (decision 4: the four fact
+   overrides/self-match, with the consumer table and the consumer-level effects), P-004 (branch
+   protection payload), P-005 (phase and the promotion cliff), P-006 (deferred smalls). Present and
+   execute one item at a time; only the owner states each decision. (Resets and the recovery recipe
+   are in Alerts above.)
 
 This dashboard summarizes; it never overrides `NEXT-ACTION.md` or an owner instruction.
