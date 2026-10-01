@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T12:30Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** see the final reconcile commit note below
+**Last reconciled:** 2026-10-01T12:35Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `b3a4490`
 
 ## Project
 
@@ -34,13 +34,17 @@ Register yourself in `REGISTRY.md` before starting work.
    (`docs/adr/0001-zero-runtime-dependencies.md`) instead of the queued `[not_applicable]`, because
    the resolver reports every skip on an `always` row as a permanent stale-decision warning.
    Reversible; see the decision-3 session summary.
-4. Environment resets recur (five recoveries today, #11–#15: HEAD back to `19ca0d4`, wedged index,
+4. Environment resets recur (six recoveries today, #11–#16: HEAD back to `19ca0d4`, wedged index,
    venv deleted). Recovery recipe is in the audit session's summary; never force-push.
+5. **Continuity verified:** a cold clone of this branch, read by a stranger, can state the position,
+   the gates and the whole pending decision round, and can verify the numbers with system `python3`
+   and no install (`state/sessions/20261001-1219-A476-cold-clone-test.md`).
 
 ## Recently completed
 
 | Date | Work | Commits |
 | --- | --- | --- |
+| 2026-10-01 | Cold-clone continuity test: verdict (a new agent can continue from `state/` alone), five gap fixes, and the pending-decision dossier P-001…P-006 in `DECISIONS.md` | `b3a4490` + reconcile commit |
 | 2026-10-01 | Owner decision 3 executed: 11 of 12 open core decisions closed (charter, README, ADR, module contract, test strategy, dependency setup/policy, SECURITY.md, CODE_OF_CONDUCT.md); readiness 4/16 → **15/16** | `1a65f5d` + reconcile commit |
 | 2026-10-01 | Full MACP transcription (Sections 2–7 + REMEMBER) and the Section 7 bootstrap audit | `d26d798` + the reconcile commit |
 | 2026-10-01 | MACP adopted: protocol in governance, `state/` bootstrapped, agent pointers | `868588e`, `f417a8f` |

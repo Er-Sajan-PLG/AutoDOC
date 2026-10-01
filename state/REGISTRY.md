@@ -4,9 +4,13 @@
 
 ## Active
 
+None. Agent `A476` completed the cold-clone test and released its claims; no other agent is
+registered. The next agent starts by opening a new session file and adding itself here
+(Section 1 Step 8).
+
 | Agent ID | Model / type | Branch | Task (one line) | Started (UTC) | Claimed paths | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test: verify a new agent can continue from `state/` alone, then close the gaps | 2026-10-01T12:19Z | `state/**` | IN-PROGRESS from 2026-10-01T12:19Z |
+| — | — | — | — | — | — | — |
 
 ## Completed
 
@@ -15,6 +19,7 @@
 | `A476` | `sessions/20261001-1110-A476-macp-adoption.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Adopt MACP: protocol in governance, bootstrap `state/`, register | 2026-10-01T11:13Z | `state/**`, `docs/00-governance/MACP.md`, `AGENTS.md`, `CLAUDE.md`, `AGENT-MEMORY.md` |
 | `A476` | `sessions/20261001-1120-A476-bootstrap-audit.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Transcribe the full protocol (Sections 2–7 + REMEMBER), complete the Section 7 bootstrap audit, reconcile state | 2026-10-01T11:29Z | `state/**`, `docs/00-governance/MACP.md` |
 | `A476` | `sessions/20261001-1130-A476-decision-3.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Decision 3: close the open core decisions via the Part 1b paths (11 of 12 closed; resolver 4/16 → 15/16) | 2026-10-01T11:44Z | the new documents and `autodoc.toml`; `state/**` |
+| `A476` | `sessions/20261001-1219-A476-cold-clone-test.md` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test: verdict, five gap fixes, decision dossier P-001…P-006, re-test on a second clone | 2026-10-01T12:34Z | `state/**` only |
 
 No inactive agent needs removing — the table above is the whole history.
 
