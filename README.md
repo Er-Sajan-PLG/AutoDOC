@@ -4,8 +4,8 @@
 
 ```text
 Pre-commit ──> PR check ──> Merge preview ──> Release gate ──> Nightly health
-   staged       tests +       generated-only      blocked pending     drift + age
-   impact       drift         diff artifact       owner license       + report
+   staged       tests +       generated-only      tag + clean        drift + age
+   impact       drift         diff artifact       tree (Apache-2.0)  + report
 ```
 
 ## What it does
@@ -13,7 +13,8 @@ Pre-commit ──> PR check ──> Merge preview ──> Release gate ──> N
 - Generates supported factual references from authoritative files and fails on unsupported inputs.
 - Checks metadata, ownership, review dates, local links, relationships and generated drift.
 - Makes required checks fail on missing co-changes; protected-branch enforcement needs admin setup.
-- Can snapshot controlled docs at release **after** the owner chooses a license (currently blocked).
+- Can snapshot controlled docs at release under Apache-2.0: a `vX.Y.Z` tag checked out at a
+  clean, licensed tree.
 - Asks for the facts no file can answer (personal data, payments, safety) instead of guessing,
   and leaves their documents undetermined until the owner declares them in `autodoc.toml`.
 - Labels every generator `exact` or `heuristic` (with its limits in the file), and integrates a
@@ -67,7 +68,7 @@ structured; it never certifies compliance.
 | ✅ Working | 260 catalog types with declarative rules, a 23-type core tier and a detectable `applies_when` predicate per type; file-presence profile and applicability report; bounded generators; ownership/inventory/graph; two local tool examples; pytest, Makefile, hooks and CI checks; unsigned actual-run evidence |
 | 🚧 Partial | Route registry is not OpenAPI; SQLite/manifest/alert parsers are bounded; human-review impact proves a co-change, not quality |
 | 📋 Not implemented | Arbitrary language/SQL parsers, external link/network monitoring, LLM, semantic prose verification and signed attestations |
-| 🔒 Blocked | License choice blocks release; branch protection needs repository-admin configuration |
+| 🔒 Blocked | Branch protection needs repository-admin configuration; a release still needs a `vX.Y.Z` tag at the same commit |
 
 `make ci` is canonical. The repository also includes `Taskfile.yaml` for [go-task](https://taskfile.dev/)
 users; if go-task is not installed, use the equivalent `make` targets. `make evidence` runs
@@ -83,6 +84,14 @@ actual tests and saves **unsigned** artifacts under ignored `evidence/out/`.
 [Tool policy demo](examples/local-tools-example/README.md)
 
 `docs/.doc-sync-map.yaml` is the **single authoritative map**. `TEMPLATES/` has three
-synthetic variants for each catalog type, not 260 implemented project documents. See
-[license choice](docs/00-governance/LICENSE-CHOICE.md) and
+synthetic variants for each catalog type, not 260 implemented project documents. See the
+[license decision](docs/00-governance/LICENSE-DECISION.md) and
 [manual branch requirements](docs/00-governance/BRANCH-PROTECTION.md). AutoDOC is not renamed.
+
+## License
+
+Apache-2.0 — the canonical text is [`LICENSE`](LICENSE), and the owner decision with its
+consequences is in [`docs/00-governance/LICENSE-DECISION.md`](docs/00-governance/LICENSE-DECISION.md).
+Reuse is permissive with an explicit patent grant: keep the license text and copyright notices,
+and state significant changes to the files you modify. The engine never infers licenses from file
+contents; the catalog's license documents remain answers a human records.

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Selected **Apache-2.0** as the license (owner decision, 2026-10-01): added the canonical
+  `LICENSE` text, declared `license = "Apache-2.0"` with `license-files = ["LICENSE"]` in
+  `pyproject.toml` (built with setuptools ≥ 77 so the metadata carries
+  `License-Expression: Apache-2.0`), and recorded the decision and its consequences in
+  `docs/00-governance/LICENSE-DECISION.md` while keeping the comparison of alternatives.
+  The release gate no longer blocks on a missing license: it fails closed only if `LICENSE`
+  is ever removed, and still requires a `vX.Y.Z` tag checked out at the same commit.
+  Licenses are still never inferred from file contents.
 - Implemented AutoDOC's deterministic sync, drift, human-review impact and freshness checks.
 - Added three catalogs, generated template variants, governed metadata, CI and a task API example.
 - Made task API SQLite setup idempotent; added scoped test evidence and health reporting.

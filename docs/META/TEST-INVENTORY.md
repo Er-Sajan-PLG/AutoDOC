@@ -35,7 +35,8 @@ AST-discovered Python tests, not a report of execution or coverage.
 | `tests/test_agent_example.py` | 36 | `AgentExampleTests.test_disallowed_tools_fail_without_side_effects` |
 | `tests/test_agent_example.py` | 44 | `AgentExampleTests.test_tool_registry_fails_when_manifest_points_to_missing_implementation` |
 | `tests/test_agent_example.py` | 63 | `AgentExampleTests.test_passing_unsigned_evidence_detects_tampering` |
-| `tests/test_agent_example.py` | 79 | `AgentExampleTests.test_release_blocks_without_owner_license_choice` |
+| `tests/test_agent_example.py` | 79 | `AgentExampleTests.test_release_gate_requires_the_license_file` |
+| `tests/test_agent_example.py` | 88 | `AgentExampleTests.test_the_owner_license_choice_is_recorded_in_the_tree` |
 | `tests/test_catalog.py` | 36 | `CatalogTests.test_repository_catalog_is_valid` |
 | `tests/test_catalog.py` | 41 | `CatalogTests.test_index_matches_rules` |
 | `tests/test_catalog.py` | 44 | `CatalogTests.test_core_list_is_hand_picked_and_justified` |
@@ -201,8 +202,8 @@ AST-discovered Python tests, not a report of execution or coverage.
 | `tests/test_profile.py` | 133 | `FixtureMatrixTests.test_unknown_declared_fact_is_rejected` |
 | `tests/test_profile.py` | 138 | `FixtureMatrixTests.test_profile_is_deterministic_and_path_free` |
 | `tests/test_profile.py` | 143 | `FixtureMatrixTests.test_this_repository_facts` |
-| `tests/test_profile.py` | 153 | `FixtureMatrixTests.test_test_input_directories_are_skipped_and_declared` |
-| `tests/test_profile.py` | 167 | `FixtureMatrixTests.test_content_scan_records_the_file_not_the_value` |
+| `tests/test_profile.py` | 157 | `FixtureMatrixTests.test_test_input_directories_are_skipped_and_declared` |
+| `tests/test_profile.py` | 171 | `FixtureMatrixTests.test_content_scan_records_the_file_not_the_value` |
 | `tests/test_resolver.py` | 82 | `PhaseScalingTests.test_undeclared_phase_is_advisory_and_never_fails` |
 | `tests/test_resolver.py` | 92 | `PhaseScalingTests.test_prototype_reports_without_warning` |
 | `tests/test_resolver.py` | 98 | `PhaseScalingTests.test_build_warns_but_does_not_fail` |

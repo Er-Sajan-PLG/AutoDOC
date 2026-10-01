@@ -12,11 +12,19 @@ sys.path.insert(0, str(ROOT / 'scripts/doc-sync'))
 import engine
 
 
+def require_license(root=ROOT):
+    """The release gate: the license text is present, whatever the decision record says."""
+    path = Path(root) / 'LICENSE'
+    if not path.is_file():
+        raise ValueError('LICENSE is missing: the release gate needs the license text; '
+                         'see docs/00-governance/LICENSE-DECISION.md')
+    return path
+
+
 def snapshot(tag, output):
     if not re.fullmatch(r'v\d+\.\d+\.\d+', tag):
         raise ValueError('Expected a semantic version tag vX.Y.Z')
-    if not (ROOT / 'LICENSE').is_file():
-        raise ValueError('License not selected: see docs/00-governance/LICENSE-CHOICE.md before releasing')
+    require_license()
     commit = subprocess.check_output(['git', 'rev-parse', '--verify', tag + '^{commit}'],
                                      cwd=ROOT, text=True).strip()
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()

@@ -79,6 +79,16 @@
       "kind": "related"
     },
     {
+      "from": "DOC-P3-GOV-004",
+      "to": "DOC-P3-GOV-005",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-P3-GOV-005",
+      "to": "DOC-P3-GOV-004",
+      "kind": "related"
+    },
+    {
       "from": "DOC-REF-001",
       "to": "DOC-ARC-001",
       "kind": "related"

@@ -146,8 +146,12 @@ class FixtureMatrixTests(unittest.TestCase):
         for fact in ('has_tests', 'has_ci', 'has_public_api_surface', 'has_persistent_state',
                      'has_ai', 'uses_agents', 'has_third_party_deps'):
             self.assertEqual(data['facts'][fact]['value'], 'true', fact)
-        # No licence yet, no containers, no deployment and no CLI: the tool reports this on itself.
-        for fact in ('is_public', 'has_docker', 'has_deploy', 'has_cli'):
+        # The licence file exists, so the detector reads this repository as published; the
+        # declared override in autodoc.toml records what a file cannot show (remote visibility).
+        self.assertEqual(data['facts']['is_public']['value'], 'true')
+        self.assertIn('LICENSE', data['facts']['is_public']['evidence'])
+        # No containers, no deployment and no CLI: the tool reports this on itself.
+        for fact in ('has_docker', 'has_deploy', 'has_cli'):
             self.assertEqual(data['facts'][fact]['value'], 'false', fact)
 
     def test_test_input_directories_are_skipped_and_declared(self):

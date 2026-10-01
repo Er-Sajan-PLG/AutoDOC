@@ -117,7 +117,8 @@ Extracted with the interpreter's own parser. Signatures and first docstring line
 | `scripts/doc-control/json_style.py` | 55 | function | `dumps` | `(data)` | Serialise `data` as indented JSON with short scalar arrays kept on one line. |
 | `scripts/doc-control/library.py` | 9 | function | `render` | `(doc, variant)` | — |
 | `scripts/doc-control/library.py` | 45 | function | `run` | `(check)` | — |
-| `scripts/doc-control/release_snapshot.py` | 15 | function | `snapshot` | `(tag, output)` | — |
+| `scripts/doc-control/release_snapshot.py` | 15 | function | `require_license` | `(root=ROOT)` | The release gate: the license text is present, whatever the decision record says. |
+| `scripts/doc-control/release_snapshot.py` | 24 | function | `snapshot` | `(tag, output)` | — |
 | `scripts/doc-control/require-docs-check.py` | 18 | function | `gh` | `(*args, **kwargs)` | — |
 | `scripts/doc-control/require-docs-check.py` | 22 | function | `payload` | `(check=CHECK_NAME)` | The classic required-status-checks payload; one required check, no push restrictions. |
 | `scripts/doc-control/require-docs-check.py` | 27 | function | `main` | `()` | — |

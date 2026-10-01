@@ -28,9 +28,12 @@ their runbooks and applicability rather than claiming deployed monitoring. Revie
 catalog applicability and human-owned drafts with a real maintainer.
 
 ## Owner decisions
-Choose a license (`LICENSE-CHOICE.md`) before enabling release snapshots. Enable protected
-branch required checks/CODEOWNERS review in GitHub settings. Those actions are not automated
-by checked-in files and must not be claimed as complete.
+Done: the license is Apache-2.0 (owner decision, 2026-10-01): canonical text in `LICENSE`, SPDX
+expression in `pyproject.toml`, decision record in `docs/00-governance/LICENSE-DECISION.md`.
+Release snapshots are no longer gated on the licence; they still require a `vX.Y.Z` tag checked
+out at the same commit. Remaining: enable protected branch required checks/CODEOWNERS review in
+GitHub settings, and close the 12 open core decisions. Those actions are not automated by
+checked-in files and must not be claimed as complete.
 
 ## Shrink before detection (owner decision, 2026-10-01)
 1. Done. The approved-stub check failed on 28 title-only placeholders and they were retired;

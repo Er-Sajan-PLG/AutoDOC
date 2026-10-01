@@ -197,17 +197,17 @@
       "id": "DOC-P3-GOV-004",
       "path": "docs/00-governance/LICENSE-CHOICE.md",
       "owner": "@Er-Sajan-PLG",
-      "status": "draft",
+      "status": "approved",
       "type": "REF",
-      "last_reviewed": "2026-09-26"
+      "last_reviewed": "2026-10-01"
     },
     {
       "id": "DOC-P3-GOV-005",
       "path": "docs/00-governance/LICENSE-DECISION.md",
       "owner": "@Er-Sajan-PLG",
-      "status": "draft",
+      "status": "approved",
       "type": "REF",
-      "last_reviewed": "2026-09-26"
+      "last_reviewed": "2026-10-01"
     },
     {
       "id": "DOC-P3-GOV-001",

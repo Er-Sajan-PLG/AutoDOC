@@ -34,6 +34,7 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
+- a398dbd 2026-10-01 Declare when AutoDOC runs, and make the scheduled run triage instead of a second gate
 - 5d385cf 2026-10-01 Regenerate the test inventory for the language tests
 - 6d1c444 2026-10-01 Integrate each language's own tool, and label every generator with its exactness
 - 5d3f155 2026-10-01 Refresh the living plan: the phase, kinds and traits are no longer pending
@@ -45,25 +46,25 @@ auto_generated: false
 
 ## Changed paths at update time
 
-- `.github/workflows/docs-staleness.yml`
+- `.github/workflows/release.yml`
 - `CHANGELOG.md`
+- `CONTEXT-SNAPSHOT.md`
 - `CONTROL/metadata/MASTER-INDEX.json`
+- `CONTROL/metadata/RELATIONSHIP-GRAPH.yaml`
 - `CONTROL/policies/DOCUMENTATION-POLICY.md`
-- `Makefile`
+- `LICENSE`
+- `LICENSE-CHOICE.md`
+- `QUICK-START.md`
 - `README.md`
-- `docs/.doc-sync-map.yaml`
-- `docs/00-governance/BRANCH-PROTECTION.md`
+- `docs/00-governance/ADOPTION.md`
+- `docs/00-governance/DOCUMENT-CONTROL.md`
 - `docs/00-governance/ENGINE-COVERAGE.md`
+- `docs/00-governance/INVENTORY.yaml`
+- `docs/00-governance/LICENSE-CHOICE.md`
+- `docs/00-governance/LICENSE-DECISION.md`
 - `docs/00-governance/LIMITATIONS.md`
-- `docs/04-guides/HOW-AUTODOC-WORKS.md`
 - `docs/05-architecture/AUTODOC-ARCHITECTURE.md`
 - `docs/META/CODE-INVENTORY.md`
-- `docs/META/COMPLETENESS-REPORT.md`
 - `docs/META/OUTLINE.md`
-- `docs/META/TEST-INVENTORY.md`
-- `docs/generated/AUTOMATION-REFERENCE.md`
-- `docs/generated/WORKFLOW-REFERENCE.md`
-- `docs/reference/DOC-RELATIONSHIPS.md`
-- `docs/reference/EXIT-CODES.md`
-- … and 2 more; use git diff --cached --name-only.
+- … and 7 more; use git diff --cached --name-only.
 <!-- auto:end -->

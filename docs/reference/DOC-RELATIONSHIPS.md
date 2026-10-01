@@ -328,6 +328,8 @@ flowchart LR
     nb9e3f471ee9dc74a["DOC-CI-001"]
     na972c343d60f71e5["DOC-GOV-001"]
     n5eec99ff7c43a312["DOC-P2-001"]
+    nc6f0c3344e9409e3["DOC-P3-GOV-004"]
+    n78ca322b3203a62f["DOC-P3-GOV-005"]
     n9ea467f2b9e20b15["DOC-REF-001"]
     nf98f68363dffb94c["EX-AGENT-001"]
     n213f816e45fa8f6d["EX-API-001"]
@@ -2049,6 +2051,8 @@ flowchart LR
     n7eca7e044f557cca -->|related| nb9e3f471ee9dc74a
     na972c343d60f71e5 -->|related| n7eca7e044f557cca
     na972c343d60f71e5 -->|related| n65680cb3c81e665f
+    nc6f0c3344e9409e3 -->|related| n78ca322b3203a62f
+    n78ca322b3203a62f -->|related| nc6f0c3344e9409e3
     n9ea467f2b9e20b15 -->|related| n7eca7e044f557cca
     n9ea467f2b9e20b15 -->|related| na972c343d60f71e5
     nf98f68363dffb94c -->|related| n936306074765c4e0

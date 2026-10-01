@@ -138,4 +138,4 @@ are project-dependent; do not quote estimates as measured facts.
 The go-task binary is not installed in this sandbox. The Taskfile delegates to Make but
 `task ci` was not executable here; `make ci` is the canonical local verification path.
 Python 3.11+ and pytest for development are declared in `pyproject.toml`; runtime extraction
-uses the standard library. The owner has not selected a license, so release snapshots block.
+uses the standard library. The owner selected Apache-2.0 on 2026-10-01 (`LICENSE`), so release snapshots are gated only by the tag and a clean tree.

@@ -64,7 +64,8 @@ Authoritative catalogs / source files / Markdown metadata
   renderers reject unsupported records rather than producing a deceptively complete reference.
 - **Evidence and release:** CI runs tests and uploads an unsigned, hash-verifiable pack to a run
   artifact. No pack or timestamps are committed. The release-tag snapshot workflow fails closed
-  until a license is selected; snapshot artifacts are not permanent external retention.
+  if `LICENSE` is missing (Apache-2.0 since 2026-10-01); snapshot artifacts are not permanent
+  external retention.
 - **Metadata and ownership:** the frontmatter schema and ownership matrix validate instantiated
   controlled docs. The master index, human-owned inventory and relationship graph come from frontmatter.
   The Mermaid reference adds concrete source-to-target and catalog-to-template edges.

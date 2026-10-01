@@ -49,7 +49,8 @@ The root agent context documents record human intent and must be reviewed by a p
 CI uploads an unsigned pack of the **test suite it actually ran**, declared project component,
 material hashes and documentation health. It does not attest to a signed build, full dependency
 resolution, security, backup success or external compliance. Packs are run artifacts, not
-committed evidence files; a tagged release is blocked until the owner chooses a license.
+committed evidence files; a tagged release requires a `vX.Y.Z` tag at the same commit and a
+present `LICENSE` (Apache-2.0 since 2026-10-01).
 
 The initial 2026-09-26 metadata on human-authored starter documents is an authoring baseline,
 not owner approval. Those files are marked draft pending owner review. New unverified scaffolds

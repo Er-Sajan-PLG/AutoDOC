@@ -32,7 +32,7 @@ ownership, freshness, templates, human review impact, and actual test results.
 `EXAMPLE-PROJECT` is not a production service. The task API's route registry is not OpenAPI.
 TypeScript, arbitrary SQL, signed build provenance, external compliance and LLM execution
 are not implemented. Root `NEXT-ACTION.md` is human-owned; a Git-derived state block cannot
-invent the next human priority. Branch protection and a license still need owner decisions; release snapshots block until LICENSE exists.
+invent the next human priority. Branch protection still needs a repository-admin decision; the license is Apache-2.0 (`LICENSE`), so release snapshots require only a `vX.Y.Z` tag at the same commit.
 
 ## Commands
 `make generate`, `make check`, `make test`; see `docs/.doc-sync-map.yaml` and `README.md`.

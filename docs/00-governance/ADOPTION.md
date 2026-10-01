@@ -54,8 +54,9 @@ Enterprise privacy records, DR evidence, penetration-test reports, signed proven
 model evaluations and vendor records cannot be inferred from local examples.
 No production service or audit cycle exists here. API/config/schema references, agent
 allowlist inventories and a scoped unsigned test-run pack demonstrate the mechanism, not
-certification. Release snapshots are blocked pending an owner-chosen license. A backup reviewer,
-license decision, protected-branch checks and project-specific extractors remain open.
+certification. Release snapshots run under the owner-selected Apache-2.0 license
+(`LICENSE`, 2026-10-01). A backup reviewer, protected-branch checks and project-specific
+extractors remain open.
 
 ## Verification and references
 Check `docs/generated/CATALOG-REFERENCE.md` for the catalog inventory, and

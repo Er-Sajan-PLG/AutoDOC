@@ -53,9 +53,10 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 1: AutoDOC
 - L2 line 11: What it does
-- L2 line 26: Quick start (Python 3.11+)
-- L2 line 63: Status
-- L2 line 76: Navigate
+- L2 line 27: Quick start (Python 3.11+)
+- L2 line 64: Status
+- L2 line 77: Navigate
+- L2 line 91: License
 
 ## `TEMPLATES/AGENT-CONTEXT/DEV-B09-001.md`
 
@@ -3252,10 +3253,10 @@ ATX headings from configured human-owned Markdown sources.
 - L2 line 30: Selected document types
 - L2 line 45: Rollout and success criteria
 - L2 line 52: Non-applicability and gaps
-- L2 line 60: Verification and references
-- L2 line 66: Enforcement decisions (step 6, 2026-10-01)
-- L2 line 77: Applicability decisions (step 3, 2026-10-01)
-- L2 line 94: Phase 3 applicability
+- L2 line 61: Verification and references
+- L2 line 67: Enforcement decisions (step 6, 2026-10-01)
+- L2 line 78: Applicability decisions (step 3, 2026-10-01)
+- L2 line 95: Phase 3 applicability
 
 ## `docs/00-governance/BRANCH-PROTECTION.md`
 
@@ -3291,11 +3292,18 @@ ATX headings from configured human-owned Markdown sources.
 
 ## `docs/00-governance/LICENSE-CHOICE.md`
 
-- L1 line 22: License choice — pending owner approval
+- L1 line 22: License choice — Apache-2.0 selected
+- L2 line 38: What the choice obliges
+- L2 line 47: Where the choice lives
 
 ## `docs/00-governance/LICENSE-DECISION.md`
 
-- L1 line 22: License decision record
+- L1 line 22: License decision record: Apache-2.0
+- L2 line 27: Context
+- L2 line 34: Options considered
+- L2 line 39: Rationale
+- L2 line 50: Consequences
+- L2 line 63: Verification
 
 ## `docs/00-governance/LIMITATIONS.md`
 
@@ -3310,8 +3318,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 22: AutoDOC architecture
 - L2 line 24: Purpose and scope
 - L2 line 29: Details and decisions
-- L2 line 212: Verification and references
-- L2 line 220: Phase 3 trust boundaries
+- L2 line 213: Verification and references
+- L2 line 221: Phase 3 trust boundaries
 
 ## `docs/08-agent-context/AGENT-MEMORY.md`
 

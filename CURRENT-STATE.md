@@ -37,7 +37,8 @@ scheduled, rate-limited and warn-only.
 A health command measures catalog template triples, instantiated docs, deadlines and drift.
 The human inventory, relationship graph, catalog views and code/test/dependency outlines are generated.
 CI packages actual test-run evidence without claiming a signed build or license approval.
-The release-tag workflow fails closed while `LICENSE-CHOICE.md` remains pending.
+The release-tag workflow fails closed if `LICENSE` is missing; the owner selected Apache-2.0 on
+2026-10-01 (`LICENSE`, `pyproject.toml`, `docs/00-governance/LICENSE-DECISION.md`).
 
 AutoDOC now self-hosts its catalog and workflow inventories. Catalog and control-code changes
 are mapped to human adoption or architecture review; declared ownership is checked in CI.
@@ -56,7 +57,7 @@ holds `default`, `startup`, `oss-library`, `internal-service` and `regulated` as
 the default set, each addition carrying a reason and its own phases. This repository declares
 `profile = "oss-library"`, which adds the code of conduct, the vulnerability-disclosure route and
 the dependency policy, and drops the runbook; the addition of `License` (DOC-A10-008) states the
-redistribution terms the license decision still owes. Every type any profile can list passes the
+redistribution terms the repository now answers with Apache-2.0. Every type any profile can list passes the
 admission rule — a reader question, a detectable predicate, its phases, and named checks or an
 explicit template-only/human label — and `check_catalog.py` fails when one does not.
 

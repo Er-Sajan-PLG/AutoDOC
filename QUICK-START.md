@@ -50,7 +50,8 @@ Unsupported formats must fail or be documented as not implemented, never silentl
   update it and stage it. Co-change does not certify accuracy.
 - `overdue review (critical)`: obtain a real review; do not simply reset a date.
 - `Missing source` or `Unsupported SQL`: fix the map/source or add a tested extractor.
-- `Release blocked`: read `docs/00-governance/LICENSE-CHOICE.md`; only the owner chooses a license.
+- `Release blocked`: read `docs/00-governance/LICENSE-DECISION.md`; the gate fails when
+  `LICENSE` is missing, the tag is not `vX.Y.Z`, or the checked-out commit is not the tagged one.
 
 Run `make help` for all aliases. Use `make docs:staged` for staged changes; `make docs:impact`
 compares committed HEAD to `BASE=origin/master` and does **not** include uncommitted edits.

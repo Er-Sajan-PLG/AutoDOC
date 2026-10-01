@@ -33,7 +33,7 @@ requirements, not installed/transitive packages or known license information. Al
 versioned example declarations, not live monitoring. The agent examples have no LLM or network.
 Cloud costs, Kubernetes state, SaaS/vendor APIs, real model behavior and signed attestations
 require independent project-owned integrations and credentials. GitHub branch protection is
-not configured by a checked-in file; release-tag snapshots block until an owner selects a license.
+not configured by a checked-in file; the license is Apache-2.0 (2026-10-01), and release-tag snapshots additionally require a `vX.Y.Z` tag checked out at the same commit.
 Generated graph edges are factual references, not proof of architecture semantics.
 
 Enforcement is only as strong as the declared phase. While no phase is declared every finding
