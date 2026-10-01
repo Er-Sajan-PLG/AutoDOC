@@ -162,6 +162,46 @@ DETECTORS = {
 }
 
 
+DECLARED_FACTS = {
+    # Declaration-only facts. No detector exists for these on purpose, and the reason why is part
+    # of the vocabulary: each one is a fact about the world that no file tree can answer. The
+    # owner declares them in autodoc.toml `[facts]`; until then the honest value is `unknown`, so
+    # the documents they gate are undetermined — reported, never silently not applicable.
+    'handles_personal_data': {
+        'label': 'handles personal data',
+        'why_declared_only': 'Whether data identifies a person is a fact about the world, not about '
+                             'the file tree: a column named `email` may hold a business address, and '
+                             'a table of hashes may still be personal data.',
+    },
+    'handles_payments': {
+        'label': 'handles payments',
+        'why_declared_only': 'Only the owner knows whether money moves through the system and which '
+                             'parts touch card or account data; a `payments/` directory is evidence '
+                             'of code, not of a live payment flow.',
+    },
+    'safety_critical': {
+        'label': 'safety-critical',
+        'why_declared_only': 'Harm depends on what the system controls, not on what it imports; '
+                             'nothing in a file tree can tell whether a wrong answer hurts someone.',
+    },
+}
+
+
+def fact_specs():
+    """Every fact in the vocabulary, with its detection route.
+
+    A fact is either readable from files (a detector with exactness, limits and sources) or
+    declaration-only (a stated reason why no detector can exist). The two sets are disjoint, and
+    the catalog gate rejects a fact that claims both, claims neither, or has no consumer.
+    """
+    facts = {name: {**spec, 'detection': 'files'} for name, spec in DETECTORS.items()}
+    for name, spec in DECLARED_FACTS.items():
+        if name in facts:
+            raise ValueError(f'{name}: fact cannot be both detectable and declaration-only')
+        facts[name] = {**spec, 'detection': 'declaration-only'}
+    return facts
+
+
 def tracked_files(root):
     """Tracked files when Git is available (honors .gitignore); otherwise a pruned walk."""
     try:
@@ -450,12 +490,19 @@ def profile(root, declared=None):
     ecosystems = sorted(name for name, manifests in ECOSYSTEMS.items()
                         if any(matches(item, pattern) for item in files for pattern in manifests))
     cache, facts = {}, {}
-    for flag, spec in DETECTORS.items():
+    for flag, spec in fact_specs().items():
+        if spec['detection'] == 'declaration-only':
+            # Never inferred: with no declaration the honest value is "not answered", which the
+            # resolver reports as undetermined. Absence is not a negative fact about the project.
+            facts[flag] = {'value': 'unknown', 'detection': 'declaration-only', 'exactness': None,
+                           'evidence': [], 'limits': spec['why_declared_only'],
+                           'label': spec['label']}
+            continue
         value, evidence = evaluate(spec, files, set(ecosystems), cache, root, {})
-        facts[flag] = {'value': value, 'exactness': spec['exactness'],
+        facts[flag] = {'value': value, 'detection': 'files', 'exactness': spec['exactness'],
                        'evidence': evidence, 'limits': spec['limits']}
     for name in sorted(declared or {}):
-        if name not in DETECTORS:
+        if name not in facts:
             raise ValueError('Unknown declared fact: ' + name)
         entry = declared[name]
         facts[name] = {**facts[name], 'value': entry['value'], 'evidence': ['declared'],
@@ -474,7 +521,9 @@ def profile(root, declared=None):
             'kinds': detect_kinds(files, ecosystems, cache, root),
             'excluded': skipped_dirs(root, tracked),
             'note': 'File-presence facts with stated limits, never behavior. `unknown` means no '
-                    'configured source could be evaluated; it never means false. `kinds` holds '
+                    'configured source could be evaluated; it never means false. Facts with '
+                    '`detection` `declaration-only` (the declared traits) have no detector at all '
+                    'and stay `unknown` until the owner answers in autodoc.toml. `kinds` holds '
                     'evidence for the project kinds that have a detector; it is a hint, never a '
                     'declaration, and the requirements are driven by the declared `kinds` in '
                     'autodoc.toml. `excluded` lists the generated, vendored and test-input '

@@ -45,6 +45,15 @@ obligations = []   # e.g. ["gdpr", "soc2"]: declared duties only, never inferred
 # it next to the detected value.
 is_public = { value = true, reason = "published on GitHub at STEMORG2026/AutoDOC" }
 
+# Declared traits. These are facts about the world, not about the file tree, so no detector exists
+# for them and none can be added: `handles_personal_data` is not the same as "the schema has an
+# email column", and a `payments/` directory is code, not a live payment flow. Until one is
+# declared its value is `unknown`, and the documents that depend on it are undetermined —
+# reported, never silently not applicable.
+handles_personal_data = { value = "false", reason = "AutoDOC reads repository files on the machine running it and writes reports to the same checkout; it has no accounts, no telemetry and no store of personal data." }
+handles_payments = { value = "false", reason = "AutoDOC never touches money, card or account data; it is a static documentation checker with no runtime service." }
+safety_critical = { value = "false", reason = "AutoDOC reports documentation findings; a wrong or missing finding can block a merge or mislead a reader, but cannot cause physical harm." }
+
 [not_applicable]
 # A skipped document is a decision with a reason, not a failure. Bare string or { reason = "..." }.
 # Example: "DOC-A07-001" = "the service stores no personal data"

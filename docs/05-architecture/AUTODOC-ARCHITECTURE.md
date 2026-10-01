@@ -85,7 +85,8 @@ Authoritative catalogs / source files / Markdown metadata
   (kinds, audiences, declared duties). `scripts/intelligence/context.py` reads `autodoc.toml`,
   applies the documented shorthands, and **fails on any unrecognised context**; a missing file is
   an empty context and an empty context is advisory-only. `scripts/intelligence/profile.py`
-  records what files exist as fifteen **three-valued** facts: `true`, `false`, or `unknown`.
+  records what files exist as fifteen **three-valued** facts (`true`, `false`, or `unknown`)
+  and names three **declaration-only** traits, answered in `autodoc.toml` and never inferred.
   `unknown` is the honest answer when no configured source could be evaluated — a repository
   whose ecosystem has no reader, or one with no manifest at all — and it propagates: a predicate
   over an unknown fact yields **undetermined**, which is reported, never counted as satisfied and
@@ -120,6 +121,19 @@ Authoritative catalogs / source files / Markdown metadata
   is reported and never failed — rather than a verdict from a guess. A repository with no
   detector matches and no declaration is on the generic baseline: only requirements that do not
   depend on a kind or a phase apply.
+
+- **Traits are declared, never inferred** (`scripts/intelligence/profile.py`). Three facts —
+  `handles_personal_data`, `handles_payments`, `safety_critical` — describe the world, not the
+  file tree, so no detector exists for them and none can be added: an `email` column may hold a
+  business address, a table of hashes may still be personal data, and a `payments/` directory is
+  code, not a live payment flow. They carry a stated reason instead of sources — the same honesty
+  rule the declaration-only kinds follow — and `check_catalog.py` refuses a fact that claims both
+  routes, claims neither, or has no catalog consumer. Until the owner answers in `autodoc.toml`
+  `[facts]`, the value is `unknown` and every document that depends on it is **undetermined**;
+  a declared `true` activates exactly those documents. The applicable report states each answer
+  with its reason, `--hint` prints the open questions, and the catalog consumes the traits so the
+  forms are exercised rather than merely allowed: the PII inventory, the new Cardholder data flow
+  and Hazard analysis (each core, required once its trait is true), and the deeper privacy set.
 
 - **The catalog states what it can and cannot verify** (`CATALOG-SCHEMA.json`, `CATALOG-RULES.json`).
   Each type carries the reader question it answers, who reads it, the lifecycle events that make

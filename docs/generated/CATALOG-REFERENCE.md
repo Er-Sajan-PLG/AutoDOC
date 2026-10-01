@@ -35,7 +35,7 @@ Generated from the three catalog indices. These are possible documents, not comp
 | A03-ARCHITECTURE | Systems architecture | 11 | `DOC-A03-001`, `DOC-A03-002`, `DOC-A03-003`, `DOC-A03-004`, `DOC-A03-005`, `DOC-A03-006`, `DOC-A03-007`, `DOC-A03-008`, `DOC-A03-009`, `DOC-A03-010`, `DOC-A03-011` |
 | A04-DESIGN | Detailed technical design | 12 | `DOC-A04-001`, `DOC-A04-002`, `DOC-A04-003`, `DOC-A04-004`, `DOC-A04-005`, `DOC-A04-006`, `DOC-A04-007`, `DOC-A04-008`, `DOC-A04-009`, `DOC-A04-010`, `DOC-A04-011`, `DOC-A04-012` |
 | A05-DATA | Data and information management | 10 | `DOC-A05-001`, `DOC-A05-002`, `DOC-A05-003`, `DOC-A05-004`, `DOC-A05-005`, `DOC-A05-006`, `DOC-A05-007`, `DOC-A05-008`, `DOC-A05-009`, `DOC-A05-010` |
-| A06-SECURITY | Security engineering | 10 | `DOC-A06-001`, `DOC-A06-002`, `DOC-A06-003`, `DOC-A06-004`, `DOC-A06-005`, `DOC-A06-006`, `DOC-A06-007`, `DOC-A06-008`, `DOC-A06-009`, `DOC-A06-010` |
+| A06-SECURITY | Security engineering | 11 | `DOC-A06-001`, `DOC-A06-002`, `DOC-A06-003`, `DOC-A06-004`, `DOC-A06-005`, `DOC-A06-006`, `DOC-A06-007`, `DOC-A06-008`, `DOC-A06-009`, `DOC-A06-010`, `DOC-A06-011` |
 | A07-PRIVACY | Privacy and compliance | 7 | `DOC-A07-001`, `DOC-A07-002`, `DOC-A07-003`, `DOC-A07-004`, `DOC-A07-005`, `DOC-A07-006`, `DOC-A07-007` |
 | A08-APIS | APIs and interfaces | 10 | `DOC-A08-001`, `DOC-A08-002`, `DOC-A08-003`, `DOC-A08-004`, `DOC-A08-005`, `DOC-A08-006`, `DOC-A08-007`, `DOC-A08-008`, `DOC-A08-009`, `DOC-A08-010` |
 | A09-DEVELOPMENT | Development process | 9 | `DOC-A09-001`, `DOC-A09-002`, `DOC-A09-003`, `DOC-A09-004`, `DOC-A09-005`, `DOC-A09-006`, `DOC-A09-007`, `DOC-A09-008`, `DOC-A09-009` |
@@ -49,13 +49,13 @@ Generated from the three catalog indices. These are possible documents, not comp
 | A17-INCIDENTS | Incident and problem management | 7 | `DOC-A17-001`, `DOC-A17-002`, `DOC-A17-003`, `DOC-A17-004`, `DOC-A17-005`, `DOC-A17-006`, `DOC-A17-007` |
 | A18-DISASTER-RECOVERY | Disaster recovery and continuity | 8 | `DOC-A18-001`, `DOC-A18-002`, `DOC-A18-003`, `DOC-A18-004`, `DOC-A18-005`, `DOC-A18-006`, `DOC-A18-007`, `DOC-A18-008` |
 | A19-VENDORS | Vendor and third party | 5 | `DOC-A19-001`, `DOC-A19-002`, `DOC-A19-003`, `DOC-A19-004`, `DOC-A19-005` |
-| A20-GOVERNANCE | Governance risk and compliance | 7 | `DOC-A20-001`, `DOC-A20-002`, `DOC-A20-003`, `DOC-A20-004`, `DOC-A20-005`, `DOC-A20-006`, `DOC-A20-007` |
+| A20-GOVERNANCE | Governance risk and compliance | 8 | `DOC-A20-001`, `DOC-A20-002`, `DOC-A20-003`, `DOC-A20-004`, `DOC-A20-005`, `DOC-A20-006`, `DOC-A20-007`, `DOC-A20-008` |
 | A21-AI-ML | AI ML and agents | 12 | `DOC-A21-001`, `DOC-A21-002`, `DOC-A21-003`, `DOC-A21-004`, `DOC-A21-005`, `DOC-A21-006`, `DOC-A21-007`, `DOC-A21-008`, `DOC-A21-009`, `DOC-A21-010`, `DOC-A21-011`, `DOC-A21-012` |
 | A22-USER-SUPPORT | User and support | 8 | `DOC-A22-001`, `DOC-A22-002`, `DOC-A22-003`, `DOC-A22-004`, `DOC-A22-005`, `DOC-A22-006`, `DOC-A22-007`, `DOC-A22-008` |
 | A23-LIFECYCLE | Lifecycle management | 7 | `DOC-A23-001`, `DOC-A23-002`, `DOC-A23-003`, `DOC-A23-004`, `DOC-A23-005`, `DOC-A23-006`, `DOC-A23-007` |
 | A24-EVIDENCE | Evidence packs | 10 | `DOC-A24-001`, `DOC-A24-002`, `DOC-A24-003`, `DOC-A24-004`, `DOC-A24-005`, `DOC-A24-006`, `DOC-A24-007`, `DOC-A24-008`, `DOC-A24-009`, `DOC-A24-010` |
 
-**Total types:** 207.
+**Total types:** 209.
 
 ## CATALOG-B
 

@@ -6,6 +6,7 @@ ecosystem has no reader, one whose declared dependencies are empty, and one that
 import importlib.util
 import json
 import unittest
+import unittest.mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -95,6 +96,39 @@ class FixtureMatrixTests(unittest.TestCase):
         self.assertEqual(entry['value'], 'false')
         self.assertEqual(entry['evidence'], ['declared'])
         self.assertEqual(entry['declared_reason'], 'internal fork')
+
+    def test_declared_traits_have_no_detector_and_are_unknown_until_answered(self):
+        """§4: personal data, payments and safety are facts about the world, never file evidence."""
+        for name, spec in profiler.DECLARED_FACTS.items():
+            with self.subTest(name):
+                self.assertNotIn(name, profiler.DETECTORS)
+                self.assertTrue(spec['why_declared_only'].strip(),
+                                'a declaration-only fact states why no detector can exist')
+                self.assertEqual(profiler.fact_specs()[name]['detection'], 'declaration-only')
+        data = profiler.profile(ROOT)
+        for name in profiler.DECLARED_FACTS:
+            entry = data['facts'][name]
+            self.assertEqual(entry['value'], 'unknown', 'absence is not a negative fact')
+            self.assertEqual(entry['evidence'], [])
+            self.assertIsNone(entry['exactness'])
+
+    def test_a_declared_trait_records_the_answer_and_its_reason(self):
+        data = profiler.profile(ROOT, {'handles_personal_data': {
+            "value": "true", "reason": "the CLI reads repository files on the author's machine"}})
+        entry = data['facts']['handles_personal_data']
+        self.assertEqual(entry['value'], 'true')
+        self.assertEqual(entry['evidence'], ['declared'])
+        self.assertEqual(entry['declared_reason'],
+                         "the CLI reads repository files on the author's machine")
+        self.assertEqual(data['facts']['handles_payments']['value'], 'unknown',
+                         'answering one trait does not answer another')
+
+    def test_a_fact_cannot_be_both_detectable_and_declaration_only(self):
+        with unittest.mock.patch.object(
+                profiler, 'DECLARED_FACTS',
+                {**profiler.DECLARED_FACTS, 'has_tests': {'label': 'tests', 'why_declared_only': 'x'}}):
+            with self.assertRaisesRegex(ValueError, 'both detectable and declaration-only'):
+                profiler.fact_specs()
 
     def test_unknown_declared_fact_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unknown declared fact'):

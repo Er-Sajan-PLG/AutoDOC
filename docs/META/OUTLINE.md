@@ -53,9 +53,9 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 1: AutoDOC
 - L2 line 11: What it does
-- L2 line 18: Quick start (Python 3.11+)
-- L2 line 55: Status
-- L2 line 68: Navigate
+- L2 line 20: Quick start (Python 3.11+)
+- L2 line 57: Status
+- L2 line 70: Navigate
 
 ## `TEMPLATES/AGENT-CONTEXT/DEV-B09-001.md`
 
@@ -1913,6 +1913,18 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 23: Incident response plan
 
+## `TEMPLATES/SPECIFICATIONS/DOC-A06-011.md`
+
+- L1 line 23: Cardholder data flow
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A06-011.md.blank`
+
+- L1 line 23: Cardholder data flow
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A06-011.md.example`
+
+- L1 line 23: Cardholder data flow
+
 ## `TEMPLATES/SPECIFICATIONS/DOC-A07-001.md`
 
 - L1 line 23: ROPA
@@ -2957,6 +2969,18 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 23: Governance RACI
 
+## `TEMPLATES/SPECIFICATIONS/DOC-A20-008.md`
+
+- L1 line 23: Hazard analysis
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A20-008.md.blank`
+
+- L1 line 23: Hazard analysis
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A20-008.md.example`
+
+- L1 line 23: Hazard analysis
+
 ## `TEMPLATES/SPECIFICATIONS/DOC-A21-001.md`
 
 - L1 line 23: Model card
@@ -3252,12 +3276,12 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: Engine coverage and honest limits
 - L2 line 24: Implemented and tested
-- L2 line 49: Implemented validators
-- L2 line 67: Mapped but template-only
-- L2 line 75: Partially supported
-- L2 line 83: Explicitly not implemented
-- L2 line 93: Not supported / integration needed
-- L2 line 101: Known environment constraints
+- L2 line 50: Implemented validators
+- L2 line 68: Mapped but template-only
+- L2 line 76: Partially supported
+- L2 line 84: Explicitly not implemented
+- L2 line 94: Not supported / integration needed
+- L2 line 102: Known environment constraints
 
 ## `docs/00-governance/EVIDENCE-SIGNING.md`
 
@@ -3284,8 +3308,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 22: AutoDOC architecture
 - L2 line 24: Purpose and scope
 - L2 line 29: Details and decisions
-- L2 line 168: Verification and references
-- L2 line 174: Phase 3 trust boundaries
+- L2 line 182: Verification and references
+- L2 line 188: Phase 3 trust boundaries
 
 ## `docs/08-agent-context/AGENT-MEMORY.md`
 

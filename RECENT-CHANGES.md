@@ -34,15 +34,32 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
-- 328c2d6 2026-09-30 Enforce one severity policy with a baseline and documented exit codes
-- 7cc1e8a 2026-09-30 Obligations as catalog x context, with phase-scaled enforcement
-- c3cdae8 2026-09-30 Make catalog classification data; add tiers, applicability and a profiler
-- a2ba937 2026-09-30 Refresh observable living-state blocks after stub retirement
-- 15a8254 2026-09-30 Retire the 28 approved title-only index placeholders
-- aabe917 2026-09-30 Add approved-stub check; it fails the 28 title-only index placeholders
+- 74d0544 2026-10-01 Infer kinds as evidence and declare them as answers, never as guesses
+- 58e1663 2026-10-01 Make the core set a declared profile and give every catalog type an admission
+- 90478d4 2026-10-01 Enforce a phase-scaled contract: fingerprinted baselines, honest exits, golden fixtures
 - 19ca0d4 2026-09-27 Merge pull request #1 from Er-Sajan-PLG/arena/01a0de49-autodoc
 
 ## Changed paths at update time
 
-- None staged or changed.
+- `CATALOG-A/INDEX.yaml`
+- `CONTROL/metadata/CATALOG-RULES.json`
+- `autodoc.toml`
+- `docs/01-catalogs/CATALOG-INDEX.md`
+- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md`
+- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-C.md`
+- `docs/META/CODE-INVENTORY.md`
+- `docs/META/COMPLETENESS-REPORT.md`
+- `docs/META/OUTLINE.md`
+- `docs/META/TEST-INVENTORY.md`
+- `docs/generated/CATALOG-REFERENCE.md`
+- `docs/reference/DOC-RELATIONSHIPS.md`
+- `scripts/doc-control/check_catalog.py`
+- `scripts/intelligence/context.py`
+- `scripts/intelligence/enforce.py`
+- `scripts/intelligence/profile.py`
+- `scripts/intelligence/recommend.py`
+- `tests/test_catalog.py`
+- `tests/test_context.py`
+- `tests/test_profile.py`
+- … and 1 more; use git diff --cached --name-only.
 <!-- auto:end -->

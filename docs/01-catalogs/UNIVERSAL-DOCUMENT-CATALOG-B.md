@@ -77,7 +77,7 @@ Data and information management.
 | `DOC-A05-006` | Retention policy | contextual | idea | has_persistent_state | Record retention policy for data and information management. | auditors | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-007` | ETL specification | contextual | idea | any | Record etl specification for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-008` | Data quality | contextual | idea | has_persistent_state | Record data quality for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A05-009` | PII inventory | contextual | idea | has_persistent_state | Record pii inventory for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-009` | PII inventory | core | build | handles_personal_data | Record pii inventory for data and information management. | auditors | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-010` | Disposal procedure | contextual | idea | has_persistent_state | Record disposal procedure for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 
 ## A06-SECURITY
@@ -96,6 +96,7 @@ Security engineering.
 | `DOC-A06-008` | Vulnerability management | contextual | idea | is_public | Record vulnerability management for security engineering. | external-users | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A06-009` | Penetration test report | contextual | idea | has_deploy | Record penetration test report for security engineering. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A06-010` | Incident response plan | contextual | idea | has_deploy | Record incident response plan for security engineering. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-011` | Cardholder data flow | core | build | handles_payments | Record cardholder data flow for security engineering. | auditors | pre-release | project owner | human-review | Hardened | — |
 
 ## A07-PRIVACY
 
@@ -105,11 +106,11 @@ Privacy and compliance.
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `DOC-A07-001` | ROPA | contextual | idea | any | Record ropa for privacy and compliance. | auditors | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A07-002` | DPIA | contextual | idea | any | Record dpia for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A07-003` | Consent management | contextual | idea | assess | Record consent management for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A07-004` | Data processing agreement | contextual | idea | assess | Record data processing agreement for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A07-005` | Subprocessor inventory | contextual | idea | assess | Record subprocessor inventory for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-003` | Consent management | contextual | idea | handles_personal_data | Record consent management for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-004` | Data processing agreement | contextual | idea | handles_personal_data | Record data processing agreement for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-005` | Subprocessor inventory | contextual | idea | handles_personal_data | Record subprocessor inventory for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A07-006` | Regulatory control mapping | contextual | idea | any | Record regulatory control mapping for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A07-007` | Privacy request log | contextual | idea | assess | Record privacy request log for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-007` | Privacy request log | contextual | idea | handles_personal_data | Record privacy request log for privacy and compliance. | — | pre-release | project owner | human-review | Hardened | — |
 
 ## A08-APIS
 

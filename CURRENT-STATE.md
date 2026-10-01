@@ -39,7 +39,8 @@ are mapped to human adoption or architecture review; declared ownership is check
 The catalog is generated from `CONTROL/metadata/CATALOG-RULES.json` and validated against
 `CATALOG-SCHEMA.json`, so document type, tier, phase, maturity and applicability are data a
 reviewer can diff. `priority` is gone: it came from three domain prefixes and classified UAT as
-core for every project. It is replaced by 24 hand-picked core types — including `README`, which
+core for every project. It is replaced by 27 hand-picked core types (three of them gated by
+declared traits) — including `README`, which
 was missing from all 260 — each with a recorded reason, a detectable `applies_when` predicate
 and an authored `severity_by_phase` (the phases it is off in; `phase_min` is derived, never a
 second source), over 45 extended and 194 contextual types.
@@ -59,17 +60,20 @@ declaration in `autodoc.toml` is what gates documents. This repository declares 
 — the hint also offered `application`, from an example inside the repository rather than a program
 it ships — which turned three undetermined kind-gated documents into two not-applicable and one
 applicable. Requirements resolve as Catalog x Context: a declared context in `autodoc.toml` (phase, audience,
-kinds, declared duties) against fifteen three-valued facts, so a fact that cannot be read makes a
-type **undetermined** rather than silently satisfied. Severity scales with phase, per column:
+kinds, declared duties) against fifteen file-detected facts and three declared traits, so a
+fact that cannot be read makes a type **undetermined** rather than silently satisfied. Severity scales with phase, per column:
 `build` warns about required docs and fails structural breakage with drift and freshness off;
 `beta` adds drift and freshness as warnings; `live` and `mature` fail all four; `sunset` shrinks
 to the sunset profile. This repository declares `build` (2026-09-30), so its 16 applicable
 core types are surveyed against that phase: 7 are acknowledged, and the missing required ones
-warn rather than fail. Kind inference is not
-implemented, so declared kinds are inert and no predicate uses `kind:` yet.
+warn rather than fail. Traits follow the same rule: `handles_personal_data`, `handles_payments`
+and `safety_critical` are declared in `[facts]`, never inferred — no detector exists for a fact
+about the world — and an unanswered trait leaves the documents that depend on it undetermined.
+This repository answers all three `false` with a reason, so the PII inventory, cardholder data
+flow, hazard analysis and the deeper privacy set are not applicable here.
 
 <!-- auto:start -->
-- Catalog types: 263 (not necessarily instantiated).
+- Catalog types: 265 (not necessarily instantiated).
 - Controlled docs: 65 (23 generated, 42 human-owned).
 - Overdue human-owned docs: 0.
 - Open gaps: see `docs/00-governance/ENGINE-COVERAGE.md`; this block does not infer intent.

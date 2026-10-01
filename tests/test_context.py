@@ -65,7 +65,7 @@ class ContextTests(unittest.TestCase):
         self.assertIn('is not a declared phase', joined)
         self.assertIn('unknown kind', joined)
         self.assertIn('unknown audience', joined)
-        self.assertIn('is not a detectable fact', joined)
+        self.assertIn('is not a fact in the vocabulary', joined)
         self.assertIn('unknown rule', joined)
         self.assertNotIn('severity.drift', joined, 'an honoured rule accepts an override')
         self.assertIn("unknown rule 'recommend.undetermined'", joined,

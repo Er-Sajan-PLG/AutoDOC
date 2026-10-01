@@ -21,9 +21,18 @@ recommend = load_module('autodoc_recommend', 'scripts/intelligence/recommend.py'
 def facts(**overrides):
     values = {}
     for name, spec in profiler.DETECTORS.items():
-        values[name] = {'value': overrides.pop(name, 'false'), 'exactness': spec['exactness'],
+        values[name] = {'value': overrides.pop(name, 'false'), 'detection': 'files',
+                        'exactness': spec['exactness'],
                         'evidence': ['example/path'] if overrides.get(name) == 'true' else [],
                         'limits': spec['limits']}
+    for name, spec in profiler.DECLARED_FACTS.items():
+        # A trait nobody declared is `unknown`, exactly as the profiler emits it.
+        value = overrides.pop(name, 'unknown')
+        answered = value in ('true', 'false')
+        values[name] = {'value': value, 'detection': 'declaration-only', 'exactness': None,
+                        'evidence': ['declared'] if answered else [],
+                        'limits': spec['why_declared_only'],
+                        'declared_reason': 'synthetic reason' if answered else None}
     assert not overrides, overrides
     return values
 
@@ -44,9 +53,15 @@ def resolve(**raw):
                                      'instantiated', 'satisfied_by', 'severity', 'facts',
                                      'profile')})
     detected = {key: value for key, value in raw.items() if key in profiler.DETECTORS}
+    profile = profile_document(**detected)
+    for name, entry in (declared.get('facts') or {}).items():
+        # The same merge the profiler performs: a declaration replaces the value and records
+        # the reason, whether the fact has a detector or is declaration-only.
+        profile['facts'][name] = {**profile['facts'][name], 'value': entry['value'],
+                                  'evidence': ['declared'], 'declared_reason': entry['reason']}
     enforcement = context_module.enforcement(declared['phase'])
     documents = recommend.catalog()
-    groups = recommend.evaluate(documents, profile_document(**detected), declared, enforcement)
+    groups = recommend.evaluate(documents, profile, declared, enforcement)
     return documents, declared, groups, enforcement
 
 
@@ -387,6 +402,74 @@ class ExplainTests(unittest.TestCase):
         document = next(item for item in documents if item['id'] == 'DOC-A07-001')
         text = recommend.explain(document, profile_document(), declared, enforcement)
         self.assertIn('| `obligation:gdpr` | declared |', text)
+
+
+class TraitTests(unittest.TestCase):
+    """§4: traits are facts about the world, declared once, never inferred from files."""
+
+    TRAITS = ('handles_payments', 'handles_personal_data', 'safety_critical')
+    DECLARED_FALSE = {name: {'value': 'false', 'reason': 'declared false for this test'}
+                      for name in TRAITS}
+
+    def test_an_unanswered_trait_leaves_its_documents_undetermined_never_false(self):
+        _, declared, groups, _ = resolve(phase='build')
+        self.assertEqual(declared['facts'], {})
+        self.assertIn('DOC-A05-009', ids(groups, 'undetermined'),
+                      'PII inventory depends on a question nobody answered')
+        item = find(groups, 'undetermined', 'DOC-A05-009')
+        self.assertEqual(item['tokens']['handles_personal_data'], 'unknown')
+        self.assertNotIn('DOC-A05-009', ids(groups, 'not_applicable'))
+        traits = recommend.trait_summary(profile_document(), declared)
+        self.assertEqual(traits['unanswered'], list(self.TRAITS))
+        line = recommend.trait_line(traits, groups)
+        self.assertIn('asked but not answered', line)
+        self.assertIn('never inferred', line)
+        self.assertIn('document(s) undetermined', line)
+
+    def test_declaring_a_trait_answers_the_question_both_ways(self):
+        _, _, answered, _ = resolve(phase='build', facts=self.DECLARED_FALSE)
+        self.assertIn('DOC-A05-009', ids(answered, 'not_applicable'))
+        self.assertIn('DOC-A07-003', ids(answered, 'not_applicable'),
+                      'the deeper privacy set follows the same answer')
+        self.assertNotIn('DOC-A05-009', ids(answered, 'undetermined'))
+        traits = recommend.trait_summary(profile_document(), {'facts': {}})
+        self.assertEqual(traits['unanswered'], list(self.TRAITS), 'sanity: profile alone is open')
+        line = recommend.trait_line(traits, answered)
+        self.assertIn('none answered', line)
+
+    def test_a_declared_true_trait_activates_its_documents(self):
+        _, _, active, _ = resolve(phase='build', facts={
+            'handles_payments': {'value': 'true', 'reason': 'the service takes cards'},
+            'handles_personal_data': {'value': 'true', 'reason': 'customer accounts'},
+            'safety_critical': {'value': 'true', 'reason': 'controls hospital equipment'}})
+        self.assertIn('DOC-A06-011', ids(active, 'required'),
+                      'cardholder data flow is required at build once payments are declared')
+        self.assertIn('DOC-A20-008', ids(active, 'required'))
+        self.assertIn('DOC-A05-009', ids(active, 'required'))
+        self.assertEqual(recommend.trait_summary(profile_document(), {})['unanswered'],
+                         list(self.TRAITS))
+        self.assertNotIn('DOC-A05-009', ids(active, 'undetermined'))
+
+    def test_a_trait_value_can_only_arrive_through_a_declaration(self):
+        """There is no detector to disagree with: the vocabulary itself is the guarantee."""
+        for name, spec in profiler.DECLARED_FACTS.items():
+            self.assertNotIn(name, profiler.DETECTORS)
+            self.assertEqual(profiler.fact_specs()[name]['detection'], 'declaration-only')
+            self.assertFalse(spec.get('sources'), 'a declared trait has no source to read')
+
+    def test_phase_and_kinds_stay_three_valued_next_to_traits(self):
+        documents, declared, groups, enforcement = resolve(phase='build',
+                                                            has_public_api_surface='true')
+        self.assertIn('DOC-A08-008', ids(groups, 'undetermined'),
+                      'an undeclared kind is still a question, not a no')
+        self.assertEqual(declare_only_values(declared), {},
+                         'no trait value is ever inferred into the context')
+
+
+def declare_only_values(declared):
+    """The trait values the context itself declares (never what a profile detected)."""
+    return {name: entry['value'] for name, entry in declared['facts'].items()
+            if name in profiler.DECLARED_FACTS}
 
 
 if __name__ == '__main__':

@@ -73,16 +73,18 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/doc-control/check_catalog.py` | 58 | function | `validate` | `(instance, schema, path='$', errors=None)` |
 | `scripts/doc-control/check_catalog.py` | 119 | function | `profiler_module` | `()` |
 | `scripts/doc-control/check_catalog.py` | 127 | function | `detector_specs` | `()` |
-| `scripts/doc-control/check_catalog.py` | 131 | function | `detectors` | `()` |
-| `scripts/doc-control/check_catalog.py` | 136 | function | `tokens_of` | `(document)` |
-| `scripts/doc-control/check_catalog.py` | 144 | function | `phase_order` | `(model=None)` |
-| `scripts/doc-control/check_catalog.py` | 150 | function | `severity_by_phase_errors` | `(document, phases, order)` |
-| `scripts/doc-control/check_catalog.py` | 174 | function | `first_applicable_phase` | `(mapping, order)` |
-| `scripts/doc-control/check_catalog.py` | 182 | function | `kind_errors` | `(model, profiler)` |
-| `scripts/doc-control/check_catalog.py` | 217 | function | `admission_errors` | `(rules, model, documents, profiles)` |
-| `scripts/doc-control/check_catalog.py` | 272 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` |
-| `scripts/doc-control/check_catalog.py` | 321 | function | `index_documents` | `(index)` |
-| `scripts/doc-control/check_catalog.py` | 325 | function | `check` | `(indices=None)` |
+| `scripts/doc-control/check_catalog.py` | 131 | function | `declared_specs` | `()` |
+| `scripts/doc-control/check_catalog.py` | 136 | function | `detectors` | `()` |
+| `scripts/doc-control/check_catalog.py` | 141 | function | `tokens_of` | `(document)` |
+| `scripts/doc-control/check_catalog.py` | 149 | function | `phase_order` | `(model=None)` |
+| `scripts/doc-control/check_catalog.py` | 155 | function | `severity_by_phase_errors` | `(document, phases, order)` |
+| `scripts/doc-control/check_catalog.py` | 179 | function | `first_applicable_phase` | `(mapping, order)` |
+| `scripts/doc-control/check_catalog.py` | 187 | function | `kind_errors` | `(model, profiler)` |
+| `scripts/doc-control/check_catalog.py` | 222 | function | `fact_errors` | `(profiler, facts, consumers)` |
+| `scripts/doc-control/check_catalog.py` | 256 | function | `admission_errors` | `(rules, model, documents, profiles)` |
+| `scripts/doc-control/check_catalog.py` | 311 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` |
+| `scripts/doc-control/check_catalog.py` | 360 | function | `index_documents` | `(index)` |
+| `scripts/doc-control/check_catalog.py` | 364 | function | `check` | `(indices=None)` |
 | `scripts/doc-control/check_ownership.py` | 1 | module | `scripts.doc-control.check_ownership` | — |
 | `scripts/doc-control/check_ownership.py` | 11 | function | `check` | `()` |
 | `scripts/doc-control/check_sync_map.py` | 1 | module | `scripts.doc-control.check_sync_map` | — |
@@ -182,13 +184,13 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/context.py` | 121 | function | `catalog_ids` | `()` |
 | `scripts/intelligence/context.py` | 136 | function | `resolve_aliases` | `(context)` |
 | `scripts/intelligence/context.py` | 162 | function | `validate` | `(context, model=None)` |
-| `scripts/intelligence/context.py` | 219 | function | `validate_model` | `(model=None)` |
-| `scripts/intelligence/context.py` | 286 | function | `enforcement` | `(phase, model=None)` |
-| `scripts/intelligence/context.py` | 298 | function | `check_severity` | `(context, family, model=None)` |
-| `scripts/intelligence/context.py` | 316 | function | `phase_age` | `(context, today=None)` |
-| `scripts/intelligence/context.py` | 327 | function | `_git` | `(root, *args)` |
-| `scripts/intelligence/context.py` | 335 | function | `kind_hints` | `(profile_document)` |
-| `scripts/intelligence/context.py` | 356 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
+| `scripts/intelligence/context.py` | 220 | function | `validate_model` | `(model=None)` |
+| `scripts/intelligence/context.py` | 287 | function | `enforcement` | `(phase, model=None)` |
+| `scripts/intelligence/context.py` | 299 | function | `check_severity` | `(context, family, model=None)` |
+| `scripts/intelligence/context.py` | 317 | function | `phase_age` | `(context, today=None)` |
+| `scripts/intelligence/context.py` | 328 | function | `_git` | `(root, *args)` |
+| `scripts/intelligence/context.py` | 336 | function | `kind_hints` | `(profile_document)` |
+| `scripts/intelligence/context.py` | 357 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
 | `scripts/intelligence/enforce.py` | 1 | module | `scripts.intelligence.enforce` | — |
 | `scripts/intelligence/enforce.py` | 47 | function | `load_module` | `(name, path)` |
 | `scripts/intelligence/enforce.py` | 62 | function | `fingerprint` | `(detail)` |
@@ -201,24 +203,25 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/enforce.py` | 212 | function | `write_baseline` | `(path, findings, phase, today=None)` |
 | `scripts/intelligence/enforce.py` | 236 | function | `summarize` | `(findings, suppressed, stale, enforcement)` |
 | `scripts/intelligence/enforce.py` | 251 | function | `report` | `(data, findings, suppressed, stale, enforcement, exit_code)` |
-| `scripts/intelligence/enforce.py` | 353 | function | `build` | `(args)` |
-| `scripts/intelligence/enforce.py` | 393 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
-| `scripts/intelligence/enforce.py` | 410 | function | `run` | `(args)` |
-| `scripts/intelligence/enforce.py` | 446 | function | `main` | `()` |
+| `scripts/intelligence/enforce.py` | 357 | function | `build` | `(args)` |
+| `scripts/intelligence/enforce.py` | 398 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
+| `scripts/intelligence/enforce.py` | 415 | function | `run` | `(args)` |
+| `scripts/intelligence/enforce.py` | 451 | function | `main` | `()` |
 | `scripts/intelligence/profile.py` | 1 | module | `scripts.intelligence.profile` | — |
-| `scripts/intelligence/profile.py` | 165 | function | `tracked_files` | `(root)` |
-| `scripts/intelligence/profile.py` | 183 | function | `skipped_dir` | `(relative)` |
-| `scripts/intelligence/profile.py` | 188 | function | `skipped_dirs` | `(root, files)` |
-| `scripts/intelligence/profile.py` | 202 | function | `matches` | `(relative, pattern)` |
-| `scripts/intelligence/profile.py` | 213 | function | `read_manifest` | `(root, name, cache)` |
-| `scripts/intelligence/profile.py` | 233 | function | `dependency_names` | `(data)` |
-| `scripts/intelligence/profile.py` | 243 | function | `probe` | `(root, pack, name, cache)` |
-| `scripts/intelligence/profile.py` | 380 | function | `kind_specs` | `(model=None)` |
-| `scripts/intelligence/profile.py` | 385 | function | `detect_kinds` | `(files, ecosystems, cache, root)` |
-| `scripts/intelligence/profile.py` | 395 | function | `content_hits` | `(root, source, files, cache)` |
-| `scripts/intelligence/profile.py` | 415 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` |
-| `scripts/intelligence/profile.py` | 445 | function | `profile` | `(root, declared=None)` |
-| `scripts/intelligence/profile.py` | 484 | function | `summary` | `(document)` |
+| `scripts/intelligence/profile.py` | 190 | function | `fact_specs` | `()` |
+| `scripts/intelligence/profile.py` | 205 | function | `tracked_files` | `(root)` |
+| `scripts/intelligence/profile.py` | 223 | function | `skipped_dir` | `(relative)` |
+| `scripts/intelligence/profile.py` | 228 | function | `skipped_dirs` | `(root, files)` |
+| `scripts/intelligence/profile.py` | 242 | function | `matches` | `(relative, pattern)` |
+| `scripts/intelligence/profile.py` | 253 | function | `read_manifest` | `(root, name, cache)` |
+| `scripts/intelligence/profile.py` | 273 | function | `dependency_names` | `(data)` |
+| `scripts/intelligence/profile.py` | 283 | function | `probe` | `(root, pack, name, cache)` |
+| `scripts/intelligence/profile.py` | 420 | function | `kind_specs` | `(model=None)` |
+| `scripts/intelligence/profile.py` | 425 | function | `detect_kinds` | `(files, ecosystems, cache, root)` |
+| `scripts/intelligence/profile.py` | 435 | function | `content_hits` | `(root, source, files, cache)` |
+| `scripts/intelligence/profile.py` | 455 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` |
+| `scripts/intelligence/profile.py` | 485 | function | `profile` | `(root, declared=None)` |
+| `scripts/intelligence/profile.py` | 533 | function | `summary` | `(document)` |
 | `scripts/intelligence/recommend.py` | 1 | module | `scripts.intelligence.recommend` | — |
 | `scripts/intelligence/recommend.py` | 28 | function | `load_module` | `(name, relative)` |
 | `scripts/intelligence/recommend.py` | 40 | function | `catalog` | `()` |
@@ -241,7 +244,9 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/recommend.py` | 449 | function | `explain` | `(document, profile_document, context, enforcement=None, placement=None, documents=None, groups=None)` |
 | `scripts/intelligence/recommend.py` | 499 | function | `kind_summary` | `(profile_document, context)` |
 | `scripts/intelligence/recommend.py` | 521 | function | `kind_line` | `(kinds, groups)` |
-| `scripts/intelligence/recommend.py` | 539 | function | `report` | `(data)` |
-| `scripts/intelligence/recommend.py` | 611 | function | `build` | `(args)` |
-| `scripts/intelligence/recommend.py` | 636 | function | `main` | `()` |
+| `scripts/intelligence/recommend.py` | 539 | function | `trait_summary` | `(profile_document, context)` |
+| `scripts/intelligence/recommend.py` | 558 | function | `trait_line` | `(traits, groups)` |
+| `scripts/intelligence/recommend.py` | 573 | function | `report` | `(data)` |
+| `scripts/intelligence/recommend.py` | 646 | function | `build` | `(args)` |
+| `scripts/intelligence/recommend.py` | 672 | function | `main` | `()` |
 | `scripts/validate/frontmatter_validator.py` | 1 | module | `scripts.validate.frontmatter_validator` | — |

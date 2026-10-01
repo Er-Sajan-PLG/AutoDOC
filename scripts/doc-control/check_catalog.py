@@ -128,9 +128,14 @@ def detector_specs():
     return profiler_module().DETECTORS
 
 
+def declared_specs():
+    """Facts that are declared, never inferred: no detector exists for these on purpose."""
+    return profiler_module().DECLARED_FACTS
+
+
 def detectors():
-    """The closed fact vocabulary: fact name -> detector spec."""
-    return detector_specs()
+    """The closed fact vocabulary, with each fact's detection route."""
+    return profiler_module().fact_specs()
 
 
 def tokens_of(document):
@@ -211,6 +216,40 @@ def kind_errors(model, profiler):
             errors.append(f'kind {kind["id"]}: needs detection of files or declaration-only')
     for kind in sorted(set(detectors) - declared):
         errors.append(f'kind {kind}: has a detector but is not declared in the context model')
+    return errors
+
+
+def fact_errors(profiler, facts, consumers):
+    """Every fact states how it is answered: file evidence with limits, or a declaration only.
+
+    This is the fact half of the same honesty rule the kinds follow. A detectable fact that
+    suddenly loses its detector, or a declaration-only fact that quietly grows one, would turn a
+    declared answer into an inferred one, so both are refused. Either way the fact needs a
+    consumer: a fact no catalog entry uses is inert data.
+    """
+    errors = []
+    detected = profiler.DETECTORS
+    declared = profiler.DECLARED_FACTS
+    for name in sorted(set(detected) & set(declared)):
+        errors.append(f'{name}: fact is both detectable and declaration-only')
+    for name, spec in sorted(facts.items()):
+        if spec.get('detection') == 'files':
+            if spec.get('exactness') not in ('exact', 'heuristic'):
+                errors.append(f'{name}: detector needs exactness of exact or heuristic')
+            if not spec.get('limits'):
+                errors.append(f'{name}: detector needs a limits statement (what it cannot see)')
+            if not spec.get('sources'):
+                errors.append(f'{name}: detector needs at least one source')
+        elif spec.get('detection') == 'declaration-only':
+            if not str(spec.get('why_declared_only', '')).strip():
+                errors.append(f'{name}: declaration-only needs a reason no detector can exist, or '
+                              'it is an inference waiting to happen')
+            if name in detected:
+                errors.append(f'{name}: declaration-only cannot also have a detector')
+        else:
+            errors.append(f'{name}: needs detection of files or declaration-only')
+        if name not in consumers:
+            errors.append(f'{name}: no catalog entry consumes this fact; wire a consumer or delete it')
     return errors
 
 
@@ -330,7 +369,7 @@ def check(indices=None):
     order = phase_order(model)
     phases = set(order)
     kinds = {kind['id'] for kind in model['kinds']}
-    facts = detector_specs()
+    facts = detectors()
     profiler = profiler_module()
 
     documents, seen_ids, names, consumers = {}, set(), {}, {}
@@ -363,17 +402,11 @@ def check(indices=None):
                               f'severity_by_phase (derived value is {expected_phase!r}); phase_min '
                               'is generated, never authored')
 
-    # Admission rules for the fact vocabulary: a fact needs a detector, stated limits, and a consumer.
+    # Admission rules for the fact vocabulary: every fact is either detectable (exactness, stated
+    # limits, sources) or declaration-only (a stated reason why no detector can exist), and every
+    # fact has a consumer, so no fact is inert.
     errors.extend(kind_errors(model, profiler))
-    for name, spec in sorted(facts.items()):
-        if spec.get('exactness') not in ('exact', 'heuristic'):
-            errors.append(f'{name}: detector needs exactness of exact or heuristic')
-        if not spec.get('limits'):
-            errors.append(f'{name}: detector needs a limits statement (what it cannot see)')
-        if not spec.get('sources'):
-            errors.append(f'{name}: detector needs at least one source')
-        if name not in consumers:
-            errors.append(f'{name}: no catalog entry consumes this fact; wire a consumer or delete it')
+    errors.extend(fact_errors(profiler, facts, consumers))
     for token, users in sorted(consumers.items()):
         if token in SENTINELS:
             for doc_id in users:
@@ -458,5 +491,6 @@ if __name__ == '__main__':
         print(f'Catalog valid: {len(rules["tier"]["core"])} core types, '
               f'{added} profile additions across {len(profiles["profiles"])} profiles, '
               f'{len(rules["admission"]["by_id"])} admitted, '
-              f'{len(detector_specs())} facts each with a consumer, schema and rules agree')
+              f'{len(detector_specs())} detected facts and {len(declared_specs())} declared traits, '
+              'each with a consumer, schema and rules agree')
     raise SystemExit(0 if not errors else 1)

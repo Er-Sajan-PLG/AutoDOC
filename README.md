@@ -14,6 +14,8 @@ Pre-commit ──> PR check ──> Merge preview ──> Release gate ──> N
 - Checks metadata, ownership, review dates, local links, relationships and generated drift.
 - Makes required checks fail on missing co-changes; protected-branch enforcement needs admin setup.
 - Can snapshot controlled docs at release **after** the owner chooses a license (currently blocked).
+- Asks for the facts no file can answer (personal data, payments, safety) instead of guessing,
+  and leaves their documents undetermined until the owner declares them in `autodoc.toml`.
 
 ## Quick start (Python 3.11+)
 

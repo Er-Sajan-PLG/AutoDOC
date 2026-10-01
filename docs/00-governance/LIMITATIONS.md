@@ -60,8 +60,12 @@ and JavaScript have manifest readers today, so dependency questions in other eco
 `unknown` rather than false. The four heuristic content scans are bounded and name their limits;
 the credential scan records file paths and never values. Phase is a declaration: an undeclared
 phase means advisory-only output, and the phase hint never sets enforcement. Kinds and audiences
-are validated and displayed but no predicate consumes them yet, so declaring them is inert until
-kind inference lands. Profiling this repository reports `has_public_api_surface`,
+are validated and displayed, and kinds drive predicates: `kind:<id>` is three-valued, so an
+undeclared kind leaves its documents **undetermined** until the owner answers. Three facts are
+**declaration-only** (`handles_personal_data`, `handles_payments`, `safety_critical`): they are
+facts about the world, so they carry a stated reason instead of a detector, are answered in
+`[facts]`, and their documents are undetermined until they are. A trait is never read from
+evidence, and an unanswered trait is never read as `false`. Profiling this repository reports `has_public_api_surface`,
 `has_persistent_state`, `has_env` and `has_ai` because the synthetic examples contain those
 files, which is exactly why the report demands a recorded decision instead of assuming the
 project owns an API or a database. The catalog tiers are a reviewable proposal, not a

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review, each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> (answered only by the declared kinds), phase>=<id> (true from that phase on, undetermined while the phase is undeclared) or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
+  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review (three of its entries are gated by declared traits and only apply when the owner declares that trait), each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> (answered only by the declared kinds), phase>=<id> (true from that phase on, undetermined while the phase is undeclared) or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
   "seed": {
     "A": [
       {
@@ -31,7 +31,7 @@
       {
         "slug": "SECURITY",
         "purpose": "Security engineering",
-        "names": "Threat model|Security architecture|Security requirements|Cryptography specification|Key management|Secret management|Access control matrix|Vulnerability management|Penetration test report|Incident response plan"
+        "names": "Threat model|Security architecture|Security requirements|Cryptography specification|Key management|Secret management|Access control matrix|Vulnerability management|Penetration test report|Incident response plan|Cardholder data flow"
       },
       {
         "slug": "PRIVACY",
@@ -101,7 +101,7 @@
       {
         "slug": "GOVERNANCE",
         "purpose": "Governance risk and compliance",
-        "names": "Risk register|Control catalog|Control evidence|Audit pack|Policy exception|Governance RACI|Board report"
+        "names": "Risk register|Control catalog|Control evidence|Audit pack|Policy exception|Governance RACI|Board report|Hazard analysis"
       },
       {
         "slug": "AI-ML",
@@ -492,6 +492,32 @@
           "beta": "off",
           "live": "off"
         }
+      },
+      {
+        "id": "DOC-A05-009",
+        "why": "Personal data nobody has mapped is data nobody can protect, delete or explain.",
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        },
+        "applies_when": ["handles_personal_data"]
+      },
+      {
+        "id": "DOC-A06-011",
+        "why": "Card data has to be located before its flow can be limited, segmented or defended.",
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        },
+        "applies_when": ["handles_payments"]
+      },
+      {
+        "id": "DOC-A20-008",
+        "why": "A hazard that is never written down is not controlled, and a safety claim without its failure modes is not a claim anyone can check.",
+        "severity_by_phase": {
+          "idea": "off"
+        },
+        "applies_when": ["safety_critical"]
       }
     ],
     "extended": [
@@ -599,7 +625,12 @@
       },
       "DOC-A17-004": {
         "all": ["has_deploy", "phase>=live"]
-      }
+      },
+      "DOC-A07-003": ["handles_personal_data"],
+      "DOC-A07-004": ["handles_personal_data"],
+      "DOC-A07-005": ["handles_personal_data"],
+      "DOC-A07-007": ["handles_personal_data"],
+      "DOC-A24-009": ["handles_personal_data"]
     },
     "by_domain": {
       "A01-PRODUCT": ["assess"],
@@ -915,6 +946,27 @@
         "support": "checked",
         "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
         "events": ["audit"]
+      },
+      "DOC-A05-009": {
+        "question": "What personal data does this hold, where did it come from, and who can see it?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "links.local"],
+        "events": ["incident", "release"]
+      },
+      "DOC-A06-011": {
+        "question": "Where does card data live, move and stop, and what keeps it out of reach?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "links.local"],
+        "events": ["api-change", "incident"]
+      },
+      "DOC-A20-008": {
+        "question": "What can this system do to a person or the world, and what stops it?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "links.local"],
+        "events": ["incident"]
       }
     }
   }

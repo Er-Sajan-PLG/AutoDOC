@@ -46,7 +46,7 @@ Filter by phase/domain and follow the linked view. Source IDs remain in the vers
 | B | [A03-ARCHITECTURE](UNIVERSAL-DOCUMENT-CATALOG-B.md#a03-architecture) | 11 |
 | B | [A04-DESIGN](UNIVERSAL-DOCUMENT-CATALOG-B.md#a04-design) | 12 |
 | B | [A05-DATA](UNIVERSAL-DOCUMENT-CATALOG-B.md#a05-data) | 10 |
-| B | [A06-SECURITY](UNIVERSAL-DOCUMENT-CATALOG-B.md#a06-security) | 10 |
+| B | [A06-SECURITY](UNIVERSAL-DOCUMENT-CATALOG-B.md#a06-security) | 11 |
 | B | [A07-PRIVACY](UNIVERSAL-DOCUMENT-CATALOG-B.md#a07-privacy) | 7 |
 | B | [A08-APIS](UNIVERSAL-DOCUMENT-CATALOG-B.md#a08-apis) | 10 |
 | B | [A12-PERFORMANCE](UNIVERSAL-DOCUMENT-CATALOG-B.md#a12-performance) | 7 |
@@ -59,7 +59,7 @@ Filter by phase/domain and follow the linked view. Source IDs remain in the vers
 | C | [A17-INCIDENTS](UNIVERSAL-DOCUMENT-CATALOG-C.md#a17-incidents) | 7 |
 | C | [A18-DISASTER-RECOVERY](UNIVERSAL-DOCUMENT-CATALOG-C.md#a18-disaster-recovery) | 8 |
 | C | [A19-VENDORS](UNIVERSAL-DOCUMENT-CATALOG-C.md#a19-vendors) | 5 |
-| C | [A20-GOVERNANCE](UNIVERSAL-DOCUMENT-CATALOG-C.md#a20-governance) | 7 |
+| C | [A20-GOVERNANCE](UNIVERSAL-DOCUMENT-CATALOG-C.md#a20-governance) | 8 |
 | C | [A22-USER-SUPPORT](UNIVERSAL-DOCUMENT-CATALOG-C.md#a22-user-support) | 8 |
 | C | [A23-LIFECYCLE](UNIVERSAL-DOCUMENT-CATALOG-C.md#a23-lifecycle) | 7 |
 | C | [A24-EVIDENCE](UNIVERSAL-DOCUMENT-CATALOG-C.md#a24-evidence) | 10 |

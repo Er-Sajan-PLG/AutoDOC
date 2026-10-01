@@ -33,7 +33,7 @@ File coverage is not project adoption or compliance evidence. Template examples 
 | A03-ARCHITECTURE | 11 | 11 | 11 | 11 |
 | A04-DESIGN | 12 | 12 | 12 | 12 |
 | A05-DATA | 10 | 10 | 10 | 10 |
-| A06-SECURITY | 10 | 10 | 10 | 10 |
+| A06-SECURITY | 11 | 11 | 11 | 11 |
 | A07-PRIVACY | 7 | 7 | 7 | 7 |
 | A08-APIS | 10 | 10 | 10 | 10 |
 | A09-DEVELOPMENT | 9 | 9 | 9 | 9 |
@@ -47,7 +47,7 @@ File coverage is not project adoption or compliance evidence. Template examples 
 | A17-INCIDENTS | 7 | 7 | 7 | 7 |
 | A18-DISASTER-RECOVERY | 8 | 8 | 8 | 8 |
 | A19-VENDORS | 5 | 5 | 5 | 5 |
-| A20-GOVERNANCE | 7 | 7 | 7 | 7 |
+| A20-GOVERNANCE | 8 | 8 | 8 | 8 |
 | A21-AI-ML | 12 | 12 | 12 | 12 |
 | A22-USER-SUPPORT | 8 | 8 | 8 | 8 |
 | A23-LIFECYCLE | 7 | 7 | 7 | 7 |
@@ -64,7 +64,7 @@ File coverage is not project adoption or compliance evidence. Template examples 
 | B10-SETUP | 4 | 4 | 4 | 4 |
 | B11-META | 4 | 4 | 4 | 4 |
 
-**Totals:** 263 types; 263 canonical, 263 blank, 263 synthetic example templates.
+**Totals:** 265 types; 265 canonical, 265 blank, 265 synthetic example templates.
 
 **Mapped generated targets:** 27. A target can serve several types; no per-type extractor coverage is implied.
 

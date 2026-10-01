@@ -536,6 +536,40 @@ def kind_line(kinds, groups):
     return line
 
 
+def trait_summary(profile_document, context):
+    """The declared traits: the facts no detector can answer, each answered or still a question.
+
+    Traits are a declaration, so the report does not hedge about them: it lists the answer the
+    owner recorded, or says the question is open. An open trait is not a failure — the documents
+    that depend on it are undetermined — but it is never quietly read as `false` either.
+    """
+    traits = []
+    for name, entry in sorted(((profile_document or {}).get('facts') or {}).items()):
+        if entry.get('detection') != 'declaration-only':
+            continue
+        answered = entry.get('value') in ('true', 'false')
+        traits.append({'id': name, 'label': entry.get('label') or name,
+                       'value': entry['value'] if answered else None, 'declared': answered,
+                       'reason': entry.get('declared_reason') if answered else None,
+                       'why_declared_only': entry.get('limits')})
+    return {'asked': traits, 'unanswered': [trait['id'] for trait in traits if not trait['declared']]}
+
+
+def trait_line(traits, groups):
+    """One line: each trait's recorded answer, or the open question and what it leaves hanging."""
+    if not traits.get('asked'):
+        return '- Declared traits: none in the vocabulary'
+    answered = [f"{trait['id']} = {trait['value']}" for trait in traits['asked'] if trait['declared']]
+    line = '- Declared traits: ' + (', '.join(answered) or 'none answered')
+    if traits.get('unanswered'):
+        gated = [item for item in (groups.get('undetermined') or [])
+                 if any(token in traits['unanswered'] for token in (item.get('tokens') or {}))]
+        line += (f"; asked but not answered: {', '.join(traits['unanswered'])}")
+        line += (f" ({len(gated)} document(s) undetermined until answered)" if gated else '')
+        line += '; a trait is declared once and recorded, never inferred'
+    return line
+
+
 def report(data):
     summary, groups, enforcement = data['summary'], data['groups'], data['enforcement']
     profile = data.get('catalog_profile') or {}
@@ -552,6 +586,7 @@ def report(data):
              + (f", {len(profile['added'])} added" if profile['added'] else '')
              + (f", {len(profile['removed'])} removed" if profile['removed'] else '') + ')',
              kind_line(kinds, groups),
+             trait_line(data.get('traits') or {}, groups),
              f"- {summary['readiness']}",
              f"- Open core decisions: {summary['open_core_decisions']}",
              f"- Undetermined types (unknown fact): {summary['undetermined_types']}",
@@ -626,6 +661,7 @@ def build(args):
                      if entry['value'] == 'unknown')
     return {'version': 2, 'repo': profile_document['repo'], 'phase': context['phase'],
             'kinds': kind_summary(profile_document, context),
+            'traits': trait_summary(profile_document, context),
             'enforcement': enforcement, 'ecosystems': profile_document['ecosystems'],
             'unknown_facts': unknown, 'facts': profile_document['facts'],
             'profile': profile_document, 'catalog_profile': score_profile(placement),
@@ -663,7 +699,8 @@ def main():
         # Both hints answer the same question — "what would you declare?" — and neither sets
         # anything: they are printed, the owner decides, and the declaration is what counts.
         print(json.dumps({'phase': context_module.phase_hints(args.repo, data['profile']),
-                          'kinds': context_module.kind_hints(data['profile'])}, indent=2))
+                          'kinds': context_module.kind_hints(data['profile']),
+                          'traits': data['traits']}, indent=2))
         return 0
     errors, warnings = ([], []) if not args.check else check(documents, context, groups, enforcement)
     for warning in warnings:

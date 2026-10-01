@@ -129,6 +129,7 @@ Governance risk and compliance.
 | `DOC-A20-005` | Policy exception | contextual | idea | assess | Record policy exception for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A20-006` | Governance RACI | contextual | idea | assess | Record governance raci for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A20-007` | Board report | contextual | idea | assess | Record board report for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-008` | Hazard analysis | core | prototype | safety_critical | Record hazard analysis for governance risk and compliance. | auditors | post-release | project owner | human-review | Product-Grade | — |
 
 ## A22-USER-SUPPORT
 
@@ -173,5 +174,5 @@ Evidence packs.
 | `DOC-A24-006` | Pen test evidence | contextual | idea | assess | Record pen test evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
 | `DOC-A24-007` | Training evidence | contextual | idea | assess | Record training evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
 | `DOC-A24-008` | Incident evidence | contextual | idea | assess | Record incident evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-009` | Privacy request evidence | contextual | idea | assess | Record privacy request evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-009` | Privacy request evidence | contextual | idea | handles_personal_data | Record privacy request evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
 | `DOC-A24-010` | Model evaluation evidence | contextual | idea | assess | Record model evaluation evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |

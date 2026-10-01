@@ -188,8 +188,9 @@ def validate(context, model=None):
         if severity not in SEVERITIES:
             errors.append(f'context.severity.{rule_id}: {severity!r} is not a severity')
     for name in context['facts']:
-        if name not in profiler.DETECTORS:
-            errors.append(f'context.facts: {name!r} is not a detectable fact')
+        if name not in profiler.fact_specs():
+            errors.append(f'context.facts: {name!r} is not a fact in the vocabulary '
+                          '(detectable or declaration-only)')
     errors += context.get('alias_problems', [])
     if context.get('profile') and context['profile'] not in profile_ids():
         errors.append(f'context.profile: {context["profile"]!r} is not a declared profile; '

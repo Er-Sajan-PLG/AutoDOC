@@ -1385,18 +1385,27 @@
           "id": "DOC-A05-009",
           "name": "PII inventory",
           "type": "SPEC",
-          "tier": "contextual",
-          "tier_reason": null,
-          "severity_by_phase": {},
-          "phase_min": "idea",
+          "tier": "core",
+          "tier_reason": "Personal data nobody has mapped is data nobody can protect, delete or explain.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
           "applies_when": [
-            "has_persistent_state"
+            "handles_personal_data"
           ],
-          "question": null,
-          "reader": null,
-          "support": "template-only",
-          "checks": [],
-          "events": [],
+          "question": "What personal data does this hold, where did it come from, and who can see it?",
+          "reader": "auditors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "links.local"
+          ],
+          "events": [
+            "incident",
+            "release"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record pii inventory for data and information management.",
@@ -1753,6 +1762,45 @@
           "related": [],
           "mode": "human-review",
           "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-010.md"
+        },
+        {
+          "id": "DOC-A06-011",
+          "name": "Cardholder data flow",
+          "type": "SPEC",
+          "tier": "core",
+          "tier_reason": "Card data has to be located before its flow can be limited, segmented or defended.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
+          "phase_min": "build",
+          "applies_when": [
+            "handles_payments"
+          ],
+          "question": "Where does card data live, move and stop, and what keeps it out of reach?",
+          "reader": "auditors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "links.local"
+          ],
+          "events": [
+            "api-change",
+            "incident"
+          ],
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record cardholder data flow for security engineering.",
+          "when": "pre-release",
+          "maturity": "Hardened",
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A06-011.md"
         }
       ]
     },
@@ -1846,11 +1894,11 @@
           "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
-            "assess"
+            "handles_personal_data"
           ],
           "question": null,
           "reader": null,
-          "support": "human",
+          "support": "template-only",
           "checks": [],
           "events": [],
           "owner": "@project-owner",
@@ -1876,11 +1924,11 @@
           "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
-            "assess"
+            "handles_personal_data"
           ],
           "question": null,
           "reader": null,
-          "support": "human",
+          "support": "template-only",
           "checks": [],
           "events": [],
           "owner": "@project-owner",
@@ -1906,11 +1954,11 @@
           "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
-            "assess"
+            "handles_personal_data"
           ],
           "question": null,
           "reader": null,
-          "support": "human",
+          "support": "template-only",
           "checks": [],
           "events": [],
           "owner": "@project-owner",
@@ -1970,11 +2018,11 @@
           "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
-            "assess"
+            "handles_personal_data"
           ],
           "question": null,
           "reader": null,
-          "support": "human",
+          "support": "template-only",
           "checks": [],
           "events": [],
           "owner": "@project-owner",
@@ -5418,6 +5466,43 @@
           "related": [],
           "mode": "human-review",
           "template": "TEMPLATES/RECORDS/DOC-A20-007.md"
+        },
+        {
+          "id": "DOC-A20-008",
+          "name": "Hazard analysis",
+          "type": "SPEC",
+          "tier": "core",
+          "tier_reason": "A hazard that is never written down is not controlled, and a safety claim without its failure modes is not a claim anyone can check.",
+          "severity_by_phase": {
+            "idea": "off"
+          },
+          "phase_min": "prototype",
+          "applies_when": [
+            "safety_critical"
+          ],
+          "question": "What can this system do to a person or the world, and what stops it?",
+          "reader": "auditors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "links.local"
+          ],
+          "events": [
+            "incident"
+          ],
+          "owner": "@project-owner",
+          "owner_type": "project owner",
+          "purpose": "Record hazard analysis for governance risk and compliance.",
+          "when": "post-release",
+          "maturity": "Product-Grade",
+          "required_content": [
+            "Purpose and scope",
+            "Details and decisions",
+            "Verification and references"
+          ],
+          "related": [],
+          "mode": "human-review",
+          "template": "TEMPLATES/SPECIFICATIONS/DOC-A20-008.md"
         }
       ]
     },
@@ -6545,11 +6630,11 @@
           "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
-            "assess"
+            "handles_personal_data"
           ],
           "question": null,
           "reader": null,
-          "support": "human",
+          "support": "template-only",
           "checks": [],
           "events": [],
           "owner": "@project-owner",

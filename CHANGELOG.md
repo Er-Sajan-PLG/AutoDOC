@@ -77,3 +77,14 @@
   `obligation:<id>` and `{all, any}` forms. Added `README` as the 261st catalog type — the
   every-phase document that was missing — plus a fixture matrix of awkward repositories,
   `make docs-hint`, and `make docs-explain`.
+- Made personal data, payments and safety declared traits (§4): `handles_personal_data`,
+  `handles_payments` and `safety_critical` are facts about the world, so the vocabulary now names
+  its two routes — fifteen facts read from files with stated limits, and three that are
+  declaration-only with a stated reason why no detector can exist. `check_catalog.py` follows the
+  same honesty rule it applies to kinds: a fact that claims both routes, claims neither, or has no
+  consumer is refused. The catalog consumes the traits — the PII inventory plus the new
+  `Cardholder data flow` and `Hazard analysis` are core types required only once their trait is
+  true, and the deeper privacy set moves to the personal-data trait — so an unanswered trait
+  leaves exactly those documents **undetermined**, reported and never read as `false`. Both
+  reports state each trait's answer, `--hint` prints the open questions, and this repository
+  answers all three `false` with reasons.

@@ -274,6 +274,10 @@ def report(data, findings, suppressed, stale, enforcement, exit_code):
     if kinds:
         lines.append(recommend.kind_line(
             kinds, {'undetermined': data.get('undetermined_types') or []}))
+    traits = data.get('traits') or {}
+    if traits.get('asked'):
+        lines.append(recommend.trait_line(
+            traits, {'undetermined': data.get('undetermined_types') or []}))
     lines.append(f"- Checks ran at: {', '.join(LEVELS)}; no L2 code-aware checks exist yet")
     age = data.get('phase_age')
     if age:
@@ -371,6 +375,7 @@ def build(args):
             'readiness': recommend.score(documents, groups, enforcement)['readiness'],
             'off_families': off, 'levels': list(LEVELS),
             'kinds': recommend.kind_summary(profile_document, context),
+            'traits': recommend.trait_summary(profile_document, context),
             'catalog_profile': recommend.score_profile(placement),
             'off_types': [{'id': item['id'], 'name': item['name'],
                            'reason': item.get('off_reason'),
@@ -396,7 +401,7 @@ def machine_document(data, findings, suppressed, stale, enforcement, summary):
             'readiness': data['readiness'], 'levels': data['levels'],
             'off_families': data['off_families'], 'pins': data['pins'],
             'catalog_profile': data['catalog_profile'], 'off_types': data['off_types'],
-            'kinds': data['kinds'],
+            'kinds': data['kinds'], 'traits': data['traits'],
             'undetermined': [{'id': item['id'], 'name': item['name'],
                               'unknown': sorted(item['tokens'])}
                              for item in data['undetermined_types']],

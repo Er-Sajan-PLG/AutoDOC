@@ -1,6 +1,7 @@
 """Regression tests for the catalog schema, its rules and the generated index."""
 import copy
 import importlib.util
+import types
 import json
 import unittest
 import unittest.mock
@@ -42,7 +43,9 @@ class CatalogTests(unittest.TestCase):
 
     def test_core_list_is_hand_picked_and_justified(self):
         documents = {doc['id']: doc for doc in all_documents()}
-        self.assertEqual(len(RULES['tier']['core']), 24)
+        # 24 hand-picked types plus the three gated by declared traits (personal data,
+        # payments, safety): each is required only once its owner declares the trait.
+        self.assertEqual(len(RULES['tier']['core']), 27)
         for entry in RULES['tier']['core']:
             self.assertNotEqual(entry['applies_when'], ['assess'],
                                 'a core type needs a detectable predicate')
@@ -120,9 +123,10 @@ class CatalogTests(unittest.TestCase):
             self.assertTrue(spec['limits'].strip())
 
     def test_fact_without_a_consumer_is_rejected(self):
-        fake = dict(checker.detector_specs())
-        fake['has_kubernetes'] = {'exactness': 'exact', 'limits': 'x', 'sources': [{'patterns': ['k8s/**']}]}
-        with unittest.mock.patch.object(checker, 'detector_specs', return_value=fake):
+        fake = {name: dict(spec) for name, spec in checker.detectors().items()}
+        fake['has_kubernetes'] = {'exactness': 'exact', 'limits': 'x',
+                                  'sources': [{'patterns': ['k8s/**']}], 'detection': 'files'}
+        with unittest.mock.patch.object(checker, 'detectors', return_value=fake):
             errors, _ = checker.check()
         self.assertTrue(any('no catalog entry consumes this fact' in error for error in errors), errors)
 
@@ -204,6 +208,42 @@ class CatalogTests(unittest.TestCase):
                     self.assertTrue(spec['sources'])
                 else:
                     self.assertTrue(kind['why_declared_only'].strip())
+
+    def test_every_declared_trait_states_why_it_cannot_be_detected(self):
+        """§4's honesty rule: a fact is either read from files with limits, or asked, never both."""
+        profiler = checker.profiler_module()
+        self.assertEqual(checker.fact_errors(profiler, checker.detectors(),
+                                             {name: ['DOC-A05-009']
+                                              for name in checker.detectors()}), [])
+        detected = {name for name, spec in profiler.fact_specs().items()
+                    if spec['detection'] == 'files'}
+        self.assertEqual(detected, set(profiler.DETECTORS),
+                         'a file-detected fact must have a detector, and vice versa')
+        for name, spec in profiler.DECLARED_FACTS.items():
+            with self.subTest(name):
+                self.assertNotIn(name, profiler.DETECTORS)
+                self.assertTrue(spec['why_declared_only'].strip())
+        used = {token for document in all_documents() for token in checker.tokens_of(document)}
+        for name in profiler.DECLARED_FACTS:
+            self.assertIn(name, used, 'a trait no catalog entry consumes is inert data')
+
+    def test_a_trait_that_grows_a_detector_or_loses_its_reason_is_rejected(self):
+        consumed = {'handles_personal_data': ['DOC-A05-009']}
+        declared = {'handles_personal_data': {'why_declared_only': 'identity is a world-fact'}}
+        facts = {'handles_personal_data': {'detection': 'declaration-only'}}
+        both = types.SimpleNamespace(DETECTORS={'handles_personal_data': {'exactness': 'exact'}},
+                                     DECLARED_FACTS=declared)
+        errors = checker.fact_errors(both, facts, consumed)
+        self.assertTrue(any('both detectable and declaration-only' in error for error in errors),
+                        errors)
+        silent = types.SimpleNamespace(DETECTORS={}, DECLARED_FACTS={
+            'handles_personal_data': {'why_declared_only': '   '}})
+        errors = checker.fact_errors(silent, facts, consumed)
+        self.assertTrue(any('declaration-only needs a reason' in error for error in errors), errors)
+        inert = types.SimpleNamespace(DETECTORS={'has_kubernetes': {'exactness': 'exact'}},
+                                      DECLARED_FACTS={})
+        errors = checker.fact_errors(inert, {'has_kubernetes': {'detection': 'files'}}, {})
+        self.assertTrue(any('no catalog entry consumes this fact' in error for error in errors), errors)
 
     def test_a_kind_that_is_neither_detectable_nor_justified_is_rejected(self):
         model = checker.load(checker.MODEL)

@@ -168,6 +168,7 @@ flowchart LR
     ndb6ab2ea3d10ef9b["DOC-A06-008"]
     n7f73f8118ee53039["DOC-A06-009"]
     n8b894ea0f08fefea["DOC-A06-010"]
+    n2e4db130adde4880["DOC-A06-011"]
     nb4c5c831a404804a["DOC-A07-001"]
     n0ad054e0d0a72107["DOC-A07-002"]
     n98410af417682d0d["DOC-A07-003"]
@@ -282,6 +283,7 @@ flowchart LR
     n44218c217493fbe0["DOC-A20-005"]
     n18d9c6bbd7b88620["DOC-A20-006"]
     nd440e6d35979160e["DOC-A20-007"]
+    n2240d7089bcb868a["DOC-A20-008"]
     n609a6a179b67c1ce["DOC-A21-001"]
     ne7a6e36f04bc9021["DOC-A21-002"]
     n2de023765ded2765["DOC-A21-003"]
@@ -815,6 +817,9 @@ flowchart LR
     nd5d36dec8f5b0c57["TEMPLATES/SPECIFICATIONS/DOC-A06-010.md"]
     nb52561d026b91d94["TEMPLATES/SPECIFICATIONS/DOC-A06-010.md.blank"]
     nc2da157534d94f55["TEMPLATES/SPECIFICATIONS/DOC-A06-010.md.example"]
+    n4221d853520911d2["TEMPLATES/SPECIFICATIONS/DOC-A06-011.md"]
+    n876180bcb6bdfacf["TEMPLATES/SPECIFICATIONS/DOC-A06-011.md.blank"]
+    n5442ff3e98121809["TEMPLATES/SPECIFICATIONS/DOC-A06-011.md.example"]
     nc47774c986abeb6e["TEMPLATES/SPECIFICATIONS/DOC-A07-001.md"]
     n9c5d445beebd927b["TEMPLATES/SPECIFICATIONS/DOC-A07-001.md.blank"]
     n4bcac464fdbc257b["TEMPLATES/SPECIFICATIONS/DOC-A07-001.md.example"]
@@ -1076,6 +1081,9 @@ flowchart LR
     nc216472814a2b701["TEMPLATES/SPECIFICATIONS/DOC-A20-006.md"]
     n3fc85db3d2b7925c["TEMPLATES/SPECIFICATIONS/DOC-A20-006.md.blank"]
     n7e2381fb6559e154["TEMPLATES/SPECIFICATIONS/DOC-A20-006.md.example"]
+    n3bd8fe6e5f05f23a["TEMPLATES/SPECIFICATIONS/DOC-A20-008.md"]
+    n29f4b93869b5416d["TEMPLATES/SPECIFICATIONS/DOC-A20-008.md.blank"]
+    n346bd17c6c476fbf["TEMPLATES/SPECIFICATIONS/DOC-A20-008.md.example"]
     n3c21621543ca3d3b["TEMPLATES/SPECIFICATIONS/DOC-A21-001.md"]
     na25aa7636699b72f["TEMPLATES/SPECIFICATIONS/DOC-A21-001.md.blank"]
     na92af2570568b51a["TEMPLATES/SPECIFICATIONS/DOC-A21-001.md.example"]
@@ -1571,6 +1579,9 @@ flowchart LR
     n8b894ea0f08fefea -->|template| nd5d36dec8f5b0c57
     n8b894ea0f08fefea -->|template| nb52561d026b91d94
     n8b894ea0f08fefea -->|template| nc2da157534d94f55
+    n2e4db130adde4880 -->|template| n4221d853520911d2
+    n2e4db130adde4880 -->|template| n876180bcb6bdfacf
+    n2e4db130adde4880 -->|template| n5442ff3e98121809
     nb4c5c831a404804a -->|template| nc47774c986abeb6e
     nb4c5c831a404804a -->|template| n9c5d445beebd927b
     nb4c5c831a404804a -->|template| n4bcac464fdbc257b
@@ -1913,6 +1924,9 @@ flowchart LR
     nd440e6d35979160e -->|template| nc487dd01aac1f60c
     nd440e6d35979160e -->|template| n0403c9b47d57c15f
     nd440e6d35979160e -->|template| n181a6a8f1ed5878f
+    n2240d7089bcb868a -->|template| n3bd8fe6e5f05f23a
+    n2240d7089bcb868a -->|template| n29f4b93869b5416d
+    n2240d7089bcb868a -->|template| n346bd17c6c476fbf
     n609a6a179b67c1ce -->|template| n3c21621543ca3d3b
     n609a6a179b67c1ce -->|template| na25aa7636699b72f
     n609a6a179b67c1ce -->|template| na92af2570568b51a

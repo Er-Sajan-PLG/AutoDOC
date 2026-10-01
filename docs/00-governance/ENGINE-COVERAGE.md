@@ -36,6 +36,7 @@ All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make gene
 | Python AST and ATX Markdown | Code/test inventory and outline | Parsed declarations/headings, not behavior | `test_phase2.py` |
 | Catalog rules file | `CATALOG-A/B/INDEX.yaml` | Seeds names; derives type, tier, `phase_min`, `applies_when`, maturity | `test_catalog.py` |
 | Repository files | `profile.json` three-valued facts | File presence only; `unknown` when nothing could be read | `test_profile.py` |
+| `autodoc.toml` `[facts]` traits | declared personal-data / payments / safety values | Declaration only; no detector exists, and unanswered is `unknown`, never false | `test_profile.py`, `test_resolver.py` |
 | `autodoc.toml` + context model | Validated declared context | Declarations only; never inferred | `test_context.py` |
 | Profile + catalog + context | Obligations with severity and `--check` | Phase-scaled; advisory without a declared phase | `test_resolver.py` |
 | Fixture repositories | kind x phase x ecosystem matrix | Awkward cases: no manifest, unread ecosystem, docs-only | `test_profile.py` |
