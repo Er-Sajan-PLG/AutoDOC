@@ -184,6 +184,19 @@ class FixtureMatrixTests(unittest.TestCase):
         self.assertEqual(entry['value'], 'true')
         self.assertTrue(all('=' not in item for item in entry['evidence']))
 
+    def test_the_detector_never_matches_its_own_source(self):
+        """The listener patterns in this module are definitions, not evidence about this repo.
+
+        Before owner decision 4 (2026-10-01) the scan reported `scripts/intelligence/profile.py`
+        itself as a network listener for AutoDOC. The second half pins the other direction: a
+        repository that really listens still detects true.
+        """
+        mine = profiler.profile(ROOT)['facts']['has_network_listener']
+        self.assertEqual(mine['value'], 'false')
+        self.assertNotIn('scripts/intelligence/profile.py', mine['evidence'])
+        theirs = profiler.profile(FIXTURES / 'go-service')['facts']['has_network_listener']
+        self.assertEqual(theirs['value'], 'true')
+
 
 if __name__ == '__main__':
     unittest.main()

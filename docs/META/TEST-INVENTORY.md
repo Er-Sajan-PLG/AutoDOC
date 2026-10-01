@@ -207,6 +207,7 @@ AST-discovered Python tests, not a report of execution or coverage.
 | `tests/test_profile.py` | 157 | `FixtureMatrixTests.test_test_input_directories_are_skipped_and_declared` |
 | `tests/test_profile.py` | 171 | `FixtureMatrixTests.test_a_typed_library_surface_is_not_an_http_api` |
 | `tests/test_profile.py` | 182 | `FixtureMatrixTests.test_content_scan_records_the_file_not_the_value` |
+| `tests/test_profile.py` | 187 | `FixtureMatrixTests.test_the_detector_never_matches_its_own_source` |
 | `tests/test_resolver.py` | 82 | `PhaseScalingTests.test_undeclared_phase_is_advisory_and_never_fails` |
 | `tests/test_resolver.py` | 92 | `PhaseScalingTests.test_prototype_reports_without_warning` |
 | `tests/test_resolver.py` | 98 | `PhaseScalingTests.test_build_warns_but_does_not_fail` |

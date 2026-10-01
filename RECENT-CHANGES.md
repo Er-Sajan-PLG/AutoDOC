@@ -34,28 +34,32 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
+- 56be338 2026-10-01 chore(state): register the decision-round walkthrough session
+- 14310ea 2026-10-01 chore(state): hand off paused, with the self-check result
+- c57b149 2026-10-01 fix(state): sessions close only on the owner's word; persist before presenting
+- 8ae8d81 2026-10-01 chore(state): reconcile after the cold-clone continuity test
+- b3a4490 2026-10-01 test(state): cold-clone continuity test — verdict, gaps, and the dossier that closes them
+- 312b40a 2026-10-01 chore(state): correct the recovery-note timestamps to the real clock
+- 2aefa09 2026-10-01 chore(state): record recovery #15 and reconcile the dashboard tip
+- 407d3d4 2026-10-01 chore(state): record the decision-3 landing and green PR gates
+- f39e20f 2026-10-01 chore(state): reconcile after closing the open core decisions
+- 1a65f5d 2026-10-01 Close the open core decisions at their existing homes (owner decision 3)
+- 891dcc8 2026-10-01 chore(state): record the audit landing and green PR gates
+- 3bb53b6 2026-10-01 chore(state): reconcile after the MACP bootstrap audit
+- d26d798 2026-10-01 Transcribe the full MACP protocol and remove the reconstructed sections
+- f417a8f 2026-10-01 Log the MACP landing and hand off with the session state reconciled
+- 868588e 2026-10-01 Adopt MACP: protocol in governance, state/ bootstrapped, session registered
 - c02d733 2026-10-01 Apply the three flag decisions: detector, rules, config, page and tests
 - f37d98a 2026-10-01 Apply the owner's three core-list flags and show the final counts
 - d384d4e 2026-10-01 Correct the core-list review and answer the owner's three fact questions
 - f06d5c0 2026-10-01 Expand the core-list review so no row can be approved by accident
 - 5164b06 2026-10-01 Ask the owner to review the core list in one sitting, with every row reasoned
-- 2454ea1 2026-10-01 License Apache-2.0: the owner decided, and the tree now says so
-- a398dbd 2026-10-01 Declare when AutoDOC runs, and make the scheduled run triage instead of a second gate
-- 5d385cf 2026-10-01 Regenerate the test inventory for the language tests
-- 6d1c444 2026-10-01 Integrate each language's own tool, and label every generator with its exactness
-- 5d3f155 2026-10-01 Refresh the living plan: the phase, kinds and traits are no longer pending
-- 0fe3ec3 2026-10-01 Ask the facts no file can answer, and keep them undetermined until declared
-- 74d0544 2026-10-01 Infer kinds as evidence and declare them as answers, never as guesses
-- 58e1663 2026-10-01 Make the core set a declared profile and give every catalog type an admission
-- 90478d4 2026-10-01 Enforce a phase-scaled contract: fingerprinted baselines, honest exits, golden fixtures
-- 19ca0d4 2026-09-27 Merge pull request #1 from Er-Sajan-PLG/arena/01a0de49-autodoc
 
 ## Changed paths at update time
 
-- `AGENT-MEMORY.md`
-- `AGENTS.md`
-- `CLAUDE.md`
-- `CONTROL/metadata/MASTER-INDEX.json`
-- `docs/00-governance/INVENTORY.yaml`
-- `docs/META/OUTLINE.md`
+- `autodoc.toml`
+- `docs/META/CODE-INVENTORY.md`
+- `docs/META/TEST-INVENTORY.md`
+- `scripts/intelligence/profile.py`
+- `tests/test_profile.py`
 <!-- auto:end -->

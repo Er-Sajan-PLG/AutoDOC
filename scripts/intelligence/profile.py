@@ -31,6 +31,7 @@ IGNORED_DIRS = {'.git', 'node_modules', '.venv', 'venv', '__pycache__', 'dist', 
                 'target', '.mypy_cache', '.pytest_cache', '.ruff_cache', '.tox', '.next'}
 INPUT_DIRS = {'fixtures', 'testdata'}  # test inputs, not the project's own code
 CONTENT_FILE_LIMIT = 400
+SELF_MODULE = Path(__file__).resolve()  # never evidence about the project being scanned
 ECOSYSTEMS = {
     'python': ['pyproject.toml', 'requirements.txt', 'setup.py', 'setup.cfg'],
     'javascript': ['package.json'],
@@ -162,7 +163,9 @@ DETECTORS = {
     'has_network_listener': {
         'exactness': 'heuristic',
         'limits': f'Bounded content scan of at most {CONTENT_FILE_LIMIT} files; listeners that '
-                  'arrive from a framework, configuration or dependency are not seen.',
+                  'arrive from a framework, configuration or dependency are not seen. The '
+                  'detector\'s own module is excluded from its scan, so its match literals cannot '
+                  'be mistaken for a listener.',
         'sources': [{'globs': ['**/*.py', '**/*.js', '**/*.ts', '**/*.go', '**/*.rb', '**/*.rs',
                                'Dockerfile', '**/Dockerfile', '**/*.yaml', '**/*.yml'],
                      'match': r'(\.listen\(|ListenAndServe|uvicorn\.run\(|gunicorn|EXPOSE\s+\d+|'
@@ -264,6 +267,21 @@ def matches(relative, pattern):
         return (fnmatch.fnmatchcase(relative, stripped)
                 or fnmatch.fnmatchcase(Path(relative).name, stripped))
     return False
+
+
+def is_self_module(root, name):
+    """The detector's own source is not evidence about the repository being scanned.
+
+    This module holds the match literals for `has_network_listener` (`gunicorn`,
+    `ListenAndServe`, `.listen(`), so a plain content scan of a repository that contains the
+    detector — this one — reported a network listener that does not exist. Self-exclusion is
+    per-file and only fires when the scanned root really contains this module, so profiling
+    another repository is unchanged.
+    """
+    try:
+        return (root / name).resolve() == SELF_MODULE
+    except OSError:
+        return False
 
 
 def read_manifest(root, name, cache):
@@ -449,11 +467,17 @@ def detect_kinds(files, ecosystems, cache, root):
 
 
 def content_hits(root, source, files, cache):
-    """Bounded content scan; returns matching paths only, never matched text."""
+    """Bounded content scan; returns matching paths only, never matched text.
+
+    The detector's own module is skipped: its match literals are pattern definitions, not
+    evidence about the scanned project.
+    """
     pattern = re.compile(source['match'])
     hits, scanned = [], 0
     for name in files:
         if not any(matches(name, glob) for glob in source['globs']):
+            continue
+        if is_self_module(root, name):
             continue
         if scanned >= CONTENT_FILE_LIMIT:
             break

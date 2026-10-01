@@ -51,6 +51,17 @@ is_public = { value = true, reason = "published on GitHub at STEMORG2026/AutoDOC
 has_http_api = { value = "false", reason = "The only HTTP contract here is the demo fixture's EXAMPLE-PROJECT/routes.json; AutoDOC ships engine modules and Make targets, not a service." }
 has_public_api_surface = { value = "false", reason = "Detection matched only the demo fixture; AutoDOC publishes no contract-file API surface of its own (its public surface is its Python modules, described in prose)." }
 
+# Owner decision 4 (2026-10-01): the remaining demo-only facts answer "no" for the repository.
+# Detection still reports them from the example material; the overrides record why the shipped
+# project itself answers no, and the audit lists each next to the detected value.
+has_persistent_state = { value = "false", reason = "The only schema in the repository is the demo fixture's EXAMPLE-PROJECT/db/schema.sql; AutoDOC persists nothing between runs (reports are files the user asked for), so it has no data model of its own to document." }
+has_env = { value = "false", reason = "Detection matched only the demo fixture's EXAMPLE-PROJECT/.env.example and config.schema.json. The engine reads ambient variables — GITHUB_RUN_ID/GITHUB_SHA for CI evidence, PATH/LANG for toolchain probes — but that is process environment, not a configuration contract: the only configuration is autodoc.toml." }
+has_ai = { value = "false", reason = "The only AI-shaped files are under examples/ai-agent-example, a synthetic example shipped as a fixture; AutoDOC makes no model calls, hosts no model and trains nothing." }
+# `has_network_listener` needs no override: the detector matched its own source (this module's
+# pattern literals), and owner decision 4 fixed that at the source instead — the detector now
+# excludes its own module and answers false here, while a repository that really listens (the
+# go-service fixture) still detects true. The regression test pins both halves.
+
 # Declared traits. These are facts about the world, not about the file tree, so no detector exists
 # for them and none can be added: `handles_personal_data` is not the same as "the schema has an
 # email column", and a `payments/` directory is code, not a live payment flow. Until one is
@@ -113,7 +124,8 @@ safety_critical = { value = "false", reason = "AutoDOC reports documentation fin
 # with no content is a broken promise, and an instruction nobody outside can follow should not
 # pass review. `freshness.*` is off under build, but this repository keeps review dates and an
 # SLA policy, so overdue reviews are enforced here. `recommend.*` is deliberately not pinned:
-# the 12 open core decisions stay warnings until they are recorded.
+# every core decision is now recorded (owner decision 4, 2026-10-01), so the phase default is
+# what applies and a pin would only duplicate it.
 stubs = "error"
 tribal = "error"
 "freshness.critical" = "error"
