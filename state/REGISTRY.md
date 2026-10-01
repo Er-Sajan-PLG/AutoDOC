@@ -1,12 +1,12 @@
 # REGISTRY — who is working here and what they own
 
-**Last reconciled:** 2026-10-01T11:15Z
+**Last reconciled:** 2026-10-01T11:13Z
 
 ## Active
 
 | Agent ID | Model / type | Branch | Task (one line) | Started (UTC) | Claimed paths | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Adopt MACP: write the protocol, bootstrap `state/`, register this session | 2026-10-01T11:10Z | `state/**`, `docs/00-governance/MACP.md`, `AGENTS.md`, `CLAUDE.md`, `AGENT-MEMORY.md` | ACTIVE |
+| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Adopt MACP: write the protocol, bootstrap `state/`, register this session | 2026-10-01T11:10Z | `state/**` (retained); `docs/00-governance/MACP.md`, `AGENTS.md`, `CLAUDE.md`, `AGENT-MEMORY.md` (released on landing) | INACTIVE 2026-10-01T11:13Z — paused on B-001, owner reply resumes |
 
 ## Inactive / expired claims
 

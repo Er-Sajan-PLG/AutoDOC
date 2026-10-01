@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T11:15Z · **Reconciled by:** A476 · **Tip at reconciliation:** `c02d733` (pre-bootstrap)
+**Last reconciled:** 2026-10-01T11:13Z · **Reconciled by:** A476 · **Tip at reconciliation:** `868588e` (MACP bootstrap landing)
 
 ## Project
 
@@ -42,6 +42,7 @@ No other agent is active. Details and file claims: [REGISTRY.md](REGISTRY.md). T
 | 2026-10-01 | §7 triggers/thresholds: scheduler declares itself, network checks warn-only | `a398dbd` |
 | 2026-10-01 | §6 language integrations + `exact|heuristic` generator labels; §5.2/§3/§4 lanes | `6d1c444`, `5d385cf`, `58e1663`, `74d0544`, `0fe3ec3`, `5d3f155` |
 | 2026-10-01 | Enforcement-layer review fixes (exit-code contract, baseline semantics, golden matrix) | `90478d4` |
+| 2026-10-01 | MACP adopted: protocol in governance (`DOC-P3-GOV-007`), `state/` bootstrapped, agent pointers added | `868588e` |
 
 ## Next actions (source of truth: `NEXT-ACTION.md`)
 

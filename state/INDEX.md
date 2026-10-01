@@ -5,7 +5,7 @@ read only the 2–3 most relevant ones.
 
 | Session file | Agent | Date (UTC) | Task | Outcome | Commits |
 | --- | --- | --- | --- | --- | --- |
-| `state/sessions/20261001-1110-A476-macp-adoption.md` | `A476` | 2026-10-01 | Adopt MACP: write the protocol into governance, bootstrap `state/`, register the session | in progress | pending |
+| `state/sessions/20261001-1110-A476-macp-adoption.md` | `A476` | 2026-10-01 | Adopt MACP: write the protocol into governance, bootstrap `state/`, register the session | W1 landed (`868588e`); W2 paused on B-001 | `868588e` + log update |
 
 ## Pre-MACP history
 
