@@ -29,6 +29,7 @@ ATX headings from configured human-owned Markdown sources.
 ## `CONTRIBUTING.md`
 
 - L1 line 1: Contributing
+- L2 line 10: Dependencies
 
 ## `GOVERNANCE.md`
 
@@ -44,10 +45,11 @@ ATX headings from configured human-owned Markdown sources.
 ## `QUICK-START.md`
 
 - L1 line 1: Quick start
-- L2 line 17: Adopt an existing project
-- L2 line 28: New project and new documents
-- L2 line 38: Add a deterministic extractor
-- L2 line 45: Interpret a failure
+- L2 line 17: Dependencies and versions
+- L2 line 30: Adopt an existing project
+- L2 line 41: New project and new documents
+- L2 line 51: Add a deterministic extractor
+- L2 line 58: Interpret a failure
 
 ## `README.md`
 
@@ -3346,15 +3348,16 @@ ATX headings from configured human-owned Markdown sources.
 ## `docs/00-governance/ENGINE-COVERAGE.md`
 
 - L1 line 22: Engine coverage and honest limits
-- L2 line 24: Implemented and tested
-- L2 line 53: The generation contract
-- L2 line 72: The event contract
-- L2 line 85: Implemented validators
-- L2 line 103: Mapped but template-only
-- L2 line 111: Partially supported
-- L2 line 119: Explicitly not implemented
-- L2 line 129: Not supported / integration needed
-- L2 line 137: Known environment constraints
+- L2 line 24: How confidence is established
+- L2 line 55: Implemented and tested
+- L2 line 84: The generation contract
+- L2 line 103: The event contract
+- L2 line 116: Implemented validators
+- L2 line 134: Mapped but template-only
+- L2 line 142: Partially supported
+- L2 line 150: Explicitly not implemented
+- L2 line 160: Not supported / integration needed
+- L2 line 168: Known environment constraints
 
 ## `docs/00-governance/EVIDENCE-SIGNING.md`
 
@@ -3383,6 +3386,15 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: MACP — Multi-Agent Coordination Protocol
 
+## `docs/00-governance/PROJECT-CHARTER.md`
+
+- L1 line 22: Project charter — problem, goals and scope
+- L2 line 24: Purpose and scope
+- L2 line 32: Problem statement
+- L2 line 47: Goals and non-goals
+- L2 line 79: Scope
+- L2 line 95: Verification and references
+
 ## `docs/04-guides/HOW-AUTODOC-WORKS.md`
 
 - L1 line 22: How AutoDOC works
@@ -3392,8 +3404,9 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 22: AutoDOC architecture
 - L2 line 24: Purpose and scope
 - L2 line 29: Details and decisions
-- L2 line 213: Verification and references
-- L2 line 221: Phase 3 trust boundaries
+- L2 line 213: Module contracts
+- L2 line 231: Verification and references
+- L2 line 239: Phase 3 trust boundaries
 
 ## `docs/08-agent-context/AGENT-MEMORY.md`
 
@@ -3426,6 +3439,15 @@ ATX headings from configured human-owned Markdown sources.
 ## `docs/08-agent-context/TASK-FOR-AGENT.md`
 
 - L1 line 22: TASK-FOR-AGENT.md — canonical root pointer
+
+## `docs/adr/0001-zero-runtime-dependencies.md`
+
+- L1 line 22: ADR-0001: Keep the runtime dependency-free
+- L2 line 29: Context
+- L2 line 39: Decision
+- L2 line 46: Consequences
+- L2 line 63: Alternatives considered
+- L2 line 72: Verification and references
 
 ## `docs/reference/EXIT-CODES.md`
 

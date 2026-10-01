@@ -234,6 +234,14 @@
       "last_reviewed": "2026-10-01"
     },
     {
+      "id": "DOC-P3-GOV-008",
+      "path": "docs/00-governance/PROJECT-CHARTER.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-10-01"
+    },
+    {
       "id": "DOC-CAT-NAV-001",
       "path": "docs/01-catalogs/CATALOG-INDEX.md",
       "owner": "@Er-Sajan-PLG",
@@ -384,6 +392,14 @@
       "status": "approved",
       "type": "REF",
       "last_reviewed": "2026-09-26"
+    },
+    {
+      "id": "DOC-P3-ADR-001",
+      "path": "docs/adr/0001-zero-runtime-dependencies.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "DEC",
+      "last_reviewed": "2026-10-01"
     },
     {
       "id": "DOC-AUTO-001",

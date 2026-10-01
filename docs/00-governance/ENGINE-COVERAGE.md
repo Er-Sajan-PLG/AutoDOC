@@ -16,10 +16,41 @@ criticality: medium
 review_days: 180
 last_verified: 2026-09-26
 last_reviewed: 2026-09-26
-last_updated: 2026-09-26
+last_updated: 2026-10-01
 auto_generated: false
 ---
 # Engine coverage and honest limits
+
+## How confidence is established
+
+This is the project's test strategy in one place: what is verified, by what, and what is left
+unverified. The catalog type `DEV-B07-001` Test strategy is satisfied by this document
+(`[satisfied_by]` in `autodoc.toml`).
+
+1. **Unit and integration tests decide behaviour.** The suite runs with `pytest` (no network, no
+   fixtures beyond the repository itself) and covers accepted *and* rejected inputs: a parser that
+   accepts a note is only trusted once a test shows it rejects the malformed variant. The current
+   suite and its subtests are counted in the evidence pack, and the test inventory
+   (`docs/META/TEST-INVENTORY.md`) is generated, not maintained by hand.
+2. **Golden fixtures decide enforcement semantics.** `tests/fixtures/` holds whole miniature
+   repositories (library, service, typed-library) and a matrix of expected outcomes, so a change to
+   phase, tier, profile or fact handling must either keep the matrix green or change it deliberately.
+3. **Regeneration decides fact accuracy.** Generated documents are not reviewed for correctness —
+   they are re-rendered in memory on every check (`make docs:drift`), and any difference between
+   source and committed target fails. Review effort goes to human-owned judgement instead.
+4. **The declared phase decides severity.** No check is "on" or "off" by accident: severity comes
+   from `autodoc.toml` and `CONTROL/metadata/CONTEXT-MODEL.json`, the report names the families it
+   did not run, and an undeclared phase reports instead of failing.
+5. **CI decides what actually gates.** The required check runs the same `make` targets locally and
+   remotely; the trigger model (`CONTROL/metadata/TRIGGERS.json`) is verified against the workflows,
+   and scheduled network checks are warn-only by design.
+6. **Evidence records that a run happened — it is unsigned** and proves nothing about who ran it or
+   whether a reviewer agreed (`docs/00-governance/EVIDENCE-SIGNING.md`).
+
+**What this strategy does not establish.** That prose is true, adequate or reviewed; that an
+external system behaves as documented; that a dependency is vulnerability-free (no scanner is
+installed); or that any project is compliant. The per-generator limits and the not-implemented list
+below are part of the strategy, not footnotes to it.
 
 ## Implemented and tested
 All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make generate` writes,

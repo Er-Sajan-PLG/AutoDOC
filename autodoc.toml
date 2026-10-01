@@ -69,6 +69,19 @@ safety_critical = { value = "false", reason = "AutoDOC reports documentation fin
 # (a wiki page, a docs site). A URL is recorded and existence-checked only by a human; local
 # paths are verified by the checker.
 # Example: "DOC-A06-001" = ["https://wiki.example.com/architecture/threat-model"]
+#
+# Owner decision 3 (2026-10-01): the open core decisions are closed at their existing homes.
+# The charter answers the three foundation questions; the architecture, coverage and quick-start
+# documents already carry the contract, strategy and setup content, and CONTRIBUTING gained the
+# Dependencies section the policy row asks for. Each target is a file this repository owns and
+# keeps reviewed, so a local path with the checker behind it is the honest declaration.
+"DEV-B01-001" = ["docs/00-governance/PROJECT-CHARTER.md"]
+"DEV-B01-002" = ["docs/00-governance/PROJECT-CHARTER.md"]
+"DEV-B01-003" = ["docs/00-governance/PROJECT-CHARTER.md"]
+"DEV-B05-001" = ["docs/05-architecture/AUTODOC-ARCHITECTURE.md"]
+"DEV-B07-001" = ["docs/00-governance/ENGINE-COVERAGE.md"]
+"DEV-B10-003" = ["QUICK-START.md"]
+"DOC-A09-006" = ["CONTRIBUTING.md"]
 
 [instantiated]
 # catalog type id -> the controlled document that satisfies it. Derived from the adoption record
@@ -81,6 +94,14 @@ safety_critical = { value = "false", reason = "AutoDOC reports documentation fin
 "DEV-B10-001" = "QUICK-START.md"
 "DEV-B11-003" = "CONTROL/policies/FRESHNESS-SLA-POLICY.md"
 "DOC-A09-005" = "CONTRIBUTING.md"
+# Owner decision 3 (2026-10-01). The ADR row was expected to be [not_applicable], but the checker
+# reports every skip on an `always` row as a stale decision (its predicate is true by definition),
+# so the row is closed with a real decision record instead — the honest option the review page
+# offered first, and the one that leaves no permanent warning behind.
+"DEV-B01-006" = "README.md"
+"DEV-B04-002" = "docs/adr/0001-zero-runtime-dependencies.md"
+"DOC-A06-008" = "SECURITY.md"
+"DOC-A09-009" = "CODE_OF_CONDUCT.md"
 
 [severity]
 # Override the phase default for a rule. Only rules something honours are accepted; a severity

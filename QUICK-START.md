@@ -14,6 +14,19 @@ make evidence       # actual tests + unsigned run evidence
 installed in this environment; use the same `make` targets instead of treating task absence
 as a documentation-engine failure.
 
+## Dependencies and versions
+
+The engine itself needs **no third-party runtime packages** — `pyproject.toml` declares
+`dependencies = []` and the code imports only the standard library
+([why](docs/adr/0001-zero-runtime-dependencies.md)). The only things `make setup` installs are the
+development tools, declared as bounded ranges in `[project.optional-dependencies].dev`:
+`pytest>=8,<10` and `pre-commit>=3,<5`. Those ranges are the pin: the manifest is the single place
+where versions are chosen, `make setup` resolves them into `.venv/`, and `make ci` fails if the tree
+needs them and they are missing. There is no lockfile and no automated updater; version changes are
+made in the manifest and verified by a full `make ci` run. The policy for choosing, updating and
+removing dependencies — including vulnerability and licence handling — is in
+[CONTRIBUTING.md](CONTRIBUTING.md#dependencies).
+
 ## Adopt an existing project
 
 1. Run `python scripts/adopt.py --project-path /path/to/project` for **heuristic suggestions**;

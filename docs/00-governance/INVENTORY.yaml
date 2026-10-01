@@ -290,6 +290,17 @@
       "applies_to": []
     },
     {
+      "id": "DOC-P3-GOV-008",
+      "path": "docs/00-governance/PROJECT-CHARTER.md",
+      "type": "REF",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "last_reviewed": "2026-10-01",
+      "next_review": "2027-03-30",
+      "classification": "public",
+      "applies_to": []
+    },
+    {
       "id": "DOC-P2-005",
       "path": "docs/04-guides/HOW-AUTODOC-WORKS.md",
       "type": "REF",
@@ -396,6 +407,17 @@
       "status": "draft",
       "last_reviewed": "2026-09-26",
       "next_review": "2027-03-25",
+      "classification": "public",
+      "applies_to": []
+    },
+    {
+      "id": "DOC-P3-ADR-001",
+      "path": "docs/adr/0001-zero-runtime-dependencies.md",
+      "type": "DEC",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "last_reviewed": "2026-10-01",
+      "next_review": "2027-03-30",
       "classification": "public",
       "applies_to": []
     },

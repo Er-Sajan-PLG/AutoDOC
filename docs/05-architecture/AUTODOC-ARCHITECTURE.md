@@ -16,7 +16,7 @@ criticality: high
 review_days: 180
 last_verified: 2026-09-26
 last_reviewed: 2026-09-26
-last_updated: 2026-09-26
+last_updated: 2026-10-01
 auto_generated: false
 ---
 # AutoDOC architecture
@@ -209,6 +209,24 @@ Authoritative catalogs / source files / Markdown metadata
   prints the derivation chain for one requirement. `assess` marks the 81 types with no detectable
   predicate, so they are never auto-recommended. The fact vocabulary is closed: `check_catalog.py`
   fails on a predicate token nothing can detect, and on a fact no catalog entry consumes.
+
+## Module contracts
+
+Each module family below promises a narrow contract to its callers. Anything outside the contract
+is not a guarantee, and a change that widens one of them is an architecture change, not a refactor.
+
+| Module | Promise to callers | Explicitly not promised |
+| --- | --- | --- |
+| `engine/`, `engine/extractors/` | Deterministic parsing of the documented source subsets (routes JSON, config JSON/schema, simple SQLite DDL, alert YAML subset, PEP 621 manifests, Python AST, ATX headings); no network, no writes; an unsupported construct fails loudly instead of being skipped | Validating your SQL beyond the documented subset; understanding prose; resolving transitive dependencies |
+| `scripts/doc-sync/` (`engine.py`, `generate-all.py`, `check-doc-drift.py`, `languages.py`, `update-doc-state.py`) | For every entry in `docs/.doc-sync-map.yaml`: regenerate the target from its sources in memory and fail when the committed target differs; every generator is labeled `exact` or `heuristic`; state blocks update only between their auto markers | Semantic accuracy of generated text (it restates its sources exactly); reading files the map does not name |
+| `scripts/doc-control/` (validators, catalog build/check, guards, health, evidence, release snapshot) | One specific class of finding each (catalog consistency, links, stubs, placeholders, key markers, health, hashes), a documented exit code, and no writes unless a `--write`/`--output` flag says so | Proving content is true or adequate; certifying compliance; signing evidence (hashes only) |
+| `scripts/intelligence/` (`profile.py` → `context.py` → `recommend.py` → `enforce.py` → `triggers.py`) | Declarations beat detection; facts are three-valued (`unknown` is a value, never silently false); every skip has a reason; enforcement severity comes from the declared phase and the resolver explains its derivation | Inferring phase, kinds, obligations or sensitive-data traits; judging a project that has not declared them; applying findings to files it cannot read |
+| `scripts/validate/frontmatter_validator.py` | The controlled Markdown set carries valid, schema-conformant frontmatter — in the index for staged runs, on disk otherwise | Metadata of files outside the controlled set; blocking a merge by itself (that is the workflow's check) |
+
+Two cross-cutting promises hold for all of the above: the **exit-code contract** (2 = configuration
+or usage error, 3 = internal failure, 1 = findings, and a crash never exits 1) and the **archive
+rule** — nothing is deleted or renumbered that another document may reference; superseded material
+is marked, not removed.
 
 ## Verification and references
 Run `make ci` (or `python -m unittest discover -s tests -v` offline), `python scripts/doc-sync/check-doc-drift.py`,
