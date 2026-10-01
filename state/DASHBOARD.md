@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T13:16Z · **Reconciled by:** A476 (decision-round session `20261001-1242-A476`, now PAUSED awaiting owner) · **Tip at reconciliation:** `5dd9112`
+**Last reconciled:** 2026-10-01T14:03Z · **Reconciled by:** A476 (decision-round session `20261001-1242-A476`, PAUSED awaiting owner) · **Tip at reconciliation:** `ce4feba` (PR #2 green: guard 1m19s / impact 8s)
 
 ## Project
 
@@ -22,7 +22,8 @@
 
 `A476` — session `20261001-1242-A476` (**PAUSED (awaiting owner)**): the owner decision round — all
 six verdicts executed or recorded (P-003 → `c7980f9`, P-001 → `039e508`, P-002 → `3ad5a57`, P-004
-owner-run payload, P-005/P-006 records); awaiting the owner's close. Three sessions are
+owner-run payload, P-005/P-006 records, shutdown/self-check → `5dd9112`…`ce4feba`); awaiting the
+owner's close. Three sessions are
 **PAUSED (awaiting owner)** (`20261001-1228` lifecycle, `20261001-1219` cold-clone, this one);
 three are **landed — awaiting owner close** (`20261001-1110`, `-1120`, `-1130`). **No session is
 complete** — only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before
@@ -59,7 +60,7 @@ starting work.
 
 | Date | Work | Commits |
 | --- | --- | --- |
-| 2026-10-01 | Owner round executed: decision 4 landed; the review recorded (`owner_reviewed`, page → `approved`, caveat off, D-011 — **B-001 cleared**); the ADR deviation acknowledged (**B-002 cleared**); the branch-protection payload printed (owner-run application) | `c7980f9`, `039e508`, `3ad5a57` |
+| 2026-10-01 | Owner round executed: decision 4 landed; the review recorded (`owner_reviewed`, page → `approved`, caveat off, D-011 — **B-001 cleared**); the ADR deviation acknowledged (**B-002 cleared**); the branch-protection payload printed (owner-run application); shutdown reconcile + rule-10 self-check + session log ordered | `c7980f9`, `039e508`, `3ad5a57`, `5dd9112`, `e14135e`, `ce4feba` |
 | 2026-10-01 | Owner decision 4 executed: the demo-only facts are declared false with reasons; the detector's self-match is fixed at its source (no override, regression-tested); the last open core decision closes — **15/15, 0 open**; beta cliff 4 → 2 | `c7980f9` |
 | 2026-10-01 | Session-lifecycle correction (owner instruction): MACP local rules 8–10 + ADR-009 — sessions close only on the owner's word; persist-before-present; handoff self-check; all sessions/plans relabelled; deleted plans restored where possible | `c57b149` + handoff-log `14310ea` |
 | 2026-10-01 | Cold-clone continuity test: verdict (a new agent can continue from `state/` alone), five gap fixes, and the pending-decision dossier P-001…P-006 in `DECISIONS.md` | `b3a4490` + reconcile commit |

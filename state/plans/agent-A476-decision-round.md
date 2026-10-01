@@ -32,4 +32,4 @@ deferrals.
 ## Progress
 
 - 2026-10-01: executed P-003 (`c7980f9`), P-001 (`039e508`), P-002 (`3ad5a57`), recorded P-004…P-006,
-  reconciled and handed off (`5dd9112`, `e14135e`). Rule-10 self-check passed on a fresh clone.
+  reconciled and handed off (`5dd9112`, `e14135e`, `ce4feba`). Rule-10 self-check passed on a fresh clone.
