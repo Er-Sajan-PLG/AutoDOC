@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T13:08Z · **Reconciled by:** A476 (decision-round session `20261001-1242-A476`, ACTIVE) · **Tip at reconciliation:** `c7980f9`
+**Last reconciled:** 2026-10-01T13:16Z · **Reconciled by:** A476 (decision-round session `20261001-1242-A476`, now PAUSED awaiting owner) · **Tip at reconciliation:** `5dd9112`
 
 ## Project
 
