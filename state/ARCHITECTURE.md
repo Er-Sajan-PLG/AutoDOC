@@ -1,6 +1,6 @@
 # ARCHITECTURE — coordination-layer view
 
-**Last reconciled:** 2026-10-01
+**Last reconciled:** 2026-10-01 (audit-complete; same day)
 
 This file is the agent's orientation map, not the authoritative design. When they disagree, the
 authoritative documents win: `docs/05-architecture/AUTODOC-ARCHITECTURE.md` (system),
@@ -33,8 +33,18 @@ authoritative documents win: `docs/05-architecture/AUTODOC-ARCHITECTURE.md` (sys
 4. Exit-code contract: 2 config/usage, 3 internal failure, 1 findings; a crash never exits 1.
 5. Docs co-change with behavior; `make generate` first, then tests and `make ci`.
 
+## Audit facts (Section 7 Step 1, 2026-10-01)
+
+- **Runtime:** Python 3.11.2, **zero runtime dependencies** (stdlib only); dev extras `pytest>=8,<10` and `pre-commit>=3,<5`; build `setuptools>=77`.
+- **Scale:** 1015 tracked files = 64 `.py`, 361 `.md`, and 265 catalog types × 3 template variants; 68 controlled docs (24 generated, 44 human-owned).
+- **Demo surface:** SQLite (`EXAMPLE-PROJECT/db/schema.sql`, single `tasks` table, no migrations) and a stdlib threaded HTTP server with three routes (`GET/POST /tasks`, `GET /health`), **no auth**, 1–4096-byte body cap, JSON 400/404 errors.
+- **Readers:** Python only (exact, in-process). No reader for JavaScript/TypeScript, Rust or Go (L0, reported as such).
+- **Gates:** pytest (242 tests), catalog check, guards, drift, drift-impact, evidence hashing; required CI check `AutoDOC guard / check`; nightly freshness warn-only.
+- **Known-issue markers:** none inline (0 TODO/FIXME/XXX/HACK); the known surface is `LIMITATIONS.md` and `ENGINE-COVERAGE.md`.
+
 ## Change log
 
 | Date | Change |
 | --- | --- |
+| 2026-10-01 | Full MACP transcription landed (Sections 2–7 + REMEMBER verbatim) and the Section 7 Step 1 audit completed; `state/` files reconciled at `d26d798`. |
 | 2026-10-01 | `state/` added as the MACP coordination layer (`docs/00-governance/MACP.md`). It is deliberately outside the controlled-document set; `guards.py` still scans its Markdown for links, tribal phrases and key markers. |

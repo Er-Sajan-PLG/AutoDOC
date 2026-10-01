@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T11:13Z · **Reconciled by:** A476 · **Tip at reconciliation:** `868588e` (MACP bootstrap landing)
+**Last reconciled:** 2026-10-01T11:29Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `d26d798`
 
 ## Project
 
@@ -10,51 +10,46 @@
 | Branch | `arena/01a0f476-autodoc` (session branch; PR #2 open) |
 | Declared phase | `build` (warn) — declared 2026-09-30, never inferred |
 | Kinds / profile | `library` / `oss-library` (26 core types) |
-| Catalog | 24 core · 49 extended · 265 types · 16 detected facts · 3 declared traits |
+| Catalog | 24 core · 49 extended · 265 types (prose still says 260 — D-001) · 16 detected facts · 3 declared traits |
 | Build-ready | **4/16** · open core decisions **12** |
+| Stack | Python 3.11, **zero runtime dependencies**; pytest + pre-commit for dev; SQLite and a 3-route HTTP server only in the synthetic demo |
+| Docs | 68 controlled (24 generated, 44 human-owned); 361 Markdown files tracked |
+| Tests | 242 passed + 182 subtests, ~27 s (audit run, 2026-10-01) |
+| CI | 5 workflows; required check `AutoDOC guard / check`; nightly freshness warn-only; tag-gated release |
 
 ## Active agents
 
-| Agent | Status | Task | Since |
-| --- | --- | --- | --- |
-| A476 (Arena.ai Agent Mode) | ACTIVE | Adopt MACP: bootstrap `state/`, write the protocol, register this session | 2026-10-01T11:10Z |
-
-No other agent is active. Details and file claims: [REGISTRY.md](REGISTRY.md). The human owner is
-`@Er-Sajan-PLG` (approver for every governed change).
+None. `A476` completed two sessions today (adoption; transcription + audit). Register yourself in
+`REGISTRY.md` before starting work.
 
 ## Alerts
 
-1. **Owner confirmation is pending** on `docs/00-governance/CORE-LIST-REVIEW.md` v1.3 and its
-   final counts (24 core / 49 extended; build-ready 4/16; beta cliff 12 of 24). Recording
-   `owner_reviewed` in `CATALOG-RULES.json` and `PROFILES.json`, moving the page to `approved`,
-   and removing the caveat from `NEXT-ACTION.md` / `ADOPTION.md` are **gated on that confirmation**.
-   No agent may record it on the owner's behalf.
-2. Nothing is failing: `make ci` was green on `c02d733` (guard job on PR #2: pass).
-3. Recovery event: restore #12 was detected and repaired during this session (wedged index at
-   `19ca0d4`; recovered by fetch → sha256 verification → `reset --hard` to `c02d733`; venv rebuilt).
+1. **Owner confirmation pending (B-001)** on `docs/00-governance/CORE-LIST-REVIEW.md` v1.3 and its
+   final counts. Recording `owner_reviewed`, page → `approved`, and caveat removal are **gated on the
+   owner's confirmation**; no agent may record it.
+2. Nothing is failing: the gate is green (`make ci` exit 0), tests 242/242, catalog valid.
+3. Environment resets recur (three recoveries today, #11–#13: HEAD back to `19ca0d4`, wedged index,
+   venv deleted). Recovery recipe is in the audit session's summary; never force-push.
 
 ## Recently completed
 
-| Date | Work | Commit |
+| Date | Work | Commits |
 | --- | --- | --- |
-| 2026-10-01 | Core-list review: v1.1 → v1.2 dossier, then the owner's flags A/B/C applied and re-validated (`CORE-LIST-REVIEW.md` v1.3) | `5164b06`, `f06d5c0`, `d384d4e`, `f37d98a`, `c02d733` |
-| 2026-10-01 | License decided: Apache-2.0, landed with release-snapshot seam and doc co-changes | `2454ea1` |
-| 2026-10-01 | §7 triggers/thresholds: scheduler declares itself, network checks warn-only | `a398dbd` |
-| 2026-10-01 | §6 language integrations + `exact|heuristic` generator labels; §5.2/§3/§4 lanes | `6d1c444`, `5d385cf`, `58e1663`, `74d0544`, `0fe3ec3`, `5d3f155` |
-| 2026-10-01 | Enforcement-layer review fixes (exit-code contract, baseline semantics, golden matrix) | `90478d4` |
-| 2026-10-01 | MACP adopted: protocol in governance (`DOC-P3-GOV-007`), `state/` bootstrapped, agent pointers added | `868588e` |
+| 2026-10-01 | Full MACP transcription (Sections 2–7 + REMEMBER) and the Section 7 bootstrap audit | `d26d798` + the reconcile commit |
+| 2026-10-01 | MACP adopted: protocol in governance, `state/` bootstrapped, agent pointers | `868588e`, `f417a8f` |
+| 2026-10-01 | Owner flags A/B/C applied and re-validated; `CORE-LIST-REVIEW.md` v1.3 (24 core / 49 extended; build-ready 4/16; beta cliff 12 of 24) | `f37d98a`, `c02d733` |
+| 2026-10-01 | Core-list review delivered; license decided (Apache-2.0); enforcement layer; §3–§7 lanes | `5164b06`…`2454ea1`, `90478d4` |
+| Earlier | Catalog, profiles, facts, triggers, evidence and language work | see `RECENT-CHANGES.md` |
 
 ## Next actions (source of truth: `NEXT-ACTION.md`)
 
-1. **Await the owner's "confirmed"** on the v1.3 page + counts → then record `owner_reviewed` in
-   both machine files (note: which rows were flagged and how resolved), page → `approved`,
-   remove the caveat from NEXT-ACTION and ADOPTION.
-2. **Decision 3** — close the 12 open core decisions via the Part 1b closing paths (charter page,
-   `[satisfied_by]` declarations, SECURITY.md, CODE_OF_CONDUCT.md, ADR or reason).
-3. **Decision 4** — fact overrides (`has_persistent_state`, `has_ai`, `has_env` false) and the
-   `has_network_listener` self-match fix.
-4. **Decision 5** — branch protection `APPLY=1` (require only "AutoDOC guard / check").
-5. **Decision 6** — stay on `build`; promotion later. **Decision 7** — defer smalls (audience
-   wiring, JS/TS + Rust toolchains, external dogfood repo, template rendering, evidence signing).
+1. **Owner: confirm or correct** the v1.3 core-list page and counts (B-001).
+2. On confirmation: record `owner_reviewed` in `CATALOG-RULES.json` + `PROFILES.json` (note names the
+   flagged rows and their resolutions), page → `approved`, remove the caveat from NEXT-ACTION and
+   ADOPTION, clear B-001.
+3. **Decision 3** — close the 12 open core decisions via the Part 1b closing paths.
+4. **Decision 4** — fact overrides (`has_persistent_state`, `has_ai`, `has_env` false) and the
+   `has_network_listener` self-match fix. **Decision 5** — branch protection `APPLY=1`.
+   **Decision 6** — stay on `build`. **Decision 7** — defer smalls.
 
 This dashboard summarizes; it never overrides `NEXT-ACTION.md` or an owner instruction.

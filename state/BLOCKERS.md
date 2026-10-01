@@ -1,6 +1,6 @@
 # BLOCKERS — active blockers and dependencies
 
-**Last reconciled:** 2026-10-01T11:13Z
+**Last reconciled:** 2026-10-01T11:29Z (audit ran; no new blocker found)
 
 | ID | Blocker | Blocks | Owner who can clear it | Raised |
 | --- | --- | --- | --- | --- |

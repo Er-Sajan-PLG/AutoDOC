@@ -1,6 +1,6 @@
 # DEBT — technical debt worth acting on
 
-**Last reconciled:** 2026-10-01
+**Last reconciled:** 2026-10-01T11:29Z (audit-complete)
 
 Only debt the maintainers would actually fix; a wish list belongs elsewhere. Statuses: `open`,
 `queued (<decision>)`, `accepted (by design)`, `fixed (<commit>)`.
@@ -16,3 +16,4 @@ Only debt the maintainers would actually fix; a wish list belongs elsewhere. Sta
 | D-007 | Evidence is verified as hashes only — unsigned | Cannot prove who produced a passing run | `scripts/doc-control/evidence_pack.py`, `docs/00-governance/EVIDENCE-SIGNING.md` | Signing design, then implementation | queued (decision 7) |
 | D-008 | `state/` archive rotation is manual; no script compresses old sessions by month | Sessions will accumulate; INDEX stays small only if rotation happens | `state/archive/` | Add a small rotation step when the first month closes | accepted (by design, for now) |
 | D-009 | No external dogfood repository yet; AutoDOC is verified mostly on itself and fixtures | Semantic claims about other projects are untested | — | Adopt one real external repository | queued (decision 7) |
+| D-010 | No vulnerability scanning: `pip-audit` is not installed and no network scan runs (offline by design) | Dependency vulnerability posture is unverified — low exposure today (zero runtime deps), but the claim "no known vulnerabilities" cannot be made | dev extras only | Install a scanner for operator-run checks, or state the posture explicitly as unverified | open (low) |

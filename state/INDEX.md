@@ -1,11 +1,13 @@
 # INDEX — session log
 
 One row per session, newest first. Search this file by keyword before reading session files;
-read only the 2–3 most relevant ones.
+read only the 2–3 most relevant ones. Columns follow Section 4 Step 4: session ID, agent, date,
+title, files touched, status, branch.
 
-| Session file | Agent | Date (UTC) | Task | Outcome | Commits |
-| --- | --- | --- | --- | --- | --- |
-| `state/sessions/20261001-1110-A476-macp-adoption.md` | `A476` | 2026-10-01 | Adopt MACP: write the protocol into governance, bootstrap `state/`, register the session | W1 landed (`868588e`); W2 paused on B-001 | `868588e` + log update |
+| Session (file) | ID | Agent | Date (UTC) | Title | Files touched | Status | Branch |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `state/sessions/20261001-1120-A476-bootstrap-audit.md` | `20261001-1120-A476` | A476 | 2026-10-01 | Full MACP transcription + Section 7 bootstrap audit + reconcile | `docs/00-governance/MACP.md`; `state/**` | COMPLETED | `arena/01a0f476-autodoc` |
+| `state/sessions/20261001-1110-A476-macp-adoption.md` | `20261001-1110-A476` | A476 | 2026-10-01 | Adopt MACP: protocol doc, `state/` bootstrap, session registration | `docs/00-governance/MACP.md`; `state/**`; `AGENTS.md`; `CLAUDE.md`; `AGENT-MEMORY.md` | COMPLETED | `arena/01a0f476-autodoc` |
 
 ## Pre-MACP history
 
@@ -14,10 +16,15 @@ Work before 2026-10-01 was recorded only in git history, `RECENT-CHANGES.md` and
 
 | Date | Work | Commits |
 | --- | --- | --- |
-| 2026-10-01 | Owner decisions 1 (license) and 2 (core list + profiles, flags A/B/C applied); enforcement layer; §3–§7 lanes | `2454ea1`, `c02d733` and the commits listed in `DASHBOARD.md` |
+| 2026-10-01 | Owner decisions 1 (license) and 2 (core list + profiles, flags A/B/C applied); enforcement layer; §3–§7 lanes; MACP adoption | `2454ea1`, `c02d733`, `868588e`, `f417a8f`, `d26d798` and the commits listed in `DASHBOARD.md` |
 | 2026-09-30 | Phase/kind declared; enforcement lane; catalog/profile work | see `RECENT-CHANGES.md` |
 
 ## Archive
 
 Sessions older than the current month are compressed into `state/archive/<YYYY-MM>/` and removed
 from this table's live rows (the row stays, the file moves). Nothing archived yet.
+
+## Keywords
+
+`macp`, `bootstrap`, `audit`, `protocol`, `core-list`, `license`, `enforcement`, `catalog`,
+`profiles`, `phase`, `recovery` — search these before opening a session file.
