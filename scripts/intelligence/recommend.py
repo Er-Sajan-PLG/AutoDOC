@@ -99,8 +99,41 @@ def state_of(document, facts, context, model=None):
     return state, detail
 
 
-def severity_for(document, state, decision, enforcement, context):
-    """Return the severity of one requirement under the declared phase."""
+def profile_placement(documents, context):
+    """Which types are core under the declared profile, as data rather than a guess.
+
+    `default` is tier.core; every other profile is a delta. A removed type is off with a reason
+    instead of quietly disappearing, and an added type is as required as any default core type —
+    the difference is visible in the profile, not in how hard the resolver looks at it.
+    """
+    profiles = context_module.load_profiles()
+    by_id = {profile['id']: profile for profile in profiles['profiles']}
+    chosen = context.get('profile') or 'default'
+    profile = by_id[chosen]
+    default_core = {document['id'] for document in documents if document['tier'] == 'core'}
+    added = {change['id'] for change in profile.get('add', [])}
+    removed = {change['id'] for change in profile.get('remove', [])}
+    return {'id': chosen, 'name': profile['name'], 'why': profile['why'],
+            'core': (default_core | added) - removed, 'default_core': default_core,
+            'added': sorted(added), 'removed': sorted(removed),
+            # An addition states its own phases: "core for this kind of project" is not
+            # "required at idea", and the document's own map knows nothing about the profile.
+            'added_phases': {change['id']: change.get('severity_by_phase', {})
+                             for change in profile.get('add', [])}}
+
+
+def placement_of(document, placement):
+    """The tier this type has *here*: core, removed-by-profile, or its catalog tier."""
+    if document['id'] in placement['core']:
+        return 'core'
+    if document['id'] in placement['removed']:
+        return 'removed'
+    return document['tier']
+
+
+def severity_for(document, state, decision, enforcement, context, placement):
+    """Return the severity of one requirement under the declared phase and profile."""
+    tier = placement_of(document, placement)
     if decision:
         return 'acknowledged'
     if state == 'assess':
@@ -110,21 +143,58 @@ def severity_for(document, state, decision, enforcement, context):
     if state == 'not-applicable':
         return 'not-applicable'
     if not enforcement['declared']:
-        return 'report' if document['tier'] == 'core' else 'recommended'
+        return 'report' if tier == 'core' else 'recommended'
     if enforcement.get('only') == 'sunset':
         return 'required' if document['id'] in MODEL['sunset_ids'] else 'off'
-    if document['tier'] == 'core':
-        phase_min = document.get('phase_min')
-        if phase_min and PHASE_ORDER.index(enforcement['phase']) < PHASE_ORDER.index(phase_min):
-            return 'early'
+    if tier == 'removed':
+        return 'off'
+    if tier == 'core':
+        # severity_by_phase is sparse: it states where the type is off, and the phase block
+        # supplies the severity once it applies. An explicit severity here wins over the block.
+        mapping = (placement['added_phases'].get(document['id'])
+                   or document.get('severity_by_phase') or {})
+        override = mapping.get(enforcement['phase'])
+        if override:
+            return 'off' if override == 'off' else 'required'
         return 'required'
-    if document['tier'] == 'extended':
+    if tier == 'extended':
         return 'recommended'
     return 'contextual'
 
 
+def effective_phase_min(document, placement):
+    """The phase a type actually becomes required at, profile additions included."""
+    mapping = placement.get('added_phases', {}).get(document['id'])
+    if mapping is None:
+        return document.get('phase_min')
+    for phase_id in PHASE_ORDER:
+        if mapping.get(phase_id) != 'off':
+            return phase_id
+    return None
+
+
+def off_reason(document, placement, enforcement):
+    """Why a type is off at this phase, so the skip is never a silent one."""
+    if document['id'] in placement['removed']:
+        return f"removed by profile {placement['id']}: not required for this kind of project"
+    if enforcement.get('only') == 'sunset':
+        return 'sunset: only the sunset profile is still required'
+    phase_min = effective_phase_min(document, placement)
+    if phase_min and enforcement['phase'] and PHASE_ORDER.index(phase_min) \
+            > PHASE_ORDER.index(enforcement['phase']):
+        return f'not required before {phase_min}'
+    return 'off by declaration'
+
+
 EFFECTIVE_RULE = {'required': 'recommend.core', 'early': 'recommend.core',
                  'recommended': 'recommend.extended', 'contextual': 'recommend.extended'}
+
+
+def score_profile(placement):
+    """How the selected profile changed the core set, so the report can state it."""
+    return {'id': placement['id'], 'name': placement['name'], 'why': placement['why'],
+            'core_types': len(placement['core']), 'default_core_types': len(placement['default_core']),
+            'added': placement['added'], 'removed': placement['removed']}
 
 
 def enforced_reason(item, enforcement):
@@ -145,6 +215,8 @@ def enforced_reason(item, enforcement):
         return f'phase {phase}: reported, never failed'
     if severity == 'early':
         return f"phase {phase}: not required before {item.get('phase_min')}"
+    if severity == 'off':
+        return item.get('off_reason') or 'off at this phase'
     if severity in ('acknowledged', 'not-applicable'):
         decision = item.get('decision') or 'recorded'
         reason = item.get('reason') or item.get('path') or item.get('locations')
@@ -174,13 +246,14 @@ def effective_severity(item, enforcement, context):
     return severity
 
 
-def evaluate(documents, profile_document, context, enforcement=None):
+def evaluate(documents, profile_document, context, enforcement=None, placement=None):
     """Resolve every catalog entry into a group, with its severity and reason."""
     facts = profile_document['facts']
     enforcement = enforcement or context_module.enforcement(context['phase'])
+    placement = placement or profile_placement(documents, context)
     instantiated, not_applicable = context['instantiated'], context['not_applicable']
     satisfied = context['satisfied_by']
-    groups = {'required': [], 'early': [], 'recommended': [], 'contextual': [], 'reported': [],
+    groups = {'required': [], 'recommended': [], 'contextual': [], 'reported': [],
               'undetermined': [], 'assess': [], 'not_applicable': [], 'acknowledged': [], 'off': []}
     for document in documents:
         doc_id = document['id']
@@ -188,10 +261,12 @@ def evaluate(documents, profile_document, context, enforcement=None):
         decision = ('instantiated' if doc_id in instantiated else
                     'not_applicable' if doc_id in not_applicable else
                     'satisfied_by' if doc_id in satisfied else None)
-        severity = severity_for(document, state, decision, enforcement, context)
+        severity = severity_for(document, state, decision, enforcement, context, placement)
         item = {'id': doc_id, 'name': document['name'], 'tier': document['tier'],
+                'effective_tier': placement_of(document, placement),
                 'decision': decision, 'type': document['type'], 'domain': document['domain'],
-                'applies_when': document['applies_when'], 'phase_min': document.get('phase_min'),
+                'applies_when': document['applies_when'],
+                'phase_min': effective_phase_min(document, placement),
                 'why': document.get('tier_reason'), 'severity': severity, 'state': state,
                 'tokens': detail,
                 'evidence': next((facts[token]['evidence'][0] for token, value in detail.items()
@@ -200,6 +275,8 @@ def evaluate(documents, profile_document, context, enforcement=None):
         item['severity_effective'] = effective_severity(item, enforcement, context)
         item['enforced'] = item['severity_effective'] in ('error', 'warn')
         item['enforced_reason'] = enforced_reason(item, enforcement)
+        if item['severity_effective'] == 'off':
+            item['off_reason'] = off_reason(document, placement, enforcement)
         item['because'] = because(item, enforcement)
         if decision == 'instantiated':
             item['path'] = instantiated[doc_id]
@@ -223,8 +300,8 @@ def score(documents, groups, enforcement):
     required = [item for item in groups['required']
                 if item['severity_effective'] != 'off']
     acknowledged = [item for item in groups['acknowledged']
-                    if item['tier'] == 'core' and item['severity'] == 'acknowledged']
-    reported = [item for item in groups['reported'] if item['tier'] == 'core']
+                    if item['effective_tier'] == 'core' and item['severity'] == 'acknowledged']
+    reported = [item for item in groups['reported'] if item['effective_tier'] == 'core']
     open_items = len(required) + len(reported)
     return {'applicable_core_types': open_items + len(acknowledged),
             'acknowledged_core_types': len(acknowledged),
@@ -233,7 +310,8 @@ def score(documents, groups, enforcement):
             if (open_items + len(acknowledged)) else 100,
             'undetermined_types': len(groups['undetermined']),
             'assess_only_types': len(groups['assess']),
-            'inapplicable_types': len(groups['not_applicable']) + len(groups['off']),
+            'inapplicable_types': len(groups['not_applicable']),
+            'off_types': len(groups['off']),
             'catalog_types': len(documents), 'enforcement': enforcement['label'],
             'readiness': (f'{enforcement["phase"]}-ready: {len(acknowledged)}/'
                           f'{len(required) + len(acknowledged)}')
@@ -349,20 +427,33 @@ def check(documents, context, groups, enforcement=None):
     return errors, warnings
 
 
-def explain(document, profile_document, context, enforcement=None):
+def explain(document, profile_document, context, enforcement=None, placement=None, documents=None,
+            groups=None):
     """Return the derivation chain that explains one requirement."""
     facts = profile_document['facts']
     enforcement = enforcement or context_module.enforcement(context['phase'])
+    placement = placement or profile_placement(documents or [document], context)
     decision = ('instantiated' if document['id'] in context['instantiated'] else
                 'not_applicable' if document['id'] in context['not_applicable'] else None)
     state, detail = state_of(document, facts, context)
-    severity = severity_for(document, state, decision, enforcement, context)
+    severity = severity_for(document, state, decision, enforcement, context, placement)
+    placed = placement_of(document, placement)
     lines = [f"{document['id']} — {document['name']}", '',
-             f"- Tier: {document['tier']}" + (f" ({document['tier_reason']})" if document.get('tier_reason') else ''),
+             f"- Tier: {document['tier']}" + (f" ({document['tier_reason']})" if document.get('tier_reason') else '')
+             + (f"; core under profile {placement['id']}" if placed == 'core' and document['tier'] != 'core' else '')
+             + (f"; removed by profile {placement['id']}" if placed == 'removed' else ''),
              f"- Applies when: {json.dumps(document['applies_when'])}",
              f"- Current phase: {enforcement['label']}",
-             f"- Phase that requires it: {document.get('phase_min') or 'none (never required before sunset)'}",
-             f"- State: {state}", f"- Severity: {severity}", '']
+             f"- Phase that requires it: {effective_phase_min(document, placement) or 'none (never required before sunset)'}",
+             f"- Reader question: {document.get('question') or 'not stated yet (catalog admission backlog)'}",
+             f"- Reader: {document.get('reader') or '—'}",
+             f"- Support: {document.get('support')}"
+             + (f" (checks: {', '.join(document['checks'])})" if document.get('checks') else '')
+             + (' — nothing verifies this type' if document.get('support') == 'template-only' else ''),
+             f"- Lifecycle events: {', '.join(document.get('events') or []) or 'none (periodic review)'}",
+             f"- State: {state}", f"- Severity: {severity}"
+             + (f" ({off_reason(document, placement, enforcement)})"
+                if severity == 'off' else ''), '']
     lines.append('| Token | Value | Evidence | Limits |')
     lines.append('| --- | --- | --- | --- |')
     every, any_of = predicate(document)
@@ -388,6 +479,7 @@ def explain(document, profile_document, context, enforcement=None):
 
 def report(data):
     summary, groups, enforcement = data['summary'], data['groups'], data['enforcement']
+    profile = data.get('catalog_profile') or {}
     lines = ['# AutoDOC requirements', '',
              f"- Phase: {enforcement['label']}",
              f"- Detected ecosystems: {', '.join(data['ecosystems']['present']) or 'none'}"
@@ -395,11 +487,16 @@ def report(data):
                 f"unread: {', '.join(data['ecosystems']['unread']) or 'none'})"
                 if data['ecosystems']['present'] else ''),
              f"- Undeclared facts: {', '.join(data['unknown_facts']) or 'none'}",
+             f"- Catalog profile: {profile['name']} ({profile['core_types']} core types: "
+             f"{profile['default_core_types']} default"
+             + (f", {len(profile['added'])} added" if profile['added'] else '')
+             + (f", {len(profile['removed'])} removed" if profile['removed'] else '') + ')',
              f"- {summary['readiness']}",
              f"- Open core decisions: {summary['open_core_decisions']}",
              f"- Undetermined types (unknown fact): {summary['undetermined_types']}",
              f"- Assess-only types (no detectable predicate): {summary['assess_only_types']}",
-             f"- Inapplicable types: {summary['inapplicable_types']}",
+             f"- Not applicable, with a recorded reason: {summary['inapplicable_types']}",
+             f"- Off at this phase or profile: {summary['off_types']}",
              f"- Catalog types: {summary['catalog_types']}", '']
     sections = [('required', 'Required now', '| Type | Name | Required since | Severity | Evidence | Why core |',
                  lambda i: f"| `{i['id']}` | {i['name']} | {i['phase_min']} | "
@@ -409,8 +506,8 @@ def report(data):
                  '| Type | Name | Becomes required at | Evidence | Why core |',
                  lambda i: f"| `{i['id']}` | {i['name']} | {i['phase_min'] or '—'} | "
                            f"{i['evidence'] or '—'} | {i['why'] or '—'} |"),
-                ('early', 'Applicable but not required yet (before its phase)',
-                 '| Type | Name | Becomes required at | Evidence |', None),
+                ('off', 'Not applicable at this phase (off, with the reason)',
+                 '| Type | Name | Reason | Becomes required at |', None),
                 ('recommended', 'Recommended (extended)',
                  '| Type | Name | Applies when | Evidence |', None),
                 ('undetermined', 'Undetermined — a fact could not be detected',
@@ -424,9 +521,10 @@ def report(data):
         for item in items:
             if renderer:
                 lines.append(renderer(item))
-            elif key == 'early':
-                lines.append(f"| `{item['id']}` | {item['name']} | {item['phase_min']} | "
-                             f"{item['evidence'] or '—'} |")
+            elif key == 'off':
+                lines.append(f"| `{item['id']}` | {item['name']} | "
+                             f"{item.get('off_reason') or 'off at this phase'} | "
+                             f"{item['phase_min'] or '—'} |")
             elif key == 'recommended':
                 lines.append(f"| `{item['id']}` | {item['name']} | "
                              f"{json.dumps(item['applies_when'])} | {item['evidence'] or '—'} |")
@@ -440,7 +538,7 @@ def report(data):
                 stale = ' (predicate now true — re-check)' if item.get('stale_decision') else ''
                 lines.append(f"| `{item['id']}` | {item['name']} | {item['severity']}{stale} | {reference} |")
         lines.append('')
-    if not any(groups[name] for name in ('required', 'early', 'recommended', 'reported')):
+    if not any(groups[name] for name in ('required', 'off', 'recommended', 'reported')):
         lines += ['No applicable requirement was found for this context.', '']
     lines += ['Applicability is decided by detected facts and declared decisions, never by a '
               'project-type guess. An unknown fact makes a type undetermined, which is reported '
@@ -461,13 +559,14 @@ def build(args):
         profile_document = profiler.profile(args.repo, context['facts'])
     enforcement = context_module.enforcement(context['phase'])
     documents = catalog()
-    groups = evaluate(documents, profile_document, context, enforcement)
+    placement = profile_placement(documents, context)
+    groups = evaluate(documents, profile_document, context, enforcement, placement)
     unknown = sorted(name for name, entry in profile_document['facts'].items()
                      if entry['value'] == 'unknown')
     return {'version': 2, 'repo': profile_document['repo'], 'phase': context['phase'],
             'enforcement': enforcement, 'ecosystems': profile_document['ecosystems'],
             'unknown_facts': unknown, 'facts': profile_document['facts'],
-            'profile': profile_document,
+            'profile': profile_document, 'catalog_profile': score_profile(placement),
             'summary': score(documents, groups, enforcement), 'groups': groups}, \
         documents, context, groups, enforcement
 
@@ -495,7 +594,7 @@ def main():
         if match is None:
             print('Unknown catalog id:', args.explain, file=sys.stderr)
             return 2
-        print(explain(match, data['profile'], context, enforcement), end='')
+        print(explain(match, data['profile'], context, enforcement, groups=groups), end='')
         return 0
     if args.hint:
         print(json.dumps(context_module.phase_hints(args.repo, data['profile']), indent=2))

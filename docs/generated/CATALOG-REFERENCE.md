@@ -38,8 +38,8 @@ Generated from the three catalog indices. These are possible documents, not comp
 | A06-SECURITY | Security engineering | 10 | `DOC-A06-001`, `DOC-A06-002`, `DOC-A06-003`, `DOC-A06-004`, `DOC-A06-005`, `DOC-A06-006`, `DOC-A06-007`, `DOC-A06-008`, `DOC-A06-009`, `DOC-A06-010` |
 | A07-PRIVACY | Privacy and compliance | 7 | `DOC-A07-001`, `DOC-A07-002`, `DOC-A07-003`, `DOC-A07-004`, `DOC-A07-005`, `DOC-A07-006`, `DOC-A07-007` |
 | A08-APIS | APIs and interfaces | 10 | `DOC-A08-001`, `DOC-A08-002`, `DOC-A08-003`, `DOC-A08-004`, `DOC-A08-005`, `DOC-A08-006`, `DOC-A08-007`, `DOC-A08-008`, `DOC-A08-009`, `DOC-A08-010` |
-| A09-DEVELOPMENT | Development process | 8 | `DOC-A09-001`, `DOC-A09-002`, `DOC-A09-003`, `DOC-A09-004`, `DOC-A09-005`, `DOC-A09-006`, `DOC-A09-007`, `DOC-A09-008` |
-| A10-BUILD | Build and supply chain | 7 | `DOC-A10-001`, `DOC-A10-002`, `DOC-A10-003`, `DOC-A10-004`, `DOC-A10-005`, `DOC-A10-006`, `DOC-A10-007` |
+| A09-DEVELOPMENT | Development process | 9 | `DOC-A09-001`, `DOC-A09-002`, `DOC-A09-003`, `DOC-A09-004`, `DOC-A09-005`, `DOC-A09-006`, `DOC-A09-007`, `DOC-A09-008`, `DOC-A09-009` |
+| A10-BUILD | Build and supply chain | 8 | `DOC-A10-001`, `DOC-A10-002`, `DOC-A10-003`, `DOC-A10-004`, `DOC-A10-005`, `DOC-A10-006`, `DOC-A10-007`, `DOC-A10-008` |
 | A11-TESTING | Testing and quality | 13 | `DOC-A11-001`, `DOC-A11-002`, `DOC-A11-003`, `DOC-A11-004`, `DOC-A11-005`, `DOC-A11-006`, `DOC-A11-007`, `DOC-A11-008`, `DOC-A11-009`, `DOC-A11-010`, `DOC-A11-011`, `DOC-A11-012`, `DOC-A11-013` |
 | A12-PERFORMANCE | Performance and reliability | 7 | `DOC-A12-001`, `DOC-A12-002`, `DOC-A12-003`, `DOC-A12-004`, `DOC-A12-005`, `DOC-A12-006`, `DOC-A12-007` |
 | A13-INFRASTRUCTURE | Infrastructure and environments | 7 | `DOC-A13-001`, `DOC-A13-002`, `DOC-A13-003`, `DOC-A13-004`, `DOC-A13-005`, `DOC-A13-006`, `DOC-A13-007` |
@@ -55,7 +55,7 @@ Generated from the three catalog indices. These are possible documents, not comp
 | A23-LIFECYCLE | Lifecycle management | 7 | `DOC-A23-001`, `DOC-A23-002`, `DOC-A23-003`, `DOC-A23-004`, `DOC-A23-005`, `DOC-A23-006`, `DOC-A23-007` |
 | A24-EVIDENCE | Evidence packs | 10 | `DOC-A24-001`, `DOC-A24-002`, `DOC-A24-003`, `DOC-A24-004`, `DOC-A24-005`, `DOC-A24-006`, `DOC-A24-007`, `DOC-A24-008`, `DOC-A24-009`, `DOC-A24-010` |
 
-**Total types:** 205.
+**Total types:** 207.
 
 ## CATALOG-B
 

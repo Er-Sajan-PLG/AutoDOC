@@ -28,7 +28,10 @@ decisions are recorded in `autodoc.toml`; `make docs-catalog` validates the cata
 schema and declared context; `make docs-hint` suggests a phase from history; and
 `make docs-explain DOC=DEV-B01-006` prints the derivation chain for one requirement.
 
-**Phase is a declaration.** With no `phase` the output is advisory and nothing fails, unless a
+**Profile and phase are declarations.** `profile` in `autodoc.toml` picks which document types
+count as core for this kind of project (`default`, `startup`, `oss-library`, `internal-service`,
+`regulated`); each addition states the phases it is off in, and the report shows the resulting
+core set. **Phase is a declaration.** With no `phase` the output is advisory and nothing fails, unless a
 `[severity]` pin says otherwise. This repository declares `phase = "build"`: missing required
 documents warn (a baseline is allowed), recommended ones are informational, structural breakage
 fails, and drift and freshness are off. `beta` adds drift and freshness as warnings; `live` and

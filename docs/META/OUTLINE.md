@@ -54,8 +54,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 1: AutoDOC
 - L2 line 11: What it does
 - L2 line 18: Quick start (Python 3.11+)
-- L2 line 46: Status
-- L2 line 59: Navigate
+- L2 line 49: Status
+- L2 line 62: Navigate
 
 ## `TEMPLATES/AGENT-CONTEXT/DEV-B09-001.md`
 
@@ -2165,6 +2165,18 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 23: Technical debt register
 
+## `TEMPLATES/SPECIFICATIONS/DOC-A09-009.md`
+
+- L1 line 23: Code of conduct
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A09-009.md.blank`
+
+- L1 line 23: Code of conduct
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A09-009.md.example`
+
+- L1 line 23: Code of conduct
+
 ## `TEMPLATES/SPECIFICATIONS/DOC-A10-001.md`
 
 - L1 line 23: Pipeline architecture
@@ -2236,6 +2248,18 @@ ATX headings from configured human-owned Markdown sources.
 ## `TEMPLATES/SPECIFICATIONS/DOC-A10-007.md.example`
 
 - L1 line 23: Quality gates
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A10-008.md`
+
+- L1 line 23: License
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A10-008.md.blank`
+
+- L1 line 23: License
+
+## `TEMPLATES/SPECIFICATIONS/DOC-A10-008.md.example`
+
+- L1 line 23: License
 
 ## `TEMPLATES/SPECIFICATIONS/DOC-A11-001.md`
 
@@ -3260,8 +3284,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 22: AutoDOC architecture
 - L2 line 24: Purpose and scope
 - L2 line 29: Details and decisions
-- L2 line 138: Verification and references
-- L2 line 144: Phase 3 trust boundaries
+- L2 line 155: Verification and references
+- L2 line 161: Phase 3 trust boundaries
 
 ## `docs/08-agent-context/AGENT-MEMORY.md`
 

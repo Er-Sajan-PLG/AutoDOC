@@ -25,10 +25,7 @@
       "description": "Schema version. Write it as `schema = 1`; `version` is an alias."
     },
     "phase": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": ["string", "null"]
     },
     "audience": {
       "type": "array",
@@ -57,18 +54,11 @@
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "value",
-          "reason"
-        ],
+        "required": ["value", "reason"],
         "properties": {
           "value": {
             "type": "string",
-            "enum": [
-              "true",
-              "false",
-              "unknown"
-            ]
+            "enum": ["true", "false", "unknown"]
           },
           "reason": {
             "type": "string",
@@ -89,9 +79,7 @@
           {
             "type": "object",
             "additionalProperties": false,
-            "required": [
-              "reason"
-            ],
+            "required": ["reason"],
             "properties": {
               "reason": {
                 "type": "string",
@@ -131,19 +119,11 @@
       "type": "object",
       "additionalProperties": {
         "type": "string",
-        "enum": [
-          "error",
-          "warn",
-          "off",
-          "report"
-        ]
+        "enum": ["error", "warn", "off", "report"]
       }
     },
     "phase_declared": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
       "description": "When the current phase was declared, so the report can show its age. Written by `autodoc promote`; humans may set it too."
     },
@@ -155,6 +135,10 @@
       "items": {
         "type": "string"
       }
+    },
+    "profile": {
+      "type": ["string", "null"],
+      "description": "Which catalog profile decides the core set (CONTROL/metadata/PROFILES.json). A declaration, never an inference; unset means `default`."
     }
   }
 }

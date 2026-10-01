@@ -55,24 +55,32 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/adopt.py` | 15 | function | `scan` | `(project)` |
 | `scripts/adopt.py` | 22 | function | `main` | `()` |
 | `scripts/doc-control/build_catalogs.py` | 1 | module | `scripts.doc-control.build_catalogs` | — |
-| `scripts/doc-control/build_catalogs.py` | 22 | function | `load_rules` | `()` |
-| `scripts/doc-control/build_catalogs.py` | 29 | function | `kind` | `(name, domain, rules)` |
-| `scripts/doc-control/build_catalogs.py` | 44 | function | `phase` | `(domain, rules)` |
-| `scripts/doc-control/build_catalogs.py` | 54 | function | `maturity` | `(domain, phase_label, rules)` |
-| `scripts/doc-control/build_catalogs.py` | 59 | function | `applies_when` | `(doc_id, domain, rules)` |
-| `scripts/doc-control/build_catalogs.py` | 70 | function | `tier` | `(doc_id, rules)` |
-| `scripts/doc-control/build_catalogs.py` | 81 | function | `entries` | `(seed, prefix, rules)` |
-| `scripts/doc-control/build_catalogs.py` | 106 | function | `render` | `(rules)` |
-| `scripts/doc-control/build_catalogs.py` | 111 | function | `run` | `(check=False)` |
+| `scripts/doc-control/build_catalogs.py` | 26 | function | `phase_order` | `()` |
+| `scripts/doc-control/build_catalogs.py` | 31 | function | `load_rules` | `()` |
+| `scripts/doc-control/build_catalogs.py` | 38 | function | `kind` | `(name, domain, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 53 | function | `phase` | `(domain, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 63 | function | `maturity` | `(domain, phase_label, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 68 | function | `applies_when` | `(doc_id, domain, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 79 | function | `tier` | `(doc_id, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 96 | function | `phase_min` | `(severity_by_phase, phases)` |
+| `scripts/doc-control/build_catalogs.py` | 106 | function | `admission` | `(doc_id, rules, applied)` |
+| `scripts/doc-control/build_catalogs.py` | 122 | function | `entries` | `(seed, prefix, rules, order)` |
+| `scripts/doc-control/build_catalogs.py` | 151 | function | `render` | `(rules)` |
+| `scripts/doc-control/build_catalogs.py` | 157 | function | `run` | `(check=False)` |
 | `scripts/doc-control/check_catalog.py` | 1 | module | `scripts.doc-control.check_catalog` | — |
-| `scripts/doc-control/check_catalog.py` | 36 | function | `load` | `(path)` |
-| `scripts/doc-control/check_catalog.py` | 40 | function | `implements` | `(value, expected)` |
-| `scripts/doc-control/check_catalog.py` | 52 | function | `validate` | `(instance, schema, path='$', errors=None)` |
-| `scripts/doc-control/check_catalog.py` | 113 | function | `detector_specs` | `()` |
-| `scripts/doc-control/check_catalog.py` | 120 | function | `detectors` | `()` |
-| `scripts/doc-control/check_catalog.py` | 125 | function | `tokens_of` | `(document)` |
-| `scripts/doc-control/check_catalog.py` | 133 | function | `index_documents` | `(index)` |
-| `scripts/doc-control/check_catalog.py` | 137 | function | `check` | `(indices=None)` |
+| `scripts/doc-control/check_catalog.py` | 42 | function | `load` | `(path)` |
+| `scripts/doc-control/check_catalog.py` | 46 | function | `implements` | `(value, expected)` |
+| `scripts/doc-control/check_catalog.py` | 58 | function | `validate` | `(instance, schema, path='$', errors=None)` |
+| `scripts/doc-control/check_catalog.py` | 119 | function | `detector_specs` | `()` |
+| `scripts/doc-control/check_catalog.py` | 126 | function | `detectors` | `()` |
+| `scripts/doc-control/check_catalog.py` | 131 | function | `tokens_of` | `(document)` |
+| `scripts/doc-control/check_catalog.py` | 139 | function | `phase_order` | `(model=None)` |
+| `scripts/doc-control/check_catalog.py` | 145 | function | `severity_by_phase_errors` | `(document, phases, order)` |
+| `scripts/doc-control/check_catalog.py` | 169 | function | `first_applicable_phase` | `(mapping, order)` |
+| `scripts/doc-control/check_catalog.py` | 177 | function | `admission_errors` | `(rules, model, documents, profiles)` |
+| `scripts/doc-control/check_catalog.py` | 232 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` |
+| `scripts/doc-control/check_catalog.py` | 281 | function | `index_documents` | `(index)` |
+| `scripts/doc-control/check_catalog.py` | 285 | function | `check` | `(indices=None)` |
 | `scripts/doc-control/check_ownership.py` | 1 | module | `scripts.doc-control.check_ownership` | — |
 | `scripts/doc-control/check_ownership.py` | 11 | function | `check` | `()` |
 | `scripts/doc-control/check_sync_map.py` | 1 | module | `scripts.doc-control.check_sync_map` | — |
@@ -92,6 +100,9 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/doc-control/guards.py` | 77 | function | `check` | `(staged=False)` |
 | `scripts/doc-control/health.py` | 1 | module | `scripts.doc-control.health` | — |
 | `scripts/doc-control/health.py` | 15 | function | `health` | `()` |
+| `scripts/doc-control/json_style.py` | 1 | module | `scripts.doc-control.json_style` | — |
+| `scripts/doc-control/json_style.py` | 21 | function | `_collapse` | `(text)` |
+| `scripts/doc-control/json_style.py` | 55 | function | `dumps` | `(data)` |
 | `scripts/doc-control/library.py` | 1 | module | `scripts.doc-control.library` | — |
 | `scripts/doc-control/library.py` | 9 | function | `render` | `(doc, variant)` |
 | `scripts/doc-control/library.py` | 45 | function | `run` | `(check)` |
@@ -135,44 +146,46 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/doc-sync/engine.py` | 312 | function | `alert_catalog` | `(entry)` |
 | `scripts/doc-sync/engine.py` | 321 | function | `catalog_facets` | `()` |
 | `scripts/doc-sync/engine.py` | 337 | function | `catalog_view` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 362 | function | `catalog_navigation` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 374 | function | `human_inventory` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 388 | function | `relationship_graph` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 401 | function | `master_index` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 410 | function | `check_supersedes_cycles` | `(links)` |
-| `scripts/doc-sync/engine.py` | 422 | function | `relationship_visualization` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 468 | function | `generate` | `(check=False, only=None, findings=None)` |
-| `scripts/doc-sync/engine.py` | 500 | function | `git` | `(*args)` |
-| `scripts/doc-sync/engine.py` | 504 | function | `changed` | `(base=None, staged=False)` |
-| `scripts/doc-sync/engine.py` | 512 | function | `matches` | `(file, pattern)` |
-| `scripts/doc-sync/engine.py` | 516 | function | `impact` | `(base=None, staged=False)` |
-| `scripts/doc-sync/engine.py` | 542 | function | `parse_frontmatter` | `(path)` |
-| `scripts/doc-sync/engine.py` | 546 | function | `parse_frontmatter_text` | `(text)` |
-| `scripts/doc-sync/engine.py` | 564 | function | `controlled` | `()` |
-| `scripts/doc-sync/engine.py` | 577 | function | `validate_staged` | `()` |
-| `scripts/doc-sync/engine.py` | 613 | function | `validate` | `(freshness=False, now=None, findings=None)` |
-| `scripts/doc-sync/engine.py` | 695 | function | `replace_block` | `(text, body)` |
-| `scripts/doc-sync/engine.py` | 704 | function | `update_state` | `(base=None, staged=False)` |
-| `scripts/doc-sync/engine.py` | 735 | function | `main` | `()` |
+| `scripts/doc-sync/engine.py` | 363 | function | `catalog_navigation` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 375 | function | `human_inventory` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 389 | function | `relationship_graph` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 402 | function | `master_index` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 411 | function | `check_supersedes_cycles` | `(links)` |
+| `scripts/doc-sync/engine.py` | 423 | function | `relationship_visualization` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 469 | function | `generate` | `(check=False, only=None, findings=None)` |
+| `scripts/doc-sync/engine.py` | 501 | function | `git` | `(*args)` |
+| `scripts/doc-sync/engine.py` | 505 | function | `changed` | `(base=None, staged=False)` |
+| `scripts/doc-sync/engine.py` | 513 | function | `matches` | `(file, pattern)` |
+| `scripts/doc-sync/engine.py` | 517 | function | `impact` | `(base=None, staged=False)` |
+| `scripts/doc-sync/engine.py` | 543 | function | `parse_frontmatter` | `(path)` |
+| `scripts/doc-sync/engine.py` | 547 | function | `parse_frontmatter_text` | `(text)` |
+| `scripts/doc-sync/engine.py` | 565 | function | `controlled` | `()` |
+| `scripts/doc-sync/engine.py` | 578 | function | `validate_staged` | `()` |
+| `scripts/doc-sync/engine.py` | 614 | function | `validate` | `(freshness=False, now=None, findings=None)` |
+| `scripts/doc-sync/engine.py` | 696 | function | `replace_block` | `(text, body)` |
+| `scripts/doc-sync/engine.py` | 705 | function | `update_state` | `(base=None, staged=False)` |
+| `scripts/doc-sync/engine.py` | 736 | function | `main` | `()` |
 | `scripts/doc-sync/generate-all.py` | 1 | module | `scripts.doc-sync.generate-all` | — |
 | `scripts/doc-sync/update-doc-state.py` | 1 | module | `scripts.doc-sync.update-doc-state` | — |
 | `scripts/init-project.py` | 1 | module | `scripts.init-project` | — |
 | `scripts/init-project.py` | 14 | function | `main` | `()` |
 | `scripts/intelligence/change_analyzer.py` | 1 | module | `scripts.intelligence.change_analyzer` | — |
 | `scripts/intelligence/context.py` | 1 | module | `scripts.intelligence.context` | — |
-| `scripts/intelligence/context.py` | 33 | function | `load_module` | `(name, path)` |
-| `scripts/intelligence/context.py` | 41 | function | `load_model` | `()` |
-| `scripts/intelligence/context.py` | 48 | function | `load` | `(path)` |
-| `scripts/intelligence/context.py` | 56 | function | `normalise` | `(raw)` |
-| `scripts/intelligence/context.py` | 109 | function | `catalog_ids` | `()` |
-| `scripts/intelligence/context.py` | 124 | function | `resolve_aliases` | `(context)` |
-| `scripts/intelligence/context.py` | 150 | function | `validate` | `(context, model=None)` |
-| `scripts/intelligence/context.py` | 204 | function | `validate_model` | `(model=None)` |
-| `scripts/intelligence/context.py` | 271 | function | `enforcement` | `(phase, model=None)` |
-| `scripts/intelligence/context.py` | 283 | function | `check_severity` | `(context, family, model=None)` |
-| `scripts/intelligence/context.py` | 301 | function | `phase_age` | `(context, today=None)` |
-| `scripts/intelligence/context.py` | 312 | function | `_git` | `(root, *args)` |
-| `scripts/intelligence/context.py` | 320 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
+| `scripts/intelligence/context.py` | 34 | function | `load_module` | `(name, path)` |
+| `scripts/intelligence/context.py` | 42 | function | `load_model` | `()` |
+| `scripts/intelligence/context.py` | 49 | function | `load` | `(path)` |
+| `scripts/intelligence/context.py` | 57 | function | `normalise` | `(raw)` |
+| `scripts/intelligence/context.py` | 111 | function | `load_profiles` | `()` |
+| `scripts/intelligence/context.py` | 116 | function | `profile_ids` | `()` |
+| `scripts/intelligence/context.py` | 121 | function | `catalog_ids` | `()` |
+| `scripts/intelligence/context.py` | 136 | function | `resolve_aliases` | `(context)` |
+| `scripts/intelligence/context.py` | 162 | function | `validate` | `(context, model=None)` |
+| `scripts/intelligence/context.py` | 219 | function | `validate_model` | `(model=None)` |
+| `scripts/intelligence/context.py` | 286 | function | `enforcement` | `(phase, model=None)` |
+| `scripts/intelligence/context.py` | 298 | function | `check_severity` | `(context, family, model=None)` |
+| `scripts/intelligence/context.py` | 316 | function | `phase_age` | `(context, today=None)` |
+| `scripts/intelligence/context.py` | 327 | function | `_git` | `(root, *args)` |
+| `scripts/intelligence/context.py` | 335 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
 | `scripts/intelligence/enforce.py` | 1 | module | `scripts.intelligence.enforce` | — |
 | `scripts/intelligence/enforce.py` | 47 | function | `load_module` | `(name, path)` |
 | `scripts/intelligence/enforce.py` | 62 | function | `fingerprint` | `(detail)` |
@@ -185,10 +198,10 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/enforce.py` | 212 | function | `write_baseline` | `(path, findings, phase, today=None)` |
 | `scripts/intelligence/enforce.py` | 236 | function | `summarize` | `(findings, suppressed, stale, enforcement)` |
 | `scripts/intelligence/enforce.py` | 251 | function | `report` | `(data, findings, suppressed, stale, enforcement, exit_code)` |
-| `scripts/intelligence/enforce.py` | 323 | function | `build` | `(args)` |
-| `scripts/intelligence/enforce.py` | 352 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
-| `scripts/intelligence/enforce.py` | 364 | function | `run` | `(args)` |
-| `scripts/intelligence/enforce.py` | 400 | function | `main` | `()` |
+| `scripts/intelligence/enforce.py` | 340 | function | `build` | `(args)` |
+| `scripts/intelligence/enforce.py` | 375 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
+| `scripts/intelligence/enforce.py` | 388 | function | `run` | `(args)` |
+| `scripts/intelligence/enforce.py` | 424 | function | `main` | `()` |
 | `scripts/intelligence/profile.py` | 1 | module | `scripts.intelligence.profile` | — |
 | `scripts/intelligence/profile.py` | 159 | function | `tracked_files` | `(root)` |
 | `scripts/intelligence/profile.py` | 177 | function | `skipped_dir` | `(relative)` |
@@ -206,16 +219,21 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/recommend.py` | 50 | function | `predicate` | `(document)` |
 | `scripts/intelligence/recommend.py` | 58 | function | `token_state` | `(token, facts, context, model=None)` |
 | `scripts/intelligence/recommend.py` | 75 | function | `state_of` | `(document, facts, context, model=None)` |
-| `scripts/intelligence/recommend.py` | 102 | function | `severity_for` | `(document, state, decision, enforcement, context)` |
-| `scripts/intelligence/recommend.py` | 130 | function | `enforced_reason` | `(item, enforcement)` |
-| `scripts/intelligence/recommend.py` | 157 | function | `effective_severity` | `(item, enforcement, context)` |
-| `scripts/intelligence/recommend.py` | 177 | function | `evaluate` | `(documents, profile_document, context, enforcement=None)` |
-| `scripts/intelligence/recommend.py` | 222 | function | `score` | `(documents, groups, enforcement)` |
-| `scripts/intelligence/recommend.py` | 245 | function | `because` | `(item, enforcement)` |
-| `scripts/intelligence/recommend.py` | 252 | function | `findings` | `(documents, context, groups, enforcement=None)` |
-| `scripts/intelligence/recommend.py` | 341 | function | `check` | `(documents, context, groups, enforcement=None)` |
-| `scripts/intelligence/recommend.py` | 352 | function | `explain` | `(document, profile_document, context, enforcement=None)` |
-| `scripts/intelligence/recommend.py` | 389 | function | `report` | `(data)` |
-| `scripts/intelligence/recommend.py` | 452 | function | `build` | `(args)` |
-| `scripts/intelligence/recommend.py` | 475 | function | `main` | `()` |
+| `scripts/intelligence/recommend.py` | 102 | function | `profile_placement` | `(documents, context)` |
+| `scripts/intelligence/recommend.py` | 125 | function | `placement_of` | `(document, placement)` |
+| `scripts/intelligence/recommend.py` | 134 | function | `severity_for` | `(document, state, decision, enforcement, context, placement)` |
+| `scripts/intelligence/recommend.py` | 165 | function | `effective_phase_min` | `(document, placement)` |
+| `scripts/intelligence/recommend.py` | 176 | function | `off_reason` | `(document, placement, enforcement)` |
+| `scripts/intelligence/recommend.py` | 193 | function | `score_profile` | `(placement)` |
+| `scripts/intelligence/recommend.py` | 200 | function | `enforced_reason` | `(item, enforcement)` |
+| `scripts/intelligence/recommend.py` | 229 | function | `effective_severity` | `(item, enforcement, context)` |
+| `scripts/intelligence/recommend.py` | 249 | function | `evaluate` | `(documents, profile_document, context, enforcement=None, placement=None)` |
+| `scripts/intelligence/recommend.py` | 299 | function | `score` | `(documents, groups, enforcement)` |
+| `scripts/intelligence/recommend.py` | 323 | function | `because` | `(item, enforcement)` |
+| `scripts/intelligence/recommend.py` | 330 | function | `findings` | `(documents, context, groups, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 419 | function | `check` | `(documents, context, groups, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 430 | function | `explain` | `(document, profile_document, context, enforcement=None, placement=None, documents=None, groups=None)` |
+| `scripts/intelligence/recommend.py` | 480 | function | `report` | `(data)` |
+| `scripts/intelligence/recommend.py` | 550 | function | `build` | `(args)` |
+| `scripts/intelligence/recommend.py` | 574 | function | `main` | `()` |
 | `scripts/validate/frontmatter_validator.py` | 1 | module | `scripts.validate.frontmatter_validator` | — |

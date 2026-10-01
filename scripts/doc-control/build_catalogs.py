@@ -12,11 +12,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RULES = ROOT / 'CONTROL/metadata/CATALOG-RULES.json'
+MODEL = ROOT / 'CONTROL/metadata/CONTEXT-MODEL.json'
 TEMPLATE_DIR = {'SPEC': 'SPECIFICATIONS', 'DEC': 'DECISIONS', 'DES': 'ARCHITECTURE',
                 'PROC': 'PROCEDURES', 'POL': 'POLICIES', 'REF': 'REFERENCES',
                 'REC': 'RECORDS', 'EVD': 'EVIDENCE', 'TPL': 'AGENT-CONTEXT'}
 NOTE = ('Inventory of possible documents. Applicability labels are suggestions, not a mandate or '
-        'evidence of adoption. Derived fields come from CONTROL/metadata/CATALOG-RULES.json.')
+        'evidence of adoption. Derived fields come from CONTROL/metadata/CATALOG-RULES.json: '
+        'severity_by_phase is authored, phase_min is derived from it, and support/checks state '
+        'what AutoDOC can actually verify for the type.')
+
+
+
+def phase_order():
+    """The declared phase sequence, from the context model, not from a second list here."""
+    return [phase['id'] for phase in json.loads(MODEL.read_text(encoding='utf-8'))['phases']]
 
 
 def load_rules():
@@ -68,17 +77,49 @@ def applies_when(doc_id, domain, rules):
 
 
 def tier(doc_id, rules):
-    """Return (tier, why, phase_min) for one document id."""
+    """Return (tier, why, severity_by_phase) for one document id.
+
+    `severity_by_phase` is authored for core types and sparse: it states where the type is still
+    `off`, and the phase's enforcement block supplies the severity once it applies. `phase_min`
+    is no longer authored anywhere — it is derived here from that map, so the two can never
+    disagree, and it stays in the index for display and for messages about when a type lands.
+    """
     spec = rules['tier']
     for entry in spec['core']:
         if entry['id'] == doc_id:
-            return 'core', entry['why'], entry.get('phase_min')
+            return 'core', entry['why'], entry.get('severity_by_phase', {})
     if doc_id in spec['extended']:
-        return 'extended', None, None
-    return spec['default'], None, None
+        return 'extended', None, {}
+    return spec['default'], None, {}
 
 
-def entries(seed, prefix, rules):
+def phase_min(severity_by_phase, phases):
+    """The first phase at which this type is not off; None when it never becomes required."""
+    if not severity_by_phase:
+        return phases[0]
+    for phase_id in phases:
+        if severity_by_phase.get(phase_id) != 'off':
+            return phase_id
+    return None
+
+
+def admission(doc_id, rules, applied):
+    """Return (question, reader, support, checks, events) for one document id.
+
+    Authored for every type a profile can list; derived for the rest, honestly: a type nothing
+    can detect is `human`, and any other never-listed type is `template-only` because a template
+    is all AutoDOC actually provides for it.
+    """
+    spec = rules['admission']
+    if doc_id in spec['by_id']:
+        entry = spec['by_id'][doc_id]
+        return (entry['question'], entry['reader'], entry['support'], entry['checks'],
+                entry['events'])
+    support = spec['defaults']['assess_only'] if applied == ['assess'] else spec['defaults']['default']
+    return (None, None, support, [], [])
+
+
+def entries(seed, prefix, rules, order):
     result = []
     for index, source in enumerate(seed, 1):
         domain = f'{prefix}{index:02d}-{source["slug"]}'
@@ -87,13 +128,17 @@ def entries(seed, prefix, rules):
             doc_id = f'{"DOC" if prefix == "A" else "DEV"}-{prefix}{index:02d}-{number:03d}'
             doc_kind = kind(name, domain, rules)
             doc_phase = phase(domain, rules)
-            doc_tier, why, phase_min = tier(doc_id, rules)
+            doc_tier, why, severity_by_phase = tier(doc_id, rules)
+            applied = applies_when(doc_id, domain, rules)
+            question, reader, support, checks, events = admission(doc_id, rules, applied)
             template_dir = 'AGENT-CONTEXT' if domain.startswith('B09-') else TEMPLATE_DIR[doc_kind]
             documents.append({
                 'id': doc_id, 'name': name, 'type': doc_kind, 'tier': doc_tier,
-                'tier_reason': why, 'phase_min': phase_min,
-                'applies_when': applies_when(doc_id, domain, rules),
-                'audience': 'project team', 'owner': '@project-owner', 'owner_type': 'project owner',
+                'tier_reason': why, 'severity_by_phase': severity_by_phase,
+                'phase_min': phase_min(severity_by_phase, order),
+                'applies_when': applied, 'question': question, 'reader': reader,
+                'support': support, 'checks': checks, 'events': events,
+                'owner': '@project-owner', 'owner_type': 'project owner',
                 'purpose': f'Record {name.lower()} for {source["purpose"].lower()}.',
                 'when': doc_phase, 'maturity': maturity(domain, doc_phase, rules),
                 'required_content': ['Purpose and scope', 'Details and decisions', 'Verification and references'],
@@ -104,7 +149,8 @@ def entries(seed, prefix, rules):
 
 
 def render(rules):
-    return {catalog: entries(rules['seed'][catalog[-1]], catalog[-1], rules)
+    order = phase_order()
+    return {catalog: entries(rules['seed'][catalog[-1]], catalog[-1], rules, order)
             for catalog in ('CATALOG-A', 'CATALOG-B')}
 
 

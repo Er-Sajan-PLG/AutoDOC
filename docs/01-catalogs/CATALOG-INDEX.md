@@ -30,7 +30,7 @@ Filter by phase/domain and follow the linked view. Source IDs remain in the vers
 | --- | --- | ---: |
 | A | [A01-PRODUCT](UNIVERSAL-DOCUMENT-CATALOG-A.md#a01-product) | 6 |
 | A | [A02-REQUIREMENTS](UNIVERSAL-DOCUMENT-CATALOG-A.md#a02-requirements) | 7 |
-| A | [A09-DEVELOPMENT](UNIVERSAL-DOCUMENT-CATALOG-A.md#a09-development) | 8 |
+| A | [A09-DEVELOPMENT](UNIVERSAL-DOCUMENT-CATALOG-A.md#a09-development) | 9 |
 | A | [A11-TESTING](UNIVERSAL-DOCUMENT-CATALOG-A.md#a11-testing) | 13 |
 | A | [B01-FOUNDATION](UNIVERSAL-DOCUMENT-CATALOG-A.md#b01-foundation) | 6 |
 | A | [B02-RESEARCH](UNIVERSAL-DOCUMENT-CATALOG-A.md#b02-research) | 4 |
@@ -53,7 +53,7 @@ Filter by phase/domain and follow the linked view. Source IDs remain in the vers
 | B | [A13-INFRASTRUCTURE](UNIVERSAL-DOCUMENT-CATALOG-B.md#a13-infrastructure) | 7 |
 | B | [A14-CONFIGURATION](UNIVERSAL-DOCUMENT-CATALOG-B.md#a14-configuration) | 6 |
 | B | [A21-AI-ML](UNIVERSAL-DOCUMENT-CATALOG-B.md#a21-ai-ml) | 12 |
-| C | [A10-BUILD](UNIVERSAL-DOCUMENT-CATALOG-C.md#a10-build) | 7 |
+| C | [A10-BUILD](UNIVERSAL-DOCUMENT-CATALOG-C.md#a10-build) | 8 |
 | C | [A15-RELEASE](UNIVERSAL-DOCUMENT-CATALOG-C.md#a15-release) | 9 |
 | C | [A16-OPERATIONS](UNIVERSAL-DOCUMENT-CATALOG-C.md#a16-operations) | 11 |
 | C | [A17-INCIDENTS](UNIVERSAL-DOCUMENT-CATALOG-C.md#a17-incidents) | 7 |

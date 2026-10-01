@@ -41,7 +41,8 @@ def context(**raw):
 def resolve(**raw):
     declared = context(**{key: value for key, value in raw.items()
                           if key in ('phase', 'kinds', 'obligations', 'not_applicable',
-                                     'instantiated', 'satisfied_by', 'severity', 'facts')})
+                                     'instantiated', 'satisfied_by', 'severity', 'facts',
+                                     'profile')})
     detected = {key: value for key, value in raw.items() if key in profiler.DETECTORS}
     enforcement = context_module.enforcement(declared['phase'])
     documents = recommend.catalog()
@@ -93,12 +94,76 @@ class PhaseScalingTests(unittest.TestCase):
         self.assertTrue(all(item['severity_effective'] == 'error' for item in groups['required']))
         self.assertTrue(any('required at phase beta' in error for error in errors))
 
-    def test_phase_min_defers_a_type_until_its_phase(self):
+    def test_severity_by_phase_defers_a_type_until_its_phase(self):
+        """Off before its phase, required after it, and the reason is stated either way."""
         _, _, groups_build, _ = resolve(phase='build', is_public='true')
-        self.assertIn('DOC-A15-003', ids(groups_build, 'early'), 'changelog is beta work')
+        self.assertIn('DOC-A15-003', ids(groups_build, 'off'), 'changelog is beta work')
         self.assertNotIn('DOC-A15-003', ids(groups_build, 'required'))
+        entry = find(groups_build, 'off', 'DOC-A15-003')
+        self.assertIn('not required before beta', entry['off_reason'])
+        self.assertEqual(entry['phase_min'], 'beta')
         _, _, groups_beta, _ = resolve(phase='beta', is_public='true')
         self.assertIn('DOC-A15-003', ids(groups_beta, 'required'))
+
+    def test_a_normalised_phase_is_required_from_idea(self):
+        """A core type with no off phases is required as soon as a phase is declared."""
+        _, _, groups, _ = resolve(phase='build')
+        self.assertIn('DEV-B01-001', ids(groups, 'required'))
+        self.assertEqual(find(groups, 'required', 'DEV-B01-001')['phase_min'], 'idea')
+
+
+class ProfileTests(unittest.TestCase):
+    """§5.2: which types are core is declared data, and switching it moves real types."""
+
+    def test_the_default_profile_is_tier_core(self):
+        documents, declared, groups, enforcement = resolve(phase='build', profile='default')
+        placement = recommend.profile_placement(documents, declared)
+        self.assertEqual(placement['core'],
+                         {doc['id'] for doc in documents if doc['tier'] == 'core'})
+        self.assertEqual(placement['added'], [])
+        self.assertEqual(placement['removed'], [])
+
+    def test_the_oss_profile_adds_the_social_documents(self):
+        documents, declared, groups, _ = resolve(phase='build', profile='oss-library',
+                                                is_public='true', has_deploy='true')
+        placement = recommend.profile_placement(documents, declared)
+        self.assertIn('DOC-A09-009', placement['core'], 'code of conduct comes with the profile')
+        self.assertIn('DOC-A09-009', ids(groups, 'required'))
+        self.assertIn('DOC-A16-003', placement['removed'])
+        runbook = find(groups, 'off', 'DOC-A16-003')
+        self.assertIn('removed by profile oss-library', runbook['off_reason'])
+
+    def test_an_internal_service_does_not_need_redistribution_terms(self):
+        documents, declared, groups, _ = resolve(phase='build', profile='internal-service',
+                                                has_deploy='true', is_public='true')
+        placement = recommend.profile_placement(documents, declared)
+        self.assertNotIn('DOC-A10-008', placement['core'])
+        self.assertIn('DOC-A16-005', placement['core'], 'on-call arrives with the profile')
+        self.assertIn('DOC-A16-003', placement['core'], 'the runbook stays')
+        self.assertEqual(find(groups, 'off', 'DOC-A10-008')['off_reason'],
+                         'removed by profile internal-service: not required for this kind of '
+                         'project')
+
+    def test_a_profile_addition_states_when_it_lands(self):
+        documents, declared, groups, _ = resolve(phase='build', profile='internal-service',
+                                                has_deploy='true')
+        on_call = find(groups, 'off', 'DOC-A16-005')
+        self.assertIn('not required before live', on_call['off_reason'])
+        _, _, groups_live, _ = resolve(phase='live', profile='internal-service', has_deploy='true')
+        self.assertIn('DOC-A16-005', ids(groups_live, 'required'))
+
+    def test_an_unknown_profile_is_rejected(self):
+        broken = context_module.normalise({'schema': 1, 'profile': 'unicorn'})
+        self.assertIn('is not a declared profile', ' '.join(context_module.validate(broken)))
+
+    def test_the_regulated_profile_requires_records(self):
+        documents, declared, groups, _ = resolve(phase='beta', profile='regulated',
+                                                has_personal_data='true',
+                                                has_persistent_state='true')
+        placement = recommend.profile_placement(documents, declared)
+        for doc_id in ('DOC-A07-001', 'DOC-A05-006', 'DOC-A20-002', 'DOC-A24-003'):
+            with self.subTest(doc_id):
+                self.assertIn(doc_id, placement['core'])
 
     def test_sunset_requires_only_the_end_of_life_set(self):
         documents, declared, groups, enforcement = resolve(phase='sunset', is_public='true')
@@ -207,10 +272,22 @@ class ExplainTests(unittest.TestCase):
         documents, declared, groups, enforcement = resolve(phase='beta', has_public_api_surface='true')
         document = next(item for item in documents if item['id'] == 'DOC-A08-001')
         text = recommend.explain(document, profile_document(has_public_api_surface='true'),
-                                 declared, enforcement)
+                                 declared, enforcement, groups=groups)
         self.assertIn('Phase that requires it: beta', text)
         self.assertIn('| `has_public_api_surface` | true |', text)
         self.assertIn('Limits', text)
+
+    def test_explain_answers_the_reader_question_and_names_the_profile(self):
+        documents, declared, groups, enforcement = resolve(phase='build', profile='oss-library',
+                                                           is_public='true')
+        document = next(item for item in documents if item['id'] == 'DOC-A09-009')
+        text = recommend.explain(document, profile_document(is_public='true'), declared,
+                                 enforcement, groups=groups)
+        self.assertIn('core under profile oss-library', text)
+        self.assertIn('What behaviour is expected here', text)
+        self.assertIn('Reader: contributors', text)
+        self.assertIn('Support: checked', text)
+        self.assertIn('Lifecycle events: onboarding, incident', text)
 
     def test_explain_states_the_recorded_decision(self):
         documents, declared, groups, enforcement = resolve(

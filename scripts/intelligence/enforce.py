@@ -261,6 +261,15 @@ def report(data, findings, suppressed, stale, enforcement, exit_code):
         lines.append(f'- Advisory: phase undeclared, nothing is enforced except pins: {pinned}')
     elif pins:
         lines.append(f"- Severity pins: {', '.join(pins)}")
+    profile = data.get('catalog_profile') or {}
+    if profile:
+        delta = []
+        if profile['added']:
+            delta.append(f"adds {', '.join(profile['added'])}")
+        if profile['removed']:
+            delta.append(f"removes {', '.join(profile['removed'])}")
+        lines.append(f"- Catalog profile: {profile['name']} ({profile['core_types']} core types"
+                     + (': ' + '; '.join(delta) if delta else '') + ')')
     lines.append(f"- Checks ran at: {', '.join(LEVELS)}; no L2 code-aware checks exist yet")
     age = data.get('phase_age')
     if age:
@@ -307,6 +316,14 @@ def report(data, findings, suppressed, stale, enforcement, exit_code):
         lines += [f"- `{entry['rule']}` `{entry['location']}`" for entry in stale]
     else:
         lines.append('None.')
+    off_types = data.get('off_types') or []
+    if off_types:
+        # A type that is off at this phase is a decision with a reason, not a silent skip.
+        lines += ['', f'## Not applicable at this phase ({len(off_types)})', '']
+        for entry in off_types:
+            becomes = f"; becomes required at {entry['becomes_required_at']}" \
+                if entry.get('becomes_required_at') else ''
+            lines.append(f"- `{entry['id']}` {entry['name']} — {entry.get('reason')}{becomes}")
     lines += ['', '## Cannot see', '']
     if data.get('off_families'):
         lines.append(f"Off at this phase, so not run: {', '.join(data['off_families'])}. "
@@ -330,7 +347,8 @@ def build(args):
     profile_document = profiler.profile(args.repo, context['facts'])
     enforcement = context_module.enforcement(context['phase'])
     documents = recommend.catalog()
-    groups = recommend.evaluate(documents, profile_document, context, enforcement)
+    placement = recommend.profile_placement(documents, context)
+    groups = recommend.evaluate(documents, profile_document, context, enforcement, placement)
     findings, off = collect_findings(profile_document, context, documents, groups, enforcement,
                                      root=args.repo.resolve())
     baseline = load_baseline(args.baseline)
@@ -339,6 +357,11 @@ def build(args):
             'phase_age': context_module.phase_age(context), 'enforcement': enforcement,
             'readiness': recommend.score(documents, groups, enforcement)['readiness'],
             'off_families': off, 'levels': list(LEVELS),
+            'catalog_profile': recommend.score_profile(placement),
+            'off_types': [{'id': item['id'], 'name': item['name'],
+                           'reason': item.get('off_reason'),
+                           'becomes_required_at': item.get('phase_min')}
+                          for item in groups['off']],
             'pins': [f'{rule} = "{severity}"'
                      for rule, severity in sorted(context['severity'].items())],
             'unknown_facts': sorted(name for name, entry in profile_document['facts'].items()
@@ -354,6 +377,7 @@ def machine_document(data, findings, suppressed, stale, enforcement, summary):
     return {'version': 1, 'phase': data['phase'], 'phase_age': data['phase_age'],
             'readiness': data['readiness'], 'levels': data['levels'],
             'off_families': data['off_families'], 'pins': data['pins'],
+            'catalog_profile': data['catalog_profile'], 'off_types': data['off_types'],
             'enforcement': enforcement, 'summary': summary, 'findings': findings,
             'suppressed': [{key: value for key, value in finding.items() if key != 'baseline'}
                            for finding in suppressed],

@@ -41,6 +41,20 @@
   branch-protection helper, and the capability level in every report. The checker functions the
   enforcement layer calls now return structured findings, so severity, baseline and exit codes
   come from one place rather than from printed strings.
+- Moved the core-set decision into data: `CONTROL/metadata/PROFILES.json` holds `default`,
+  `startup`, `oss-library`, `internal-service` and `regulated` as deltas of the hand-picked core
+  list, each addition carrying a reason and the phases it is off in; `profile` in `autodoc.toml`
+  selects one and the report states the resulting set with its additions and removals. Catalog
+  entries gained the §5.1 fields — `question` (the reader question), `reader`, `support`
+  (`checked` / `template-only` / `human`), `checks`, `events`, and `severity_by_phase`, which
+  subsumes the authored `phase_min` (now derived by the generator, so the two cannot disagree).
+  An admission rule in `check_catalog.py` requires every type any profile can list to state the
+  reader question it answers, a detectable predicate, its phases and named checks or an explicit
+  label; a type nothing can detect cannot be required. Two types were reconciled for the
+  profiles: `License` (DOC-A10-008) is added as the project's redistribution terms, while the
+  old `License inventory` becomes extended (dependency licensing belongs with the SBOM), and
+  `Code of conduct` (DOC-A09-009) joins the oss-library profile. A type that is off at the
+  current phase is now listed with its reason and the phase it lands at, in both text and JSON.
 - Added a declared context: phases with phase-scaled enforcement (undeclared is advisory and
   nothing fails), declared kinds, audiences and obligations, and a validated `autodoc.toml` with
   `[facts]`, `[satisfied_by]`, `[not_applicable]` and `[severity]`. Facts became three-valued

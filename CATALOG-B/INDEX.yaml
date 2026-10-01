@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "Inventory of possible documents. Applicability labels are suggestions, not a mandate or evidence of adoption. Derived fields come from CONTROL/metadata/CATALOG-RULES.json.",
+  "note": "Inventory of possible documents. Applicability labels are suggestions, not a mandate or evidence of adoption. Derived fields come from CONTROL/metadata/CATALOG-RULES.json: severity_by_phase is authored, phase_min is derived from it, and support/checks state what AutoDOC can actually verify for the type.",
   "domains": [
     {
       "domain": "B01-FOUNDATION",
@@ -12,11 +12,24 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Every project needs a stated reason to exist.",
+          "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What problem does this project solve, and for whom?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record problem statement for context and goals.",
@@ -37,11 +50,24 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Non-goals prevent the scope creep that no check can detect.",
+          "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What is this trying to achieve, and what is it deliberately not doing?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record goals and non goals for context and goals.",
@@ -62,11 +88,24 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "The boundary of what the system covers.",
+          "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "Where is the boundary of this system?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record scope for context and goals.",
@@ -87,11 +126,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record stakeholder map for context and goals.",
@@ -112,11 +156,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record success metrics for context and goals.",
@@ -137,11 +186,22 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "The first and most-read document: what it is, why it exists and whether it works.",
+          "severity_by_phase": {},
           "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What is this, why does it exist, and how do I know it works?",
+          "reader": "external-users",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "links.local"
+          ],
+          "events": [
+            "release",
+            "onboarding"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record readme for context and goals.",
@@ -168,11 +228,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record research notes for discovery and exploration.",
@@ -193,11 +258,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record competitive analysis for discovery and exploration.",
@@ -218,11 +288,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record spike for discovery and exploration.",
@@ -243,11 +318,16 @@
           "type": "REC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record assumption log for discovery and exploration.",
@@ -274,11 +354,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record milestones for planning and delivery.",
@@ -299,11 +384,16 @@
           "type": "REC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record task backlog for planning and delivery.",
@@ -324,11 +414,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record risks and dependencies for planning and delivery.",
@@ -349,11 +444,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record delivery plan for planning and delivery.",
@@ -380,11 +480,28 @@
           "type": "DES",
           "tier": "core",
           "tier_reason": "One map of the parts, for newcomers and agents.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What are the parts of this system and how do they fit together?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "api-change",
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record system overview for early architecture.",
@@ -405,11 +522,27 @@
           "type": "DEC",
           "tier": "core",
           "tier_reason": "Decisions are the highest-churn human knowledge in a repository.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "Why was this decision made, and what did we give up?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "direction-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record adr for early architecture.",
@@ -430,11 +563,16 @@
           "type": "DES",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "has_deploy"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record c4 sketch for early architecture.",
@@ -455,11 +593,16 @@
           "type": "DES",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "has_deploy"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record threat model for early architecture.",
@@ -486,11 +629,27 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Module boundaries are where changes break neighbours.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What does this module promise to its callers?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "api-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record module contract for implementation contracts.",
@@ -511,11 +670,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record type definitions for implementation contracts.",
@@ -536,11 +700,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record error handling for implementation contracts.",
@@ -561,11 +730,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "has_public_api_surface"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record api contract for implementation contracts.",
@@ -592,11 +766,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record coding plan for implementation guidance.",
@@ -617,11 +796,16 @@
           "type": "REC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record implementation log for implementation guidance.",
@@ -642,11 +826,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record debugging notes for implementation guidance.",
@@ -667,11 +856,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "has_persistent_state"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record migration plan for implementation guidance.",
@@ -698,11 +892,27 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "States how confidence is established; the canonical form of this type.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "has_tests"
           ],
-          "audience": "project team",
+          "question": "How do we establish confidence that this works?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "release"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record test strategy for validation.",
@@ -723,11 +933,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "has_tests"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record acceptance criteria for validation.",
@@ -748,11 +963,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "has_tests"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record test results for validation.",
@@ -773,11 +993,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "assess"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "human",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record uat for validation.",
@@ -804,11 +1029,27 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Working context; the substrate AutoDOC itself runs on.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What is true right now?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record current state for handoff and tracking.",
@@ -829,11 +1070,27 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Human priorities must be recorded, never inferred from Git.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What is the next thing to do, and by whom?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record next action for handoff and tracking.",
@@ -854,11 +1111,27 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "A short delta log beats reading raw commit history.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "What changed lately, and why?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record recent changes for handoff and tracking.",
@@ -879,11 +1152,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record handoff notes for handoff and tracking.",
@@ -910,11 +1188,28 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "The context file an agent reads first.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": "What must an agent know before touching this repository?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "onboarding",
+            "change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record agents.md for ai agent context.",
@@ -935,11 +1230,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record claude.md for ai agent context.",
@@ -960,11 +1260,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record cursor rules for ai agent context.",
@@ -985,11 +1290,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record ai-context.md for ai agent context.",
@@ -1010,11 +1320,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record system-prompt-for-coding-agent.md for ai agent context.",
@@ -1035,11 +1350,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record agent-workflow.md for ai agent context.",
@@ -1060,11 +1380,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record current-state.md for ai agent context.",
@@ -1085,11 +1410,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record next-action.md for ai agent context.",
@@ -1110,11 +1440,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record recent-changes.md for ai agent context.",
@@ -1135,11 +1470,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record agent-memory.md for ai agent context.",
@@ -1160,11 +1500,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record context-snapshot.md for ai agent context.",
@@ -1185,11 +1530,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record task-for-agent.md for ai agent context.",
@@ -1210,11 +1560,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record tool-usage-guide-for-agent.md for ai agent context.",
@@ -1235,11 +1590,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "uses_agents"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record anti-patterns-for-agent.md for ai agent context.",
@@ -1266,11 +1626,28 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Nobody can run the project without it.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "How do I get this running on my machine?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "onboarding",
+            "dependency-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record local setup for project setup.",
@@ -1291,11 +1668,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record environment matrix for project setup.",
@@ -1316,11 +1698,27 @@
           "type": "SPEC",
           "tier": "core",
           "tier_reason": "Direct dependencies and version policy; the most common onboarding failure.",
+          "severity_by_phase": {
+            "idea": "off",
+            "prototype": "off"
+          },
           "phase_min": "build",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": "Which dependencies, at which versions, and how are they updated?",
+          "reader": "contributors",
+          "support": "checked",
+          "checks": [
+            "presence",
+            "stubs",
+            "placeholders",
+            "links.local",
+            "freshness.review"
+          ],
+          "events": [
+            "dependency-change"
+          ],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record dependency setup for project setup.",
@@ -1341,11 +1739,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record developer onboarding for project setup.",
@@ -1372,11 +1775,16 @@
           "type": "SPEC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record documentation index for documentation governance.",
@@ -1397,11 +1805,16 @@
           "type": "SPEC",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record ownership matrix for documentation governance.",
@@ -1422,11 +1835,16 @@
           "type": "POL",
           "tier": "extended",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record freshness policy for documentation governance.",
@@ -1447,11 +1865,16 @@
           "type": "PROC",
           "tier": "contextual",
           "tier_reason": null,
-          "phase_min": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
-          "audience": "project team",
+          "question": null,
+          "reader": null,
+          "support": "template-only",
+          "checks": [],
+          "events": [],
           "owner": "@project-owner",
           "owner_type": "project owner",
           "purpose": "Record document control procedure for documentation governance.",

@@ -21,10 +21,11 @@ SEVERITIES = ('off', 'report', 'warn', 'error')
 CHECK_FAMILIES = ('drift', 'stubs', 'placeholders', 'links.local', 'secrets.inline',
                   'tribal', 'freshness.critical', 'freshness.review')
 SCHEMA = ROOT / 'CONTROL/metadata/CONTEXT-SCHEMA.json'
+PROFILES = ROOT / 'CONTROL/metadata/PROFILES.json'
 CATALOG_CHECK = ROOT / 'scripts/doc-control/check_catalog.py'
 PROFILER = ROOT / 'scripts/intelligence/profile.py'
-DEFAULTS = {'version': 1, 'phase': None, 'phase_declared': None, 'audience': [], 'kinds': [],
-            'obligations': [], 'facts': {}, 'not_applicable': {}, 'satisfied_by': {},
+DEFAULTS = {'version': 1, 'phase': None, 'phase_declared': None, 'profile': None, 'audience': [],
+            'kinds': [], 'obligations': [], 'facts': {}, 'not_applicable': {}, 'satisfied_by': {},
             'instantiated': {}, 'severity': {}, 'resolved_aliases': {}, 'alias_problems': []}
 CODE_LANGUAGES = ('python', 'javascript', 'typescript', 'go', 'rust', 'java', 'csharp', 'c',
                   'cpp', 'ruby', 'shell', 'sql', 'terraform')
@@ -102,8 +103,19 @@ def normalise(raw):
         not_applicable[doc_id] = record
     context['not_applicable'] = not_applicable
     context['severity'] = {key: str(value).lower() for key, value in context['severity'].items()}
+    context['profile'] = str(context['profile']).strip() if context.get('profile') else None
     resolve_aliases(context)
     return context
+
+
+def load_profiles():
+    """The profile data: which catalog types count as core for a kind of project."""
+    return json.loads(PROFILES.read_text(encoding='utf-8'))
+
+
+def profile_ids():
+    """The declared profile ids, in file order (default first)."""
+    return [profile['id'] for profile in load_profiles()['profiles']]
 
 
 def catalog_ids():
@@ -179,6 +191,9 @@ def validate(context, model=None):
         if name not in profiler.DETECTORS:
             errors.append(f'context.facts: {name!r} is not a detectable fact')
     errors += context.get('alias_problems', [])
+    if context.get('profile') and context['profile'] not in profile_ids():
+        errors.append(f'context.profile: {context["profile"]!r} is not a declared profile; '
+                      f'choose one of {", ".join(profile_ids())}')
     for doc_id, entry in context['not_applicable'].items():
         # A decision without an owner or a review date is valid, but it is advice nobody owns, so
         # the report surfaces it (informational, never failing) rather than rejecting the config.

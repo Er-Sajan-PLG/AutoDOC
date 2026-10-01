@@ -108,6 +108,23 @@ Authoritative catalogs / source files / Markdown metadata
   are separate: `recommend.py` decides whether a type applies, and the phase decides how hard
   that is enforced. A family at `off` is named in the report rather than silently skipped.
 
+- **The catalog states what it can and cannot verify** (`CATALOG-SCHEMA.json`, `CATALOG-RULES.json`).
+  Each type carries the reader question it answers, who reads it, the lifecycle events that make
+  it stale, the checks that apply to it, and a `support` level: `checked` (named checks run),
+  `template-only` (a template exists and nothing is verified) or `human` (no detector is
+  possible). An admission rule enforces the combination, so a type cannot claim to be checked
+  without naming a check, and a type nothing can detect cannot be required of anyone.
+  `severity_by_phase` is the authored answer to when a type lands; `phase_min` is derived from it
+  by the generator, which is why the two can never disagree.
+
+- **Which types are core is a declared profile, not a constant**
+  (`CONTROL/metadata/PROFILES.json`). `default` is the hand-picked list in the catalog rules;
+  `startup`, `oss-library`, `internal-service` and `regulated` are deltas of it, each addition
+  carrying a reason and the phases it is off in. `profile` in `autodoc.toml` selects one, and the
+  report states the resulting core set with its additions and removals. A removed type is off
+  with the profile's reason rather than silently dropped, and a type that is off at the current
+  phase is listed with the phase it lands at — an off check is a decision, never a silent skip.
+
 - **Enforcement is one policy, applied once** (`scripts/intelligence/enforce.py`). Every check
   family — requirements, drift, stubs, placeholders, local links, committed key markers, tribal
   instructions and freshness — resolves its severity through the same precedence: an explicit

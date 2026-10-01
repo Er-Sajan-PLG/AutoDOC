@@ -84,7 +84,11 @@ class GoldenMatrixTests(unittest.TestCase):
                     mock.patch.object(enforce.recommend, 'score',
                                       lambda *a, **k: {'readiness': 'fixture'}), \
                     mock.patch.object(enforce.recommend, 'catalog', lambda: []), \
-                    mock.patch.object(enforce.recommend, 'evaluate', lambda *a, **k: []):
+                    mock.patch.object(enforce.recommend, 'evaluate',
+                                      lambda *a, **k: {key: [] for key in (
+                                          'required', 'recommended', 'contextual', 'reported',
+                                          'undetermined', 'assess', 'not_applicable',
+                                          'acknowledged', 'off')}):
                 out, err = io.StringIO(), io.StringIO()
                 with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
                     code = enforce.run(args)

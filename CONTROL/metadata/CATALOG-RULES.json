@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review, each entry carrying the phase at which it becomes required. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
+  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review, each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
   "seed": {
     "A": [
       {
@@ -46,12 +46,12 @@
       {
         "slug": "DEVELOPMENT",
         "purpose": "Development process",
-        "names": "Coding standard|Git workflow|Pull request guide|Code review policy|Contributing guide|Dependency policy|RFC|Technical debt register"
+        "names": "Coding standard|Git workflow|Pull request guide|Code review policy|Contributing guide|Dependency policy|RFC|Technical debt register|Code of conduct"
       },
       {
         "slug": "BUILD",
         "purpose": "Build and supply chain",
-        "names": "Pipeline architecture|SBOM|Build provenance|SLSA assessment|Artifact signing|License inventory|Quality gates"
+        "names": "Pipeline architecture|SBOM|Build provenance|SLSA assessment|Artifact signing|License inventory|Quality gates|License"
       },
       {
         "slug": "TESTING",
@@ -280,148 +280,234 @@
         "id": "DEV-B01-001",
         "applies_when": ["always"],
         "why": "Every project needs a stated reason to exist.",
-        "phase_min": "idea"
+        "severity_by_phase": {}
       },
       {
         "id": "DEV-B01-002",
         "applies_when": ["always"],
         "why": "Non-goals prevent the scope creep that no check can detect.",
-        "phase_min": "idea"
+        "severity_by_phase": {}
       },
       {
         "id": "DEV-B01-003",
         "applies_when": ["always"],
         "why": "The boundary of what the system covers.",
-        "phase_min": "idea"
+        "severity_by_phase": {}
       },
       {
         "id": "DEV-B01-006",
         "applies_when": ["always"],
-        "phase_min": "idea",
-        "why": "The first and most-read document: what it is, why it exists and whether it works."
+        "why": "The first and most-read document: what it is, why it exists and whether it works.",
+        "severity_by_phase": {}
       },
       {
         "id": "DEV-B04-001",
         "applies_when": ["always"],
         "why": "One map of the parts, for newcomers and agents.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B04-002",
         "applies_when": ["always"],
         "why": "Decisions are the highest-churn human knowledge in a repository.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B05-001",
         "applies_when": ["always"],
         "why": "Module boundaries are where changes break neighbours.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B07-001",
         "applies_when": ["has_tests"],
         "why": "States how confidence is established; the canonical form of this type.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B08-001",
         "applies_when": ["always"],
         "why": "Working context; the substrate AutoDOC itself runs on.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B08-002",
         "applies_when": ["always"],
         "why": "Human priorities must be recorded, never inferred from Git.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B08-003",
         "applies_when": ["always"],
         "why": "A short delta log beats reading raw commit history.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B09-001",
         "applies_when": ["uses_agents"],
         "why": "The context file an agent reads first.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B10-001",
         "applies_when": ["always"],
         "why": "Nobody can run the project without it.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DEV-B10-003",
         "applies_when": ["always"],
         "why": "Direct dependencies and version policy; the most common onboarding failure.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DOC-A05-001",
         "applies_when": ["has_persistent_state"],
         "why": "Entities and relationships before schema detail.",
-        "phase_min": "build"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off"
+        }
       },
       {
         "id": "DOC-A08-001",
         "applies_when": ["has_public_api_surface"],
         "why": "The machine-readable contract for a machine-callable interface.",
-        "phase_min": "beta"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off"
+        }
       },
       {
         "id": "DOC-A09-005",
         "applies_when": ["is_public"],
         "why": "Outside contributors need the contribution path.",
-        "phase_min": "live"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off",
+          "beta": "off"
+        }
       },
       {
-        "id": "DOC-A10-006",
+        "id": "DOC-A10-008",
         "applies_when": ["is_public"],
-        "why": "Redistribution terms; the gate this repository itself has not passed.",
-        "phase_min": "beta"
+        "why": "Redistribution terms; without them nobody may legally reuse the work.",
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off"
+        }
       },
       {
         "id": "DOC-A14-005",
         "applies_when": ["has_env"],
         "why": "Every environment variable and its meaning.",
-        "phase_min": "beta"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off"
+        }
       },
       {
         "id": "DOC-A15-003",
         "applies_when": ["is_public"],
         "why": "Consumers of a distributed project need a version delta.",
-        "phase_min": "beta"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off"
+        }
       },
       {
         "id": "DOC-A15-006",
         "applies_when": ["has_deploy"],
         "why": "Reversing a bad release must be written before it is needed.",
-        "phase_min": "beta"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off"
+        }
       },
       {
         "id": "DOC-A16-003",
         "applies_when": ["has_deploy"],
         "why": "Operators need a procedure for the deployed service.",
-        "phase_min": "live"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off",
+          "beta": "off"
+        }
       },
       {
         "id": "DOC-A22-004",
         "applies_when": ["has_public_api_surface"],
         "why": "Shortest path to a first successful call.",
-        "phase_min": "beta"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off"
+        }
       },
       {
         "id": "DOC-A23-001",
         "applies_when": ["is_public"],
         "why": "Published interfaces need a removal promise before they are removed.",
-        "phase_min": "mature"
+        "severity_by_phase": {
+          "idea": "off",
+          "prototype": "off",
+          "build": "off",
+          "beta": "off",
+          "live": "off"
+        }
       }
     ],
     "extended": [
+      "DEV-B03-003",
+      "DEV-B04-003",
+      "DEV-B04-004",
+      "DEV-B05-002",
+      "DEV-B05-003",
+      "DEV-B05-004",
+      "DEV-B06-004",
+      "DEV-B07-002",
+      "DEV-B07-003",
+      "DEV-B09-010",
+      "DEV-B09-014",
+      "DEV-B11-002",
+      "DEV-B11-003",
       "DOC-A05-002",
       "DOC-A05-003",
       "DOC-A06-001",
@@ -433,6 +519,7 @@
       "DOC-A09-006",
       "DOC-A10-002",
       "DOC-A10-003",
+      "DOC-A10-006",
       "DOC-A10-007",
       "DOC-A11-002",
       "DOC-A11-003",
@@ -453,20 +540,7 @@
       "DOC-A21-012",
       "DOC-A22-001",
       "DOC-A22-005",
-      "DOC-A23-003",
-      "DEV-B03-003",
-      "DEV-B04-003",
-      "DEV-B04-004",
-      "DEV-B05-002",
-      "DEV-B05-003",
-      "DEV-B05-004",
-      "DEV-B06-004",
-      "DEV-B07-002",
-      "DEV-B07-003",
-      "DEV-B09-010",
-      "DEV-B09-014",
-      "DEV-B11-002",
-      "DEV-B11-003"
+      "DOC-A23-003"
     ]
   },
   "applies_when": {
@@ -499,7 +573,18 @@
       },
       "DOC-A07-006": {
         "any": ["obligation:gdpr", "obligation:ccpa", "obligation:hipaa"]
-      }
+      },
+      "DOC-A09-009": ["is_public"],
+      "DOC-A10-008": ["is_public"],
+      "DOC-A01-004": ["always"],
+      "DOC-A06-008": ["is_public"],
+      "DOC-A09-006": ["has_third_party_deps"],
+      "DOC-A16-005": ["has_deploy"],
+      "DOC-A12-001": ["has_deploy"],
+      "DOC-A17-001": ["has_deploy"],
+      "DOC-A05-006": ["has_persistent_state"],
+      "DOC-A20-002": ["always"],
+      "DOC-A24-003": ["has_ci"]
     },
     "by_domain": {
       "A01-PRODUCT": ["assess"],
@@ -539,5 +624,283 @@
       "B11-META": ["always"]
     },
     "default": ["assess"]
+  },
+  "admission": {
+    "note": "The admission rule: a type listed by any profile states the reader question it answers, who reads it, and how it is supported, with named checks or an explicit template-only/human label. Types outside every profile carry a derived support level and no authored question, which the catalog reports as its admission backlog.",
+    "support": ["checked", "template-only", "human"],
+    "checks": [
+      "presence",
+      "drift",
+      "stubs",
+      "placeholders",
+      "links.local",
+      "secrets.inline",
+      "tribal",
+      "freshness.critical",
+      "freshness.review"
+    ],
+    "events": [
+      "release",
+      "api-change",
+      "dependency-change",
+      "direction-change",
+      "onboarding",
+      "incident",
+      "schema-change",
+      "change",
+      "retirement",
+      "audit"
+    ],
+    "defaults": {
+      "assess_only": "human",
+      "default": "template-only"
+    },
+    "by_id": {
+      "DEV-B01-001": {
+        "question": "What problem does this project solve, and for whom?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["direction-change"]
+      },
+      "DEV-B01-002": {
+        "question": "What is this trying to achieve, and what is it deliberately not doing?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["direction-change"]
+      },
+      "DEV-B01-003": {
+        "question": "Where is the boundary of this system?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["direction-change"]
+      },
+      "DEV-B01-006": {
+        "question": "What is this, why does it exist, and how do I know it works?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "links.local"],
+        "events": ["release", "onboarding"]
+      },
+      "DEV-B04-001": {
+        "question": "What are the parts of this system and how do they fit together?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["api-change", "direction-change"]
+      },
+      "DEV-B04-002": {
+        "question": "Why was this decision made, and what did we give up?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["direction-change"]
+      },
+      "DEV-B05-001": {
+        "question": "What does this module promise to its callers?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["api-change"]
+      },
+      "DEV-B07-001": {
+        "question": "How do we establish confidence that this works?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["release"]
+      },
+      "DEV-B08-001": {
+        "question": "What is true right now?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["change"]
+      },
+      "DEV-B08-002": {
+        "question": "What is the next thing to do, and by whom?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["change"]
+      },
+      "DEV-B08-003": {
+        "question": "What changed lately, and why?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["change"]
+      },
+      "DEV-B09-001": {
+        "question": "What must an agent know before touching this repository?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["onboarding", "change"]
+      },
+      "DEV-B10-001": {
+        "question": "How do I get this running on my machine?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["onboarding", "dependency-change"]
+      },
+      "DEV-B10-003": {
+        "question": "Which dependencies, at which versions, and how are they updated?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["dependency-change"]
+      },
+      "DOC-A05-001": {
+        "question": "What entities exist, how do they relate, and what do they mean?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["schema-change"]
+      },
+      "DOC-A08-001": {
+        "question": "What is the machine-readable contract for this interface?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["api-change", "release"]
+      },
+      "DOC-A09-005": {
+        "question": "How do I contribute, and what will be expected of me?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["onboarding"]
+      },
+      "DOC-A09-009": {
+        "question": "What behaviour is expected here, and how is a problem reported?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "links.local"],
+        "events": ["onboarding", "incident"]
+      },
+      "DOC-A10-008": {
+        "question": "May I use, change and redistribute this, and on what terms?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "links.local"],
+        "events": []
+      },
+      "DOC-A14-005": {
+        "question": "Which environment variables exist, and what do they do?",
+        "reader": "operators",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["dependency-change", "api-change"]
+      },
+      "DOC-A15-003": {
+        "question": "What changed between the version I have and the one I am upgrading to?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "stubs", "links.local", "freshness.review"],
+        "events": ["release"]
+      },
+      "DOC-A15-006": {
+        "question": "How do I undo this release if it goes wrong?",
+        "reader": "operators",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["release", "incident"]
+      },
+      "DOC-A16-003": {
+        "question": "What do I do when this alerts?",
+        "reader": "operators",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["incident", "dependency-change"]
+      },
+      "DOC-A22-004": {
+        "question": "How do I make my first successful call?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["api-change", "onboarding"]
+      },
+      "DOC-A23-001": {
+        "question": "What does this project promise before removing something?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["retirement", "api-change"]
+      },
+      "DOC-A01-004": {
+        "question": "What are we building next, and in what order?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["direction-change"]
+      },
+      "DOC-A06-008": {
+        "question": "How is a vulnerability reported, and what happens next?",
+        "reader": "external-users",
+        "support": "checked",
+        "checks": ["presence", "links.local", "freshness.review"],
+        "events": ["incident", "release"]
+      },
+      "DOC-A09-006": {
+        "question": "How are dependencies chosen, updated and removed?",
+        "reader": "contributors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
+        "events": ["dependency-change"]
+      },
+      "DOC-A16-005": {
+        "question": "Who is on call, and what is expected of them?",
+        "reader": "operators",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["incident"]
+      },
+      "DOC-A12-001": {
+        "question": "What reliability do we promise, and how is it measured?",
+        "reader": "operators",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["incident", "release"]
+      },
+      "DOC-A17-001": {
+        "question": "Who does what when something breaks?",
+        "reader": "operators",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["incident"]
+      },
+      "DOC-A07-001": {
+        "question": "What personal data do we process, why, and with whom is it shared?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["audit", "schema-change"]
+      },
+      "DOC-A05-006": {
+        "question": "How long is each kind of data kept, and what happens at the end?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["audit", "schema-change"]
+      },
+      "DOC-A20-002": {
+        "question": "Which controls apply, and what evidence shows they work?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["audit"]
+      },
+      "DOC-A24-003": {
+        "question": "Who had access, when was it reviewed, and who approved it?",
+        "reader": "auditors",
+        "support": "checked",
+        "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.critical"],
+        "events": ["audit"]
+      }
+    }
   }
 }

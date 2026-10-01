@@ -17,13 +17,27 @@ phase_declared = "2026-09-30"
 # a review once it is over a year old; `autodoc promote` will write it. A date without a phase
 # is rejected.
 
-audience = []      # external-users | contributors | operators | auditors | successors
+profile = "oss-library"
+# Which catalog profile decides the core set (CONTROL/metadata/PROFILES.json): default | startup |
+# oss-library | internal-service | regulated. This repository is a public tool others consume, so
+# the OSS profile applies: it adds the social documents (code of conduct, vulnerability
+# disclosure, dependency policy) and drops the runbook. The profile's membership is authored
+# data awaiting owner review, and [satisfied_by]/[not_applicable] remain the escape hatch.
+
+audience = ["contributors", "external-users"]
+# external-users | contributors | operators | auditors | successors.
+# This repository is read by the people who use the tool and the people who work on it; declaring
+# the audience is a commitment, not a detection, and it is what the catalog's `reader` field is
+# checked against.
 kinds = []         # see CONTROL/metadata/CONTEXT-MODEL.json
 obligations = []   # e.g. ["gdpr", "soc2"]: declared duties only, never inferred
 
 [facts]
 # Override a detected fact only when detection is wrong for this repository, and say why.
-# Example: has_cli = { value = "false", reason = "the entry point is a private scheduler, not a CLI" }
+# The detector reads a licence file or a published marker; it cannot see a Git remote's
+# visibility, so the owner states the fact. Every override carries a reason, and the audit lists
+# it next to the detected value.
+is_public = { value = true, reason = "published on GitHub at STEMORG2026/AutoDOC" }
 
 [not_applicable]
 # A skipped document is a decision with a reason, not a failure. Bare string or { reason = "..." }.

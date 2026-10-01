@@ -30,147 +30,148 @@ Generated crosswalk of existing stable IDs. `applies_when` is a detectable predi
 
 Build and supply chain.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A10-001` | Pipeline architecture | contextual | — | has_ci | Record pipeline architecture for build and supply chain. | project team | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A10-002` | SBOM | extended | — | has_third_party_deps | Record sbom for build and supply chain. | project team | pre-release | project owner | source-dependent | Hardened | — |
-| `DOC-A10-003` | Build provenance | extended | — | has_ci | Record build provenance for build and supply chain. | project team | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A10-004` | SLSA assessment | contextual | — | has_ci | Record slsa assessment for build and supply chain. | project team | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A10-005` | Artifact signing | contextual | — | has_ci | Record artifact signing for build and supply chain. | project team | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A10-006` | License inventory | core | beta | is_public | Record license inventory for build and supply chain. | project team | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A10-007` | Quality gates | extended | — | has_ci | Record quality gates for build and supply chain. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-001` | Pipeline architecture | contextual | idea | has_ci | Record pipeline architecture for build and supply chain. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-002` | SBOM | extended | idea | has_third_party_deps | Record sbom for build and supply chain. | — | pre-release | project owner | source-dependent | Hardened | — |
+| `DOC-A10-003` | Build provenance | extended | idea | has_ci | Record build provenance for build and supply chain. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-004` | SLSA assessment | contextual | idea | has_ci | Record slsa assessment for build and supply chain. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-005` | Artifact signing | contextual | idea | has_ci | Record artifact signing for build and supply chain. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-006` | License inventory | extended | idea | has_ci | Record license inventory for build and supply chain. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-007` | Quality gates | extended | idea | has_ci | Record quality gates for build and supply chain. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A10-008` | License | core | beta | is_public | Record license for build and supply chain. | external-users | pre-release | project owner | human-review | Hardened | — |
 
 ## A15-RELEASE
 
 Release and deployment.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A15-001` | Release plan | contextual | — | is_public | Record release plan for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-002` | Release manifest | contextual | — | is_public | Record release manifest for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-003` | Changelog | core | beta | is_public | Record changelog for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-004` | Release notes | extended | — | is_public | Record release notes for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-005` | Deployment runbook | extended | — | is_public | Record deployment runbook for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-006` | Rollback procedure | core | beta | has_deploy | Record rollback procedure for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-007` | Canary analysis | contextual | — | is_public | Record canary analysis for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-008` | Operational readiness review | contextual | — | is_public | Record operational readiness review for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A15-009` | Go no go record | contextual | — | is_public | Record go no go record for release and deployment. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-001` | Release plan | contextual | idea | is_public | Record release plan for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-002` | Release manifest | contextual | idea | is_public | Record release manifest for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-003` | Changelog | core | beta | is_public | Record changelog for release and deployment. | external-users | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-004` | Release notes | extended | idea | is_public | Record release notes for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-005` | Deployment runbook | extended | idea | is_public | Record deployment runbook for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-006` | Rollback procedure | core | beta | has_deploy | Record rollback procedure for release and deployment. | operators | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-007` | Canary analysis | contextual | idea | is_public | Record canary analysis for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-008` | Operational readiness review | contextual | idea | is_public | Record operational readiness review for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A15-009` | Go no go record | contextual | idea | is_public | Record go no go record for release and deployment. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A16-OPERATIONS
 
 Operations and observability.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A16-001` | Operations manual | contextual | — | has_deploy | Record operations manual for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-002` | Service catalog | contextual | — | has_deploy | Record service catalog for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-003` | Runbook | core | live | has_deploy | Record runbook for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-004` | Playbook | contextual | — | has_deploy | Record playbook for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-005` | On call policy | extended | — | has_deploy | Record on call policy for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-006` | Escalation tree | contextual | — | has_deploy | Record escalation tree for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-007` | Observability strategy | contextual | — | has_deploy | Record observability strategy for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-008` | Metric catalog | contextual | — | has_deploy | Record metric catalog for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-009` | Log standard | contextual | — | has_deploy | Record log standard for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-010` | Alert catalog | extended | — | has_deploy | Record alert catalog for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-011` | Synthetic monitoring | contextual | — | has_deploy | Record synthetic monitoring for operations and observability. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-001` | Operations manual | contextual | idea | has_deploy | Record operations manual for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-002` | Service catalog | contextual | idea | has_deploy | Record service catalog for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-003` | Runbook | core | live | has_deploy | Record runbook for operations and observability. | operators | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-004` | Playbook | contextual | idea | has_deploy | Record playbook for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-005` | On call policy | extended | idea | has_deploy | Record on call policy for operations and observability. | operators | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-006` | Escalation tree | contextual | idea | has_deploy | Record escalation tree for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-007` | Observability strategy | contextual | idea | has_deploy | Record observability strategy for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-008` | Metric catalog | contextual | idea | has_deploy | Record metric catalog for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-009` | Log standard | contextual | idea | has_deploy | Record log standard for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-010` | Alert catalog | extended | idea | has_deploy | Record alert catalog for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-011` | Synthetic monitoring | contextual | idea | has_deploy | Record synthetic monitoring for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A17-INCIDENTS
 
 Incident and problem management.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A17-001` | Incident response | contextual | — | has_deploy | Record incident response for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-002` | Severity matrix | contextual | — | has_deploy | Record severity matrix for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-003` | Incident timeline | contextual | — | has_deploy | Record incident timeline for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-004` | Postmortem | contextual | — | has_deploy | Record postmortem for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-005` | Root cause analysis | contextual | — | has_deploy | Record root cause analysis for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-006` | CAPA register | contextual | — | has_deploy | Record capa register for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-007` | Known error database | contextual | — | has_deploy | Record known error database for incident and problem management. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-001` | Incident response | contextual | idea | has_deploy | Record incident response for incident and problem management. | operators | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-002` | Severity matrix | contextual | idea | has_deploy | Record severity matrix for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-003` | Incident timeline | contextual | idea | has_deploy | Record incident timeline for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-004` | Postmortem | contextual | idea | has_deploy | Record postmortem for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-005` | Root cause analysis | contextual | idea | has_deploy | Record root cause analysis for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-006` | CAPA register | contextual | idea | has_deploy | Record capa register for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-007` | Known error database | contextual | idea | has_deploy | Record known error database for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A18-DISASTER-RECOVERY
 
 Disaster recovery and continuity.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A18-001` | DR plan | contextual | — | has_persistent_state | Record dr plan for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-002` | Business continuity plan | contextual | — | has_persistent_state | Record business continuity plan for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-003` | RTO RPO | contextual | — | has_persistent_state | Record rto rpo for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-004` | Backup strategy | extended | — | has_persistent_state | Record backup strategy for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-005` | Restore procedure | contextual | — | has_persistent_state | Record restore procedure for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-006` | Failover runbook | contextual | — | has_persistent_state | Record failover runbook for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-007` | DR test record | contextual | — | has_persistent_state | Record dr test record for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A18-008` | Cyber recovery | contextual | — | has_persistent_state | Record cyber recovery for disaster recovery and continuity. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-001` | DR plan | contextual | idea | has_persistent_state | Record dr plan for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-002` | Business continuity plan | contextual | idea | has_persistent_state | Record business continuity plan for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-003` | RTO RPO | contextual | idea | has_persistent_state | Record rto rpo for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-004` | Backup strategy | extended | idea | has_persistent_state | Record backup strategy for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-005` | Restore procedure | contextual | idea | has_persistent_state | Record restore procedure for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-006` | Failover runbook | contextual | idea | has_persistent_state | Record failover runbook for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-007` | DR test record | contextual | idea | has_persistent_state | Record dr test record for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A18-008` | Cyber recovery | contextual | idea | has_persistent_state | Record cyber recovery for disaster recovery and continuity. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A19-VENDORS
 
 Vendor and third party.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A19-001` | Vendor inventory | contextual | — | assess | Record vendor inventory for vendor and third party. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A19-002` | SLA register | contextual | — | assess | Record sla register for vendor and third party. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A19-003` | Concentration risk | contextual | — | assess | Record concentration risk for vendor and third party. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A19-004` | Vendor offboarding | contextual | — | assess | Record vendor offboarding for vendor and third party. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A19-005` | Integration failure modes | contextual | — | assess | Record integration failure modes for vendor and third party. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A19-001` | Vendor inventory | contextual | idea | assess | Record vendor inventory for vendor and third party. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A19-002` | SLA register | contextual | idea | assess | Record sla register for vendor and third party. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A19-003` | Concentration risk | contextual | idea | assess | Record concentration risk for vendor and third party. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A19-004` | Vendor offboarding | contextual | idea | assess | Record vendor offboarding for vendor and third party. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A19-005` | Integration failure modes | contextual | idea | assess | Record integration failure modes for vendor and third party. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A20-GOVERNANCE
 
 Governance risk and compliance.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A20-001` | Risk register | contextual | — | assess | Record risk register for governance risk and compliance. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A20-002` | Control catalog | contextual | — | assess | Record control catalog for governance risk and compliance. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A20-003` | Control evidence | contextual | — | assess | Record control evidence for governance risk and compliance. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A20-004` | Audit pack | contextual | — | assess | Record audit pack for governance risk and compliance. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A20-005` | Policy exception | contextual | — | assess | Record policy exception for governance risk and compliance. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A20-006` | Governance RACI | contextual | — | assess | Record governance raci for governance risk and compliance. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A20-007` | Board report | contextual | — | assess | Record board report for governance risk and compliance. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-001` | Risk register | contextual | idea | assess | Record risk register for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-002` | Control catalog | contextual | idea | always | Record control catalog for governance risk and compliance. | auditors | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-003` | Control evidence | contextual | idea | assess | Record control evidence for governance risk and compliance. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A20-004` | Audit pack | contextual | idea | assess | Record audit pack for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-005` | Policy exception | contextual | idea | assess | Record policy exception for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-006` | Governance RACI | contextual | idea | assess | Record governance raci for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A20-007` | Board report | contextual | idea | assess | Record board report for governance risk and compliance. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A22-USER-SUPPORT
 
 User and support.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A22-001` | User guide | extended | — | any | Record user guide for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-002` | Admin guide | contextual | — | is_public | Record admin guide for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-003` | Operator manual | contextual | — | is_public | Record operator manual for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-004` | API quickstart | core | beta | has_public_api_surface | Record api quickstart for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-005` | Troubleshooting guide | extended | — | always | Record troubleshooting guide for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-006` | Help center | contextual | — | is_public | Record help center for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-007` | Support playbook | contextual | — | is_public | Record support playbook for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A22-008` | FAQ | contextual | — | is_public | Record faq for user and support. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-001` | User guide | extended | idea | any | Record user guide for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-002` | Admin guide | contextual | idea | is_public | Record admin guide for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-003` | Operator manual | contextual | idea | is_public | Record operator manual for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-004` | API quickstart | core | beta | has_public_api_surface | Record api quickstart for user and support. | external-users | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-005` | Troubleshooting guide | extended | idea | always | Record troubleshooting guide for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-006` | Help center | contextual | idea | is_public | Record help center for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-007` | Support playbook | contextual | idea | is_public | Record support playbook for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A22-008` | FAQ | contextual | idea | is_public | Record faq for user and support. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A23-LIFECYCLE
 
 Lifecycle management.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A23-001` | Deprecation policy | core | mature | is_public | Record deprecation policy for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A23-002` | Version support matrix | contextual | — | is_public | Record version support matrix for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A23-003` | Migration guide | extended | — | is_public | Record migration guide for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A23-004` | Data export import | contextual | — | is_public | Record data export import for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A23-005` | Retirement runbook | contextual | — | is_public | Record retirement runbook for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A23-006` | Destruction record | contextual | — | is_public | Record destruction record for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A23-007` | Tombstone page | contextual | — | is_public | Record tombstone page for lifecycle management. | project team | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-001` | Deprecation policy | core | mature | is_public | Record deprecation policy for lifecycle management. | external-users | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-002` | Version support matrix | contextual | idea | is_public | Record version support matrix for lifecycle management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-003` | Migration guide | extended | idea | is_public | Record migration guide for lifecycle management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-004` | Data export import | contextual | idea | is_public | Record data export import for lifecycle management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-005` | Retirement runbook | contextual | idea | is_public | Record retirement runbook for lifecycle management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-006` | Destruction record | contextual | idea | is_public | Record destruction record for lifecycle management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A23-007` | Tombstone page | contextual | idea | is_public | Record tombstone page for lifecycle management. | — | post-release | project owner | human-review | Product-Grade | — |
 
 ## A24-EVIDENCE
 
 Evidence packs.
 
-| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A24-001` | Build evidence | contextual | — | assess | Record build evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-002` | Release evidence | contextual | — | assess | Record release evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-003` | Access review evidence | contextual | — | assess | Record access review evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-004` | Backup evidence | contextual | — | assess | Record backup evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-005` | DR test evidence | contextual | — | assess | Record dr test evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-006` | Pen test evidence | contextual | — | assess | Record pen test evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-007` | Training evidence | contextual | — | assess | Record training evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-008` | Incident evidence | contextual | — | assess | Record incident evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-009` | Privacy request evidence | contextual | — | assess | Record privacy request evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
-| `DOC-A24-010` | Model evaluation evidence | contextual | — | assess | Record model evaluation evidence for evidence packs. | project team | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-001` | Build evidence | contextual | idea | assess | Record build evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-002` | Release evidence | contextual | idea | assess | Record release evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-003` | Access review evidence | contextual | idea | has_ci | Record access review evidence for evidence packs. | auditors | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-004` | Backup evidence | contextual | idea | assess | Record backup evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-005` | DR test evidence | contextual | idea | assess | Record dr test evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-006` | Pen test evidence | contextual | idea | assess | Record pen test evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-007` | Training evidence | contextual | idea | assess | Record training evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-008` | Incident evidence | contextual | idea | assess | Record incident evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-009` | Privacy request evidence | contextual | idea | assess | Record privacy request evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |
+| `DOC-A24-010` | Model evaluation evidence | contextual | idea | assess | Record model evaluation evidence for evidence packs. | — | post-release | project owner | source-dependent | Product-Grade | — |

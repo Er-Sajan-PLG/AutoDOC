@@ -33,8 +33,14 @@ class Phase2Tests(unittest.TestCase):
     def test_catalog_views_partition_stable_ids_without_inventing_adoption(self):
         facet_ids = [doc['id'] for groups in engine.catalog_facets().values()
                      for domain in groups for doc in domain['documents']]
-        self.assertEqual(len(facet_ids), 261)
-        self.assertEqual(len(set(facet_ids)), 261)
+        # Counted from the indices, not hardcoded: the catalog grows, and the invariant that
+        # matters is that every id appears exactly once across the views.
+        declared = [doc['id'] for catalog in ('CATALOG-A', 'CATALOG-B')
+                    for domain in json.loads((ROOT / catalog / 'INDEX.yaml').read_text())['domains']
+                    for doc in domain['documents']]
+        self.assertEqual(len(facet_ids), len(declared))
+        self.assertEqual(set(facet_ids), set(declared))
+        self.assertEqual(len(set(facet_ids)), len(facet_ids))
         for view in ('A', 'B', 'C'):
             document = ROOT / f'docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-{view}.md'
             self.assertTrue(document.read_text().startswith('<!-- AUTO-GENERATED'))

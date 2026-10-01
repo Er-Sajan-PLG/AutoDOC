@@ -348,11 +348,12 @@ def catalog_view(entry):
              'applicability suggestion, not evidence a project needs every type.', '']
     for domain in catalog_facets()[view]:
         lines += [f'## {domain["domain"]}', '', domain['purpose'] + '.', '',
-                  '| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |',
+                  '| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |',
                   '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |']
         for doc in domain['documents']:
             fields = [f'`{doc["id"]}`', doc['name'], doc['tier'], doc.get('phase_min') or '—',
-                      ', '.join(doc['applies_when']), doc['purpose'], doc['audience'], doc['when'],
+                      ', '.join(doc['applies_when']), doc['purpose'],
+                      doc.get('reader') or '—', doc['when'],
                       doc['owner_type'], doc['mode'], doc['maturity'], ', '.join(doc['related']) or '—']
             lines.append('| ' + ' | '.join(fields) + ' |')
         lines.append('')

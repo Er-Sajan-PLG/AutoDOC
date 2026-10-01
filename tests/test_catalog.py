@@ -47,12 +47,70 @@ class CatalogTests(unittest.TestCase):
             self.assertNotEqual(entry['applies_when'], ['assess'],
                                 'a core type needs a detectable predicate')
             self.assertTrue(entry['why'].strip())
-            self.assertIn(entry['phase_min'], ('idea', 'prototype', 'build', 'beta', 'live', 'mature'))
+            self.assertNotIn('phase_min', entry,
+                             'phase_min is derived from severity_by_phase, never authored')
             document = documents[entry['id']]
             self.assertEqual(document['tier'], 'core')
             self.assertEqual(document['applies_when'], entry['applies_when'])
             self.assertEqual(document['tier_reason'], entry['why'])
-            self.assertEqual(document['phase_min'], entry['phase_min'])
+            self.assertEqual(document['severity_by_phase'], entry['severity_by_phase'])
+            self.assertEqual(document['phase_min'], checker.first_applicable_phase(
+                entry['severity_by_phase'], checker.phase_order()), 'phase_min must be derived')
+
+    def test_admission_rule_holds_for_every_type_a_profile_can_list(self):
+        """The guide's admission rule: reader question + predicate + phases + check or a label."""
+        profiles = checker.load(checker.PROFILES)
+        listed = {entry['id'] for entry in RULES['tier']['core']}
+        for profile in profiles['profiles']:
+            listed |= {change['id'] for change in profile.get('add', [])}
+        self.assertEqual(set(RULES['admission']['by_id']), listed,
+                         'every listed type is admitted, and nothing else claims to be')
+        for doc_id in sorted(listed):
+            entry = RULES['admission']['by_id'][doc_id]
+            with self.subTest(doc_id):
+                self.assertTrue(entry['question'].strip(), 'states the reader question')
+                self.assertIn(entry['reader'], ('external-users', 'contributors', 'operators',
+                                                'auditors', 'successors'))
+                self.assertIn(entry['support'], RULES['admission']['support'])
+                if entry['support'] == 'checked':
+                    self.assertTrue(entry['checks'], 'a claim of checking names its checks')
+                for check in entry['checks']:
+                    self.assertIn(check, RULES['admission']['checks'])
+                for event in entry['events']:
+                    self.assertIn(event, RULES['admission']['events'])
+
+    def test_a_profile_addition_must_be_detectable(self):
+        """A type nothing can detect cannot be required of anyone, profile or not."""
+        indices = repository_indices()
+        for domain in indices['CATALOG-A']['domains'] + indices['CATALOG-B']['domains']:
+            for document in domain['documents']:
+                if document['id'] == 'DOC-A09-009':
+                    document['applies_when'] = ['assess']
+        errors, _ = checker.check(indices)
+        self.assertTrue(any('assess-only' in error for error in errors), errors)
+
+    def test_profile_delta_must_be_reviewable(self):
+        """A profile is data an owner reviews: known ids, reasons, phases, no contradictions."""
+        profiles = checker.load(checker.PROFILES)
+        documents = {doc['id']: doc for doc in all_documents()}
+        rules = checker.load(checker.RULES)
+        self.assertEqual(checker.profile_errors(rules, profiles, documents,
+                                                {'idea', 'prototype', 'build', 'beta', 'live',
+                                                 'mature', 'sunset'},
+                                                ['idea', 'prototype', 'build', 'beta', 'live',
+                                                 'mature', 'sunset']), [])
+        for profile in profiles['profiles']:
+            if profile['id'] == 'default':
+                continue
+            with self.subTest(profile['id']):
+                self.assertTrue(profile['why'].strip())
+                for change in profile.get('add', []):
+                    self.assertTrue(change['why'].strip())
+                    self.assertIn('severity_by_phase', change,
+                                  'an addition states the phases it is off in')
+                for change in profile.get('remove', []):
+                    self.assertTrue(change['why'].strip())
+                    self.assertIn(change['id'], {entry['id'] for entry in rules['tier']['core']})
 
     def test_every_fact_has_a_detector_and_a_consumer(self):
         used = {token for document in all_documents() for token in checker.tokens_of(document)}
@@ -68,14 +126,35 @@ class CatalogTests(unittest.TestCase):
             errors, _ = checker.check()
         self.assertTrue(any('no catalog entry consumes this fact' in error for error in errors), errors)
 
-    def test_core_type_without_a_phase_is_rejected(self):
+    def test_a_core_type_that_never_applies_or_contradicts_its_phases_is_rejected(self):
         indices = repository_indices()
         for domain in indices['CATALOG-B']['domains']:
             for document in domain['documents']:
                 if document['id'] == 'DEV-B01-006':
-                    document['phase_min'] = None
+                    document['phase_min'] = None  # no longer derived from its own map
         errors, _ = checker.check(indices)
-        self.assertTrue(any('needs phase_min' in error for error in errors), errors)
+        self.assertTrue(any('phase_min' in error and 'disagrees' in error for error in errors),
+                        errors)
+
+        indices = repository_indices()
+        for domain in indices['CATALOG-B']['domains']:
+            for document in domain['documents']:
+                if document['id'] == 'DEV-B01-006':
+                    document['severity_by_phase'] = {'idea': 'off', 'build': 'warn',
+                                                     'beta': 'off'}
+        errors, _ = checker.check(indices)
+        self.assertTrue(any('requiredness is monotone' in error for error in errors), errors)
+
+    def test_an_unadmitted_profile_type_is_rejected(self):
+        rules = checker.load(checker.RULES)
+        rules['admission']['by_id']['DOC-A09-009']['question'] = '   '
+        model = checker.load(checker.MODEL)
+        indices = repository_indices()
+        documents = {doc['id']: doc for _, doc in checker.index_documents(indices['CATALOG-A'])
+                     + checker.index_documents(indices['CATALOG-B'])}
+        errors = checker.admission_errors(rules, model, documents,
+                                          checker.load(checker.PROFILES))
+        self.assertTrue(any('reader question' in error for error in errors), errors)
 
     def test_undeclared_kind_token_is_rejected(self):
         indices = repository_indices()
@@ -92,6 +171,13 @@ class CatalogTests(unittest.TestCase):
             'missing field': ('missing required property', lambda doc: doc.pop('template')),
             'empty applies_when': ('fewer than minItems', lambda doc: doc.update(applies_when=[])),
             'bad id': ('does not match', lambda doc: doc.update(id='A03-001')),
+            'retired audience field': ('unknown property',
+                                       lambda doc: doc.update(audience='project team')),
+            'unknown reader': ('not in', lambda doc: doc.update(reader='management')),
+            'unknown support level': ('not in', lambda doc: doc.update(support='verified')),
+            'unknown check': ('not in', lambda doc: doc.update(checks=['links.external'])),
+            'unknown event': ('does not match', lambda doc: doc.update(events=['New Release'])),
+            'authored phase_min': ('expected type', lambda doc: doc.update(phase_min=7)),
         }
         for label, (expected, mutate) in mutations.items():
             with self.subTest(label):

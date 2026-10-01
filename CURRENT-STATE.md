@@ -41,7 +41,17 @@ The catalog is generated from `CONTROL/metadata/CATALOG-RULES.json` and validate
 reviewer can diff. `priority` is gone: it came from three domain prefixes and classified UAT as
 core for every project. It is replaced by 24 hand-picked core types — including `README`, which
 was missing from all 260 — each with a recorded reason, a detectable `applies_when` predicate
-and the phase at which it becomes required, over 45 extended and 192 contextual types.
+and an authored `severity_by_phase` (the phases it is off in; `phase_min` is derived, never a
+second source), over 45 extended and 194 contextual types.
+
+Which of those types count as core is now a profile, not a constant: `CONTROL/metadata/PROFILES.json`
+holds `default`, `startup`, `oss-library`, `internal-service` and `regulated` as small deltas of
+the default set, each addition carrying a reason and its own phases. This repository declares
+`profile = "oss-library"`, which adds the code of conduct, the vulnerability-disclosure route and
+the dependency policy, and drops the runbook; the addition of `License` (DOC-A10-008) states the
+redistribution terms the license decision still owes. Every type any profile can list passes the
+admission rule — a reader question, a detectable predicate, its phases, and named checks or an
+explicit template-only/human label — and `check_catalog.py` fails when one does not.
 
 Requirements resolve as Catalog x Context: a declared context in `autodoc.toml` (phase, audience,
 kinds, declared duties) against fifteen three-valued facts, so a fact that cannot be read makes a
@@ -54,7 +64,7 @@ warn rather than fail. Kind inference is not
 implemented, so declared kinds are inert and no predicate uses `kind:` yet.
 
 <!-- auto:start -->
-- Catalog types: 261 (not necessarily instantiated).
+- Catalog types: 263 (not necessarily instantiated).
 - Controlled docs: 65 (23 generated, 42 human-owned).
 - Overdue human-owned docs: 0.
 - Open gaps: see `docs/00-governance/ENGINE-COVERAGE.md`; this block does not infer intent.

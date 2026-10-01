@@ -68,6 +68,7 @@ Generated inventory of the sync engine and mapped source files.
 - `scripts/doc-control/evidence_pack.py`
 - `scripts/doc-control/guards.py`
 - `scripts/doc-control/health.py`
+- `scripts/doc-control/json_style.py`
 - `scripts/doc-control/library.py`
 - `scripts/doc-control/release_snapshot.py`
 - `scripts/doc-control/require-docs-check.py`
