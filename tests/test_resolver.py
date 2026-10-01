@@ -267,6 +267,92 @@ class DecisionTests(unittest.TestCase):
         self.assertIn('points at a missing path', joined)
 
 
+class KindTests(unittest.TestCase):
+    """§3: kinds are declared, never guessed, and the two predicate forms stay three-valued."""
+
+    def test_a_kind_gated_document_is_undetermined_until_someone_declares_the_kind(self):
+        _, declared, groups, _ = resolve(phase='build', has_public_api_surface='true')
+        self.assertEqual(declared['kinds'], [])
+        self.assertIn('DOC-A08-008', ids(groups, 'undetermined'))
+        item = find(groups, 'undetermined', 'DOC-A08-008')
+        self.assertEqual(item['tokens']['kind:library'], 'unknown')
+        self.assertEqual(item['tokens']['has_public_api_surface'], 'true',
+                         'the known half of the predicate is still evaluated')
+        summary = recommend.kind_summary(profile_document(has_public_api_surface='true'), declared)
+        self.assertTrue(summary['generic_baseline'])
+        line = recommend.kind_line(summary, groups)
+        self.assertIn('undeclared', line)
+        self.assertIn('declared, never inferred', line)
+
+    def test_file_evidence_never_becomes_a_requirement(self):
+        """The hint may say `library`; only the declaration can make the SDK guide apply."""
+        declared = context(**{'phase': 'build', 'kinds': [], 'facts': {}})
+        documents = recommend.catalog()
+        enforcement = context_module.enforcement('build')
+        profile = profile_document(has_public_api_surface='true')
+        profile['kinds'] = {'library': {'value': 'true', 'exactness': 'heuristic',
+                                        'evidence': ['packaged_library in python manifest'],
+                                        'limits': 'x'}}
+        groups = recommend.evaluate(documents, profile, declared, enforcement)
+        self.assertIn('DOC-A08-008', ids(groups, 'undetermined'),
+                      'evidence is a hint; without a declaration the question stays open')
+        self.assertNotIn('DOC-A08-008', ids(groups, 'recommended'))
+
+    def test_declaring_a_kind_answers_the_question_both_ways(self):
+        _, _, declared_library, _ = resolve(phase='build', kinds=['library'],
+                                            has_public_api_surface='true')
+        self.assertIn('DOC-A08-008', ids(declared_library, 'contextual'))
+        self.assertNotIn('DOC-A08-008', ids(declared_library, 'undetermined'))
+        _, _, declared_data, _ = resolve(phase='build', kinds=['data'],
+                                         has_public_api_surface='true')
+        self.assertIn('DOC-A08-008', ids(declared_data, 'not_applicable'),
+                      'a declared kind list is closed: absence is a real no')
+
+    def test_a_kind_the_model_cannot_detect_is_declarable(self):
+        """`plugin`, `embedded`, `template` and friends have no detector on purpose."""
+        model = context_module.load_model()
+        declaration_only = {kind['id'] for kind in model['kinds']
+                            if kind.get('detection') == 'declaration-only'}
+        self.assertTrue(declaration_only)
+        for kind in declaration_only:
+            with self.subTest(kind):
+                entry = next(item for item in model['kinds'] if item['id'] == kind)
+                self.assertTrue(entry['why_declared_only'].strip(),
+                                'a kind nobody can see needs a stated reason')
+        _, _, groups, _ = resolve(phase='build', kinds=['plugin'], has_ui='true')
+        self.assertNotIn('DOC-A11-010', ids(groups, 'undetermined'),
+                         'a declared declaration-only kind is answered like any other')
+
+    def test_phase_predicates_are_three_valued(self):
+        """`phase>=live` gates observability: open while undeclared, then decided by the phase."""
+        _, _, undeclared, _ = resolve(has_deploy='true')
+        self.assertIn('DOC-A16-007', ids(undeclared, 'undetermined'))
+        _, _, build, _ = resolve(phase='build', has_deploy='true')
+        self.assertIn('DOC-A16-007', ids(build, 'not_applicable'),
+                      'a build-phase project does not operate anything yet')
+        _, _, live, _ = resolve(phase='live', has_deploy='true')
+        self.assertIn('DOC-A16-007', ids(live, 'contextual'))
+        _, _, mature, _ = resolve(phase='mature', has_deploy='true')
+        self.assertIn('DOC-A16-007', ids(mature, 'contextual'), 'phase>= stays true afterwards')
+
+    def test_the_kind_hint_shows_evidence_and_claims_nothing(self):
+        hint = context_module.kind_hints(profile_document(has_public_api_surface='true'))
+        self.assertIn('suggested', hint)
+        self.assertIn('never inferred', hint['note'])
+        empty = context_module.kind_hints({'kinds': {}})
+        self.assertEqual(empty['suggested'], [])
+        self.assertIn('generic baseline', empty['note'])
+
+    def test_the_kind_line_reports_a_declaration_with_no_supporting_evidence(self):
+        _, declared, groups, _ = resolve(phase='build', kinds=['ml'])
+        profile = profile_document()
+        profile['kinds'] = {'ml': {'value': 'false', 'exactness': 'heuristic', 'evidence': [],
+                                   'limits': 'x'}}
+        summary = recommend.kind_summary(profile, declared)
+        self.assertEqual(summary['declared_without_evidence'], ['ml'])
+        self.assertIn('no file evidence', recommend.kind_line(summary, groups))
+
+
 class ExplainTests(unittest.TestCase):
     def test_explain_shows_the_derivation_chain(self):
         documents, declared, groups, enforcement = resolve(phase='beta', has_public_api_surface='true')

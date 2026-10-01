@@ -69,7 +69,7 @@ Operations and observability.
 | `DOC-A16-004` | Playbook | contextual | idea | has_deploy | Record playbook for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A16-005` | On call policy | extended | idea | has_deploy | Record on call policy for operations and observability. | operators | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A16-006` | Escalation tree | contextual | idea | has_deploy | Record escalation tree for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A16-007` | Observability strategy | contextual | idea | has_deploy | Record observability strategy for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A16-007` | Observability strategy | contextual | idea | all | Record observability strategy for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A16-008` | Metric catalog | contextual | idea | has_deploy | Record metric catalog for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A16-009` | Log standard | contextual | idea | has_deploy | Record log standard for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A16-010` | Alert catalog | extended | idea | has_deploy | Record alert catalog for operations and observability. | — | post-release | project owner | human-review | Product-Grade | — |
@@ -84,7 +84,7 @@ Incident and problem management.
 | `DOC-A17-001` | Incident response | contextual | idea | has_deploy | Record incident response for incident and problem management. | operators | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A17-002` | Severity matrix | contextual | idea | has_deploy | Record severity matrix for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A17-003` | Incident timeline | contextual | idea | has_deploy | Record incident timeline for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
-| `DOC-A17-004` | Postmortem | contextual | idea | has_deploy | Record postmortem for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
+| `DOC-A17-004` | Postmortem | contextual | idea | all | Record postmortem for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A17-005` | Root cause analysis | contextual | idea | has_deploy | Record root cause analysis for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A17-006` | CAPA register | contextual | idea | has_deploy | Record capa register for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |
 | `DOC-A17-007` | Known error database | contextual | idea | has_deploy | Record known error database for incident and problem management. | — | post-release | project owner | human-review | Product-Grade | — |

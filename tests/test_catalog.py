@@ -186,6 +186,48 @@ class CatalogTests(unittest.TestCase):
                 errors = checker.validate(bad, schema)
                 self.assertTrue(any(expected in error for error in errors), errors)
 
+    def test_every_kind_is_either_detected_with_limits_or_declared_only_with_a_reason(self):
+        """§3's honesty rule: a kind is seen by a detector that states its limits, or not seen."""
+        model = checker.load(checker.MODEL)
+        profiler = checker.profiler_module()
+        self.assertEqual(checker.kind_errors(model, profiler), [])
+        detectors = profiler.kind_specs()
+        detected = {kind['id'] for kind in model['kinds'] if kind['detection'] == 'files'}
+        self.assertEqual(detected, set(detectors),
+                         'a kind detected from files must have a detector, and vice versa')
+        for kind in model['kinds']:
+            with self.subTest(kind['id']):
+                if kind['detection'] == 'files':
+                    spec = detectors[kind['id']]
+                    self.assertIn(spec['exactness'], ('exact', 'heuristic'))
+                    self.assertTrue(spec['limits'].strip())
+                    self.assertTrue(spec['sources'])
+                else:
+                    self.assertTrue(kind['why_declared_only'].strip())
+
+    def test_a_kind_that_is_neither_detectable_nor_justified_is_rejected(self):
+        model = checker.load(checker.MODEL)
+        profiler = checker.profiler_module()
+        broken = copy.deepcopy(model)
+        target = next(kind for kind in broken['kinds'] if kind['detection'] == 'declaration-only')
+        del target['why_declared_only']
+        self.assertTrue(any('declaration-only needs a reason' in error
+                            for error in checker.kind_errors(broken, profiler)))
+        broken = copy.deepcopy(model)
+        target = next(kind for kind in broken['kinds'] if kind['detection'] == 'files')
+        target['detection'] = 'whenever'
+        self.assertTrue(any('needs detection of files or declaration-only' in error
+                            for error in checker.kind_errors(broken, profiler)))
+
+    def test_a_phase_predicate_with_an_unknown_phase_is_rejected(self):
+        indices = repository_indices()
+        for domain in indices['CATALOG-A']['domains']:
+            for document in domain['documents']:
+                if document['id'] == 'DOC-A16-007':
+                    document['applies_when'] = ['phase>=shipping']
+        errors, _ = checker.check(indices)
+        self.assertTrue(any('phase is not declared' in error for error in errors), errors)
+
     def test_validator_fails_on_unimplemented_schema_keyword(self):
         errors = checker.validate({'anything': 1},
                                   {'type': 'object', 'allOf': [{'type': 'object'}]})

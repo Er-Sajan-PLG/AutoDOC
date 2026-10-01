@@ -54,8 +54,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 1: AutoDOC
 - L2 line 11: What it does
 - L2 line 18: Quick start (Python 3.11+)
-- L2 line 49: Status
-- L2 line 62: Navigate
+- L2 line 55: Status
+- L2 line 68: Navigate
 
 ## `TEMPLATES/AGENT-CONTEXT/DEV-B09-001.md`
 
@@ -3253,11 +3253,11 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 22: Engine coverage and honest limits
 - L2 line 24: Implemented and tested
 - L2 line 49: Implemented validators
-- L2 line 64: Mapped but template-only
-- L2 line 72: Partially supported
-- L2 line 80: Explicitly not implemented
-- L2 line 90: Not supported / integration needed
-- L2 line 98: Known environment constraints
+- L2 line 67: Mapped but template-only
+- L2 line 75: Partially supported
+- L2 line 83: Explicitly not implemented
+- L2 line 93: Not supported / integration needed
+- L2 line 101: Known environment constraints
 
 ## `docs/00-governance/EVIDENCE-SIGNING.md`
 
@@ -3284,8 +3284,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 22: AutoDOC architecture
 - L2 line 24: Purpose and scope
 - L2 line 29: Details and decisions
-- L2 line 155: Verification and references
-- L2 line 161: Phase 3 trust boundaries
+- L2 line 168: Verification and references
+- L2 line 174: Phase 3 trust boundaries
 
 ## `docs/08-agent-context/AGENT-MEMORY.md`
 

@@ -71,16 +71,18 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/doc-control/check_catalog.py` | 42 | function | `load` | `(path)` |
 | `scripts/doc-control/check_catalog.py` | 46 | function | `implements` | `(value, expected)` |
 | `scripts/doc-control/check_catalog.py` | 58 | function | `validate` | `(instance, schema, path='$', errors=None)` |
-| `scripts/doc-control/check_catalog.py` | 119 | function | `detector_specs` | `()` |
-| `scripts/doc-control/check_catalog.py` | 126 | function | `detectors` | `()` |
-| `scripts/doc-control/check_catalog.py` | 131 | function | `tokens_of` | `(document)` |
-| `scripts/doc-control/check_catalog.py` | 139 | function | `phase_order` | `(model=None)` |
-| `scripts/doc-control/check_catalog.py` | 145 | function | `severity_by_phase_errors` | `(document, phases, order)` |
-| `scripts/doc-control/check_catalog.py` | 169 | function | `first_applicable_phase` | `(mapping, order)` |
-| `scripts/doc-control/check_catalog.py` | 177 | function | `admission_errors` | `(rules, model, documents, profiles)` |
-| `scripts/doc-control/check_catalog.py` | 232 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` |
-| `scripts/doc-control/check_catalog.py` | 281 | function | `index_documents` | `(index)` |
-| `scripts/doc-control/check_catalog.py` | 285 | function | `check` | `(indices=None)` |
+| `scripts/doc-control/check_catalog.py` | 119 | function | `profiler_module` | `()` |
+| `scripts/doc-control/check_catalog.py` | 127 | function | `detector_specs` | `()` |
+| `scripts/doc-control/check_catalog.py` | 131 | function | `detectors` | `()` |
+| `scripts/doc-control/check_catalog.py` | 136 | function | `tokens_of` | `(document)` |
+| `scripts/doc-control/check_catalog.py` | 144 | function | `phase_order` | `(model=None)` |
+| `scripts/doc-control/check_catalog.py` | 150 | function | `severity_by_phase_errors` | `(document, phases, order)` |
+| `scripts/doc-control/check_catalog.py` | 174 | function | `first_applicable_phase` | `(mapping, order)` |
+| `scripts/doc-control/check_catalog.py` | 182 | function | `kind_errors` | `(model, profiler)` |
+| `scripts/doc-control/check_catalog.py` | 217 | function | `admission_errors` | `(rules, model, documents, profiles)` |
+| `scripts/doc-control/check_catalog.py` | 272 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` |
+| `scripts/doc-control/check_catalog.py` | 321 | function | `index_documents` | `(index)` |
+| `scripts/doc-control/check_catalog.py` | 325 | function | `check` | `(indices=None)` |
 | `scripts/doc-control/check_ownership.py` | 1 | module | `scripts.doc-control.check_ownership` | — |
 | `scripts/doc-control/check_ownership.py` | 11 | function | `check` | `()` |
 | `scripts/doc-control/check_sync_map.py` | 1 | module | `scripts.doc-control.check_sync_map` | — |
@@ -185,7 +187,8 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/context.py` | 298 | function | `check_severity` | `(context, family, model=None)` |
 | `scripts/intelligence/context.py` | 316 | function | `phase_age` | `(context, today=None)` |
 | `scripts/intelligence/context.py` | 327 | function | `_git` | `(root, *args)` |
-| `scripts/intelligence/context.py` | 335 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
+| `scripts/intelligence/context.py` | 335 | function | `kind_hints` | `(profile_document)` |
+| `scripts/intelligence/context.py` | 356 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
 | `scripts/intelligence/enforce.py` | 1 | module | `scripts.intelligence.enforce` | — |
 | `scripts/intelligence/enforce.py` | 47 | function | `load_module` | `(name, path)` |
 | `scripts/intelligence/enforce.py` | 62 | function | `fingerprint` | `(detail)` |
@@ -198,42 +201,47 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/intelligence/enforce.py` | 212 | function | `write_baseline` | `(path, findings, phase, today=None)` |
 | `scripts/intelligence/enforce.py` | 236 | function | `summarize` | `(findings, suppressed, stale, enforcement)` |
 | `scripts/intelligence/enforce.py` | 251 | function | `report` | `(data, findings, suppressed, stale, enforcement, exit_code)` |
-| `scripts/intelligence/enforce.py` | 340 | function | `build` | `(args)` |
-| `scripts/intelligence/enforce.py` | 375 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
-| `scripts/intelligence/enforce.py` | 388 | function | `run` | `(args)` |
-| `scripts/intelligence/enforce.py` | 424 | function | `main` | `()` |
+| `scripts/intelligence/enforce.py` | 353 | function | `build` | `(args)` |
+| `scripts/intelligence/enforce.py` | 393 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
+| `scripts/intelligence/enforce.py` | 410 | function | `run` | `(args)` |
+| `scripts/intelligence/enforce.py` | 446 | function | `main` | `()` |
 | `scripts/intelligence/profile.py` | 1 | module | `scripts.intelligence.profile` | — |
-| `scripts/intelligence/profile.py` | 159 | function | `tracked_files` | `(root)` |
-| `scripts/intelligence/profile.py` | 177 | function | `skipped_dir` | `(relative)` |
-| `scripts/intelligence/profile.py` | 182 | function | `skipped_dirs` | `(root, files)` |
-| `scripts/intelligence/profile.py` | 196 | function | `matches` | `(relative, pattern)` |
-| `scripts/intelligence/profile.py` | 207 | function | `read_manifest` | `(root, name, cache)` |
-| `scripts/intelligence/profile.py` | 227 | function | `probe` | `(root, pack, name, cache)` |
-| `scripts/intelligence/profile.py` | 264 | function | `content_hits` | `(root, source, files, cache)` |
-| `scripts/intelligence/profile.py` | 284 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` |
-| `scripts/intelligence/profile.py` | 314 | function | `profile` | `(root, declared=None)` |
-| `scripts/intelligence/profile.py` | 349 | function | `summary` | `(document)` |
+| `scripts/intelligence/profile.py` | 165 | function | `tracked_files` | `(root)` |
+| `scripts/intelligence/profile.py` | 183 | function | `skipped_dir` | `(relative)` |
+| `scripts/intelligence/profile.py` | 188 | function | `skipped_dirs` | `(root, files)` |
+| `scripts/intelligence/profile.py` | 202 | function | `matches` | `(relative, pattern)` |
+| `scripts/intelligence/profile.py` | 213 | function | `read_manifest` | `(root, name, cache)` |
+| `scripts/intelligence/profile.py` | 233 | function | `dependency_names` | `(data)` |
+| `scripts/intelligence/profile.py` | 243 | function | `probe` | `(root, pack, name, cache)` |
+| `scripts/intelligence/profile.py` | 380 | function | `kind_specs` | `(model=None)` |
+| `scripts/intelligence/profile.py` | 385 | function | `detect_kinds` | `(files, ecosystems, cache, root)` |
+| `scripts/intelligence/profile.py` | 395 | function | `content_hits` | `(root, source, files, cache)` |
+| `scripts/intelligence/profile.py` | 415 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` |
+| `scripts/intelligence/profile.py` | 445 | function | `profile` | `(root, declared=None)` |
+| `scripts/intelligence/profile.py` | 484 | function | `summary` | `(document)` |
 | `scripts/intelligence/recommend.py` | 1 | module | `scripts.intelligence.recommend` | — |
-| `scripts/intelligence/recommend.py` | 27 | function | `load_module` | `(name, relative)` |
-| `scripts/intelligence/recommend.py` | 39 | function | `catalog` | `()` |
-| `scripts/intelligence/recommend.py` | 50 | function | `predicate` | `(document)` |
-| `scripts/intelligence/recommend.py` | 58 | function | `token_state` | `(token, facts, context, model=None)` |
-| `scripts/intelligence/recommend.py` | 75 | function | `state_of` | `(document, facts, context, model=None)` |
-| `scripts/intelligence/recommend.py` | 102 | function | `profile_placement` | `(documents, context)` |
-| `scripts/intelligence/recommend.py` | 125 | function | `placement_of` | `(document, placement)` |
-| `scripts/intelligence/recommend.py` | 134 | function | `severity_for` | `(document, state, decision, enforcement, context, placement)` |
-| `scripts/intelligence/recommend.py` | 165 | function | `effective_phase_min` | `(document, placement)` |
-| `scripts/intelligence/recommend.py` | 176 | function | `off_reason` | `(document, placement, enforcement)` |
-| `scripts/intelligence/recommend.py` | 193 | function | `score_profile` | `(placement)` |
-| `scripts/intelligence/recommend.py` | 200 | function | `enforced_reason` | `(item, enforcement)` |
-| `scripts/intelligence/recommend.py` | 229 | function | `effective_severity` | `(item, enforcement, context)` |
-| `scripts/intelligence/recommend.py` | 249 | function | `evaluate` | `(documents, profile_document, context, enforcement=None, placement=None)` |
-| `scripts/intelligence/recommend.py` | 299 | function | `score` | `(documents, groups, enforcement)` |
-| `scripts/intelligence/recommend.py` | 323 | function | `because` | `(item, enforcement)` |
-| `scripts/intelligence/recommend.py` | 330 | function | `findings` | `(documents, context, groups, enforcement=None)` |
-| `scripts/intelligence/recommend.py` | 419 | function | `check` | `(documents, context, groups, enforcement=None)` |
-| `scripts/intelligence/recommend.py` | 430 | function | `explain` | `(document, profile_document, context, enforcement=None, placement=None, documents=None, groups=None)` |
-| `scripts/intelligence/recommend.py` | 480 | function | `report` | `(data)` |
-| `scripts/intelligence/recommend.py` | 550 | function | `build` | `(args)` |
-| `scripts/intelligence/recommend.py` | 574 | function | `main` | `()` |
+| `scripts/intelligence/recommend.py` | 28 | function | `load_module` | `(name, relative)` |
+| `scripts/intelligence/recommend.py` | 40 | function | `catalog` | `()` |
+| `scripts/intelligence/recommend.py` | 51 | function | `predicate` | `(document)` |
+| `scripts/intelligence/recommend.py` | 59 | function | `token_state` | `(token, facts, context, model=None)` |
+| `scripts/intelligence/recommend.py` | 94 | function | `state_of` | `(document, facts, context, model=None)` |
+| `scripts/intelligence/recommend.py` | 121 | function | `profile_placement` | `(documents, context)` |
+| `scripts/intelligence/recommend.py` | 144 | function | `placement_of` | `(document, placement)` |
+| `scripts/intelligence/recommend.py` | 153 | function | `severity_for` | `(document, state, decision, enforcement, context, placement)` |
+| `scripts/intelligence/recommend.py` | 184 | function | `effective_phase_min` | `(document, placement)` |
+| `scripts/intelligence/recommend.py` | 195 | function | `off_reason` | `(document, placement, enforcement)` |
+| `scripts/intelligence/recommend.py` | 212 | function | `score_profile` | `(placement)` |
+| `scripts/intelligence/recommend.py` | 219 | function | `enforced_reason` | `(item, enforcement)` |
+| `scripts/intelligence/recommend.py` | 248 | function | `effective_severity` | `(item, enforcement, context)` |
+| `scripts/intelligence/recommend.py` | 268 | function | `evaluate` | `(documents, profile_document, context, enforcement=None, placement=None)` |
+| `scripts/intelligence/recommend.py` | 318 | function | `score` | `(documents, groups, enforcement)` |
+| `scripts/intelligence/recommend.py` | 342 | function | `because` | `(item, enforcement)` |
+| `scripts/intelligence/recommend.py` | 349 | function | `findings` | `(documents, context, groups, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 438 | function | `check` | `(documents, context, groups, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 449 | function | `explain` | `(document, profile_document, context, enforcement=None, placement=None, documents=None, groups=None)` |
+| `scripts/intelligence/recommend.py` | 499 | function | `kind_summary` | `(profile_document, context)` |
+| `scripts/intelligence/recommend.py` | 521 | function | `kind_line` | `(kinds, groups)` |
+| `scripts/intelligence/recommend.py` | 539 | function | `report` | `(data)` |
+| `scripts/intelligence/recommend.py` | 611 | function | `build` | `(args)` |
+| `scripts/intelligence/recommend.py` | 636 | function | `main` | `()` |
 | `scripts/validate/frontmatter_validator.py` | 1 | module | `scripts.validate.frontmatter_validator` | — |

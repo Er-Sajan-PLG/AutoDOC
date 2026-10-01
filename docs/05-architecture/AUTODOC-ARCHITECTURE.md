@@ -108,6 +108,19 @@ Authoritative catalogs / source files / Markdown metadata
   are separate: `recommend.py` decides whether a type applies, and the phase decides how hard
   that is enforced. A family at `off` is named in the report rather than silently skipped.
 
+- **Kinds are declared, never inferred** (`scripts/intelligence/profile.py`,
+  `scripts/intelligence/context.py`). `profile.py` holds a detector per detectable kind, each
+  stating its exactness and limits, and the profile carries the evidence it found; kinds with no
+  honest file evidence (`plugin`, `embedded`, `research`, `content`, `template`) carry a stated
+  reason instead of a detector, so they can only ever be what an owner declares. `make docs-hint`
+  shows the evidence; `kinds` in `autodoc.toml` is what counts. The two declaration-driven
+  predicate tokens are three-valued for the same reason: `kind:<id>` is `unknown` until kinds are
+  declared (then true or false), and `phase>=<id>` is `unknown` until a phase is declared (then a
+  real comparison), so a repository whose owner has not answered yet gets *undetermined* — which
+  is reported and never failed — rather than a verdict from a guess. A repository with no
+  detector matches and no declaration is on the generic baseline: only requirements that do not
+  depend on a kind or a phase apply.
+
 - **The catalog states what it can and cannot verify** (`CATALOG-SCHEMA.json`, `CATALOG-RULES.json`).
   Each type carries the reader question it answers, who reads it, the lifecycle events that make
   it stale, the checks that apply to it, and a `support` level: `checked` (named checks run),

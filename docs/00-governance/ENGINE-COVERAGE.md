@@ -55,7 +55,10 @@ their title, so a placeholder index cannot inflate the inventory or the health c
 warn instead. Generated targets are excluded because byte drift validates them, not prose volume.
 The catalog index is validated against `CATALOG-SCHEMA.json` plus rule cross-checks (unknown
 flags, mixed sentinels, core types without a reason or with an undetectable predicate, duplicate
-ids, missing templates, and a vocabulary that no profiler detector backs).
+ids, missing templates, and a vocabulary that no profiler detector backs). Predicate tokens are
+checked against their own vocabularies too: `kind:<id>` must be a declared kind, `phase>=<id>` a
+declared phase, and a kind is either detected from files by a detector that states its limits or
+is explicitly declaration-only with a reason no file can tell.
 CI artifacts contain actual test output; `make evidence` packages a scoped **unsigned** hash-
 verifiable record. `make ci` also checks staged impact locally, or compares HEAD with `BASE`
 when there is no staged change (CI supplies the PR base SHA). It uses pytest; no

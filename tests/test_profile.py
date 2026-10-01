@@ -29,6 +29,29 @@ class FixtureMatrixTests(unittest.TestCase):
     def value(self, repo, fact):
         return self.profile(repo)['facts'][fact]['value']
 
+    def test_kind_evidence_comes_from_files_and_admits_what_it_cannot_see(self):
+        """§3: kinds are hints from evidence. These fixtures are also the honest-limits cases."""
+        def kinds(repo):
+            return {kind: entry for kind, entry in self.profile(repo)['kinds'].items()
+                    if entry['value'] == 'true'}
+
+        self.assertEqual(kinds('docs-only'), {},
+                         'prose alone says nothing about what the project is')
+        self.assertEqual(set(kinds('go-service')), {'service'},
+                         'a Dockerfile is evidence of something operated, even without a JS or '
+                         'Python web dependency')
+        self.assertIn('service', self.profile('go-service')['kinds'])
+        self.assertEqual(set(kinds('python-empty')), {'library'},
+                         'a distribution with no entry point has the shape of a library')
+        # The fixture is named node-library, but its package.json declares a bin and a UI
+        # dependency. Evidence is what the files say: this is exactly why a kind is declared by
+        # the owner after reading the hint, and never inferred into requirements.
+        self.assertEqual(set(kinds('node-library')), {'application', 'frontend'})
+        for repo in ('docs-only', 'go-service', 'node-library', 'python-empty'):
+            for entry in self.profile(repo)['kinds'].values():
+                self.assertTrue(entry['limits'].strip(),
+                                'a detector without stated limits is a claim it cannot support')
+
     def test_no_manifest_reports_unknown_not_false(self):
         """A repository with no manifest cannot answer a manifest question."""
         self.assertEqual(self.value('docs-only', 'has_third_party_deps'), 'unknown')

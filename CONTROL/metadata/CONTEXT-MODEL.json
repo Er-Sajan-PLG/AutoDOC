@@ -226,77 +226,99 @@
       "limits": "Only [not_applicable] entries are inspected; the presence of an owner or a review date says nothing about whether the decision is still right."
     }
   ],
-  "sunset_ids": [
-    "DOC-A23-001",
-    "DOC-A23-003",
-    "DOC-A23-007"
-  ],
+  "sunset_ids": ["DOC-A23-001", "DOC-A23-003", "DOC-A23-007"],
   "sunset_note": "End of life needs a deprecation policy, a pointer to the successor, and a tombstone page. A security contact is required by many policies but has no catalog type yet.",
   "kinds": [
     {
       "id": "library",
       "label": "Library / SDK / framework",
-      "evidence": "packaged for a registry, imported by others"
+      "evidence": "packaged for a registry, imported by others",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "application",
       "label": "Application",
-      "evidence": "CLI, desktop, mobile or game entry point"
+      "evidence": "CLI, desktop, mobile or game entry point",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "service",
       "label": "Service / API",
-      "evidence": "network listener, deployment definition"
+      "evidence": "network listener, deployment definition",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "frontend",
       "label": "Web frontend / site",
-      "evidence": "browser assets and a client build"
+      "evidence": "browser assets and a client build",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "data",
       "label": "Data / analytics",
-      "evidence": "pipelines, notebooks, dashboards"
+      "evidence": "pipelines, notebooks, dashboards",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "ml",
       "label": "ML / AI",
-      "evidence": "training code, models, prompt or agent systems"
+      "evidence": "training code, models, prompt or agent systems",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "infrastructure",
       "label": "Infrastructure",
-      "evidence": "Terraform, Helm, Ansible, CI templates"
+      "evidence": "Terraform, Helm, Ansible, CI templates",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "platform",
       "label": "Platform / monorepo",
-      "evidence": "several packages with their own kinds"
+      "evidence": "several packages with their own kinds",
+      "detection": "files",
+      "detector": "profile.KIND_DETECTORS"
     },
     {
       "id": "plugin",
       "label": "Plugin / extension",
-      "evidence": "add-on for a host application"
+      "evidence": "add-on for a host application",
+      "detection": "declaration-only",
+      "why_declared_only": "An add-on looks like an application from the files alone; the host it plugs into is what makes it a plugin."
     },
     {
       "id": "embedded",
       "label": "Embedded / hardware",
-      "evidence": "firmware, PCB, CAD"
+      "evidence": "firmware, PCB, CAD",
+      "detection": "declaration-only",
+      "why_declared_only": "Firmware build scripts are indistinguishable from any other build without reading the target hardware, which AutoDOC does not do."
     },
     {
       "id": "research",
       "label": "Research / science",
-      "evidence": "papers, experiments, reproducibility"
+      "evidence": "papers, experiments, reproducibility",
+      "detection": "declaration-only",
+      "why_declared_only": "A paper repository and an ordinary project have the same layout; the intent is only in the declaring."
     },
     {
       "id": "content",
       "label": "Content / education",
-      "evidence": "courses, books, handbooks, policy repos"
+      "evidence": "courses, books, handbooks, policy repos",
+      "detection": "declaration-only",
+      "why_declared_only": "Courses, books and policy repositories are prose all the way down; no structural evidence separates them from documentation-heavy software."
     },
     {
       "id": "template",
       "label": "Template / boilerplate",
-      "evidence": "starters, dotfiles, config repos"
+      "evidence": "starters, dotfiles, config repos",
+      "detection": "declaration-only",
+      "why_declared_only": "A starter kit is a copy of another project shape, so its files describe that shape, not itself."
     }
   ],
   "audiences": [
@@ -382,5 +404,6 @@
       "reason": "no source files were found",
       "test": "always"
     }
-  ]
+  ],
+  "kind_note": "Kinds are declared, never enforced from evidence. `detection: files` means profile.py has a detector with stated limits and the profile carries its evidence as a hint; `declaration-only` means no file can honestly tell, so the kind is only ever what the owner declares."
 }

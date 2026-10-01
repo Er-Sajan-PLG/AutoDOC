@@ -53,7 +53,12 @@ redistribution terms the license decision still owes. Every type any profile can
 admission rule — a reader question, a detectable predicate, its phases, and named checks or an
 explicit template-only/human label — and `check_catalog.py` fails when one does not.
 
-Requirements resolve as Catalog x Context: a declared context in `autodoc.toml` (phase, audience,
+Kinds follow the same rule as phases: `profile.py` detects evidence per kind with stated limits
+(and says `declaration-only` where no file can honestly tell), `make docs-hint` shows it, and the
+declaration in `autodoc.toml` is what gates documents. This repository declares `kinds = ["library"]`
+— the hint also offered `application`, from an example inside the repository rather than a program
+it ships — which turned three undetermined kind-gated documents into two not-applicable and one
+applicable. Requirements resolve as Catalog x Context: a declared context in `autodoc.toml` (phase, audience,
 kinds, declared duties) against fifteen three-valued facts, so a fact that cannot be read makes a
 type **undetermined** rather than silently satisfied. Severity scales with phase, per column:
 `build` warns about required docs and fails structural breakage with drift and freshness off;

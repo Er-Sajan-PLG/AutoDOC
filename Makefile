@@ -55,7 +55,7 @@ docs-profile: ## Detect project facts (flags) from file presence
 docs-recommend: ## List catalog types that apply here, with reasons and recorded decisions
 	$(PYTHON) scripts/intelligence/recommend.py
 
-docs-hint: ## Suggest a phase from history; a hint never sets enforcement
+docs-hint: ## Suggest a phase and kinds from evidence; a hint never sets enforcement
 	$(PYTHON) scripts/intelligence/recommend.py --hint
 
 docs-explain: ## Explain one catalog type (usage: make docs-explain DOC=DOC-A08-001)

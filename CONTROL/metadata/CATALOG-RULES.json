@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review, each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
+  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review, each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> (answered only by the declared kinds), phase>=<id> (true from that phase on, undetermined while the phase is undeclared) or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
   "seed": {
     "A": [
       {
@@ -584,7 +584,22 @@
       "DOC-A17-001": ["has_deploy"],
       "DOC-A05-006": ["has_persistent_state"],
       "DOC-A20-002": ["always"],
-      "DOC-A24-003": ["has_ci"]
+      "DOC-A24-003": ["has_ci"],
+      "DOC-A08-008": {
+        "all": ["has_public_api_surface", "kind:library"]
+      },
+      "DOC-A21-002": {
+        "all": ["has_ai", "kind:ml"]
+      },
+      "DOC-A05-007": {
+        "any": ["kind:data", "kind:platform"]
+      },
+      "DOC-A16-007": {
+        "all": ["has_deploy", "phase>=live"]
+      },
+      "DOC-A17-004": {
+        "all": ["has_deploy", "phase>=live"]
+      }
     },
     "by_domain": {
       "A01-PRODUCT": ["assess"],

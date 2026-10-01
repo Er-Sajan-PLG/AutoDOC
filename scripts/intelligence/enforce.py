@@ -270,6 +270,10 @@ def report(data, findings, suppressed, stale, enforcement, exit_code):
             delta.append(f"removes {', '.join(profile['removed'])}")
         lines.append(f"- Catalog profile: {profile['name']} ({profile['core_types']} core types"
                      + (': ' + '; '.join(delta) if delta else '') + ')')
+    kinds = data.get('kinds') or {}
+    if kinds:
+        lines.append(recommend.kind_line(
+            kinds, {'undetermined': data.get('undetermined_types') or []}))
     lines.append(f"- Checks ran at: {', '.join(LEVELS)}; no L2 code-aware checks exist yet")
     age = data.get('phase_age')
     if age:
@@ -324,6 +328,15 @@ def report(data, findings, suppressed, stale, enforcement, exit_code):
             becomes = f"; becomes required at {entry['becomes_required_at']}" \
                 if entry.get('becomes_required_at') else ''
             lines.append(f"- `{entry['id']}` {entry['name']} — {entry.get('reason')}{becomes}")
+    undetermined = data.get('undetermined_types') or []
+    if undetermined:
+        # An undetermined type is a question, not a failure: say what is unknown and why.
+        lines += ['', f'## Undetermined ({len(undetermined)})', '']
+        for entry in undetermined:
+            unknown = ', '.join(sorted(token for token, value in entry['tokens'].items()
+                                       if value == 'unknown'))
+            lines.append(f"- `{entry['id']}` {entry['name']} — cannot be decided from {unknown}; "
+                         'declaring the fact or kind answers it')
     lines += ['', '## Cannot see', '']
     if data.get('off_families'):
         lines.append(f"Off at this phase, so not run: {', '.join(data['off_families'])}. "
@@ -357,6 +370,7 @@ def build(args):
             'phase_age': context_module.phase_age(context), 'enforcement': enforcement,
             'readiness': recommend.score(documents, groups, enforcement)['readiness'],
             'off_families': off, 'levels': list(LEVELS),
+            'kinds': recommend.kind_summary(profile_document, context),
             'catalog_profile': recommend.score_profile(placement),
             'off_types': [{'id': item['id'], 'name': item['name'],
                            'reason': item.get('off_reason'),
@@ -366,7 +380,11 @@ def build(args):
                      for rule, severity in sorted(context['severity'].items())],
             'unknown_facts': sorted(name for name, entry in profile_document['facts'].items()
                                     if entry['value'] == 'unknown'),
-            'levels': LEVELS}
+            'undetermined_types': [{'id': item['id'], 'name': item['name'],
+                                    'tokens': {token: value
+                                               for token, value in item['tokens'].items()
+                                               if value == 'unknown'}}
+                                   for item in groups['undetermined']]}
     summary = summarize(kept, suppressed, stale, enforcement)
     data['summary'] = summary
     return data, kept, suppressed, stale, enforcement, summary
@@ -378,6 +396,10 @@ def machine_document(data, findings, suppressed, stale, enforcement, summary):
             'readiness': data['readiness'], 'levels': data['levels'],
             'off_families': data['off_families'], 'pins': data['pins'],
             'catalog_profile': data['catalog_profile'], 'off_types': data['off_types'],
+            'kinds': data['kinds'],
+            'undetermined': [{'id': item['id'], 'name': item['name'],
+                              'unknown': sorted(item['tokens'])}
+                             for item in data['undetermined_types']],
             'enforcement': enforcement, 'summary': summary, 'findings': findings,
             'suppressed': [{key: value for key, value in finding.items() if key != 'baseline'}
                            for finding in suppressed],

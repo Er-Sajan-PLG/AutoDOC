@@ -28,7 +28,13 @@ decisions are recorded in `autodoc.toml`; `make docs-catalog` validates the cata
 schema and declared context; `make docs-hint` suggests a phase from history; and
 `make docs-explain DOC=DEV-B01-006` prints the derivation chain for one requirement.
 
-**Profile and phase are declarations.** `profile` in `autodoc.toml` picks which document types
+**Kinds, profile and phase are declarations.** `make docs-hint` reports what the files suggest
+(kinds are detected from manifests, entry points, framework dependencies and deployment files,
+each detector stating what it cannot see) and never sets a requirement; `kinds` in `autodoc.toml`
+is what decides whether kind-gated documents like the SDK guide apply, and until it is declared
+those documents are listed as undetermined rather than assumed away. `phase>=<id>` predicates make
+the same distinction for phases: observability documents apply from `live` on, and while the phase
+is undeclared the answer is "cannot tell yet". **Profile and phase are declarations.** `profile` in `autodoc.toml` picks which document types
 count as core for this kind of project (`default`, `startup`, `oss-library`, `internal-service`,
 `regulated`); each addition states the phases it is off in, and the report shows the resulting
 core set. **Phase is a declaration.** With no `phase` the output is advisory and nothing fails, unless a

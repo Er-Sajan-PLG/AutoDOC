@@ -41,6 +41,20 @@
   branch-protection helper, and the capability level in every report. The checker functions the
   enforcement layer calls now return structured findings, so severity, baseline and exit codes
   come from one place rather than from printed strings.
+- Made project kinds a declaration with evidence behind it (§3): `profile.py` gained a detector
+  per detectable kind with stated exactness and limits (packaging shape, entry points, web/data/AI
+  dependencies, UI dependencies, deployment and infrastructure files, workspace markers), and the
+  kinds no file can honestly separate — `plugin`, `embedded`, `research`, `content`, `template` —
+  are marked `declaration-only` with a reason instead of a guess. `make docs-hint` prints the
+  evidence for phases and kinds; the declaration in `autodoc.toml` is what counts. Two predicate
+  tokens became three-valued: `kind:<id>` is undetermined until kinds are declared, `phase>=<id>`
+  until a phase is; both are now consumed by catalog entries (SDK guide, model registry, ETL
+  specification, observability strategy, postmortem) so the forms are exercised rather than merely
+  allowed. Kind-gated documents and kinds with no supporting evidence are reported, and a
+  repository with no evidence at all gets the generic baseline — reported as such, never guessed.
+  This repository declares `kinds = ["library"]`; `docs-hint` also suggested `application`, which
+  came from an example inside the repository, and that difference is exactly why kinds are asked
+  for rather than inferred.
 - Moved the core-set decision into data: `CONTROL/metadata/PROFILES.json` holds `default`,
   `startup`, `oss-library`, `internal-service` and `regulated` as deltas of the hand-picked core
   list, each addition carrying a reason and the phases it is off in; `profile` in `autodoc.toml`

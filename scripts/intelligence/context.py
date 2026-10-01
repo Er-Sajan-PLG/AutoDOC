@@ -332,6 +332,27 @@ def _git(root, *args):
         return ''
 
 
+def kind_hints(profile_document):
+    """Suggest project kinds from file evidence. A hint never sets requirements.
+
+    The guide's rule for kinds is the rule for phases: they are declared by the owner, asked once
+    and recorded. Evidence is worth showing — "the shape of this repository looks like a library
+    and a service" is useful — but it must never be the thing that decides whether a document is
+    required, or a repository would be graded against a guess.
+    """
+    evidence = (profile_document or {}).get('kinds') or {}
+    suggested = sorted(kind for kind, entry in evidence.items() if entry['value'] == 'true')
+    return {'suggested': suggested,
+            'evidence': {kind: entry['evidence'] for kind, entry in evidence.items()
+                         if entry['value'] == 'true'},
+            'considered': sorted(evidence),
+            'note': 'A hint only. Kinds are declared in autodoc.toml and are never inferred into '
+                    'requirements; with no declaration, kind-gated documents are undetermined.'
+                    + ('' if suggested else
+                       ' No detector matched, so this repository gets the generic baseline: only '
+                       'requirements that do not depend on a kind apply.')}
+
+
 def phase_hints(root, profile_document=None, today=None):
     """Suggest a phase from observable history. A hint never sets enforcement."""
     model = load_model()

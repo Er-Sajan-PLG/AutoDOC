@@ -22,6 +22,7 @@ CATALOGS = ('CATALOG-A', 'CATALOG-B')
 PHASE_ORDER = ('idea', 'prototype', 'build', 'beta', 'live', 'mature', 'sunset')
 SENTINELS = ('always', 'assess')
 PREFIXES = ('kind:', 'obligation:')
+PHASE_PREFIX = 'phase>='
 
 
 def load_module(name, relative):
@@ -56,14 +57,32 @@ def predicate(document):
 
 
 def token_state(token, facts, context, model=None):
-    """Return 'true', 'false' or 'unknown' for one predicate token."""
+    """Return 'true', 'false' or 'unknown' for one predicate token.
+
+    The declaration points are three-valued on purpose. A kind or a phase that nobody declared is
+    not a negative fact about the repository; it is a question the owner has not answered yet, so
+    the token is `unknown` and the document it gates is *undetermined* — reported, never failed.
+    Only once a declaration exists does absence become a real `false`.
+    """
     model = model or MODEL
     if token == 'always':
         return 'true'
     if token == 'assess':
         return 'unknown'
     if token.startswith('kind:'):
-        return 'true' if token.split(':', 1)[1] in context['kinds'] else 'false'
+        kind = token.split(':', 1)[1]
+        if kind in context['kinds']:
+            return 'true'
+        # Nothing declared at all: the kind question is unanswered, not answered "no".
+        return 'unknown' if not context['kinds'] else 'false'
+    if token.startswith(PHASE_PREFIX):
+        wanted = token[len(PHASE_PREFIX):]
+        phase = context.get('phase')
+        if phase not in PHASE_ORDER:
+            return 'unknown'  # an undeclared phase cannot be compared
+        if wanted not in PHASE_ORDER:
+            return 'unknown'
+        return 'true' if PHASE_ORDER.index(phase) >= PHASE_ORDER.index(wanted) else 'false'
     if token.startswith('obligation:'):
         return 'true' if token.split(':', 1)[1] in context['obligations'] else 'false'
     entry = facts.get(token)
@@ -477,9 +496,50 @@ def explain(document, profile_document, context, enforcement=None, placement=Non
     return '\n'.join(lines) + '\n'
 
 
+def kind_summary(profile_document, context):
+    """The kind situation: what is declared, what the evidence suggests, and what that means.
+
+    Kinds are a declaration, so the useful thing to report is not a verdict but the gap between
+    the two: declared kinds nothing supports, evidence for kinds nobody declared (which makes
+    kind-gated documents undetermined rather than failed), and — when neither side has anything —
+    the generic baseline, which is not a guess about what the project is.
+    """
+    hints = context_module.kind_hints(profile_document)
+    declared = list(context.get('kinds') or [])
+    evidence = (profile_document or {}).get('kinds') or {}
+    unevidenced = [kind for kind in declared
+                   if (evidence.get(kind) or {}).get('value') == 'false']
+    return {'declared': declared, 'suggested': hints['suggested'], 'evidence': hints['evidence'],
+            'declared_without_evidence': unevidenced,
+            'declaration_only_available': sorted(
+                kind['id'] for kind in MODEL['kinds']
+                if kind.get('detection') == 'declaration-only'),
+            'generic_baseline': not declared,
+            'note': hints['note']}
+
+
+def kind_line(kinds, groups):
+    """One line that says what is declared, what is only evidence, and what is still undetermined."""
+    line = "- Kinds: " + (', '.join(kinds.get('declared') or []) or 'undeclared')
+    if kinds.get('declared_without_evidence'):
+        line += f" (declared with no file evidence: {', '.join(kinds['declared_without_evidence'])})"
+    if not kinds.get('declared'):
+        gated = [item for item in (groups.get('undetermined') or [])
+                 if any(token.startswith('kind:') for token in (item.get('tokens') or {}))]
+        if kinds.get('suggested'):
+            line += f" — evidence suggests {', '.join(kinds['suggested'])}"
+        line += '; kinds are declared, never inferred'
+        line += (f', so {len(gated)} kind-gated document(s) are undetermined rather than not '
+                 'applicable' if gated else '')
+        if not kinds.get('suggested'):
+            line += ' and no detector matched, so the generic baseline applies'
+    return line
+
+
 def report(data):
     summary, groups, enforcement = data['summary'], data['groups'], data['enforcement']
     profile = data.get('catalog_profile') or {}
+    kinds = data.get('kinds') or {}
     lines = ['# AutoDOC requirements', '',
              f"- Phase: {enforcement['label']}",
              f"- Detected ecosystems: {', '.join(data['ecosystems']['present']) or 'none'}"
@@ -491,6 +551,7 @@ def report(data):
              f"{profile['default_core_types']} default"
              + (f", {len(profile['added'])} added" if profile['added'] else '')
              + (f", {len(profile['removed'])} removed" if profile['removed'] else '') + ')',
+             kind_line(kinds, groups),
              f"- {summary['readiness']}",
              f"- Open core decisions: {summary['open_core_decisions']}",
              f"- Undetermined types (unknown fact): {summary['undetermined_types']}",
@@ -564,6 +625,7 @@ def build(args):
     unknown = sorted(name for name, entry in profile_document['facts'].items()
                      if entry['value'] == 'unknown')
     return {'version': 2, 'repo': profile_document['repo'], 'phase': context['phase'],
+            'kinds': kind_summary(profile_document, context),
             'enforcement': enforcement, 'ecosystems': profile_document['ecosystems'],
             'unknown_facts': unknown, 'facts': profile_document['facts'],
             'profile': profile_document, 'catalog_profile': score_profile(placement),
@@ -580,7 +642,8 @@ def main():
     parser.add_argument('--output', type=Path, help='Write the report here instead of stdout')
     parser.add_argument('--check', action='store_true', help='Fail what the declared phase requires')
     parser.add_argument('--explain', help='Explain one catalog type id and exit')
-    parser.add_argument('--hint', action='store_true', help='Suggest a phase from observable history')
+    parser.add_argument('--hint', action='store_true',
+                        help='Suggest a phase and project kinds from observable evidence')
     args = parser.parse_args()
     if args.config is None:
         args.config = (args.repo / 'autodoc.toml')
@@ -597,7 +660,10 @@ def main():
         print(explain(match, data['profile'], context, enforcement, groups=groups), end='')
         return 0
     if args.hint:
-        print(json.dumps(context_module.phase_hints(args.repo, data['profile']), indent=2))
+        # Both hints answer the same question — "what would you declare?" — and neither sets
+        # anything: they are printed, the owner decides, and the declaration is what counts.
+        print(json.dumps({'phase': context_module.phase_hints(args.repo, data['profile']),
+                          'kinds': context_module.kind_hints(data['profile'])}, indent=2))
         return 0
     errors, warnings = ([], []) if not args.check else check(documents, context, groups, enforcement)
     for warning in warnings:

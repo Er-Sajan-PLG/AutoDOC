@@ -1326,9 +1326,12 @@
           "tier_reason": null,
           "severity_by_phase": {},
           "phase_min": "idea",
-          "applies_when": [
-            "has_persistent_state"
-          ],
+          "applies_when": {
+            "any": [
+              "kind:data",
+              "kind:platform"
+            ]
+          },
           "question": null,
           "reader": null,
           "support": "template-only",
@@ -2225,9 +2228,12 @@
           "tier_reason": null,
           "severity_by_phase": {},
           "phase_min": "idea",
-          "applies_when": [
-            "has_public_api_surface"
-          ],
+          "applies_when": {
+            "all": [
+              "has_public_api_surface",
+              "kind:library"
+            ]
+          },
           "question": null,
           "reader": null,
           "support": "template-only",
@@ -4415,9 +4421,12 @@
           "tier_reason": null,
           "severity_by_phase": {},
           "phase_min": "idea",
-          "applies_when": [
-            "has_deploy"
-          ],
+          "applies_when": {
+            "all": [
+              "has_deploy",
+              "phase>=live"
+            ]
+          },
           "question": null,
           "reader": null,
           "support": "template-only",
@@ -4669,9 +4678,12 @@
           "tier_reason": null,
           "severity_by_phase": {},
           "phase_min": "idea",
-          "applies_when": [
-            "has_deploy"
-          ],
+          "applies_when": {
+            "all": [
+              "has_deploy",
+              "phase>=live"
+            ]
+          },
           "question": null,
           "reader": null,
           "support": "template-only",
@@ -5451,9 +5463,12 @@
           "tier_reason": null,
           "severity_by_phase": {},
           "phase_min": "idea",
-          "applies_when": [
-            "has_ai"
-          ],
+          "applies_when": {
+            "all": [
+              "has_ai",
+              "kind:ml"
+            ]
+          },
           "question": null,
           "reader": null,
           "support": "template-only",

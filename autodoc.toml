@@ -29,7 +29,13 @@ audience = ["contributors", "external-users"]
 # This repository is read by the people who use the tool and the people who work on it; declaring
 # the audience is a commitment, not a detection, and it is what the catalog's `reader` field is
 # checked against.
-kinds = []         # see CONTROL/metadata/CONTEXT-MODEL.json
+kinds = ["library"]
+# What this project is, from CONTROL/metadata/CONTEXT-MODEL.json. `make docs-hint` suggested
+# application and library: the library evidence is this package's own manifest, while the
+# application evidence is EXAMPLE-PROJECT/src/app.py, an example inside the repository rather
+# than a program this project ships. The owner read the hint and declared library only — kinds
+# are a declaration, never an inference, and kind-gated documents are undetermined until the
+# question is answered rather than silently not applicable.
 obligations = []   # e.g. ["gdpr", "soc2"]: declared duties only, never inferred
 
 [facts]

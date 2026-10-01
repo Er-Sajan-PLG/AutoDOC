@@ -116,11 +116,16 @@ def validate(instance, schema, path='$', errors=None):
     return errors
 
 
-def detector_specs():
+def profiler_module():
+    """The profiler, loaded once: its DETECTORS and KIND_DETECTORS are the detector vocabulary."""
     spec = importlib.util.spec_from_file_location('autodoc_profiler', PROFILER)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module.DETECTORS
+    return module
+
+
+def detector_specs():
+    return profiler_module().DETECTORS
 
 
 def detectors():
@@ -172,6 +177,41 @@ def first_applicable_phase(mapping, order):
         if (mapping or {}).get(phase_id) != 'off':
             return phase_id
     return None
+
+
+def kind_errors(model, profiler):
+    """Every declared kind says how it can be seen: a detector with limits, or a stated reason.
+
+    A kind that is neither detectable nor explicitly declaration-only would be an inference
+    waiting to happen, so the catalog refuses it.
+    """
+    errors = []
+    detectors = profiler.kind_specs()
+    declared = {kind['id'] for kind in model['kinds']}
+    for kind in model['kinds']:
+        spec = detectors.get(kind['id'])
+        detection = kind.get('detection')
+        if detection == 'files':
+            if not spec:
+                errors.append(f'kind {kind["id"]}: detection is files but no detector exists')
+                continue
+            if spec.get('exactness') not in ('exact', 'heuristic'):
+                errors.append(f'kind {kind["id"]}: detector needs exactness of exact or heuristic')
+            if not spec.get('limits'):
+                errors.append(f'kind {kind["id"]}: detector needs a limits statement')
+            if not spec.get('sources'):
+                errors.append(f'kind {kind["id"]}: detector needs at least one source')
+        elif detection == 'declaration-only':
+            if not str(kind.get('why_declared_only', '')).strip():
+                errors.append(f'kind {kind["id"]}: declaration-only needs a reason no file can '
+                              'tell, or it is an inference waiting to happen')
+            if spec:
+                errors.append(f'kind {kind["id"]}: declaration-only cannot also have a detector')
+        else:
+            errors.append(f'kind {kind["id"]}: needs detection of files or declaration-only')
+    for kind in sorted(set(detectors) - declared):
+        errors.append(f'kind {kind}: has a detector but is not declared in the context model')
+    return errors
 
 
 def admission_errors(rules, model, documents, profiles):
@@ -291,6 +331,7 @@ def check(indices=None):
     phases = set(order)
     kinds = {kind['id'] for kind in model['kinds']}
     facts = detector_specs()
+    profiler = profiler_module()
 
     documents, seen_ids, names, consumers = {}, set(), {}, {}
     for catalog, index in indices.items():
@@ -323,6 +364,7 @@ def check(indices=None):
                               'is generated, never authored')
 
     # Admission rules for the fact vocabulary: a fact needs a detector, stated limits, and a consumer.
+    errors.extend(kind_errors(model, profiler))
     for name, spec in sorted(facts.items()):
         if spec.get('exactness') not in ('exact', 'heuristic'):
             errors.append(f'{name}: detector needs exactness of exact or heuristic')
@@ -341,12 +383,16 @@ def check(indices=None):
         if token.startswith('kind:'):
             if token.split(':', 1)[1] not in kinds:
                 errors.append(f'{token}: kind is not declared in the context model')
+        elif token.startswith('phase>='):
+            if token.split('>=', 1)[1] not in phases:
+                errors.append(f'{token}: phase is not declared in the context model')
         elif token.startswith('obligation:'):
             if not re.fullmatch(r'[a-z][a-z0-9-]*', token.split(':', 1)[1]):
                 errors.append(f'{token}: obligation must be a lowercase hyphenated token')
         elif token not in facts:
             errors.append(f'{token}: undeclared predicate token (used by {", ".join(users)}); '
-                          'a predicate must be a detectable fact, a sentinel, kind:<id> or obligation:<id>')
+                          'a predicate must be a detectable fact, a sentinel, kind:<id>, '
+                          'phase>=<id> or obligation:<id>')
 
     for name, ids in sorted(names.items()):
         if len(ids) > 1:

@@ -53,6 +53,12 @@ LANGUAGES = {'.py': 'python', '.js': 'javascript', '.ts': 'typescript', '.tsx': 
              '.toml': 'toml', '.tf': 'terraform'}
 AI_DEPENDENCIES = {'openai', 'anthropic', '@anthropic-ai/sdk', 'langchain', 'llama-index',
                    'transformers', 'llama-cpp-python', 'google-generativeai', 'ollama', 'ai'}
+WEB_DEPENDENCIES = {'fastapi', 'flask', 'django', 'starlette', 'uvicorn', 'gunicorn', 'aiohttp',
+                    'tornado', 'sanic', 'bottle', 'express', 'koa', 'fastify', 'nest', 'hapi',
+                    'restify', '@nestjs/core', 'sails'}
+DATA_DEPENDENCIES = {'pandas', 'polars', 'pyspark', 'dbt-core', 'apache-airflow', 'airflow',
+                     'duckdb', 'dask', 'pyarrow', 'great-expectations', 'dagster', 'prefect',
+                     'kafka-python', 'confluent-kafka'}
 UI_DEPENDENCIES = {'react', 'vue', 'svelte', 'next', 'nuxt', 'angular', '@angular/core'}
 
 DETECTORS = {
@@ -224,12 +230,39 @@ def read_manifest(root, name, cache):
     return cache[name]
 
 
+def dependency_names(data):
+    """Declared dependency names, normalised enough to compare against a vocabulary."""
+    project = data.get('project', {})
+    declared = list(project.get('dependencies') or [])
+    declared += [item for group in (project.get('optional-dependencies') or {}).values()
+                 for item in group]
+    return {item.split('[')[0].split('>')[0].split('=')[0].split('<')[0].split(';')[0]
+            .strip().lower() for item in declared if item}
+
+
 def probe(root, pack, name, cache):
     """Return True, False, or None when the probe cannot be evaluated."""
     if pack == 'python':
         if name == 'entry_points':
             data = read_manifest(root, 'pyproject.toml', cache)
             return bool(data.get('project', {}).get('scripts'))
+        if name == 'packaged_library':
+            data = read_manifest(root, 'pyproject.toml', cache)
+            project = data.get('project', {})
+            # Declares a distribution but installs no command: the shape of a library.
+            return bool(project.get('name')) and not bool(project.get('scripts'))
+        if name == 'web_dependencies':
+            names = dependency_names(read_manifest(root, 'pyproject.toml', cache))
+            names |= {line.split('[')[0].split('>')[0].split('=')[0].split('<')[0].strip().lower()
+                      for line in read_manifest(root, 'requirements.txt', cache).get('__lines__', [])
+                      if line and not line.startswith('#')}
+            return bool(names & WEB_DEPENDENCIES)
+        if name == 'data_dependencies':
+            names = dependency_names(read_manifest(root, 'pyproject.toml', cache))
+            names |= {line.split('[')[0].split('>')[0].split('=')[0].split('<')[0].strip().lower()
+                      for line in read_manifest(root, 'requirements.txt', cache).get('__lines__', [])
+                      if line and not line.startswith('#')}
+            return bool(names & DATA_DEPENDENCIES)
         if name == 'dependencies':
             data = read_manifest(root, 'pyproject.toml', cache)
             project = data.get('project', {})
@@ -258,7 +291,105 @@ def probe(root, pack, name, cache):
             return bool(names & AI_DEPENDENCIES)
         if name == 'ui_dependencies':
             return bool(names & UI_DEPENDENCIES)
+        if name == 'packaged_library':
+            # An entry point means it is run; `exports`/`main` without `private` means it is
+            # imported. A private package with `main` is still a library inside its own repo, so
+            # the probe is deliberately only about publishing shape.
+            return bool(data.get('main') or data.get('exports')) and data.get('private') is not True
+        if name == 'web_dependencies':
+            return bool(names & WEB_DEPENDENCIES)
+        if name == 'data_dependencies':
+            return bool(names & DATA_DEPENDENCIES)
+        if name == 'workspaces':
+            return bool(data.get('workspaces'))
     return None
+
+
+KIND_DETECTORS = {
+    'library': {
+        'exactness': 'heuristic',
+        'limits': 'Packaging shape only: a CLI that is also installed as a library reads as an '
+                  'application, and a library published from a separate release repo reads as '
+                  'unknown here.',
+        'sources': [{'pack': 'python', 'probe': 'packaged_library'},
+                    {'pack': 'javascript', 'probe': 'packaged_library'},
+                    {'patterns': ['*.gemspec', 'Package.swift', 'lib/**/*.rb']}]},
+    'application': {
+        'exactness': 'heuristic',
+        'limits': 'Entry points and desktop/mobile manifest files; a program that is only ever '
+                  'run by another program is not seen.',
+        'sources': [{'pack': 'python', 'probe': 'entry_points'},
+                    {'pack': 'javascript', 'probe': 'bin'},
+                    {'patterns': ['main.py', 'app.py', 'manage.py', 'cli.py', 'cmd/**',
+                                  'src/main.rs', '*.desktop', 'Info.plist', 'AndroidManifest.xml',
+                                  'electron-builder.*', 'tauri.conf.json']}]},
+    'service': {
+        'exactness': 'heuristic',
+        'limits': 'Web-framework dependencies and deployment definitions; a service written on a '
+                  'bare socket, or a batch job with a Dockerfile, is classified wrong or not at '
+                  'all.',
+        'sources': [{'pack': 'python', 'probe': 'web_dependencies'},
+                    {'pack': 'javascript', 'probe': 'web_dependencies'},
+                    {'patterns': ['Dockerfile', 'Dockerfile.*', 'docker-compose*.yml',
+                                  'docker-compose*.yaml', 'Procfile', 'fly.toml', 'render.yaml',
+                                  'serverless.yml', 'openapi.yaml', 'openapi.json']}]},
+    'frontend': {
+        'exactness': 'heuristic',
+        'limits': 'UI dependencies and client build configuration; a server-rendered site with no '
+                  'client build is not seen.',
+        'sources': [{'pack': 'javascript', 'probe': 'ui_dependencies'},
+                    {'patterns': ['index.html', 'public/index.html', 'src/App.vue',
+                                  'src/App.svelte', 'angular.json', 'next.config.*',
+                                  'vite.config.*', 'nuxt.config.*', 'astro.config.*']}]},
+    'data': {
+        'exactness': 'heuristic',
+        'limits': 'Data libraries and pipeline layouts; SQL files alone are deliberately not '
+                  'enough, because migrations look the same.',
+        'sources': [{'pack': 'python', 'probe': 'data_dependencies'},
+                    {'patterns': ['dbt_project.yml', 'dagster.yaml', 'prefect.yaml', 'dags/**',
+                                  'notebooks/**', 'pipelines/**', '*.ipynb']}]},
+    'ml': {
+        'exactness': 'heuristic',
+        'limits': 'AI libraries and model artifacts; a service that calls a hosted model API '
+                  'through a thin client may not be seen as ML.',
+        'sources': [{'pack': 'python', 'probe': 'ai_dependencies'},
+                    {'pack': 'javascript', 'probe': 'ai_dependencies'},
+                    {'patterns': ['prompts/**', 'evals/**', '**/*.safetensors', '**/*.onnx',
+                                  '**/*.pt', 'models/**/*.json']}]},
+    'infrastructure': {
+        'exactness': 'exact',
+        'limits': 'Declared infrastructure-as-code and cluster layout files; hand-run '
+                  'infrastructure leaves no file to find.',
+        'sources': [{'patterns': ['*.tf', '**/*.tfvars', 'terraform/**', 'helm/**', 'charts/**',
+                                  'k8s/**', 'kubernetes/**', 'ansible/**', 'playbooks/**',
+                                  'Pulumi.yaml', 'cdk.json']}]},
+    'platform': {
+        'exactness': 'heuristic',
+        'limits': 'Monorepo workspace markers; several unrelated projects in one repository '
+                  'without a workspace file are not seen.',
+        'sources': [{'pack': 'javascript', 'probe': 'workspaces'},
+                    {'patterns': ['pnpm-workspace.yaml', 'lerna.json', 'nx.json', 'turbo.json',
+                                  'go.work', 'packages/*/package.json', 'apps/*/package.json',
+                                  'services/*/package.json']}]},
+}
+# A kind with no reliable file evidence is declared, never guessed: the model says why.
+DECLARATION_ONLY_LIMITS = ('No file distinguishes this kind from an application or a library, so '
+                           'AutoDOC asks instead of inferring.')
+
+
+def kind_specs(model=None):
+    """The three-valued kind detectors: what each kind is detected from, and what that misses."""
+    return KIND_DETECTORS
+
+
+def detect_kinds(files, ecosystems, cache, root):
+    """Return {kind: {'value': .., 'evidence': ..}} for every kind with a detector."""
+    found = {}
+    for kind, spec in KIND_DETECTORS.items():
+        value, evidence = evaluate(spec, files, set(ecosystems), cache, root, {})
+        found[kind] = {'value': value, 'exactness': spec['exactness'],
+                       'evidence': evidence, 'limits': spec['limits']}
+    return found
 
 
 def content_hits(root, source, files, cache):
@@ -340,10 +471,14 @@ def profile(root, declared=None):
                            'readers': [name for name in ecosystems if name in PACKS],
                            'unread': [name for name in ecosystems if name not in PACKS]},
             'facts': facts,
+            'kinds': detect_kinds(files, ecosystems, cache, root),
             'excluded': skipped_dirs(root, tracked),
             'note': 'File-presence facts with stated limits, never behavior. `unknown` means no '
-                    'configured source could be evaluated; it never means false. `excluded` '
-                    'lists the generated, vendored and test-input directories not looked at.'}
+                    'configured source could be evaluated; it never means false. `kinds` holds '
+                    'evidence for the project kinds that have a detector; it is a hint, never a '
+                    'declaration, and the requirements are driven by the declared `kinds` in '
+                    'autodoc.toml. `excluded` lists the generated, vendored and test-input '
+                    'directories not looked at.'}
 
 
 def summary(document):

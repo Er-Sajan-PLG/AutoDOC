@@ -88,7 +88,7 @@
                   "uniqueItems": true,
                   "items": {
                     "type": "string",
-                    "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|obligation:[a-z][a-z0-9-]*)$"
+                    "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|phase>=[a-z]+|obligation:[a-z][a-z0-9-]*)$"
                   },
                   "properties": {
                     "all": {
@@ -97,7 +97,7 @@
                       "uniqueItems": true,
                       "items": {
                         "type": "string",
-                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|obligation:[a-z][a-z0-9-]*)$"
+                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|phase>=[a-z]+|obligation:[a-z][a-z0-9-]*)$"
                       }
                     },
                     "any": {
@@ -106,10 +106,11 @@
                       "uniqueItems": true,
                       "items": {
                         "type": "string",
-                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|obligation:[a-z][a-z0-9-]*)$"
+                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|phase>=[a-z]+|obligation:[a-z][a-z0-9-]*)$"
                       }
                     }
-                  }
+                  },
+                  "description": "Predicate tokens: a detectable fact, `always`/`assess`, `kind:<id>` (answered only by declared kinds), `phase>=<id>` (true from that phase on; undetermined while undeclared) or `obligation:<id>`."
                 },
                 "owner": {
                   "type": "string",

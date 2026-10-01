@@ -75,7 +75,7 @@ Data and information management.
 | `DOC-A05-004` | Data lineage | contextual | idea | has_persistent_state | Record data lineage for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-005` | Data classification | contextual | idea | has_persistent_state | Record data classification for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-006` | Retention policy | contextual | idea | has_persistent_state | Record retention policy for data and information management. | auditors | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A05-007` | ETL specification | contextual | idea | has_persistent_state | Record etl specification for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-007` | ETL specification | contextual | idea | any | Record etl specification for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-008` | Data quality | contextual | idea | has_persistent_state | Record data quality for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-009` | PII inventory | contextual | idea | has_persistent_state | Record pii inventory for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A05-010` | Disposal procedure | contextual | idea | has_persistent_state | Record disposal procedure for data and information management. | — | pre-release | project owner | human-review | Hardened | — |
@@ -124,7 +124,7 @@ APIs and interfaces.
 | `DOC-A08-005` | Webhook contract | contextual | idea | has_public_api_surface | Record webhook contract for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-006` | Error catalog | extended | idea | has_public_api_surface | Record error catalog for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-007` | Rate limits | contextual | idea | has_public_api_surface | Record rate limits for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A08-008` | SDK guide | contextual | idea | has_public_api_surface | Record sdk guide for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-008` | SDK guide | contextual | idea | all | Record sdk guide for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-009` | Integration guide | extended | idea | has_public_api_surface | Record integration guide for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-010` | Compatibility matrix | contextual | idea | has_public_api_surface | Record compatibility matrix for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 
@@ -176,7 +176,7 @@ AI ML and agents.
 | Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `DOC-A21-001` | Model card | extended | idea | has_ai | Record model card for ai ml and agents. | — | pre-release | project owner | human-review | Hardened | — |
-| `DOC-A21-002` | Model registry | contextual | idea | has_ai | Record model registry for ai ml and agents. | — | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-002` | Model registry | contextual | idea | all | Record model registry for ai ml and agents. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A21-003` | Prompt registry | extended | idea | has_ai | Record prompt registry for ai ml and agents. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A21-004` | Tool authorization matrix | extended | idea | has_ai | Record tool authorization matrix for ai ml and agents. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A21-005` | Agent behavior specification | extended | idea | has_ai | Record agent behavior specification for ai ml and agents. | — | pre-release | project owner | human-review | Hardened | — |
