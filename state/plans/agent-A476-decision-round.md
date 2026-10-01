@@ -4,7 +4,7 @@
 | --- | --- |
 | Objective | Present P-001…P-006 one at a time and execute each stated verdict; record each decision in the commit that implements it |
 | Owner of the work | `A476` (session `20261001-1242-A476`) |
-| Status | **ACTIVE** (kept until the owner closes the session — MACP local rule 8) |
+| Status | **PAUSED (awaiting owner)** — the round is executed (P-001…P-006; P-004's apply is owner-run); kept until the owner closes the session (MACP local rule 8) |
 | Opened (UTC) | 2026-10-01T12:42Z |
 
 ## Scope
@@ -28,3 +28,8 @@ deferrals.
 3. Execute a stated verdict as its own commit; `make ci` exit 0; push; the decision recorded in the
    same commit via `state/DECISIONS.md`.
 4. Repeat per item; hand off under rule 10; the session stays open until the owner closes it.
+
+## Progress
+
+- 2026-10-01: executed P-003 (`c7980f9`), P-001 (`039e508`), P-002 (`3ad5a57`), recorded P-004…P-006,
+  reconciled and handed off (`5dd9112`, `e14135e`). Rule-10 self-check passed on a fresh clone.
