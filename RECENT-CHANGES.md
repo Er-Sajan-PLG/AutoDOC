@@ -34,6 +34,10 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
+- d384d4e 2026-10-01 Correct the core-list review and answer the owner's three fact questions
+- f06d5c0 2026-10-01 Expand the core-list review so no row can be approved by accident
+- 5164b06 2026-10-01 Ask the owner to review the core list in one sitting, with every row reasoned
+- 2454ea1 2026-10-01 License Apache-2.0: the owner decided, and the tree now says so
 - a398dbd 2026-10-01 Declare when AutoDOC runs, and make the scheduled run triage instead of a second gate
 - 5d385cf 2026-10-01 Regenerate the test inventory for the language tests
 - 6d1c444 2026-10-01 Integrate each language's own tool, and label every generator with its exactness
@@ -46,25 +50,20 @@ auto_generated: false
 
 ## Changed paths at update time
 
-- `.github/workflows/release.yml`
-- `CHANGELOG.md`
-- `CONTEXT-SNAPSHOT.md`
-- `CONTROL/metadata/MASTER-INDEX.json`
-- `CONTROL/metadata/RELATIONSHIP-GRAPH.yaml`
-- `CONTROL/policies/DOCUMENTATION-POLICY.md`
-- `LICENSE`
-- `LICENSE-CHOICE.md`
-- `QUICK-START.md`
+- `CATALOG-A/INDEX.yaml`
+- `CATALOG-B/INDEX.yaml`
+- `CONTROL/metadata/CATALOG-RULES.json`
 - `README.md`
-- `docs/00-governance/ADOPTION.md`
-- `docs/00-governance/DOCUMENT-CONTROL.md`
-- `docs/00-governance/ENGINE-COVERAGE.md`
-- `docs/00-governance/INVENTORY.yaml`
-- `docs/00-governance/LICENSE-CHOICE.md`
-- `docs/00-governance/LICENSE-DECISION.md`
-- `docs/00-governance/LIMITATIONS.md`
-- `docs/05-architecture/AUTODOC-ARCHITECTURE.md`
+- `autodoc.toml`
+- `docs/00-governance/CORE-LIST-REVIEW.md`
+- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-A.md`
+- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md`
 - `docs/META/CODE-INVENTORY.md`
 - `docs/META/OUTLINE.md`
-- … and 7 more; use git diff --cached --name-only.
+- `docs/META/TEST-INVENTORY.md`
+- `scripts/doc-control/check_catalog.py`
+- `scripts/intelligence/profile.py`
+- `tests/test_catalog.py`
+- `tests/test_profile.py`
+- `tests/test_resolver.py`
 <!-- auto:end -->

@@ -174,9 +174,9 @@ Handoff and tracking.
 
 | Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B08-001` | Current state | core | build | always | Record current state for handoff and tracking. | contributors | active development | project owner | human-review | Project-Phase | — |
-| `DEV-B08-002` | Next action | core | build | always | Record next action for handoff and tracking. | contributors | active development | project owner | human-review | Project-Phase | — |
-| `DEV-B08-003` | Recent changes | core | build | always | Record recent changes for handoff and tracking. | contributors | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B08-001` | Current state | extended | idea | always | Record current state for handoff and tracking. | contributors | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B08-002` | Next action | extended | idea | always | Record next action for handoff and tracking. | contributors | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B08-003` | Recent changes | extended | idea | always | Record recent changes for handoff and tracking. | contributors | active development | project owner | human-review | Project-Phase | — |
 | `DEV-B08-004` | Handoff notes | contextual | idea | always | Record handoff notes for handoff and tracking. | — | active development | project owner | human-review | Project-Phase | — |
 
 ## B09-AGENT-CONTEXT

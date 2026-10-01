@@ -337,33 +337,6 @@
         }
       },
       {
-        "id": "DEV-B08-001",
-        "applies_when": ["always"],
-        "why": "Working context; the substrate AutoDOC itself runs on.",
-        "severity_by_phase": {
-          "idea": "off",
-          "prototype": "off"
-        }
-      },
-      {
-        "id": "DEV-B08-002",
-        "applies_when": ["always"],
-        "why": "Human priorities must be recorded, never inferred from Git.",
-        "severity_by_phase": {
-          "idea": "off",
-          "prototype": "off"
-        }
-      },
-      {
-        "id": "DEV-B08-003",
-        "applies_when": ["always"],
-        "why": "A short delta log beats reading raw commit history.",
-        "severity_by_phase": {
-          "idea": "off",
-          "prototype": "off"
-        }
-      },
-      {
         "id": "DEV-B09-001",
         "applies_when": ["uses_agents"],
         "why": "The context file an agent reads first.",
@@ -384,7 +357,7 @@
       {
         "id": "DEV-B10-003",
         "applies_when": ["always"],
-        "why": "Direct dependencies and version policy; the most common onboarding failure.",
+        "why": "Direct dependencies and where their versions are pinned; the most common onboarding failure.",
         "severity_by_phase": {
           "idea": "off",
           "prototype": "off"
@@ -401,7 +374,7 @@
       },
       {
         "id": "DOC-A08-001",
-        "applies_when": ["has_public_api_surface"],
+        "applies_when": ["has_http_api"],
         "why": "The machine-readable contract for a machine-callable interface.",
         "severity_by_phase": {
           "idea": "off",
@@ -530,6 +503,9 @@
       "DEV-B06-004",
       "DEV-B07-002",
       "DEV-B07-003",
+      "DEV-B08-001",
+      "DEV-B08-002",
+      "DEV-B08-003",
       "DEV-B09-010",
       "DEV-B09-014",
       "DEV-B11-002",
@@ -630,7 +606,8 @@
       "DOC-A07-004": ["handles_personal_data"],
       "DOC-A07-005": ["handles_personal_data"],
       "DOC-A07-007": ["handles_personal_data"],
-      "DOC-A24-009": ["handles_personal_data"]
+      "DOC-A24-009": ["handles_personal_data"],
+      "DOC-A08-001": ["has_http_api"]
     },
     "by_domain": {
       "A01-PRODUCT": ["assess"],
@@ -794,7 +771,7 @@
         "events": ["onboarding", "dependency-change"]
       },
       "DEV-B10-003": {
-        "question": "Which dependencies, at which versions, and how are they updated?",
+        "question": "How do I install the declared dependencies, and where are the versions pinned?",
         "reader": "contributors",
         "support": "checked",
         "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],
@@ -892,7 +869,7 @@
         "events": ["incident", "release"]
       },
       "DOC-A09-006": {
-        "question": "How are dependencies chosen, updated and removed?",
+        "question": "How are dependencies chosen, updated and removed, and how are their vulnerabilities and licences handled?",
         "reader": "contributors",
         "support": "checked",
         "checks": ["presence", "stubs", "placeholders", "links.local", "freshness.review"],

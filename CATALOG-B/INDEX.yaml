@@ -1027,13 +1027,10 @@
           "id": "DEV-B08-001",
           "name": "Current state",
           "type": "SPEC",
-          "tier": "core",
-          "tier_reason": "Working context; the substrate AutoDOC itself runs on.",
-          "severity_by_phase": {
-            "idea": "off",
-            "prototype": "off"
-          },
-          "phase_min": "build",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
@@ -1068,13 +1065,10 @@
           "id": "DEV-B08-002",
           "name": "Next action",
           "type": "SPEC",
-          "tier": "core",
-          "tier_reason": "Human priorities must be recorded, never inferred from Git.",
-          "severity_by_phase": {
-            "idea": "off",
-            "prototype": "off"
-          },
-          "phase_min": "build",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
@@ -1109,13 +1103,10 @@
           "id": "DEV-B08-003",
           "name": "Recent changes",
           "type": "SPEC",
-          "tier": "core",
-          "tier_reason": "A short delta log beats reading raw commit history.",
-          "severity_by_phase": {
-            "idea": "off",
-            "prototype": "off"
-          },
-          "phase_min": "build",
+          "tier": "extended",
+          "tier_reason": null,
+          "severity_by_phase": {},
+          "phase_min": "idea",
           "applies_when": [
             "always"
           ],
@@ -1697,7 +1688,7 @@
           "name": "Dependency setup",
           "type": "SPEC",
           "tier": "core",
-          "tier_reason": "Direct dependencies and version policy; the most common onboarding failure.",
+          "tier_reason": "Direct dependencies and where their versions are pinned; the most common onboarding failure.",
           "severity_by_phase": {
             "idea": "off",
             "prototype": "off"
@@ -1706,7 +1697,7 @@
           "applies_when": [
             "always"
           ],
-          "question": "Which dependencies, at which versions, and how are they updated?",
+          "question": "How do I install the declared dependencies, and where are the versions pinned?",
           "reader": "contributors",
           "support": "checked",
           "checks": [

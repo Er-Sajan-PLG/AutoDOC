@@ -168,6 +168,17 @@ class FixtureMatrixTests(unittest.TestCase):
         self.assertEqual(mine['facts']['has_ui']['value'], 'false')
         self.assertIn('tests/fixtures', mine['excluded'])
 
+    def test_a_typed_library_surface_is_not_an_http_api(self):
+        """The split that stops a typed library being told it needs an OpenAPI document."""
+        data = self.profile('ts-library')
+        self.assertEqual(data['facts']['has_public_api_surface']['value'], 'true')
+        self.assertEqual(data['facts']['has_http_api']['value'], 'false',
+                         'a typed surface is a public API, not an HTTP contract')
+        mine = profiler.profile(ROOT)['facts']['has_http_api']
+        self.assertEqual(mine['value'], 'true')
+        self.assertIn('EXAMPLE-PROJECT/routes.json', mine['evidence'],
+                      'detection sees the demo fixture; the declared override is what answers no')
+
     def test_content_scan_records_the_file_not_the_value(self):
         entry = profiler.profile(FIXTURES / 'go-service')['facts']['has_network_listener']
         self.assertEqual(entry['value'], 'true')

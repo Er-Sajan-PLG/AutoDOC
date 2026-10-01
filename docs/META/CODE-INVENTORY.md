@@ -85,9 +85,9 @@ Extracted with the interpreter's own parser. Signatures and first docstring line
 | `scripts/doc-control/check_catalog.py` | 187 | function | `kind_errors` | `(model, profiler)` | Every declared kind says how it can be seen: a detector with limits, or a stated reason. |
 | `scripts/doc-control/check_catalog.py` | 222 | function | `fact_errors` | `(profiler, facts, consumers)` | Every fact states how it is answered: file evidence with limits, or a declaration only. |
 | `scripts/doc-control/check_catalog.py` | 256 | function | `admission_errors` | `(rules, model, documents, profiles)` | The admission rule, enforced for every type any profile can list. |
-| `scripts/doc-control/check_catalog.py` | 311 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` | Profiles are deltas of the default core set, and every change states a reason. |
-| `scripts/doc-control/check_catalog.py` | 360 | function | `index_documents` | `(index)` | — |
-| `scripts/doc-control/check_catalog.py` | 364 | function | `check` | `(indices=None)` | Return (errors, warnings) for the schema, the rules and their cross-references. |
+| `scripts/doc-control/check_catalog.py` | 314 | function | `profile_errors` | `(rules, profiles, documents, phases, order)` | Profiles are deltas of the default core set, and every change states a reason. |
+| `scripts/doc-control/check_catalog.py` | 363 | function | `index_documents` | `(index)` | — |
+| `scripts/doc-control/check_catalog.py` | 367 | function | `check` | `(indices=None)` | Return (errors, warnings) for the schema, the rules and their cross-references. |
 | `scripts/doc-control/check_external_links.py` | 38 | function | `model_defaults` | `()` | The rate limits declared in the trigger model; the CLI defaults must equal them. |
 | `scripts/doc-control/check_external_links.py` | 49 | function | `controlled_documents` | `(root=ROOT)` | The controlled Markdown set. Templates are excluded: their links are placeholders. |
 | `scripts/doc-control/check_external_links.py` | 65 | function | `extract` | `(text)` | (line, url) pairs from prose, not from fenced code blocks. Order preserved, deduped later. |
@@ -216,20 +216,20 @@ Extracted with the interpreter's own parser. Signatures and first docstring line
 | `scripts/intelligence/enforce.py` | 402 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` | The JSON shape: everything the terminal text says, not only the prose. |
 | `scripts/intelligence/enforce.py` | 419 | function | `run` | `(args)` | — |
 | `scripts/intelligence/enforce.py` | 455 | function | `main` | `()` | — |
-| `scripts/intelligence/profile.py` | 195 | function | `fact_specs` | `()` | Every fact in the vocabulary, with its detection route. |
-| `scripts/intelligence/profile.py` | 210 | function | `tracked_files` | `(root)` | Tracked files when Git is available (honors .gitignore); otherwise a pruned walk. |
-| `scripts/intelligence/profile.py` | 228 | function | `skipped_dir` | `(relative)` | A path inside a generated, vendored or test-input directory is not project evidence. |
-| `scripts/intelligence/profile.py` | 233 | function | `skipped_dirs` | `(root, files)` | The directories this profile ignored, so the report can say what it did not look at. |
-| `scripts/intelligence/profile.py` | 247 | function | `matches` | `(relative, pattern)` | fnmatch has no recursive `**`; a leading `**/` also has to match the bare name. |
-| `scripts/intelligence/profile.py` | 258 | function | `read_manifest` | `(root, name, cache)` | — |
-| `scripts/intelligence/profile.py` | 278 | function | `dependency_names` | `(data)` | Declared dependency names, normalised enough to compare against a vocabulary. |
-| `scripts/intelligence/profile.py` | 288 | function | `probe` | `(root, pack, name, cache)` | Return True, False, or None when the probe cannot be evaluated. |
-| `scripts/intelligence/profile.py` | 425 | function | `kind_specs` | `(model=None)` | The three-valued kind detectors: what each kind is detected from, and what that misses. |
-| `scripts/intelligence/profile.py` | 430 | function | `detect_kinds` | `(files, ecosystems, cache, root)` | Return {kind: {'value': .., 'evidence': ..}} for every kind with a detector. |
-| `scripts/intelligence/profile.py` | 440 | function | `content_hits` | `(root, source, files, cache)` | Bounded content scan; returns matching paths only, never matched text. |
-| `scripts/intelligence/profile.py` | 460 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` | Three-valued evaluation: true if anything matched, unknown if nothing could run. |
-| `scripts/intelligence/profile.py` | 490 | function | `profile` | `(root, declared=None)` | Return a deterministic three-valued profile of the repository rooted at `root`. |
-| `scripts/intelligence/profile.py` | 538 | function | `summary` | `(document)` | Boolean projection for callers that only need the values that are true. |
+| `scripts/intelligence/profile.py` | 206 | function | `fact_specs` | `()` | Every fact in the vocabulary, with its detection route. |
+| `scripts/intelligence/profile.py` | 221 | function | `tracked_files` | `(root)` | Tracked files when Git is available (honors .gitignore); otherwise a pruned walk. |
+| `scripts/intelligence/profile.py` | 239 | function | `skipped_dir` | `(relative)` | A path inside a generated, vendored or test-input directory is not project evidence. |
+| `scripts/intelligence/profile.py` | 244 | function | `skipped_dirs` | `(root, files)` | The directories this profile ignored, so the report can say what it did not look at. |
+| `scripts/intelligence/profile.py` | 258 | function | `matches` | `(relative, pattern)` | fnmatch has no recursive `**`; a leading `**/` also has to match the bare name. |
+| `scripts/intelligence/profile.py` | 269 | function | `read_manifest` | `(root, name, cache)` | — |
+| `scripts/intelligence/profile.py` | 289 | function | `dependency_names` | `(data)` | Declared dependency names, normalised enough to compare against a vocabulary. |
+| `scripts/intelligence/profile.py` | 299 | function | `probe` | `(root, pack, name, cache)` | Return True, False, or None when the probe cannot be evaluated. |
+| `scripts/intelligence/profile.py` | 436 | function | `kind_specs` | `(model=None)` | The three-valued kind detectors: what each kind is detected from, and what that misses. |
+| `scripts/intelligence/profile.py` | 441 | function | `detect_kinds` | `(files, ecosystems, cache, root)` | Return {kind: {'value': .., 'evidence': ..}} for every kind with a detector. |
+| `scripts/intelligence/profile.py` | 451 | function | `content_hits` | `(root, source, files, cache)` | Bounded content scan; returns matching paths only, never matched text. |
+| `scripts/intelligence/profile.py` | 471 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` | Three-valued evaluation: true if anything matched, unknown if nothing could run. |
+| `scripts/intelligence/profile.py` | 501 | function | `profile` | `(root, declared=None)` | Return a deterministic three-valued profile of the repository rooted at `root`. |
+| `scripts/intelligence/profile.py` | 549 | function | `summary` | `(document)` | Boolean projection for callers that only need the values that are true. |
 | `scripts/intelligence/recommend.py` | 28 | function | `load_module` | `(name, relative)` | — |
 | `scripts/intelligence/recommend.py` | 40 | function | `languages_module` | `()` | The per-language generator registry, loaded on first use. |
 | `scripts/intelligence/recommend.py` | 56 | function | `language_summary` | `(profile_document, probe=True)` | — |

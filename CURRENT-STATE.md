@@ -46,7 +46,7 @@ are mapped to human adoption or architecture review; declared ownership is check
 The catalog is generated from `CONTROL/metadata/CATALOG-RULES.json` and validated against
 `CATALOG-SCHEMA.json`, so document type, tier, phase, maturity and applicability are data a
 reviewer can diff. `priority` is gone: it came from three domain prefixes and classified UAT as
-core for every project. It is replaced by 27 hand-picked core types (three of them gated by
+core for every project. It is replaced by 24 hand-picked core types (three of them gated by
 declared traits) — including `README`, which
 was missing from all 260 — each with a recorded reason, a detectable `applies_when` predicate
 and an authored `severity_by_phase` (the phases it is off in; `phase_min` is derived, never a
@@ -86,7 +86,7 @@ flow, hazard analysis and the deeper privacy set are not applicable here.
 
 <!-- auto:start -->
 - Catalog types: 265 (not necessarily instantiated).
-- Controlled docs: 66 (24 generated, 42 human-owned).
+- Controlled docs: 67 (24 generated, 43 human-owned).
 - Overdue human-owned docs: 0.
 - Open gaps: see `docs/00-governance/ENGINE-COVERAGE.md`; this block does not infer intent.
 <!-- auto:end -->

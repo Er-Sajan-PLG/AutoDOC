@@ -2058,7 +2058,7 @@
           },
           "phase_min": "beta",
           "applies_when": [
-            "has_public_api_surface"
+            "has_http_api"
           ],
           "question": "What is the machine-readable contract for this interface?",
           "reader": "external-users",
@@ -2541,7 +2541,7 @@
           "applies_when": [
             "has_third_party_deps"
           ],
-          "question": "How are dependencies chosen, updated and removed?",
+          "question": "How are dependencies chosen, updated and removed, and how are their vulnerabilities and licences handled?",
           "reader": "contributors",
           "support": "checked",
           "checks": [

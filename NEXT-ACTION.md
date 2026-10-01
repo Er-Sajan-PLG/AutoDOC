@@ -46,12 +46,14 @@ checked-in files and must not be claimed as complete.
 4. **Owner decisions pending, in order:**
    - Done: the phase is declared (`build`, 2026-09-30) and kinds too (`library`); the evidence
      for both comes from `make docs-hint` and the declaration is what counts.
-   - **Review the 27-type core list** and the phasing in `CATALOG-RULES.json` — three of the core
+   - **Review the 24-type core list** and the phasing in `CATALOG-RULES.json` — three of the core
      types (`PII inventory`, `Cardholder data flow`, `Hazard analysis`) are gated by declared
      traits and only apply once an owner answers; then record the 12 applicable core decisions
-     with `[instantiated]`, `[satisfied_by]` or `[not_applicable]` reasons. Four of them rest on
-     facts that are true only because `EXAMPLE-PROJECT` contains those files, so their reasons
-     matter more than their answer.
+     with `[instantiated]`, `[satisfied_by]` or `[not_applicable]` reasons. Two rows still rest on
+     facts that are true only because `EXAMPLE-PROJECT` contains those files (`has_persistent_state`
+     on `DOC-A05-001`, `has_env` on `DOC-A14-005`); the API-surface facts were cleaned up on
+     2026-10-01, and those two are queued in the fact-override step, so their reasons matter more
+     than their answer.
    - Kinds and traits are implemented: `kind:` and `phase>=` are three-valued and now consumed,
      and `handles_personal_data`, `handles_payments`, `safety_critical` are declaration-only
      facts whose documents stay undetermined until answered. `audience` is validated and

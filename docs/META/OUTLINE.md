@@ -3266,74 +3266,71 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: Core list review — full context for the owner decision
 - L2 line 30: Review log
-- L2 line 34: Part 0 — How a row is enforced
-- L2 line 63: Part 1 — The sheet: mark any row you would change
-- L2 line 99: Part 1b — The 12 open decisions, split three ways
-- L2 line 120: Part 2 — Full context, row by row
-- L3 line 124: B01-FOUNDATION
-- L4 line 126: `DEV-B01-001` · Problem statement
-- L4 line 133: `DEV-B01-002` · Goals and non goals
-- L4 line 140: `DEV-B01-003` · Scope
-- L4 line 147: `DEV-B01-006` · README
-- L3 line 154: B04-ARCHITECTURE
-- L4 line 156: `DEV-B04-001` · System overview
-- L4 line 163: `DEV-B04-002` · ADR
-- L3 line 170: B05-CONTRACTS
-- L4 line 172: `DEV-B05-001` · Module contract
-- L3 line 179: B07-TESTING
-- L4 line 181: `DEV-B07-001` · Test strategy
-- L3 line 188: B08-TRACKING
-- L4 line 190: `DEV-B08-001` · Current state
-- L4 line 197: `DEV-B08-002` · Next action
-- L4 line 204: `DEV-B08-003` · Recent changes
-- L3 line 211: B09-AGENT-CONTEXT
-- L4 line 213: `DEV-B09-001` · AGENTS.md
-- L3 line 220: B10-SETUP
-- L4 line 222: `DEV-B10-001` · Local setup
-- L4 line 229: `DEV-B10-003` · Dependency setup
-- L3 line 236: A05-DATA
-- L4 line 238: `DOC-A05-001` · Data model
-- L3 line 245: A08-APIS
-- L4 line 247: `DOC-A08-001` · OpenAPI
-- L3 line 254: A09-DEVELOPMENT
-- L4 line 256: `DOC-A09-005` · Contributing guide
-- L3 line 263: A10-BUILD
-- L4 line 265: `DOC-A10-008` · License
-- L3 line 272: A14-CONFIGURATION
-- L4 line 274: `DOC-A14-005` · Environment variable schema
-- L3 line 281: A15-RELEASE
-- L4 line 283: `DOC-A15-003` · Changelog
-- L4 line 290: `DOC-A15-006` · Rollback procedure
-- L3 line 297: A16-OPERATIONS
-- L4 line 299: `DOC-A16-003` · Runbook
-- L3 line 306: A22-USER-SUPPORT
-- L4 line 308: `DOC-A22-004` · API quickstart
-- L3 line 315: A23-LIFECYCLE
-- L4 line 317: `DOC-A23-001` · Deprecation policy
-- L3 line 324: A05-DATA
-- L4 line 326: `DOC-A05-009` · PII inventory
-- L3 line 333: A06-SECURITY
-- L4 line 335: `DOC-A06-011` · Cardholder data flow
-- L3 line 342: A20-GOVERNANCE
-- L4 line 344: `DOC-A20-008` · Hazard analysis
-- L2 line 351: Part 3 — The five profiles, in depth
-- L3 line 365: `default` — Default
-- L3 line 372: `startup` — Startup
-- L3 line 381: `oss-library` — Open-source library
-- L3 line 392: `internal-service` — Internal service
-- L3 line 403: `regulated` — Regulated
-- L2 line 414: Part 4 — The six calls
-- L3 line 418: Call 1 — `DEV-B10-003` Dependency setup overlaps `DEV-B10-001` Local setup
-- L3 line 423: Call 2 — The `has_deploy` gate on `DOC-A15-006` Rollback procedure and `DOC-A16-003` Runbook
-- L3 line 427: Call 3 — `startup` removes `DOC-A23-001` Deprecation policy (rationale rewritten)
-- L3 line 433: Call 4 — `internal-service` removes `DOC-A10-008` License (rationale rewritten)
-- L3 line 439: Call 5 — `regulated` adds exactly ROPA, Retention policy, Control catalog and Access review evidence
-- L3 line 442: Call 6 — Should anything be demoted from core? (`DOC-A15-003` Changelog is the only candidate)
-- L2 line 445: Part 5 — Your flags, with options
-- L3 line 449: Flag A — `DOC-A08-001` OpenAPI and `DOC-A22-004` API quickstart
-- L3 line 459: Flag B — `DEV-B08-001` Current state, `DEV-B08-002` Next action, `DEV-B08-003` Recent changes
-- L3 line 468: Flag C — `DEV-B10-003` Dependency setup vs `DOC-A09-006` Dependency policy
-- L2 line 476: Part 6 — What happens on confirmation
+- L2 line 36: Part 0 — How a row is enforced
+- L2 line 65: Part 1 — The sheet: mark any row you would change
+- L2 line 98: Part 1b — The 12 open decisions, split three ways
+- L2 line 119: Part 2 — Full context, row by row
+- L3 line 123: B01-FOUNDATION
+- L4 line 125: `DEV-B01-001` · Problem statement
+- L4 line 132: `DEV-B01-002` · Goals and non goals
+- L4 line 139: `DEV-B01-003` · Scope
+- L4 line 146: `DEV-B01-006` · README
+- L3 line 153: B04-ARCHITECTURE
+- L4 line 155: `DEV-B04-001` · System overview
+- L4 line 162: `DEV-B04-002` · ADR
+- L3 line 169: B05-CONTRACTS
+- L4 line 171: `DEV-B05-001` · Module contract
+- L3 line 178: B07-TESTING
+- L4 line 180: `DEV-B07-001` · Test strategy
+- L3 line 187: B08-TRACKING — moved to extended (flag B)
+- L3 line 191: B09-AGENT-CONTEXT
+- L4 line 193: `DEV-B09-001` · AGENTS.md
+- L3 line 200: B10-SETUP
+- L4 line 202: `DEV-B10-001` · Local setup
+- L4 line 209: `DEV-B10-003` · Dependency setup
+- L3 line 216: A05-DATA
+- L4 line 218: `DOC-A05-001` · Data model
+- L3 line 225: A08-APIS
+- L4 line 227: `DOC-A08-001` · OpenAPI
+- L3 line 234: A09-DEVELOPMENT
+- L4 line 236: `DOC-A09-005` · Contributing guide
+- L3 line 243: A10-BUILD
+- L4 line 245: `DOC-A10-008` · License
+- L3 line 252: A14-CONFIGURATION
+- L4 line 254: `DOC-A14-005` · Environment variable schema
+- L3 line 261: A15-RELEASE
+- L4 line 263: `DOC-A15-003` · Changelog
+- L4 line 270: `DOC-A15-006` · Rollback procedure
+- L3 line 277: A16-OPERATIONS
+- L4 line 279: `DOC-A16-003` · Runbook
+- L3 line 286: A22-USER-SUPPORT
+- L4 line 288: `DOC-A22-004` · API quickstart
+- L3 line 295: A23-LIFECYCLE
+- L4 line 297: `DOC-A23-001` · Deprecation policy
+- L3 line 304: A05-DATA
+- L4 line 306: `DOC-A05-009` · PII inventory
+- L3 line 313: A06-SECURITY
+- L4 line 315: `DOC-A06-011` · Cardholder data flow
+- L3 line 322: A20-GOVERNANCE
+- L4 line 324: `DOC-A20-008` · Hazard analysis
+- L2 line 331: Part 3 — The five profiles, in depth
+- L3 line 345: `default` — Default
+- L3 line 352: `startup` — Startup
+- L3 line 361: `oss-library` — Open-source library
+- L3 line 372: `internal-service` — Internal service
+- L3 line 383: `regulated` — Regulated
+- L2 line 394: Part 4 — The six calls
+- L3 line 398: Call 1 — `DEV-B10-003` Dependency setup overlaps `DEV-B10-001` Local setup
+- L3 line 403: Call 2 — The `has_deploy` gate on `DOC-A15-006` Rollback procedure and `DOC-A16-003` Runbook
+- L3 line 407: Call 3 — `startup` removes `DOC-A23-001` Deprecation policy (rationale rewritten)
+- L3 line 413: Call 4 — `internal-service` removes `DOC-A10-008` License (rationale rewritten)
+- L3 line 419: Call 5 — `regulated` adds exactly ROPA, Retention policy, Control catalog and Access review evidence
+- L3 line 422: Call 6 — Should anything be demoted from core? (`DOC-A15-003` Changelog is the only candidate)
+- L2 line 425: Part 5 — The flags, decided and applied
+- L3 line 429: Flag A — `DOC-A08-001` OpenAPI and `DOC-A22-004` API quickstart
+- L3 line 440: Flag B — `DEV-B08-001` Current state, `DEV-B08-002` Next action, `DEV-B08-003` Recent changes
+- L3 line 451: Flag C — `DEV-B10-003` Dependency setup vs `DOC-A09-006` Dependency policy
+- L2 line 456: Part 6 — What happens on confirmation
 
 ## `docs/00-governance/DOCUMENT-CONTROL.md`
 

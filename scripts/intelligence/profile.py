@@ -80,11 +80,22 @@ DETECTORS = {
                                   'Jenkinsfile']}]},
     'has_public_api_surface': {
         'exactness': 'heuristic',
-        'limits': 'Contract files only; a public API described in prose or code alone is not seen.',
+        'limits': 'Contract files, route registries and typed JavaScript/TypeScript surfaces; '
+                  'a public API described in prose, or in another language, is not seen.',
         'sources': [{'patterns': ['openapi.yaml', 'openapi.yml', 'openapi.json', '**/openapi*.yaml',
                                   '**/openapi*.json', 'asyncapi*.yaml', '**/*.proto',
                                   'schema.graphql', 'routes.json', '**/routes.json']},
                     {'patterns': ['**/index.d.ts', '**/api/*.ts'], 'requires': 'javascript'}]},
+    'has_http_api': {
+        'exactness': 'heuristic',
+        'limits': 'HTTP contract files and route registries only; an API served without a '
+                  'contract, described in prose, or in another ecosystem is not seen. Wider '
+                  'contract shapes (protobuf, GraphQL, typed surfaces) stay with '
+                  'has_public_api_surface.',
+        'sources': [{'patterns': ['openapi.yaml', 'openapi.yml', 'openapi.json',
+                                  '**/openapi*.yaml', '**/openapi*.json', 'swagger.yaml',
+                                  '**/swagger*.yaml', '**/swagger*.json', 'asyncapi*.yaml',
+                                  '**/asyncapi*.yaml', 'routes.json', '**/routes.json']}]},
     'has_cli': {
         'exactness': 'heuristic',
         'limits': 'Declared entry points and conventional paths; a CLI built ad hoc is not seen, '

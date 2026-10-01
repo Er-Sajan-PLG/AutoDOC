@@ -266,6 +266,9 @@ def admission_errors(rules, model, documents, profiles):
     for profile in profiles['profiles']:
         for change in profile.get('add', []):
             listed.add(change['id'])
+    # A profile-listed type must be admitted; an extended type may be admitted too, and that is
+    # not inert: its reader question and checks render into the index and `explain` reads them.
+    permitted = listed | set(rules['tier']['extended'])
     admitted = set(spec['by_id'])
     for doc_id in sorted(listed - admitted):
         errors.append(f'admission: {doc_id} is listed by a profile but states no reader question, '
@@ -276,9 +279,9 @@ def admission_errors(rules, model, documents, profiles):
             if document and tokens_of(document) == ['assess']:
                 errors.append(f'profiles.{profile["id"]}: {change["id"]} is assess-only; a type '
                               'nothing can detect cannot be required of anyone')
-    for doc_id in sorted(admitted - listed):
-        errors.append(f'admission.by_id: {doc_id} is not listed by any profile or tier.core; '
-                      'an admission nobody applies is inert data')
+    for doc_id in sorted(admitted - permitted):
+        errors.append(f'admission.by_id: {doc_id} is not listed by any profile, tier.core or '
+                      'tier.extended; an admission nobody applies is inert data')
     for doc_id, entry in sorted(spec['by_id'].items()):
         where = f'admission.by_id.{doc_id}'
         if doc_id not in documents:

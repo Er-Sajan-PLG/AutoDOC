@@ -41,11 +41,27 @@ class CatalogTests(unittest.TestCase):
     def test_index_matches_rules(self):
         self.assertTrue(builder.run(check=True), 'catalog index drift; run make generate')
 
+    def test_the_http_api_contract_has_its_own_fact(self):
+        """OpenAPI asks for an HTTP contract; the broader surface fact stays for the rest."""
+        documents = {doc['id']: doc for doc in all_documents()}
+        self.assertEqual(documents['DOC-A08-001']['applies_when'], ['has_http_api'])
+        self.assertEqual(documents['DOC-A22-004']['applies_when'], ['has_public_api_surface'])
+        profiler = checker.profiler_module()
+        specs = profiler.fact_specs()
+        self.assertIn('has_http_api', specs)
+        self.assertEqual(specs['has_http_api']['detection'], 'files')
+        self.assertTrue(specs['has_http_api']['limits'].strip())
+
     def test_core_list_is_hand_picked_and_justified(self):
         documents = {doc['id']: doc for doc in all_documents()}
-        # 24 hand-picked types plus the three gated by declared traits (personal data,
-        # payments, safety): each is required only once its owner declares the trait.
-        self.assertEqual(len(RULES['tier']['core']), 27)
+        # 21 hand-picked types plus the three gated by declared traits (personal data,
+        # payments, safety): each is required only once its owner declares the trait. The three
+        # living-state rows are extended since the 2026-10-01 review: advice, not a beta cliff.
+        self.assertEqual(len(RULES['tier']['core']), 24)
+        self.assertEqual(len(RULES['tier']['extended']), 49)
+        for doc_id in ('DEV-B08-001', 'DEV-B08-002', 'DEV-B08-003'):
+            self.assertIn(doc_id, RULES['tier']['extended'])
+            self.assertNotIn(doc_id, [entry['id'] for entry in RULES['tier']['core']])
         for entry in RULES['tier']['core']:
             self.assertNotEqual(entry['applies_when'], ['assess'],
                                 'a core type needs a detectable predicate')
@@ -60,14 +76,32 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual(document['phase_min'], checker.first_applicable_phase(
                 entry['severity_by_phase'], checker.phase_order()), 'phase_min must be derived')
 
+    def test_extended_admission_is_applied_and_unknown_ids_still_fail(self):
+        """An extended type may keep its admission: explain reads its question and checks."""
+        rules = copy.deepcopy(RULES)
+        model = checker.load(checker.MODEL)
+        profiles = checker.load(checker.PROFILES)
+        documents = {doc['id']: doc for doc in all_documents()}
+        errors = checker.admission_errors(rules, model, documents, profiles)
+        self.assertEqual(errors, [])
+        rules['admission']['by_id']['DEV-B99-001'] = rules['admission']['by_id']['DEV-B08-001']
+        errors = checker.admission_errors(rules, model, documents, profiles)
+        self.assertTrue(any('DEV-B99-001' in error and 'inert data' in error for error in errors),
+                        errors)
+
     def test_admission_rule_holds_for_every_type_a_profile_can_list(self):
         """The guide's admission rule: reader question + predicate + phases + check or a label."""
         profiles = checker.load(checker.PROFILES)
         listed = {entry['id'] for entry in RULES['tier']['core']}
         for profile in profiles['profiles']:
             listed |= {change['id'] for change in profile.get('add', [])}
-        self.assertEqual(set(RULES['admission']['by_id']), listed,
-                         'every listed type is admitted, and nothing else claims to be')
+        admitted = set(RULES['admission']['by_id'])
+        permitted = listed | set(RULES['tier']['extended'])
+        self.assertTrue(listed <= admitted,
+                        'every listed type is admitted: ' + str(sorted(listed - admitted)))
+        self.assertTrue(admitted <= permitted,
+                        'an admission must be applied by a profile, the core or the extended list: '
+                        + str(sorted(admitted - permitted)))
         for doc_id in sorted(listed):
             entry = RULES['admission']['by_id'][doc_id]
             with self.subTest(doc_id):

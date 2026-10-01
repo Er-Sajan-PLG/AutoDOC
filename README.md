@@ -65,7 +65,7 @@ structured; it never certifies compliance.
 
 | State | Reality |
 | --- | --- |
-| ✅ Working | 260 catalog types with declarative rules, a 23-type core tier and a detectable `applies_when` predicate per type; file-presence profile and applicability report; bounded generators; ownership/inventory/graph; two local tool examples; pytest, Makefile, hooks and CI checks; unsigned actual-run evidence |
+| ✅ Working | 260 catalog types with declarative rules, a 24-type core tier and a detectable `applies_when` predicate per type; file-presence profile and applicability report; bounded generators; ownership/inventory/graph; two local tool examples; pytest, Makefile, hooks and CI checks; unsigned actual-run evidence |
 | 🚧 Partial | Route registry is not OpenAPI; SQLite/manifest/alert parsers are bounded; human-review impact proves a co-change, not quality |
 | 📋 Not implemented | Arbitrary language/SQL parsers, external link/network monitoring, LLM, semantic prose verification and signed attestations |
 | 🔒 Blocked | Branch protection needs repository-admin configuration; a release still needs a `vX.Y.Z` tag at the same commit |

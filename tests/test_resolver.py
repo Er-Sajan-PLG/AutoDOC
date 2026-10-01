@@ -370,12 +370,14 @@ class KindTests(unittest.TestCase):
 
 class ExplainTests(unittest.TestCase):
     def test_explain_shows_the_derivation_chain(self):
-        documents, declared, groups, enforcement = resolve(phase='beta', has_public_api_surface='true')
+        # OpenAPI is gated on the HTTP-specific fact, not the broader surface fact (owner
+        # review, 2026-10-01): a typed library surface must not demand an OpenAPI document.
+        documents, declared, groups, enforcement = resolve(phase='beta', has_http_api='true')
         document = next(item for item in documents if item['id'] == 'DOC-A08-001')
-        text = recommend.explain(document, profile_document(has_public_api_surface='true'),
+        text = recommend.explain(document, profile_document(has_http_api='true'),
                                  declared, enforcement, groups=groups)
         self.assertIn('Phase that requires it: beta', text)
-        self.assertIn('| `has_public_api_surface` | true |', text)
+        self.assertIn('| `has_http_api` | true |', text)
         self.assertIn('Limits', text)
 
     def test_explain_answers_the_reader_question_and_names_the_profile(self):

@@ -45,6 +45,12 @@ obligations = []   # e.g. ["gdpr", "soc2"]: declared duties only, never inferred
 # it next to the detected value.
 is_public = { value = true, reason = "published on GitHub at STEMORG2026/AutoDOC" }
 
+# Demo-fact cleanup (owner decision, 2026-10-01): the only contract-shaped files here belong to
+# the demo fixture, so neither API fact describes this repository. Detection still reports them —
+# the override records why the repository itself answers "no".
+has_http_api = { value = "false", reason = "The only HTTP contract here is the demo fixture's EXAMPLE-PROJECT/routes.json; AutoDOC ships engine modules and Make targets, not a service." }
+has_public_api_surface = { value = "false", reason = "Detection matched only the demo fixture; AutoDOC publishes no contract-file API surface of its own (its public surface is its Python modules, described in prose)." }
+
 # Declared traits. These are facts about the world, not about the file tree, so no detector exists
 # for them and none can be added: `handles_personal_data` is not the same as "the schema has an
 # email column", and a `payments/` directory is code, not a live payment flow. Until one is

@@ -118,7 +118,7 @@ APIs and interfaces.
 
 | Type ID | Document | Tier | Requires phase | Applies when | Purpose | Reader | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A08-001` | OpenAPI | core | beta | has_public_api_surface | Record openapi for apis and interfaces. | external-users | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-001` | OpenAPI | core | beta | has_http_api | Record openapi for apis and interfaces. | external-users | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-002` | GraphQL schema | contextual | idea | has_public_api_surface | Record graphql schema for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-003` | Protobuf contract | contextual | idea | has_public_api_surface | Record protobuf contract for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
 | `DOC-A08-004` | AsyncAPI | contextual | idea | has_public_api_surface | Record asyncapi for apis and interfaces. | — | pre-release | project owner | human-review | Hardened | — |
