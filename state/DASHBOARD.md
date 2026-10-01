@@ -41,9 +41,9 @@ starting work.
    (`docs/adr/0001-zero-runtime-dependencies.md`) instead of the queued `[not_applicable]`, because
    the resolver reports every skip on an `always` row as a permanent stale-decision warning.
    Reversible; see the decision-3 session summary.
-4. Environment resets recur (nine recoveries today, #11–#19: HEAD back to `19ca0d4`, wedged index,
-   dirty-tree variant, venv deleted). #17 is logged in the lifecycle session; #18 and #19 in the
-   decision-round session. Recovery recipe is in the audit session's summary; never force-push.
+4. Environment resets recur (ten recoveries today, #11–#20: HEAD back to `19ca0d4`, wedged index,
+   dirty-tree variant, venv deleted). #17 is logged in the lifecycle session; #18, #19 and #20 in
+   the decision-round session. Recovery recipe is in the audit session's summary; never force-push.
 5. **Continuity verified:** a cold clone of this branch, read by a stranger, can state the position,
    the gates and the whole pending decision round, and can verify the numbers with system `python3`
    and no install (`state/sessions/20261001-1219-A476-cold-clone-test.md`).
