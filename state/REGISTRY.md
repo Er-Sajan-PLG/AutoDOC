@@ -6,7 +6,7 @@
 
 | Agent ID | Model / type | Branch | Task (one line) | Started (UTC) | Claimed paths | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Owner decision round: walk P-001…P-006 with the owner pre-merge; execute only stated verdicts | 2026-10-01T12:42Z | `state/**`; on verdicts: `CONTROL/metadata/**`, `autodoc.toml`, `docs/00-governance/CORE-LIST-REVIEW.md`, `docs/00-governance/ADOPTION.md`, `NEXT-ACTION.md` | **ACTIVE** |
+| `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Owner decision round: all six verdicts executed or recorded (P-003 `c7980f9`, P-001 `039e508`, P-002 `3ad5a57`, P-004 payload owner-run, P-005/P-006 records); awaiting the owner's close | 2026-10-01T12:42Z | released (round closed) | **PAUSED** (awaiting owner) |
 | `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Session-lifecycle correction: sessions close only on the owner's word; persist-before-present; handoff self-check | 2026-10-01T12:28Z | `state/**`, `docs/00-governance/MACP.md` (released) | **PAUSED** (awaiting owner) |
 | `A476` | Arena.ai Agent Mode | `arena/01a0f476-autodoc` | Cold-clone continuity test (verdict, gap fixes, the P-001…P-006 dossier) | 2026-10-01T12:19Z | `state/**` only | **PAUSED** (awaiting owner) |
 

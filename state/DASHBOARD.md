@@ -15,31 +15,33 @@
 | Promotion cliff | Promoting to `beta` today would fail **2** core rows (License `DOC-A10-008`, Changelog `DOC-A15-003`); both gated on `is_public` |
 | Stack | Python 3.11, **zero runtime dependencies**; pytest + pre-commit for dev; SQLite and a 3-route HTTP server only in the synthetic demo |
 | Docs | 68 controlled (24 generated, 44 human-owned); 361 Markdown files tracked |
-| Tests | 242 passed + 182 subtests, ~27 s (audit run, 2026-10-01) |
+| Tests | 243 passed + 182 subtests, ~31 s (owner-round run, 2026-10-01) |
 | CI | 5 workflows; required check `AutoDOC guard / check`; nightly freshness warn-only; tag-gated release |
 
 ## Active agents
 
-`A476` — session `20261001-1242-A476` (**ACTIVE**): owner decision round — walk P-001…P-006 and
-record each verdict only when the owner states it. Two earlier sessions are
-**PAUSED (awaiting owner)** (`20261001-1228` lifecycle, `20261001-1219` cold-clone); three are
-**landed — awaiting owner close** (`20261001-1110`, `-1120`, `-1130`). **No session is complete** —
-only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before starting work.
+`A476` — session `20261001-1242-A476` (**PAUSED (awaiting owner)**): the owner decision round — all
+six verdicts executed or recorded (P-003 → `c7980f9`, P-001 → `039e508`, P-002 → `3ad5a57`, P-004
+owner-run payload, P-005/P-006 records); awaiting the owner's close. Three sessions are
+**PAUSED (awaiting owner)** (`20261001-1228` lifecycle, `20261001-1219` cold-clone, this one);
+three are **landed — awaiting owner close** (`20261001-1110`, `-1120`, `-1130`). **No session is
+complete** — only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before
+starting work.
 
 ## Alerts
 
-1. **Owner confirmation of B-001 given** ("proceed with recomendation", 2026-10-01): the v1.3
-   core-list page is confirmed, and the recording — `owner_reviewed` notes, page → `approved`,
-   caveat removal, D-011 — is **in progress** in this session.
+1. **B-001 cleared (2026-10-01)** — the owner confirmed the v1.3 page ("proceed with recomendation")
+   and the recording landed: `owner_reviewed` in both machine files, page → `approved`, caveat off
+   `NEXT-ACTION.md` + `ADOPTION.md`, D-011 fixed (commit `039e508`).
 2. Nothing is failing: the gate is green (`make ci` exit 0), tests 243/243, catalog valid,
    resolver at **15/15 with zero open decisions**.
-3. **Decision-3 deviation acknowledged** (owner: keep, 2026-10-01; the status update is in
-   progress): the ADR row was closed with a real ADR
+3. **B-002 cleared (2026-10-01)** — the owner acknowledged the decision-3 deviation and kept the
+   real ADR; ADR-008 records it (commit `3ad5a57`). The ADR row was closed with a real ADR
    (`docs/adr/0001-zero-runtime-dependencies.md`) instead of the queued `[not_applicable]`, because
    the resolver reports every skip on an `always` row as a permanent stale-decision warning.
    Reversible; see the decision-3 session summary.
-4. Environment resets recur (eight recoveries today, #11–#18: HEAD back to `19ca0d4`, wedged index,
-   dirty-tree variant, venv deleted). #17 is logged in the lifecycle session, #18 in the
+4. Environment resets recur (nine recoveries today, #11–#19: HEAD back to `19ca0d4`, wedged index,
+   dirty-tree variant, venv deleted). #17 is logged in the lifecycle session; #18 and #19 in the
    decision-round session. Recovery recipe is in the audit session's summary; never force-push.
 5. **Continuity verified:** a cold clone of this branch, read by a stranger, can state the position,
    the gates and the whole pending decision round, and can verify the numbers with system `python3`
@@ -57,6 +59,7 @@ only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before s
 
 | Date | Work | Commits |
 | --- | --- | --- |
+| 2026-10-01 | Owner round executed: decision 4 landed; the review recorded (`owner_reviewed`, page → `approved`, caveat off, D-011 — **B-001 cleared**); the ADR deviation acknowledged (**B-002 cleared**); the branch-protection payload printed (owner-run application) | `c7980f9`, `039e508`, `3ad5a57` |
 | 2026-10-01 | Owner decision 4 executed: the demo-only facts are declared false with reasons; the detector's self-match is fixed at its source (no override, regression-tested); the last open core decision closes — **15/15, 0 open**; beta cliff 4 → 2 | `c7980f9` |
 | 2026-10-01 | Session-lifecycle correction (owner instruction): MACP local rules 8–10 + ADR-009 — sessions close only on the owner's word; persist-before-present; handoff self-check; all sessions/plans relabelled; deleted plans restored where possible | `c57b149` + handoff-log `14310ea` |
 | 2026-10-01 | Cold-clone continuity test: verdict (a new agent can continue from `state/` alone), five gap fixes, and the pending-decision dossier P-001…P-006 in `DECISIONS.md` | `b3a4490` + reconcile commit |
@@ -69,14 +72,14 @@ only the owner closes one (ADR-009). Register yourself in `REGISTRY.md` before s
 
 ## Next actions (source of truth: `NEXT-ACTION.md`)
 
-1. **Execute the owner's stated round** (session `20261001-1242-A476`, ACTIVE; all six verdicts given
-   as "proceed with recomendation"): P-003 done (`c7980f9`); **P-001 recording next** — `owner_reviewed`
-   in `CATALOG-RULES.json` + `PROFILES.json`, page → `approved`, caveat off NEXT-ACTION + ADOPTION,
-   D-011, clear B-001; then P-002 (ADR-008 status, clear B-002), P-004 (owner-run protection apply),
-   P-005/P-006 (recorded).
-2. The round's decision records are in `state/DECISIONS.md` — ADR-010…ADR-013 and the § Pending note;
-   each execution updates its ADR status in the commit that lands it.
-3. Resets and the recovery recipe are in Alerts above; never force-push.
+1. **Owner: apply the required check** — `APPLY=1 make docs-require-check` (without it the payload
+   and the exact command print). It needs repository-admin rights; this session's identity has none
+   (verified 403), so the apply is owner-run by design.
+2. **Owner: close the sessions you consider done** (ADR-009, rule 8). The round's session is
+   `PAUSED (awaiting owner)`; three more await close.
+3. **Owner: merge PR #2** when satisfied, then run the post-merge continuity test.
+4. Nothing else is pending from the round: P-001…P-006 are executed or recorded, and **B-001 and
+   B-002 are cleared**. Resets and the recovery recipe are in Alerts above; never force-push.
 
 This dashboard summarizes; it never overrides `NEXT-ACTION.md` or an owner instruction. Sessions
 are closed only by the owner.
