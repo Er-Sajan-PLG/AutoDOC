@@ -34,6 +34,8 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
+- f43ad56 2026-10-01 chore(state): record the owner round and reconcile after decision 4
+- c7980f9 2026-10-01 Close the last core decision: the demo-only facts answer no, and the detector stops matching itself
 - 56be338 2026-10-01 chore(state): register the decision-round walkthrough session
 - 14310ea 2026-10-01 chore(state): hand off paused, with the self-check result
 - c57b149 2026-10-01 fix(state): sessions close only on the owner's word; persist before presenting
@@ -52,14 +54,18 @@ auto_generated: false
 - c02d733 2026-10-01 Apply the three flag decisions: detector, rules, config, page and tests
 - f37d98a 2026-10-01 Apply the owner's three core-list flags and show the final counts
 - d384d4e 2026-10-01 Correct the core-list review and answer the owner's three fact questions
-- f06d5c0 2026-10-01 Expand the core-list review so no row can be approved by accident
-- 5164b06 2026-10-01 Ask the owner to review the core list in one sitting, with every row reasoned
 
 ## Changed paths at update time
 
-- `autodoc.toml`
-- `docs/META/CODE-INVENTORY.md`
-- `docs/META/TEST-INVENTORY.md`
-- `scripts/intelligence/profile.py`
-- `tests/test_profile.py`
+- `CONTROL/metadata/CATALOG-RULES.json`
+- `CONTROL/metadata/MASTER-INDEX.json`
+- `CONTROL/metadata/PROFILES.json`
+- `docs/00-governance/ADOPTION.md`
+- `docs/00-governance/CORE-LIST-REVIEW.md`
+- `docs/00-governance/INVENTORY.yaml`
+- `docs/META/OUTLINE.md`
+- `state/BLOCKERS.md`
+- `state/DEBT.md`
+- `state/DECISIONS.md`
+- `state/sessions/20261001-1242-A476-decision-round.md`
 <!-- auto:end -->

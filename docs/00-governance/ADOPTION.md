@@ -16,14 +16,17 @@ criticality: high
 review_days: 180
 last_verified: 2026-09-26
 last_reviewed: 2026-09-26
-last_updated: 2026-09-26
+last_updated: 2026-10-01
 auto_generated: false
 ---
 # AutoDOC self-adoption and applicability
 
 ## Purpose and scope
 AutoDOC adopts its own governance for its actual code and bounded local demonstrations. This is a **draft selection**,
-not a claim that every catalog type is instantiated or reviewed. The repository owner
+not a claim that every catalog type is instantiated or reviewed — the core list and the five
+profiles themselves were owner-reviewed on 2026-10-01 (`owner_reviewed` in
+`CONTROL/metadata/CATALOG-RULES.json` and `PROFILES.json`; review page
+`docs/00-governance/CORE-LIST-REVIEW.md`). The repository owner
 `@Er-Sajan-PLG` is the designated primary owner in `CONTROL/metadata/OWNERSHIP-MATRIX.yaml`;
 no backup, security approver or external auditor has been assigned.
 
@@ -55,8 +58,9 @@ model evaluations and vendor records cannot be inferred from local examples.
 No production service or audit cycle exists here. API/config/schema references, agent
 allowlist inventories and a scoped unsigned test-run pack demonstrate the mechanism, not
 certification. Release snapshots run under the owner-selected Apache-2.0 license
-(`LICENSE`, 2026-10-01). A backup reviewer, protected-branch checks and project-specific
-extractors remain open.
+(`LICENSE`, 2026-10-01). A backup reviewer and project-specific extractors remain open; the
+required branch-protection check is owner-run (`make docs-require-check` prints the payload,
+`APPLY=1` applies it).
 
 ## Verification and references
 Check `docs/generated/CATALOG-REFERENCE.md` for the catalog inventory, and
@@ -70,27 +74,28 @@ family's severity from `[severity]` in `autodoc.toml`, then the declared phase's
 `report`. Adoption gets a baseline (`autodoc-baseline.json`, written by `make docs-baseline`) so
 an inherited repository can enforce only what is new and ratchet down as entries go stale. Exit
 codes are documented in `docs/reference/EXIT-CODES.md`: `0` success, `1` findings, `2` usage or
-configuration error. `make ci` now runs `docs-enforce`. This repository keeps its existing
-structural gates at `error` through explicit `[severity]` pins while the phase stays undeclared;
-`recommend.*` is deliberately **not** pinned, so the 12 open core decisions remain advisory and
-nothing fails until the owner declares a phase.
+configuration error. `make ci` now runs `docs-enforce`. This repository keeps its structural
+gates at `error` through explicit `[severity]` pins on top of the declared `build` block;
+`recommend.*` is deliberately **not** pinned — every core decision is recorded (2026-10-01), so
+the phase default applies and a pin would only duplicate it.
 
 ## Applicability decisions (step 3, 2026-10-01)
 The catalog now separates tiers: **24 hand-picked core** types (each with a recorded reason and
-the phase at which it becomes required, in `CONTROL/metadata/CATALOG-RULES.json`), 45
+the phase at which it becomes required, in `CONTROL/metadata/CATALOG-RULES.json`), 49
 **extended**, and 192 **contextual**. `README` was added as a type: the spec's only
 every-phase document was missing from all 260. `priority` is gone (it was a byproduct of three
 domain prefixes). A type's `applies_when` is a predicate over **three-valued facts** detected by
-`make docs-profile`, never a project-type label; the 81 types with no detectable predicate are
+`make docs-profile`, never a project-type label; the 72 types with no detectable predicate are
 marked `assess` and are never auto-recommended. `make docs-recommend` joins the profile with
-`autodoc.toml`, and severity scales with the declared phase — **undeclared is advisory, so
-nothing fails until the owner declares one**. `recommend.py --check` fails only what the
-declared phase requires. **The core list and the phase ladder are proposals awaiting owner
-review.** As of this change this repository has no declared phase: 12 applicable core types are
-reported, 7 are acknowledged (`[instantiated]`), and none fail. The profile facts
-`has_public_api_surface`, `has_persistent_state` and `has_env` are true here only because the
-synthetic `EXAMPLE-PROJECT` contains those files, so those decisions need a human reason rather
-than a default.
+`autodoc.toml`, and severity scales with the declared phase — undeclared is advisory; this
+repository declares `build`. `recommend.py --check` fails only what the declared phase requires.
+**The core list and the phase ladder were owner-reviewed on 2026-10-01** (see the
+`owner_reviewed` note in the machine files). Every applicable core type is recorded: the resolver
+reports 15/15 build-ready with 0 open decisions. The demo-only facts
+(`has_public_api_surface`, `has_http_api`, `has_persistent_state`, `has_env`, `has_ai`) are
+declared false with reasons in `autodoc.toml`, because the only evidence for them was the
+synthetic `EXAMPLE-PROJECT` and example projects — and the listener detector no longer matches
+its own source (which is why `has_network_listener` needed no override).
 
 ## Phase 3 applicability
 Environment and alert references are exercised only by the task demo. The local tool-policy

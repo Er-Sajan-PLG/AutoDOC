@@ -16,7 +16,7 @@ criticality: medium
 review_days: 180
 last_verified: 2026-09-26
 last_reviewed: 2026-09-26
-last_updated: 2026-09-26
+last_updated: 2026-10-01
 auto_generated: false
 ---
 # Next action
@@ -24,16 +24,20 @@ auto_generated: false
 ## Immediate focus
 Next bounded integrations: add migration prose validation and a real OpenAPI contract only
 when the demo source implements one. Existing env/alert references are example-only; review
-their runbooks and applicability rather than claiming deployed monitoring. Review
-catalog applicability and human-owned drafts with a real maintainer.
+their runbooks and applicability rather than claiming deployed monitoring. The catalog
+applicability review is done — recorded 2026-10-01 (see Owner decisions below).
 
 ## Owner decisions
 Done: the license is Apache-2.0 (owner decision, 2026-10-01): canonical text in `LICENSE`, SPDX
 expression in `pyproject.toml`, decision record in `docs/00-governance/LICENSE-DECISION.md`.
 Release snapshots are no longer gated on the licence; they still require a `vX.Y.Z` tag checked
-out at the same commit. Remaining: enable protected branch required checks/CODEOWNERS review in
-GitHub settings, and close the 12 open core decisions. Those actions are not automated by
-checked-in files and must not be claimed as complete.
+out at the same commit. Done: the core list and the five profiles are owner-reviewed
+(2026-10-01) — `owner_reviewed` is recorded in `CONTROL/metadata/CATALOG-RULES.json` and
+`PROFILES.json`, `docs/00-governance/CORE-LIST-REVIEW.md` is `approved`, and every applicable
+core decision is closed (the resolver reports 15/15 build-ready with 0 open). Remaining: apply
+the required check in GitHub settings — owner-run, `APPLY=1 make docs-require-check` (without
+it, the payload prints). That action is not automated by checked-in files and must not be
+claimed as complete.
 
 ## Shrink before detection (owner decision, 2026-10-01)
 1. Done. The approved-stub check failed on 28 title-only placeholders and they were retired;
@@ -46,14 +50,15 @@ checked-in files and must not be claimed as complete.
 4. **Owner decisions pending, in order:**
    - Done: the phase is declared (`build`, 2026-09-30) and kinds too (`library`); the evidence
      for both comes from `make docs-hint` and the declaration is what counts.
-   - **Review the 24-type core list** and the phasing in `CATALOG-RULES.json` — three of the core
-     types (`PII inventory`, `Cardholder data flow`, `Hazard analysis`) are gated by declared
-     traits and only apply once an owner answers; then record the 12 applicable core decisions
-     with `[instantiated]`, `[satisfied_by]` or `[not_applicable]` reasons. Two rows still rest on
-     facts that are true only because `EXAMPLE-PROJECT` contains those files (`has_persistent_state`
-     on `DOC-A05-001`, `has_env` on `DOC-A14-005`); the API-surface facts were cleaned up on
-     2026-10-01, and those two are queued in the fact-override step, so their reasons matter more
-     than their answer.
+   - Done (2026-10-01): the 24-type core list and the phasing in `CATALOG-RULES.json` are
+     owner-reviewed, and all 12 applicable core decisions are recorded (`[instantiated]`,
+     `[satisfied_by]`; the last one closed by declaring `has_persistent_state` false with a
+     reason) — the resolver reports 15/15 build-ready with 0 open. Three core types
+     (`PII inventory`, `Cardholder data flow`, `Hazard analysis`) remain gated by declared
+     traits and apply only once the owner answers. The demo-only facts
+     (`has_public_api_surface`, `has_http_api`, `has_persistent_state`, `has_env`, `has_ai`)
+     are declared false with reasons in `autodoc.toml`, and the detector no longer matches
+     its own source.
    - Kinds and traits are implemented: `kind:` and `phase>=` are three-valued and now consumed,
      and `handles_personal_data`, `handles_payments`, `safety_critical` are declaration-only
      facts whose documents stay undetermined until answered. `audience` is validated and

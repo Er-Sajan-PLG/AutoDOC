@@ -1,6 +1,12 @@
 {
   "version": 1,
-  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review (three of its entries are gated by declared traits and only apply when the owner declares that trait), each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> (answered only by the declared kinds), phase>=<id> (true from that phase on, undetermined while the phase is undeclared) or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
+  "owner_reviewed": {
+    "date": "2026-10-01",
+    "by": "@Er-Sajan-PLG",
+    "instruction": "proceed with recomendation — the owner's approval of docs/00-governance/CORE-LIST-REVIEW.md v1.3 and its counts",
+    "note": "Core list confirmed. Flagged rows and their resolutions: (A) DOC-A08-001 moved to the new has_http_api fact, DOC-A22-004 kept on the broader has_public_api_surface, demo-fixture overrides added; (B) DEV-B08-001, DEV-B08-002 and DEV-B08-003 moved to tier.extended; (C) the dependency question split between DEV-B10-003 (setup) and DOC-A09-006 (policy). Counts at review: 24 core, 49 extended."
+  },
+  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list, owner-reviewed 2026-10-01 (see owner_reviewed): three of its entries are gated by declared traits and only apply once the owner declares them, each entry stating severity_by_phase (the phases it is off in; phase_min is derived, never authored). Profiles in CONTROL/metadata/PROFILES.json decide the core set per kind of project, and every type any profile can list must be detectable: an assess-only type cannot be required of anyone. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> (answered only by the declared kinds), phase>=<id> (true from that phase on, undetermined while the phase is undeclared) or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
   "seed": {
     "A": [
       {

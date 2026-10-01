@@ -1,10 +1,10 @@
 # BLOCKERS — active blockers and dependencies
 
-**Last reconciled:** 2026-10-01T11:44Z (decision 3 completed; the owner gate narrowed)
+**Last reconciled:** 2026-10-01T13:10Z (B-001 cleared; the round's remaining items are execution)
 
 | ID | Blocker | Blocks | Owner who can clear it | Raised |
 | --- | --- | --- | --- | --- |
-| B-001 | Owner confirmation of `docs/00-governance/CORE-LIST-REVIEW.md` v1.3 and its final counts (24 core / 49 extended; note the readiness figure on the page — 4/16 — was true before decision 3 and is now 15/16, with one open decision) | Recording `owner_reviewed` in `CONTROL/metadata/CATALOG-RULES.json` + `PROFILES.json`, page → `approved`, caveat removal from `NEXT-ACTION.md` + `ADOPTION.md`, and the D-011 refresh | `@Er-Sajan-PLG` | 2026-10-01 |
+| ~~B-001~~ | **CLEARED 2026-10-01** — the owner confirmed v1.3 ("proceed with recomendation") and the recording landed: `owner_reviewed` notes in `CONTROL/metadata/CATALOG-RULES.json` + `PROFILES.json`, page → `approved`, caveat off `NEXT-ACTION.md` + `ADOPTION.md`, D-011 refreshed | Nothing — done | `@Er-Sajan-PLG` | 2026-10-01 |
 | B-002 | Owner acknowledgement of the decision-3 ADR deviation (real ADR instead of the queued `[not_applicable]`, forced by the stale-decision warning) | Nothing is blocked — the work is complete and reversible; the record needs the owner's yes or no | `@Er-Sajan-PLG` | 2026-10-01 |
 
 Decision 3 was started under the owner's "continue work" instruction and is now **complete**

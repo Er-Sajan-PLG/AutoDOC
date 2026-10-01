@@ -5,7 +5,7 @@ type: REF
 owner: "@Er-Sajan-PLG"
 reviewer: "@Er-Sajan-PLG"
 classification: public
-status: draft
+status: approved
 version: "1.3"
 effective_date: 2026-10-01
 next_review: 2027-03-30
@@ -25,13 +25,16 @@ The 24 core types in `CONTROL/metadata/CATALOG-RULES.json` and the five profile 
 `CONTROL/metadata/PROFILES.json` are authored policy: they decide which documents AutoDOC calls
 required, recommended or not applicable for every project that uses it. They were written and
 validated by tooling and have never been read end to end by the owner, so every report that trusts
-them carries a "pending owner review" caveat. This page removes that caveat in one sitting.
+them carries a "pending owner review" caveat. This page removed that caveat: the owner approved it
+on 2026-10-01 (see the review log).
 
 ## Review log
 
 **2026-10-01 — owner reviewed v1.1.** Corrections requested and applied in this v1.2: the profile totals (3 removals, not 4), the source of the false predicate on not-applicable rows, the `has_public_api_surface` finding behind the two flagged rows, the enforcement block ahead of the table, the real escape names, the split of the open rows, the beta cliff, and rewritten rationales for calls 3 and 4. Four items are flagged and pending a decision (Part 5). The owner indicated approval of the remaining rows and calls subject to this revision. **No approval has been recorded:** both machine files are untouched and this page stays a draft until the owner confirms the revised page.
 
 **2026-10-01 — owner reviewed v1.2 and decided the flags.** The page and all six calls were confirmed, with three data edits requested: (A) split the HTTP-specific rows onto a new detected fact `has_http_api`, keep `DOC-A22-004` on `has_public_api_surface`, and clean up the demo-fixture facts; (B) move `DEV-B08-001`, `DEV-B08-002` and `DEV-B08-003` to extended; (C) split the dependency question between setup and policy. All three edits are applied and re-validated in this v1.3, and every count below is a post-edit count (**24 core**, **49 extended**). **No approval is recorded yet:** the `owner_reviewed` notes go into both machine files only after the owner confirms this final page and its counts.
+
+**2026-10-01 — approved and recorded.** The owner confirmed this page and its counts ("proceed with recomendation"). On that word: a dated `owner_reviewed` note was written into `CONTROL/metadata/CATALOG-RULES.json` and `CONTROL/metadata/PROFILES.json` naming the flagged rows and how each was resolved; both machine files now record the review; this page moves from `draft` to `approved`; and the caveat is removed from `NEXT-ACTION.md` and `ADOPTION.md`. The two figures that were pre-decision-3 are refreshed to the current state — **15/15 build-ready with 0 open decisions**, and a beta cliff of **2 of 24** (`DOC-A10-008` License, `DOC-A15-003` Changelog). Membership is unchanged: **24 core / 49 extended**. The row states in Parts 1, 1b and 2 are the state **as reviewed**: every one of the twelve open rows was closed in this round (owner decisions 3 and 4), and the machine truth is `autodoc.toml` plus `CONTROL/metadata/CATALOG-RULES.json`.
 
 ## Part 0 — How a row is enforced
 
@@ -60,7 +63,7 @@ Core decides that a type belongs to the essential set. Two further switches deci
 
 **A false predicate has two sources, and the difference matters.** A **detected** fact is false because a detector ran and matched nothing (absence of evidence — it flips when the evidence appears). A **declared** fact is false because the owner answered the question in `autodoc.toml` with a reason (an answer, not an absence — it changes only when the owner changes it). A fact whose detector cannot run at all is `unknown`, which leaves the row undetermined rather than not applicable. This is why the not-applicable rows split by source: `DOC-A05-009`, `DOC-A06-011` and `DOC-A20-008` rest on three declared traits, `DOC-A08-001` and `DOC-A22-004` on the two declared API facts, and `DOC-A15-006` and `DOC-A16-003` on one detected fact (`has_deploy`).
 
-**What this review does.** Approving changes **nothing behavioural** — the same rows behave the same way tomorrow; it removes the caveat that the policy itself was never read by its owner. It does **not** close the 12 open decisions: that is the next item, and it is what moves this repository from 4/16 to 16/16 build-ready. Flagging a row turns it into a small data change (the rule, the profile or the predicate) plus re-validation.
+**What this review does.** Approving changes **nothing behavioural** — the same rows behave the same way tomorrow; it removes the caveat that the policy itself was never read by its owner. It did **not** close the open decisions by itself: that was the next item, and it is now done — decisions 3 and 4 closed every applicable row, and the resolver reports **15/15 build-ready with 0 open decisions** (the 4/16 stated in this sheet was the pre-decision figure). Flagging a row turns it into a small data change (the rule, the profile or the predicate) plus re-validation.
 
 ## Part 1 — The sheet: mark any row you would change
 
@@ -93,11 +96,11 @@ Quick read before the table: predicate **true / false / unknown** × phase (**re
 | ☐ | `DOC-A06-011` | Cardholder data flow | Where does card data live, move and stop, and what keeps it out of reach? | Card data has to be located before its flow can be limited, segmented or defended. | `handles_payments` | build | not applicable — `handles_payments` false (declared) |
 | ☐ | `DOC-A20-008` | Hazard analysis | What can this system do to a person or the world, and what stops it? | A hazard that is never written down is not controlled, and a safety claim without its failure modes is not a claim anyone can check. | `safety_critical` | prototype | not applicable — `safety_critical` false (declared) |
 
-**The beta cliff.** Under `build` this repository sees warnings; at `beta` the core requirement becomes `fail`. If the phase were promoted today, **12 of the 24 core rows** would turn from warn or off into fail — the 9 open rows (warn → fail) plus the 3 off rows whose phase arrives at beta (`DOC-A10-008`, `DOC-A14-005`, `DOC-A15-003`). Counting the three profile additions this repository declares (`DOC-A06-008`, `DOC-A09-006`, `DOC-A09-009`, also open at build), the number is **15**. Two rows left this list when the flags were applied: `DOC-A08-001` and `DOC-A22-004` are now not applicable here, because this repository declares `has_http_api` and `has_public_api_surface` false — the only evidence was the demo fixture's `routes.json`. That is the argument for closing the 12 decisions before promoting, not after.
+**The beta cliff.** Under `build` this repository sees warnings; at `beta` the core requirement becomes `fail`. As reviewed, 12 of the 24 core rows were exposed (the 9 open rows plus the 3 off rows whose phase arrives at beta, and 15 counting the three profile additions). All of those are now closed, so **if the phase were promoted today, 2 of the 24 core rows** would turn from off into fail — `DOC-A10-008` (License) and `DOC-A15-003` (Changelog), both gated on `is_public`. Two rows left the list when the flags were applied (`DOC-A08-001` and `DOC-A22-004` are not applicable here — the only evidence was the demo fixture's `routes.json`), and two more left it with owner decision 4 (`DOC-A05-001` and `DOC-A14-005`, closed by declaring their demo-only facts false with reasons). That is the argument for closing the decisions before promoting, not after: two remain, both potentially closeable by mapping the existing `LICENSE` and `CHANGELOG.md` files.
 
 ## Part 1b — The 12 open decisions, split three ways
 
-These are the rows open *here* (9 of the 24 plus 3 profile additions). They are separate from this review: approving the list does not close them, and closing them is what moves the repository to 16/16.
+These were the rows open *here* (9 of the 24 plus 3 profile additions). They were separate from this review — approving the list did not close them — and **all twelve were closed on 2026-10-01** (owner decisions 3 and 4): the closing paths below are the record of how, and the recorded homes live in `autodoc.toml` (`[instantiated]` / `[satisfied_by]`).
 
 | Group | Row | One-line closing path |
 | --- | --- | --- |
@@ -112,9 +115,9 @@ These are the rows open *here* (9 of the 24 plus 3 profile additions). They are 
 |  | `DEV-B04-002` ADR | start `docs/adr/` with one real decision, or record [not_applicable] saying decisions live in ADOPTION.md (dated), the changelog (user-facing) and machine policy. |
 |  | `DOC-A09-009` Code of conduct | a new `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1 plus a contact); then [instantiated]. |
 |  | `DOC-A06-008` Vulnerability management | a new `SECURITY.md` (private disclosure route, scope, expectations); then [instantiated]. |
-| **Fact override pending** | `DOC-A05-001` Data model | declare `has_persistent_state = false` in the queued fact overrides (the only schema is the demo fixture), which makes the row not applicable. |
+| **Fact override (done)** | `DOC-A05-001` Data model | declared `has_persistent_state = false` with a reason (the only schema is the demo fixture), which makes the row not applicable — the last open decision, closed by owner decision 4. |
 
-The charter page is the cheapest win: one new `docs/00-governance/PROJECT-CHARTER.md` with problem, goals-and-non-goals, and scope as three named sections closes `DEV-B01-001`, `-002` and `-003` at once. `README.md` needs only a one-line mapping. The four `[satisfied_by]` rows need no new writing at all — only the declaration.
+How it went: the charter page was the cheapest win — one new `docs/00-governance/PROJECT-CHARTER.md` with problem, goals-and-non-goals, and scope as three named sections closed `DEV-B01-001`, `-002` and `-003` at once. `README.md` needed only a one-line mapping. The `[satisfied_by]` rows needed no new writing beyond the declarations; the ADR row was closed with a real record instead of `[not_applicable]` (a skip on an `always` row is re-surfaced forever), which is recorded as the decision-3 deviation.
 
 ## Part 2 — Full context, row by row
 
@@ -424,7 +427,7 @@ All six calls were confirmed by the owner on 2026-10-01. Call 1's split is appli
 
 ## Part 5 — The flags, decided and applied
 
-These are the rows the 2026-10-01 review flagged, the decision on each, and what this revision changed and re-validated. Nothing here is recorded as *approved* yet: the `owner_reviewed` notes go into the machine files only after you confirm this final page (Part 6).
+These are the rows the 2026-10-01 review flagged, the decision on each, and what this revision changed and re-validated. The `owner_reviewed` notes were recorded in the machine files on the owner's confirmation (Part 6).
 
 ### Flag A — `DOC-A08-001` OpenAPI and `DOC-A22-004` API quickstart
 - **The finding.** `has_public_api_surface` resolved **true** for this repository on evidence `EXAMPLE-PROJECT/routes.json` — a demo fixture — so both rows looked applicable and merely not yet reached. The detector also counted `**/index.d.ts` and `**/api/*.ts`, so a typed JavaScript/TypeScript library with no HTTP interface would have been told at beta that it needs an OpenAPI document. The fact was broader than the HTTP-specific rows consuming it.
@@ -453,13 +456,13 @@ These are the rows the 2026-10-01 review flagged, the decision on each, and what
 - **The decision.** Option 1: split by question.
 - **Applied.** `DEV-B10-003` now asks *how do I install the declared dependencies, and where are the versions pinned?*; `DOC-A09-006` now asks *how are dependencies chosen, updated and removed, and how are their vulnerabilities and licences handled?* Both stay core; the change is question text plus the purpose line, with catalog re-validation.
 
-## Part 6 — What happens on confirmation
+## Part 6 — What happened on confirmation
 
-The three flag edits are applied and re-validated: catalogs rebuilt, 242 tests and the catalog checker pass, and `make ci` exits 0 (validated against `origin/master` as the diff base). What is **not** recorded is the review itself — both `CONTROL/metadata/CATALOG-RULES.json` and `CONTROL/metadata/PROFILES.json` carry no `owner_reviewed` note, and this page stays a draft.
+The three flag edits were applied and re-validated at review time: catalogs rebuilt, tests and the catalog checker pass, and `make ci` exits 0 (validated against `origin/master` as the diff base). What was **not** recorded then was the review itself.
 
-On your confirmation of this page and its counts:
+On the owner's confirmation of this page and its counts, all of it was recorded:
 
-1. A dated `owner_reviewed` note is added to both machine files, stating which rows were flagged and how they were resolved (A: `DOC-A08-001` split onto `has_http_api`, `DOC-A22-004` kept on the broader fact, demo overrides added; B: `DEV-B08-001/002/003` moved to extended; C: the dependency question split between setup and policy), and this page moves to `approved`.
-2. `NEXT-ACTION.md` loses the "review the 24-type core list" item, and `ADOPTION.md` stops calling the core-list membership unreviewed and the phase ladder a proposal.
+1. A dated `owner_reviewed` note was added to both machine files, stating which rows were flagged and how they were resolved (A: `DOC-A08-001` split onto `has_http_api`, `DOC-A22-004` kept on the broader fact, demo overrides added; B: `DEV-B08-001/002/003` moved to extended; C: the dependency question split between setup and policy), and this page moved to `approved`.
+2. `NEXT-ACTION.md` lost the "review the 24-type core list" item, and `ADOPTION.md` stopped calling the core-list membership unreviewed and the phase ladder a proposal.
 
-Reply with anything you would change, or "confirmed" to record the review as approved.
+Recorded in the change that moved this page to `approved` (2026-10-01); the accompanying decisions are ADR-002 (this review) and the owner round ADR-008…ADR-013 in `state/DECISIONS.md`.
