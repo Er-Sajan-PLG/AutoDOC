@@ -1,6 +1,6 @@
 # DASHBOARD — AutoDOC
 
-**Last reconciled:** 2026-10-01T11:44Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `1a65f5d`
+**Last reconciled:** 2026-10-01T12:03Z · **Reconciled by:** A476 (last active agent) · **Tip at reconciliation:** `407d3d4` + the state note recording it
 
 ## Project
 
@@ -33,7 +33,7 @@ Register yourself in `REGISTRY.md` before starting work.
    (`docs/adr/0001-zero-runtime-dependencies.md`) instead of the queued `[not_applicable]`, because
    the resolver reports every skip on an `always` row as a permanent stale-decision warning.
    Reversible; see the decision-3 session summary.
-4. Environment resets recur (four recoveries today, #11–#14: HEAD back to `19ca0d4`, wedged index,
+4. Environment resets recur (five recoveries today, #11–#15: HEAD back to `19ca0d4`, wedged index,
    venv deleted). Recovery recipe is in the audit session's summary; never force-push.
 
 ## Recently completed
