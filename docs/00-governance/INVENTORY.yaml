@@ -279,6 +279,17 @@
       "applies_to": []
     },
     {
+      "id": "DOC-P3-GOV-007",
+      "path": "docs/00-governance/MACP.md",
+      "type": "PROC",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "last_reviewed": "2026-10-01",
+      "next_review": "2027-03-30",
+      "classification": "public",
+      "applies_to": []
+    },
+    {
       "id": "DOC-P2-005",
       "path": "docs/04-guides/HOW-AUTODOC-WORKS.md",
       "type": "REF",

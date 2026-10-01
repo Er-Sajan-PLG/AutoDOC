@@ -34,6 +34,8 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
+- c02d733 2026-10-01 Apply the three flag decisions: detector, rules, config, page and tests
+- f37d98a 2026-10-01 Apply the owner's three core-list flags and show the final counts
 - d384d4e 2026-10-01 Correct the core-list review and answer the owner's three fact questions
 - f06d5c0 2026-10-01 Expand the core-list review so no row can be approved by accident
 - 5164b06 2026-10-01 Ask the owner to review the core list in one sitting, with every row reasoned
@@ -50,20 +52,10 @@ auto_generated: false
 
 ## Changed paths at update time
 
-- `CATALOG-A/INDEX.yaml`
-- `CATALOG-B/INDEX.yaml`
-- `CONTROL/metadata/CATALOG-RULES.json`
-- `README.md`
-- `autodoc.toml`
-- `docs/00-governance/CORE-LIST-REVIEW.md`
-- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-A.md`
-- `docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-B.md`
-- `docs/META/CODE-INVENTORY.md`
+- `AGENT-MEMORY.md`
+- `AGENTS.md`
+- `CLAUDE.md`
+- `CONTROL/metadata/MASTER-INDEX.json`
+- `docs/00-governance/INVENTORY.yaml`
 - `docs/META/OUTLINE.md`
-- `docs/META/TEST-INVENTORY.md`
-- `scripts/doc-control/check_catalog.py`
-- `scripts/intelligence/profile.py`
-- `tests/test_catalog.py`
-- `tests/test_profile.py`
-- `tests/test_resolver.py`
 <!-- auto:end -->

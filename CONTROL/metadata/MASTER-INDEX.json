@@ -226,6 +226,14 @@
       "last_reviewed": "2026-09-26"
     },
     {
+      "id": "DOC-P3-GOV-007",
+      "path": "docs/00-governance/MACP.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "PROC",
+      "last_reviewed": "2026-10-01"
+    },
+    {
       "id": "DOC-CAT-NAV-001",
       "path": "docs/01-catalogs/CATALOG-INDEX.md",
       "owner": "@Er-Sajan-PLG",

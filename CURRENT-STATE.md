@@ -86,7 +86,7 @@ flow, hazard analysis and the deeper privacy set are not applicable here.
 
 <!-- auto:start -->
 - Catalog types: 265 (not necessarily instantiated).
-- Controlled docs: 67 (24 generated, 43 human-owned).
+- Controlled docs: 68 (24 generated, 44 human-owned).
 - Overdue human-owned docs: 0.
 - Open gaps: see `docs/00-governance/ENGINE-COVERAGE.md`; this block does not infer intent.
 <!-- auto:end -->

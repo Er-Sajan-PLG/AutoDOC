@@ -3379,6 +3379,10 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: AutoDOC limitations
 
+## `docs/00-governance/MACP.md`
+
+- L1 line 22: MACP — Multi-Agent Coordination Protocol
+
 ## `docs/04-guides/HOW-AUTODOC-WORKS.md`
 
 - L1 line 22: How AutoDOC works
