@@ -61,7 +61,7 @@ Generated from the three catalog indices. These are possible documents, not comp
 
 | Domain | Purpose | Types | IDs |
 | --- | --- | ---: | --- |
-| B01-FOUNDATION | Context and goals | 5 | `DEV-B01-001`, `DEV-B01-002`, `DEV-B01-003`, `DEV-B01-004`, `DEV-B01-005` |
+| B01-FOUNDATION | Context and goals | 6 | `DEV-B01-001`, `DEV-B01-002`, `DEV-B01-003`, `DEV-B01-004`, `DEV-B01-005`, `DEV-B01-006` |
 | B02-RESEARCH | Discovery and exploration | 4 | `DEV-B02-001`, `DEV-B02-002`, `DEV-B02-003`, `DEV-B02-004` |
 | B03-PLANNING | Planning and delivery | 4 | `DEV-B03-001`, `DEV-B03-002`, `DEV-B03-003`, `DEV-B03-004` |
 | B04-ARCHITECTURE | Early architecture | 4 | `DEV-B04-001`, `DEV-B04-002`, `DEV-B04-003`, `DEV-B04-004` |
@@ -73,7 +73,7 @@ Generated from the three catalog indices. These are possible documents, not comp
 | B10-SETUP | Project setup | 4 | `DEV-B10-001`, `DEV-B10-002`, `DEV-B10-003`, `DEV-B10-004` |
 | B11-META | Documentation governance | 4 | `DEV-B11-001`, `DEV-B11-002`, `DEV-B11-003`, `DEV-B11-004` |
 
-**Total types:** 55.
+**Total types:** 56.
 
 ## CATALOG-C
 

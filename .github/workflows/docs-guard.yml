@@ -6,6 +6,11 @@ on:
   workflow_dispatch:
 jobs:
   check:
+    # GitHub matches a required status check by the job's name, not by "workflow / job"; the UI
+    # shows the workflow prefix, the API context does not. The name is also what
+    # scripts/doc-control/require-docs-check.py puts in the branch-protection payload, and it is
+    # deliberately unique so another workflow's job cannot satisfy the requirement by name.
+    name: AutoDOC guard / check
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,7 +23,7 @@ jobs:
           python-version: '3.11'
       - name: Install tested development dependencies
         run: python -m pip install -e '.[dev]'
-      - name: Canonical documentation, impact, tests and unsigned evidence verification
+      - name: Canonical docs, phase-scaled enforcement, impact, tests and evidence verification
         env:
           BASE: ${{ github.event.pull_request.base.sha || 'origin/master' }}
         run: make ci

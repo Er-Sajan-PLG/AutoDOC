@@ -36,9 +36,26 @@ The release-tag workflow fails closed while `LICENSE-CHOICE.md` remains pending.
 AutoDOC now self-hosts its catalog and workflow inventories. Catalog and control-code changes
 are mapped to human adoption or architecture review; declared ownership is checked in CI.
 
+The catalog is generated from `CONTROL/metadata/CATALOG-RULES.json` and validated against
+`CATALOG-SCHEMA.json`, so document type, tier, phase, maturity and applicability are data a
+reviewer can diff. `priority` is gone: it came from three domain prefixes and classified UAT as
+core for every project. It is replaced by 24 hand-picked core types — including `README`, which
+was missing from all 260 — each with a recorded reason, a detectable `applies_when` predicate
+and the phase at which it becomes required, over 45 extended and 192 contextual types.
+
+Requirements resolve as Catalog x Context: a declared context in `autodoc.toml` (phase, audience,
+kinds, declared duties) against fifteen three-valued facts, so a fact that cannot be read makes a
+type **undetermined** rather than silently satisfied. Severity scales with phase, per column:
+`build` warns about required docs and fails structural breakage with drift and freshness off;
+`beta` adds drift and freshness as warnings; `live` and `mature` fail all four; `sunset` shrinks
+to the sunset profile. This repository declares `build` (2026-09-30), so its 16 applicable
+core types are surveyed against that phase: 7 are acknowledged, and the missing required ones
+warn rather than fail. Kind inference is not
+implemented, so declared kinds are inert and no predicate uses `kind:` yet.
+
 <!-- auto:start -->
-- Catalog types: 260 (not necessarily instantiated).
-- Controlled docs: 92 (23 generated, 69 human-owned).
+- Catalog types: 261 (not necessarily instantiated).
+- Controlled docs: 65 (23 generated, 42 human-owned).
 - Overdue human-owned docs: 0.
 - Open gaps: see `docs/00-governance/ENGINE-COVERAGE.md`; this block does not infer intent.
 <!-- auto:end -->

@@ -33,15 +33,16 @@ class Phase2Tests(unittest.TestCase):
     def test_catalog_views_partition_stable_ids_without_inventing_adoption(self):
         facet_ids = [doc['id'] for groups in engine.catalog_facets().values()
                      for domain in groups for doc in domain['documents']]
-        self.assertEqual(len(facet_ids), 260)
-        self.assertEqual(len(set(facet_ids)), 260)
+        self.assertEqual(len(facet_ids), 261)
+        self.assertEqual(len(set(facet_ids)), 261)
         for view in ('A', 'B', 'C'):
             document = ROOT / f'docs/01-catalogs/UNIVERSAL-DOCUMENT-CATALOG-{view}.md'
             self.assertTrue(document.read_text().startswith('<!-- AUTO-GENERATED'))
         for domain in engine.catalog_facets()['A']:
             for doc in domain['documents']:
                 self.assertIn('when', doc)
-                self.assertIn('required_for', doc)
+                self.assertIn('applies_when', doc)
+                self.assertIn('tier', doc)
                 self.assertIn('maturity', doc)
 
     def test_sql_unknown_ddl_fails_instead_of_partial_dictionary(self):
@@ -139,6 +140,23 @@ class Phase2Tests(unittest.TestCase):
                              [f'{path}: broken local link missing.md'])
             self.assertEqual(len(guards.check_text(path, 'just ask someone')), 1)
             self.assertFalse(guards.check_text(path, '[remote](https://example.org)'))
+
+    def test_tribal_fixtures_cover_every_declared_pattern_and_the_false_positive(self):
+        """The rule is heuristic, so its fixtures state which phrases it knows and which not."""
+        with tempfile.TemporaryDirectory(dir=ROOT) as folder:
+            path = Path(folder) / 'test.md'
+            for phrase in ('ask John about the deploy key', 'Ask Sarah for the number',
+                           'just ask in the channel', 'ask in DM'):
+                with self.subTest(phrase=phrase):
+                    self.assertEqual(len(guards.check_text(path, phrase)), 1)
+            for documented in ('open an issue and the maintainer will answer',
+                               'see CONTRIBUTING.md for the review process',
+                               'the on-call engineer is named in docs/oncall.md'):
+                with self.subTest(documented=documented):
+                    self.assertEqual(guards.check_text(path, documented), [],
+                                     'a documented process is not tribal knowledge')
+            self.assertEqual(guards.check_text(Path(folder) / 'notes.txt', 'just ask John'), [],
+                             'the rule declares Markdown only')
 
     def test_update_state_preserves_human_prose(self):
         text = '# Current state\nHuman intent stays here.\n'

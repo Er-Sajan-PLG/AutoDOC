@@ -1,0 +1,543 @@
+{
+  "version": 1,
+  "note": "Catalog rules. Document names and ids are the seed; every derived field is a rule here, not Python. tier.core is a HAND-PICKED list awaiting owner review, each entry carrying the phase at which it becomes required. A predicate token must be a fact detectable by scripts/intelligence/profile.py, a sentinel, kind:<id> or obligation:<id>; check_catalog.py fails on any token that is not, and on any fact with no consumer.",
+  "seed": {
+    "A": [
+      {
+        "slug": "PRODUCT",
+        "purpose": "Product strategy and vision",
+        "names": "Product vision|Business case|Product requirements|Roadmap|Scope statement|Stakeholder RACI"
+      },
+      {
+        "slug": "REQUIREMENTS",
+        "purpose": "Requirements engineering",
+        "names": "SRS|NFR catalog|Use case|User story|Acceptance criteria|Traceability matrix|Requirements change log"
+      },
+      {
+        "slug": "ARCHITECTURE",
+        "purpose": "Systems architecture",
+        "names": "C4 context|C4 container|C4 component|C4 code|ADR|Quality attribute scenarios|Deployment view|Data flow|Network topology|Trust boundaries|Integration landscape"
+      },
+      {
+        "slug": "DESIGN",
+        "purpose": "Detailed technical design",
+        "names": "Component design|State machine|Algorithm design|Authentication design|Authorization design|Session design|Database design|Caching design|Queue worker design|Retry circuit breaker|Feature flag design|Migration design"
+      },
+      {
+        "slug": "DATA",
+        "purpose": "Data and information management",
+        "names": "Data model|Database schema|Data dictionary|Data lineage|Data classification|Retention policy|ETL specification|Data quality|PII inventory|Disposal procedure"
+      },
+      {
+        "slug": "SECURITY",
+        "purpose": "Security engineering",
+        "names": "Threat model|Security architecture|Security requirements|Cryptography specification|Key management|Secret management|Access control matrix|Vulnerability management|Penetration test report|Incident response plan"
+      },
+      {
+        "slug": "PRIVACY",
+        "purpose": "Privacy and compliance",
+        "names": "ROPA|DPIA|Consent management|Data processing agreement|Subprocessor inventory|Regulatory control mapping|Privacy request log"
+      },
+      {
+        "slug": "APIS",
+        "purpose": "APIs and interfaces",
+        "names": "OpenAPI|GraphQL schema|Protobuf contract|AsyncAPI|Webhook contract|Error catalog|Rate limits|SDK guide|Integration guide|Compatibility matrix"
+      },
+      {
+        "slug": "DEVELOPMENT",
+        "purpose": "Development process",
+        "names": "Coding standard|Git workflow|Pull request guide|Code review policy|Contributing guide|Dependency policy|RFC|Technical debt register"
+      },
+      {
+        "slug": "BUILD",
+        "purpose": "Build and supply chain",
+        "names": "Pipeline architecture|SBOM|Build provenance|SLSA assessment|Artifact signing|License inventory|Quality gates"
+      },
+      {
+        "slug": "TESTING",
+        "purpose": "Testing and quality",
+        "names": "Test strategy|Test plan|Unit test specification|Integration test specification|End to end test specification|Contract test specification|Security test specification|Chaos test specification|Performance test plan|Accessibility test plan|Migration test plan|UAT plan|Defect taxonomy"
+      },
+      {
+        "slug": "PERFORMANCE",
+        "purpose": "Performance and reliability",
+        "names": "SLI SLO SLA|Error budget policy|Capacity model|Scaling policy|Load shedding|Latency budget|Cost model"
+      },
+      {
+        "slug": "INFRASTRUCTURE",
+        "purpose": "Infrastructure and environments",
+        "names": "Infrastructure as code guide|Network design|Kubernetes architecture|DNS certificate inventory|Environment matrix|Golden image|Platform catalog"
+      },
+      {
+        "slug": "CONFIGURATION",
+        "purpose": "Configuration and change",
+        "names": "Configuration item register|CMDB|Change advisory record|RFC process|Environment variable schema|Drift detection"
+      },
+      {
+        "slug": "RELEASE",
+        "purpose": "Release and deployment",
+        "names": "Release plan|Release manifest|Changelog|Release notes|Deployment runbook|Rollback procedure|Canary analysis|Operational readiness review|Go no go record"
+      },
+      {
+        "slug": "OPERATIONS",
+        "purpose": "Operations and observability",
+        "names": "Operations manual|Service catalog|Runbook|Playbook|On call policy|Escalation tree|Observability strategy|Metric catalog|Log standard|Alert catalog|Synthetic monitoring"
+      },
+      {
+        "slug": "INCIDENTS",
+        "purpose": "Incident and problem management",
+        "names": "Incident response|Severity matrix|Incident timeline|Postmortem|Root cause analysis|CAPA register|Known error database"
+      },
+      {
+        "slug": "DISASTER-RECOVERY",
+        "purpose": "Disaster recovery and continuity",
+        "names": "DR plan|Business continuity plan|RTO RPO|Backup strategy|Restore procedure|Failover runbook|DR test record|Cyber recovery"
+      },
+      {
+        "slug": "VENDORS",
+        "purpose": "Vendor and third party",
+        "names": "Vendor inventory|SLA register|Concentration risk|Vendor offboarding|Integration failure modes"
+      },
+      {
+        "slug": "GOVERNANCE",
+        "purpose": "Governance risk and compliance",
+        "names": "Risk register|Control catalog|Control evidence|Audit pack|Policy exception|Governance RACI|Board report"
+      },
+      {
+        "slug": "AI-ML",
+        "purpose": "AI ML and agents",
+        "names": "Model card|Model registry|Prompt registry|Tool authorization matrix|Agent behavior specification|AI safety policy|Sandbox specification|Autonomy levels|AI incident log|Evaluation gate|RAG architecture|Human in the loop"
+      },
+      {
+        "slug": "USER-SUPPORT",
+        "purpose": "User and support",
+        "names": "User guide|Admin guide|Operator manual|API quickstart|Troubleshooting guide|Help center|Support playbook|FAQ"
+      },
+      {
+        "slug": "LIFECYCLE",
+        "purpose": "Lifecycle management",
+        "names": "Deprecation policy|Version support matrix|Migration guide|Data export import|Retirement runbook|Destruction record|Tombstone page"
+      },
+      {
+        "slug": "EVIDENCE",
+        "purpose": "Evidence packs",
+        "names": "Build evidence|Release evidence|Access review evidence|Backup evidence|DR test evidence|Pen test evidence|Training evidence|Incident evidence|Privacy request evidence|Model evaluation evidence"
+      }
+    ],
+    "B": [
+      {
+        "slug": "FOUNDATION",
+        "purpose": "Context and goals",
+        "names": "Problem statement|Goals and non goals|Scope|Stakeholder map|Success metrics|README"
+      },
+      {
+        "slug": "RESEARCH",
+        "purpose": "Discovery and exploration",
+        "names": "Research notes|Competitive analysis|Spike|Assumption log"
+      },
+      {
+        "slug": "PLANNING",
+        "purpose": "Planning and delivery",
+        "names": "Milestones|Task backlog|Risks and dependencies|Delivery plan"
+      },
+      {
+        "slug": "ARCHITECTURE",
+        "purpose": "Early architecture",
+        "names": "System overview|ADR|C4 sketch|Threat model"
+      },
+      {
+        "slug": "CONTRACTS",
+        "purpose": "Implementation contracts",
+        "names": "Module contract|Type definitions|Error handling|API contract"
+      },
+      {
+        "slug": "IMPLEMENTATION",
+        "purpose": "Implementation guidance",
+        "names": "Coding plan|Implementation log|Debugging notes|Migration plan"
+      },
+      {
+        "slug": "TESTING",
+        "purpose": "Validation",
+        "names": "Test strategy|Acceptance criteria|Test results|UAT"
+      },
+      {
+        "slug": "TRACKING",
+        "purpose": "Handoff and tracking",
+        "names": "Current state|Next action|Recent changes|Handoff notes"
+      },
+      {
+        "slug": "AGENT-CONTEXT",
+        "purpose": "AI agent context",
+        "names": "AGENTS.md|CLAUDE.md|Cursor rules|AI-CONTEXT.md|SYSTEM-PROMPT-FOR-CODING-AGENT.md|AGENT-WORKFLOW.md|CURRENT-STATE.md|NEXT-ACTION.md|RECENT-CHANGES.md|AGENT-MEMORY.md|CONTEXT-SNAPSHOT.md|TASK-FOR-AGENT.md|TOOL-USAGE-GUIDE-FOR-AGENT.md|ANTI-PATTERNS-FOR-AGENT.md"
+      },
+      {
+        "slug": "SETUP",
+        "purpose": "Project setup",
+        "names": "Local setup|Environment matrix|Dependency setup|Developer onboarding"
+      },
+      {
+        "slug": "META",
+        "purpose": "Documentation governance",
+        "names": "Documentation index|Ownership matrix|Freshness policy|Document control procedure"
+      }
+    ]
+  },
+  "mode_by_kind": {
+    "EVD": "source-dependent",
+    "default": "human-review"
+  },
+  "kinds": {
+    "by_keyword": [
+      {
+        "type": "EVD",
+        "match": "evidence",
+        "case_sensitive": false
+      },
+      {
+        "type": "EVD",
+        "match": "SBOM",
+        "case_sensitive": true
+      },
+      {
+        "type": "DEC",
+        "match": "ADR",
+        "case_sensitive": true
+      },
+      {
+        "type": "DEC",
+        "match": "decision",
+        "case_sensitive": false
+      },
+      {
+        "type": "PROC",
+        "match": "runbook",
+        "case_sensitive": false
+      },
+      {
+        "type": "PROC",
+        "match": "procedure",
+        "case_sensitive": false
+      },
+      {
+        "type": "POL",
+        "match": "policy",
+        "case_sensitive": false
+      },
+      {
+        "type": "REC",
+        "match": "record",
+        "case_sensitive": false
+      },
+      {
+        "type": "REC",
+        "match": "log",
+        "case_sensitive": false
+      },
+      {
+        "type": "REC",
+        "match": "report",
+        "case_sensitive": false
+      },
+      {
+        "type": "REC",
+        "match": "postmortem",
+        "case_sensitive": false
+      }
+    ],
+    "default": "SPEC",
+    "design_override": {
+      "type": "DES",
+      "only_when_default": "SPEC",
+      "domain_prefixes": ["A03-", "A04-", "B04-"],
+      "names": ["Threat model", "Data flow"]
+    }
+  },
+  "phases": {
+    "by_prefix": {
+      "B": "active development"
+    },
+    "by_domain_number": {
+      "active development": ["A02", "A03", "A04", "A09", "A11"],
+      "pre-release": ["A01", "A05", "A06", "A07", "A08", "A10", "A12", "A13", "A14", "A21"],
+      "post-release": ["A15", "A16", "A17", "A18", "A19", "A20", "A22", "A23", "A24"]
+    },
+    "default": "post-release"
+  },
+  "maturity": {
+    "by_prefix": {
+      "B": "Project-Phase"
+    },
+    "by_phase": {
+      "active development": "Hardened",
+      "pre-release": "Hardened",
+      "post-release": "Product-Grade"
+    }
+  },
+  "tier": {
+    "default": "contextual",
+    "core": [
+      {
+        "id": "DEV-B01-001",
+        "applies_when": ["always"],
+        "why": "Every project needs a stated reason to exist.",
+        "phase_min": "idea"
+      },
+      {
+        "id": "DEV-B01-002",
+        "applies_when": ["always"],
+        "why": "Non-goals prevent the scope creep that no check can detect.",
+        "phase_min": "idea"
+      },
+      {
+        "id": "DEV-B01-003",
+        "applies_when": ["always"],
+        "why": "The boundary of what the system covers.",
+        "phase_min": "idea"
+      },
+      {
+        "id": "DEV-B01-006",
+        "applies_when": ["always"],
+        "phase_min": "idea",
+        "why": "The first and most-read document: what it is, why it exists and whether it works."
+      },
+      {
+        "id": "DEV-B04-001",
+        "applies_when": ["always"],
+        "why": "One map of the parts, for newcomers and agents.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B04-002",
+        "applies_when": ["always"],
+        "why": "Decisions are the highest-churn human knowledge in a repository.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B05-001",
+        "applies_when": ["always"],
+        "why": "Module boundaries are where changes break neighbours.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B07-001",
+        "applies_when": ["has_tests"],
+        "why": "States how confidence is established; the canonical form of this type.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B08-001",
+        "applies_when": ["always"],
+        "why": "Working context; the substrate AutoDOC itself runs on.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B08-002",
+        "applies_when": ["always"],
+        "why": "Human priorities must be recorded, never inferred from Git.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B08-003",
+        "applies_when": ["always"],
+        "why": "A short delta log beats reading raw commit history.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B09-001",
+        "applies_when": ["uses_agents"],
+        "why": "The context file an agent reads first.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B10-001",
+        "applies_when": ["always"],
+        "why": "Nobody can run the project without it.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DEV-B10-003",
+        "applies_when": ["always"],
+        "why": "Direct dependencies and version policy; the most common onboarding failure.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DOC-A05-001",
+        "applies_when": ["has_persistent_state"],
+        "why": "Entities and relationships before schema detail.",
+        "phase_min": "build"
+      },
+      {
+        "id": "DOC-A08-001",
+        "applies_when": ["has_public_api_surface"],
+        "why": "The machine-readable contract for a machine-callable interface.",
+        "phase_min": "beta"
+      },
+      {
+        "id": "DOC-A09-005",
+        "applies_when": ["is_public"],
+        "why": "Outside contributors need the contribution path.",
+        "phase_min": "live"
+      },
+      {
+        "id": "DOC-A10-006",
+        "applies_when": ["is_public"],
+        "why": "Redistribution terms; the gate this repository itself has not passed.",
+        "phase_min": "beta"
+      },
+      {
+        "id": "DOC-A14-005",
+        "applies_when": ["has_env"],
+        "why": "Every environment variable and its meaning.",
+        "phase_min": "beta"
+      },
+      {
+        "id": "DOC-A15-003",
+        "applies_when": ["is_public"],
+        "why": "Consumers of a distributed project need a version delta.",
+        "phase_min": "beta"
+      },
+      {
+        "id": "DOC-A15-006",
+        "applies_when": ["has_deploy"],
+        "why": "Reversing a bad release must be written before it is needed.",
+        "phase_min": "beta"
+      },
+      {
+        "id": "DOC-A16-003",
+        "applies_when": ["has_deploy"],
+        "why": "Operators need a procedure for the deployed service.",
+        "phase_min": "live"
+      },
+      {
+        "id": "DOC-A22-004",
+        "applies_when": ["has_public_api_surface"],
+        "why": "Shortest path to a first successful call.",
+        "phase_min": "beta"
+      },
+      {
+        "id": "DOC-A23-001",
+        "applies_when": ["is_public"],
+        "why": "Published interfaces need a removal promise before they are removed.",
+        "phase_min": "mature"
+      }
+    ],
+    "extended": [
+      "DOC-A05-002",
+      "DOC-A05-003",
+      "DOC-A06-001",
+      "DOC-A06-002",
+      "DOC-A06-007",
+      "DOC-A08-006",
+      "DOC-A08-009",
+      "DOC-A09-001",
+      "DOC-A09-006",
+      "DOC-A10-002",
+      "DOC-A10-003",
+      "DOC-A10-007",
+      "DOC-A11-002",
+      "DOC-A11-003",
+      "DOC-A11-004",
+      "DOC-A12-001",
+      "DOC-A12-002",
+      "DOC-A13-001",
+      "DOC-A14-006",
+      "DOC-A15-004",
+      "DOC-A15-005",
+      "DOC-A16-005",
+      "DOC-A16-010",
+      "DOC-A18-004",
+      "DOC-A21-001",
+      "DOC-A21-003",
+      "DOC-A21-004",
+      "DOC-A21-005",
+      "DOC-A21-012",
+      "DOC-A22-001",
+      "DOC-A22-005",
+      "DOC-A23-003",
+      "DEV-B03-003",
+      "DEV-B04-003",
+      "DEV-B04-004",
+      "DEV-B05-002",
+      "DEV-B05-003",
+      "DEV-B05-004",
+      "DEV-B06-004",
+      "DEV-B07-002",
+      "DEV-B07-003",
+      "DEV-B09-010",
+      "DEV-B09-014",
+      "DEV-B11-002",
+      "DEV-B11-003"
+    ]
+  },
+  "applies_when": {
+    "by_id": {
+      "DEV-B03-003": ["always"],
+      "DEV-B04-003": ["has_deploy"],
+      "DEV-B04-004": ["has_deploy"],
+      "DEV-B05-004": ["has_public_api_surface"],
+      "DEV-B06-004": ["has_persistent_state"],
+      "DEV-B07-004": ["assess"],
+      "DOC-A11-012": ["assess"],
+      "DOC-A14-005": ["has_env"],
+      "DOC-A15-006": ["has_deploy"],
+      "DOC-A16-003": ["has_deploy"],
+      "DOC-A18-004": ["has_persistent_state"],
+      "DOC-A22-004": ["has_public_api_surface"],
+      "DOC-A22-005": ["always"],
+      "DOC-A22-001": {
+        "any": ["has_cli", "has_ui", "has_public_api_surface"]
+      },
+      "DOC-A13-001": ["has_docker"],
+      "DOC-A10-002": ["has_third_party_deps"],
+      "DOC-A06-001": ["has_network_listener"],
+      "DOC-A06-006": ["has_secrets_or_credentials_config"],
+      "DOC-A07-001": {
+        "any": ["obligation:gdpr", "obligation:ccpa", "obligation:hipaa"]
+      },
+      "DOC-A07-002": {
+        "any": ["obligation:gdpr", "obligation:ccpa", "obligation:hipaa"]
+      },
+      "DOC-A07-006": {
+        "any": ["obligation:gdpr", "obligation:ccpa", "obligation:hipaa"]
+      }
+    },
+    "by_domain": {
+      "A01-PRODUCT": ["assess"],
+      "A02-REQUIREMENTS": ["assess"],
+      "A03-ARCHITECTURE": ["assess"],
+      "A04-DESIGN": ["assess"],
+      "A05-DATA": ["has_persistent_state"],
+      "A06-SECURITY": ["has_deploy"],
+      "A07-PRIVACY": ["assess"],
+      "A08-APIS": ["has_public_api_surface"],
+      "A09-DEVELOPMENT": ["assess"],
+      "A10-BUILD": ["has_ci"],
+      "A11-TESTING": ["has_tests"],
+      "A12-PERFORMANCE": ["has_deploy"],
+      "A13-INFRASTRUCTURE": ["has_deploy"],
+      "A14-CONFIGURATION": ["has_env"],
+      "A15-RELEASE": ["is_public"],
+      "A16-OPERATIONS": ["has_deploy"],
+      "A17-INCIDENTS": ["has_deploy"],
+      "A18-DISASTER-RECOVERY": ["has_persistent_state"],
+      "A19-VENDORS": ["assess"],
+      "A20-GOVERNANCE": ["assess"],
+      "A21-AI-ML": ["has_ai"],
+      "A22-USER-SUPPORT": ["is_public"],
+      "A23-LIFECYCLE": ["is_public"],
+      "A24-EVIDENCE": ["assess"],
+      "B01-FOUNDATION": ["always"],
+      "B02-RESEARCH": ["assess"],
+      "B03-PLANNING": ["assess"],
+      "B04-ARCHITECTURE": ["always"],
+      "B05-CONTRACTS": ["always"],
+      "B06-IMPLEMENTATION": ["assess"],
+      "B07-TESTING": ["has_tests"],
+      "B08-TRACKING": ["always"],
+      "B09-AGENT-CONTEXT": ["uses_agents"],
+      "B10-SETUP": ["always"],
+      "B11-META": ["always"]
+    },
+    "default": ["assess"]
+  }
+}

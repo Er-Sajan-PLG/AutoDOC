@@ -54,8 +54,8 @@ ATX headings from configured human-owned Markdown sources.
 - L1 line 1: AutoDOC
 - L2 line 11: What it does
 - L2 line 18: Quick start (Python 3.11+)
-- L2 line 26: Status
-- L2 line 39: Navigate
+- L2 line 46: Status
+- L2 line 59: Navigate
 
 ## `TEMPLATES/AGENT-CONTEXT/DEV-B09-001.md`
 
@@ -1252,6 +1252,18 @@ ATX headings from configured human-owned Markdown sources.
 ## `TEMPLATES/SPECIFICATIONS/DEV-B01-005.md.example`
 
 - L1 line 23: Success metrics
+
+## `TEMPLATES/SPECIFICATIONS/DEV-B01-006.md`
+
+- L1 line 23: README
+
+## `TEMPLATES/SPECIFICATIONS/DEV-B01-006.md.blank`
+
+- L1 line 23: README
+
+## `TEMPLATES/SPECIFICATIONS/DEV-B01-006.md.example`
+
+- L1 line 23: README
 
 ## `TEMPLATES/SPECIFICATIONS/DEV-B02-001.md`
 
@@ -3193,7 +3205,9 @@ ATX headings from configured human-owned Markdown sources.
 - L2 line 45: Rollout and success criteria
 - L2 line 52: Non-applicability and gaps
 - L2 line 60: Verification and references
-- L2 line 66: Phase 3 applicability
+- L2 line 66: Enforcement decisions (step 6, 2026-10-01)
+- L2 line 77: Applicability decisions (step 3, 2026-10-01)
+- L2 line 94: Phase 3 applicability
 
 ## `docs/00-governance/BRANCH-PROTECTION.md`
 
@@ -3214,12 +3228,12 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: Engine coverage and honest limits
 - L2 line 24: Implemented and tested
-- L2 line 41: Implemented validators
-- L2 line 50: Mapped but template-only
-- L2 line 58: Partially supported
-- L2 line 66: Explicitly not implemented
-- L2 line 76: Not supported / integration needed
-- L2 line 84: Known environment constraints
+- L2 line 49: Implemented validators
+- L2 line 64: Mapped but template-only
+- L2 line 72: Partially supported
+- L2 line 80: Explicitly not implemented
+- L2 line 90: Not supported / integration needed
+- L2 line 98: Known environment constraints
 
 ## `docs/00-governance/EVIDENCE-SIGNING.md`
 
@@ -3237,49 +3251,17 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: AutoDOC limitations
 
-## `docs/00-governance/_index.md`
-
-- L1 line 22: 00 Governance
-
-## `docs/01-product/_index.md`
-
-- L1 line 22: 01 Product
-
-## `docs/02-discovery/_index.md`
-
-- L1 line 22: 02 Discovery
-
-## `docs/03-requirements/_index.md`
-
-- L1 line 22: 03 Requirements
-
 ## `docs/04-guides/HOW-AUTODOC-WORKS.md`
 
 - L1 line 22: How AutoDOC works
-
-## `docs/04-spikes/_index.md`
-
-- L1 line 22: 04 Spikes
 
 ## `docs/05-architecture/AUTODOC-ARCHITECTURE.md`
 
 - L1 line 22: AutoDOC architecture
 - L2 line 24: Purpose and scope
 - L2 line 29: Details and decisions
-- L2 line 73: Verification and references
-- L2 line 79: Phase 3 trust boundaries
-
-## `docs/05-architecture/_index.md`
-
-- L1 line 22: 05 Architecture
-
-## `docs/06-design/_index.md`
-
-- L1 line 22: 06 Design
-
-## `docs/07-api/_index.md`
-
-- L1 line 22: 07 Api
+- L2 line 138: Verification and references
+- L2 line 144: Phase 3 trust boundaries
 
 ## `docs/08-agent-context/AGENT-MEMORY.md`
 
@@ -3313,85 +3295,13 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: TASK-FOR-AGENT.md — canonical root pointer
 
-## `docs/08-data/_index.md`
+## `docs/reference/EXIT-CODES.md`
 
-- L1 line 22: 08 Data
-
-## `docs/09-ai/_index.md`
-
-- L1 line 22: 09 Ai
-
-## `docs/10-security/_index.md`
-
-- L1 line 22: 10 Security
-
-## `docs/11-privacy-legal/_index.md`
-
-- L1 line 22: 11 Privacy Legal
-
-## `docs/12-development/_index.md`
-
-- L1 line 22: 12 Development
-
-## `docs/13-testing/_index.md`
-
-- L1 line 22: 13 Testing
-
-## `docs/14-build-supply-chain/_index.md`
-
-- L1 line 22: 14 Build Supply Chain
-
-## `docs/15-release/_index.md`
-
-- L1 line 22: 15 Release
-
-## `docs/16-deployment/_index.md`
-
-- L1 line 22: 16 Deployment
-
-## `docs/17-operations/_index.md`
-
-- L1 line 22: 17 Operations
-
-## `docs/18-runbooks/_index.md`
-
-- L1 line 22: 18 Runbooks
-
-## `docs/19-playbooks/_index.md`
-
-- L1 line 22: 19 Playbooks
-
-## `docs/20-incidents/_index.md`
-
-- L1 line 22: 20 Incidents
-
-## `docs/21-continuity/_index.md`
-
-- L1 line 22: 21 Continuity
-
-## `docs/22-support-user/_index.md`
-
-- L1 line 22: 22 Support User
-
-## `docs/23-governance-risk/_index.md`
-
-- L1 line 22: 23 Governance Risk
-
-## `docs/24-analytics-experiments/_index.md`
-
-- L1 line 22: 24 Analytics Experiments
-
-## `docs/25-gtm-trust/_index.md`
-
-- L1 line 22: 25 Gtm Trust
-
-## `docs/26-lifecycle/_index.md`
-
-- L1 line 22: 26 Lifecycle
-
-## `docs/27-knowledge/_index.md`
-
-- L1 line 22: 27 Knowledge
+- L1 line 22: Exit codes
+- L2 line 40: Where each code comes from
+- L2 line 51: What a code does not say
+- L2 line 59: Baseline entries
+- L2 line 75: Hooks and gates
 
 ## `docs/templates/adr-template.md`
 

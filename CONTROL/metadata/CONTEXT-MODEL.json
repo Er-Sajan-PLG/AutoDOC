@@ -1,0 +1,386 @@
+{
+  "version": 1,
+  "note": "Context model: phases, enforcement scaling, and the declared vocabularies a context may use. Phases are declarations, never auto-transitions: an undeclared phase means advisory-only output. Kinds and audiences are declared; they are validated and displayed, and kind-gated predicates arrive with kind inference. Obligations are declared only and never inferred. Each enforcement block also carries a `checks` map: the severity of each structural check family under that phase, matching the guide's phase table (build: structural breakage fails, drift and freshness off; beta: drift and freshness warn; live and mature: everything fails). Obligation severities come from the block's core/extended fields, so they are stated once.",
+  "phases": [
+    {
+      "id": "idea",
+      "meaning": "Problem exploration, no working code",
+      "exit_signal": "First runnable thing",
+      "enforcement": "advisory"
+    },
+    {
+      "id": "prototype",
+      "meaning": "Proving feasibility, throwaway allowed",
+      "exit_signal": "Decision to build for real",
+      "enforcement": "advisory"
+    },
+    {
+      "id": "build",
+      "meaning": "Active development, no external users",
+      "exit_signal": "First outside user or release candidate",
+      "enforcement": "warn"
+    },
+    {
+      "id": "beta",
+      "meaning": "Limited users, interfaces still moving",
+      "exit_signal": "Stability commitment",
+      "enforcement": "strict"
+    },
+    {
+      "id": "live",
+      "meaning": "Supported, real users, compatibility matters",
+      "exit_signal": "Growth slows, team shrinks",
+      "enforcement": "full"
+    },
+    {
+      "id": "mature",
+      "meaning": "Stable, low change, maintained",
+      "exit_signal": "Replacement or abandonment decided",
+      "enforcement": "full"
+    },
+    {
+      "id": "sunset",
+      "meaning": "Deprecating, archiving, or handing off",
+      "exit_signal": "Archived",
+      "enforcement": "sunset"
+    }
+  ],
+  "enforcement": {
+    "advisory": {
+      "core": "report",
+      "extended": "report",
+      "fail": false,
+      "description": "Advisory. Missing documents are reported; drift and freshness are off.",
+      "checks": {
+        "drift": "off",
+        "stubs": "report",
+        "placeholders": "report",
+        "links.local": "report",
+        "secrets.inline": "report",
+        "tribal": "report",
+        "freshness.critical": "off",
+        "freshness.review": "off"
+      }
+    },
+    "warn": {
+      "core": "warn",
+      "extended": "report",
+      "fail": false,
+      "structural_fails": true,
+      "description": "Missing required docs warn (baseline allowed), recommended docs are reported, structural breakage fails, drift and freshness are off.",
+      "checks": {
+        "drift": "off",
+        "stubs": "warn",
+        "placeholders": "error",
+        "links.local": "error",
+        "secrets.inline": "error",
+        "tribal": "report",
+        "freshness.critical": "off",
+        "freshness.review": "off"
+      }
+    },
+    "strict": {
+      "core": "error",
+      "extended": "warn",
+      "fail": true,
+      "description": "Required docs fail, recommended docs warn, structural breakage fails, drift and freshness warn.",
+      "checks": {
+        "drift": "warn",
+        "stubs": "error",
+        "placeholders": "error",
+        "links.local": "error",
+        "secrets.inline": "error",
+        "tribal": "report",
+        "freshness.critical": "warn",
+        "freshness.review": "warn"
+      }
+    },
+    "full": {
+      "core": "error",
+      "extended": "warn",
+      "fail": true,
+      "description": "Full strictness: required docs, structural breakage, drift and freshness all fail.",
+      "checks": {
+        "drift": "error",
+        "stubs": "error",
+        "placeholders": "error",
+        "links.local": "error",
+        "secrets.inline": "error",
+        "tribal": "report",
+        "freshness.critical": "error",
+        "freshness.review": "error"
+      }
+    },
+    "sunset": {
+      "core": "error",
+      "extended": "off",
+      "fail": true,
+      "only": "sunset",
+      "description": "Only the sunset profile is active (status, license, security contact, deprecation or successor pointer, archive notes). Everything else is off.",
+      "checks": {
+        "drift": "off",
+        "stubs": "off",
+        "placeholders": "off",
+        "links.local": "off",
+        "secrets.inline": "off",
+        "tribal": "off",
+        "freshness.critical": "off",
+        "freshness.review": "off"
+      }
+    }
+  },
+  "severity_rules": [
+    {
+      "id": "recommend.core",
+      "honored": true,
+      "description": "Applicable core type that is neither written nor recorded.",
+      "purpose": "core catalog types required at the declared phase",
+      "exactness": "exact",
+      "limits": "Presence of a recorded decision or a mapped file; it cannot judge whether the document is any good."
+    },
+    {
+      "id": "recommend.extended",
+      "honored": true,
+      "description": "Applicable extended type with no document.",
+      "purpose": "extended catalog types with no document",
+      "exactness": "exact",
+      "limits": "Presence only, and extended types are template-only: nothing verifies their content."
+    },
+    {
+      "id": "recommend.undetermined",
+      "honored": false,
+      "description": "Applicability could not be decided because a fact is unknown; reported, never failed.",
+      "purpose": "requirements whose applicability could not be decided",
+      "exactness": "exact",
+      "limits": "Propagates `unknown` facts; never fails."
+    },
+    {
+      "id": "drift",
+      "honored": true,
+      "description": "Generated target differs from its mapped sources.",
+      "purpose": "generated targets out of step with their mapped sources",
+      "exactness": "exact",
+      "limits": "Covers only targets declared in docs/.doc-sync-map.yaml; prose that mirrors code by hand is not seen."
+    },
+    {
+      "id": "stubs",
+      "honored": true,
+      "description": "Approved document with no content beyond its title.",
+      "purpose": "approved documents with no content beyond the title",
+      "exactness": "exact",
+      "limits": "Counts headings and words; a document full of filler still passes."
+    },
+    {
+      "id": "placeholders",
+      "honored": true,
+      "description": "Draft document that is still a placeholder.",
+      "purpose": "draft documents that are still placeholders",
+      "exactness": "heuristic",
+      "limits": "Detects boilerplate/placeholder markers and emptiness, not a document that looks complete and says nothing."
+    },
+    {
+      "id": "links.local",
+      "honored": true,
+      "description": "Local link or relative path that does not resolve.",
+      "purpose": "relative links and paths that do not resolve",
+      "exactness": "exact",
+      "limits": "Markdown files only; links inside code blocks and generated text are not resolved, and external URLs are never fetched offline."
+    },
+    {
+      "id": "secrets.inline",
+      "honored": true,
+      "description": "Private key marker committed into a text file.",
+      "purpose": "private key markers committed into text files",
+      "exactness": "heuristic",
+      "limits": "Pattern matches a key header only; other credentials are not detected, and names and locations are recorded, never values. Never baselined."
+    },
+    {
+      "id": "tribal",
+      "honored": true,
+      "description": "Instruction that depends on undocumented private knowledge.",
+      "purpose": "instructions that depend on undocumented private knowledge",
+      "exactness": "heuristic",
+      "limits": "Markdown only, and only known phrase patterns such as \"ask John\" or \"just ask\"; undocumented knowledge in any other form is not seen."
+    },
+    {
+      "id": "freshness.critical",
+      "honored": true,
+      "description": "Critical human-owned document past its review date.",
+      "purpose": "critical human-owned documents past their review date",
+      "exactness": "exact",
+      "limits": "Uses declared review dates; a stale but frequently-read document that was never reviewed on schedule still fails."
+    },
+    {
+      "id": "freshness.review",
+      "honored": true,
+      "description": "Non-critical human-owned document past its review date.",
+      "purpose": "non-critical human-owned documents past their review date",
+      "exactness": "exact",
+      "limits": "Same inputs as freshness.critical."
+    },
+    {
+      "id": "recommend.decision",
+      "honored": false,
+      "purpose": "advisory decisions that nobody owns or has dated",
+      "exactness": "exact",
+      "limits": "Only [not_applicable] entries are inspected; the presence of an owner or a review date says nothing about whether the decision is still right."
+    }
+  ],
+  "sunset_ids": [
+    "DOC-A23-001",
+    "DOC-A23-003",
+    "DOC-A23-007"
+  ],
+  "sunset_note": "End of life needs a deprecation policy, a pointer to the successor, and a tombstone page. A security contact is required by many policies but has no catalog type yet.",
+  "kinds": [
+    {
+      "id": "library",
+      "label": "Library / SDK / framework",
+      "evidence": "packaged for a registry, imported by others"
+    },
+    {
+      "id": "application",
+      "label": "Application",
+      "evidence": "CLI, desktop, mobile or game entry point"
+    },
+    {
+      "id": "service",
+      "label": "Service / API",
+      "evidence": "network listener, deployment definition"
+    },
+    {
+      "id": "frontend",
+      "label": "Web frontend / site",
+      "evidence": "browser assets and a client build"
+    },
+    {
+      "id": "data",
+      "label": "Data / analytics",
+      "evidence": "pipelines, notebooks, dashboards"
+    },
+    {
+      "id": "ml",
+      "label": "ML / AI",
+      "evidence": "training code, models, prompt or agent systems"
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastructure",
+      "evidence": "Terraform, Helm, Ansible, CI templates"
+    },
+    {
+      "id": "platform",
+      "label": "Platform / monorepo",
+      "evidence": "several packages with their own kinds"
+    },
+    {
+      "id": "plugin",
+      "label": "Plugin / extension",
+      "evidence": "add-on for a host application"
+    },
+    {
+      "id": "embedded",
+      "label": "Embedded / hardware",
+      "evidence": "firmware, PCB, CAD"
+    },
+    {
+      "id": "research",
+      "label": "Research / science",
+      "evidence": "papers, experiments, reproducibility"
+    },
+    {
+      "id": "content",
+      "label": "Content / education",
+      "evidence": "courses, books, handbooks, policy repos"
+    },
+    {
+      "id": "template",
+      "label": "Template / boilerplate",
+      "evidence": "starters, dotfiles, config repos"
+    }
+  ],
+  "audiences": [
+    {
+      "id": "external-users",
+      "label": "People outside the team who use it"
+    },
+    {
+      "id": "contributors",
+      "label": "People who change the code"
+    },
+    {
+      "id": "operators",
+      "label": "People who run and support it"
+    },
+    {
+      "id": "auditors",
+      "label": "People who review obligations and evidence"
+    },
+    {
+      "id": "successors",
+      "label": "People who inherit it when the team moves on"
+    }
+  ],
+  "obligations": [
+    {
+      "id": "gdpr",
+      "label": "EU general data protection regulation"
+    },
+    {
+      "id": "ccpa",
+      "label": "California consumer privacy act"
+    },
+    {
+      "id": "hipaa",
+      "label": "US health information privacy"
+    },
+    {
+      "id": "pci-dss",
+      "label": "Payment card industry data security standard"
+    },
+    {
+      "id": "soc2",
+      "label": "SOC 2 trust services criteria"
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility conformance obligations"
+    },
+    {
+      "id": "safety-critical",
+      "label": "Safety-critical or regulated device obligations"
+    },
+    {
+      "id": "export-control",
+      "label": "Export control or sanctions screening"
+    }
+  ],
+  "obligation_note": "This list is common, not exhaustive. Any lowercase token is accepted, and an obligation is only ever true when the owner declares it.",
+  "phase_hints": [
+    {
+      "id": "mature",
+      "reason": "first commit is at least three years old",
+      "test": "history_years>=3"
+    },
+    {
+      "id": "live",
+      "reason": "a tag at or above 1.0.0 exists",
+      "test": "tag>=1.0.0"
+    },
+    {
+      "id": "build",
+      "reason": "source files and a README exist",
+      "test": "has_source_and_readme"
+    },
+    {
+      "id": "prototype",
+      "reason": "source exists but no release history",
+      "test": "has_source"
+    },
+    {
+      "id": "idea",
+      "reason": "no source files were found",
+      "test": "always"
+    }
+  ]
+}

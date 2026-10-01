@@ -34,6 +34,14 @@ All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make gene
 | Example alert JSON-compatible YAML | Alert catalog | Condition, severity, existing runbook required | `test_phase3.py` |
 | PEP 621 manifests | Declared dependency references | Direct declarations, no resolution | `test_phase2.py` |
 | Python AST and ATX Markdown | Code/test inventory and outline | Parsed declarations/headings, not behavior | `test_phase2.py` |
+| Catalog rules file | `CATALOG-A/B/INDEX.yaml` | Seeds names; derives type, tier, `phase_min`, `applies_when`, maturity | `test_catalog.py` |
+| Repository files | `profile.json` three-valued facts | File presence only; `unknown` when nothing could be read | `test_profile.py` |
+| `autodoc.toml` + context model | Validated declared context | Declarations only; never inferred | `test_context.py` |
+| Profile + catalog + context | Obligations with severity and `--check` | Phase-scaled; advisory without a declared phase | `test_resolver.py` |
+| Fixture repositories | kind x phase x ecosystem matrix | Awkward cases: no manifest, unread ecosystem, docs-only | `test_profile.py` |
+| Enforcement policy | severity per check family per phase | One precedence: override, phase default, report | `test_enforce.py` |
+| Adoption baseline | suppressed findings and stale entries | Keyed by rule and location; never suppresses a new finding | `test_enforce.py` |
+| Exit codes | `0`, `1`, `2` | Documented in `docs/reference/EXIT-CODES.md` | `test_enforce.py` |
 | Catalogs/workflow files | Three views, CI inventory, completeness | Stable IDs and file hashes | `test_engine.py`, `test_phase3.py` |
 | Frontmatter + sync map | Master/human inventories; JSON + Mermaid graph | References and actual mapped paths | `test_engine.py`, `test_phase3.py` |
 | Local tool matrix/prompt files | Allowlist, prompt and model inventories | No LLM, shell or network tool execution | `test_local_tools.py`, `test_agent_example.py` |
@@ -42,6 +50,12 @@ All outputs below have concrete sources in `docs/.doc-sync-map.yaml`; `make gene
 Metadata (required fields, enums, unique IDs), relationship IDs and supersedes cycles,
 ownership path authority, critical-date freshness, source/target mapping integrity, generator
 byte drift, path-based human review impact, offline local links, key markers and tribal phrases.
+`stub_check.py` also fails **approved** human documents with no section and no content beyond
+their title, so a placeholder index cannot inflate the inventory or the health counts; drafts
+warn instead. Generated targets are excluded because byte drift validates them, not prose volume.
+The catalog index is validated against `CATALOG-SCHEMA.json` plus rule cross-checks (unknown
+flags, mixed sentinels, core types without a reason or with an undetectable predicate, duplicate
+ids, missing templates, and a vocabulary that no profiler detector backs).
 CI artifacts contain actual test output; `make evidence` packages a scoped **unsigned** hash-
 verifiable record. `make ci` also checks staged impact locally, or compares HEAD with `BASE`
 when there is no staged change (CI supplies the PR base SHA). It uses pytest; no

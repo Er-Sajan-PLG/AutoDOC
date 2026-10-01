@@ -34,29 +34,15 @@ auto_generated: false
 <!-- auto:start -->
 ## Last 20 Git commits
 
-- 82bb397 2026-09-26 Initial commit: AutoDOC scaffolding
+- 328c2d6 2026-09-30 Enforce one severity policy with a baseline and documented exit codes
+- 7cc1e8a 2026-09-30 Obligations as catalog x context, with phase-scaled enforcement
+- c3cdae8 2026-09-30 Make catalog classification data; add tiers, applicability and a profiler
+- a2ba937 2026-09-30 Refresh observable living-state blocks after stub retirement
+- 15a8254 2026-09-30 Retire the 28 approved title-only index placeholders
+- aabe917 2026-09-30 Add approved-stub check; it fails the 28 title-only index placeholders
+- 19ca0d4 2026-09-27 Merge pull request #1 from Er-Sajan-PLG/arena/01a0de49-autodoc
 
 ## Changed paths at update time
 
-- `.github/CODEOWNERS`
-- `.github/PULL_REQUEST_TEMPLATE.md`
-- `.github/workflows/docs-generation-preview.yml`
-- `.github/workflows/docs-guard.yml`
-- `.github/workflows/docs-staleness.yml`
-- `.github/workflows/release.yml`
-- `.github/workflows/self-doc-check.yml`
-- `.gitignore`
-- `.pre-commit-config.yaml`
-- `AGENT-MEMORY.md`
-- `AGENTS.md`
-- `ANTI-PATTERNS-FOR-AGENT.md`
-- `AUTODOC.md`
-- `CATALOG-A/INDEX.yaml`
-- `CATALOG-B/INDEX.yaml`
-- `CATALOG-C/INDEX.yaml`
-- `CHANGELOG.md`
-- `CLAUDE.md`
-- `CONTEXT-SNAPSHOT.md`
-- `CONTRIBUTING.md`
-- … and 944 more; use git diff --cached --name-only.
+- None staged or changed.
 <!-- auto:end -->

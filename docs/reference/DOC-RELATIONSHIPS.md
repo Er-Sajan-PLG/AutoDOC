@@ -61,6 +61,7 @@ flowchart LR
     n6118b8f79406a66e["DEV-B01-003"]
     n006aff321e268a3d["DEV-B01-004"]
     n0a9839a36379d064["DEV-B01-005"]
+    n443c4a93cc59716f["DEV-B01-006"]
     n74fe1c7a31afd785["DEV-B02-001"]
     nb6abba5bcbb991b7["DEV-B02-002"]
     nd70f005c987ca1c1["DEV-B02-003"]
@@ -322,6 +323,7 @@ flowchart LR
     nb9e3f471ee9dc74a["DOC-CI-001"]
     na972c343d60f71e5["DOC-GOV-001"]
     n5eec99ff7c43a312["DOC-P2-001"]
+    n9ea467f2b9e20b15["DOC-REF-001"]
     nf98f68363dffb94c["EX-AGENT-001"]
     n213f816e45fa8f6d["EX-API-001"]
     n58b55c06f9981c66["EX-HEALTH-RUNBOOK-001"]
@@ -646,6 +648,9 @@ flowchart LR
     n620613c6b48cb1b7["TEMPLATES/SPECIFICATIONS/DEV-B01-005.md"]
     nb0f217344120ed72["TEMPLATES/SPECIFICATIONS/DEV-B01-005.md.blank"]
     n2949b217b1e265c4["TEMPLATES/SPECIFICATIONS/DEV-B01-005.md.example"]
+    n4f62b15480e84d36["TEMPLATES/SPECIFICATIONS/DEV-B01-006.md"]
+    n008f721a60e7affd["TEMPLATES/SPECIFICATIONS/DEV-B01-006.md.blank"]
+    nca305171108caf10["TEMPLATES/SPECIFICATIONS/DEV-B01-006.md.example"]
     n2877999ce4e08c03["TEMPLATES/SPECIFICATIONS/DEV-B02-001.md"]
     n3a9d218435096661["TEMPLATES/SPECIFICATIONS/DEV-B02-001.md.blank"]
     n94a26d5ef51c0ab9["TEMPLATES/SPECIFICATIONS/DEV-B02-001.md.example"]
@@ -1237,6 +1242,9 @@ flowchart LR
     n0a9839a36379d064 -->|template| n620613c6b48cb1b7
     n0a9839a36379d064 -->|template| nb0f217344120ed72
     n0a9839a36379d064 -->|template| n2949b217b1e265c4
+    n443c4a93cc59716f -->|template| n4f62b15480e84d36
+    n443c4a93cc59716f -->|template| n008f721a60e7affd
+    n443c4a93cc59716f -->|template| nca305171108caf10
     n74fe1c7a31afd785 -->|template| n2877999ce4e08c03
     n74fe1c7a31afd785 -->|template| n3a9d218435096661
     n74fe1c7a31afd785 -->|template| n94a26d5ef51c0ab9
@@ -2007,6 +2015,8 @@ flowchart LR
     n7eca7e044f557cca -->|related| nb9e3f471ee9dc74a
     na972c343d60f71e5 -->|related| n7eca7e044f557cca
     na972c343d60f71e5 -->|related| n65680cb3c81e665f
+    n9ea467f2b9e20b15 -->|related| n7eca7e044f557cca
+    n9ea467f2b9e20b15 -->|related| na972c343d60f71e5
     nf98f68363dffb94c -->|related| n936306074765c4e0
     n58b55c06f9981c66 -->|related| n213f816e45fa8f6d
     nc30a77fe3355b330 -->|generates| nd7fd453271f9da4b

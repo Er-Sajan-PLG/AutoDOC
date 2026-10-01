@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:autodoc:catalog:1",
+  "title": "AutoDOC catalog index",
+  "description": "Schema for CATALOG-A/INDEX.yaml and CATALOG-B/INDEX.yaml. The index is generated from CONTROL/metadata/CATALOG-RULES.json; this schema and check_catalog.py verify it. The validator implements a keyword subset and fails on any keyword it does not implement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "note",
+    "domains"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "domain",
+          "purpose",
+          "documents"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "pattern": "^[AB][0-9]{2}-[A-Z0-9-]+$"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "documents": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "name",
+                "type",
+                "tier",
+                "tier_reason",
+                "phase_min",
+                "applies_when",
+                "audience",
+                "owner",
+                "owner_type",
+                "purpose",
+                "when",
+                "maturity",
+                "required_content",
+                "related",
+                "mode",
+                "template"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(DOC|DEV)-[AB][0-9]{2}-[0-9]{3}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "SPEC",
+                    "DEC",
+                    "DES",
+                    "PROC",
+                    "POL",
+                    "REF",
+                    "REC",
+                    "EVD",
+                    "TPL"
+                  ]
+                },
+                "tier": {
+                  "type": "string",
+                  "enum": [
+                    "core",
+                    "extended",
+                    "contextual"
+                  ]
+                },
+                "tier_reason": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1
+                },
+                "applies_when": {
+                  "type": [
+                    "array",
+                    "object"
+                  ],
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|obligation:[a-z][a-z0-9-]*)$"
+                  },
+                  "properties": {
+                    "all": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|obligation:[a-z][a-z0-9-]*)$"
+                      }
+                    },
+                    "any": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^(always|assess|[a-z][a-z0-9_]*|kind:[a-z][a-z0-9-]*|obligation:[a-z][a-z0-9-]*)$"
+                      }
+                    }
+                  }
+                },
+                "audience": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "owner": {
+                  "type": "string",
+                  "pattern": "^@"
+                },
+                "owner_type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "purpose": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "when": {
+                  "type": "string",
+                  "enum": [
+                    "active development",
+                    "pre-release",
+                    "post-release"
+                  ]
+                },
+                "maturity": {
+                  "type": "string",
+                  "enum": [
+                    "Project-Phase",
+                    "Hardened",
+                    "Product-Grade"
+                  ]
+                },
+                "required_content": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "related": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "human-review",
+                    "source-dependent"
+                  ]
+                },
+                "template": {
+                  "type": "string",
+                  "pattern": "^TEMPLATES/[A-Z-]+/(DOC|DEV)-[AB][0-9]{2}-[0-9]{3}\\.md$"
+                },
+                "phase_min": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

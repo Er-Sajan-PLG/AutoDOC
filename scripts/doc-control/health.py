@@ -8,6 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts/doc-sync'))
 import engine
+sys.path.insert(0, str(ROOT / 'scripts/doc-control'))
+import stub_check
 
 
 def health():
@@ -29,13 +31,16 @@ def health():
         if (meta['auto_generated'] == 'false' and meta['status'] == 'draft' and
                 today > date.fromisoformat(meta['last_updated']) + timedelta(days=60)):
             old_drafts.append(str(path.relative_to(ROOT)))
+    approved_stubs, draft_stubs = stub_check.scan()
     return {'created_at_utc': datetime.now(timezone.utc).isoformat(),
             'catalog_document_types': len(entries), 'template_triples_present': complete,
             'controlled_document_instances': len(controlled), 'overdue_human_reviews': stale,
             'drafts_without_updates_over_60_days': old_drafts,
+            'substantive_documents': len(controlled) - len(approved_stubs) - len(draft_stubs),
+            'approved_stub_documents': approved_stubs, 'draft_stub_documents': draft_stubs,
             'generated_targets': len(engine.load_map()['generated']),
             'drift_free': engine.generate(check=True),
-            'note': 'Counts files and deadlines, not semantic correctness or compliance status.'}
+            'note': 'Counts files, deadlines and structural stubs, not semantic correctness or compliance status.'}
 
 
 if __name__ == '__main__':
@@ -56,6 +61,9 @@ if __name__ == '__main__':
                  f'- Catalog types: {data["catalog_document_types"]}',
                  f'- Template triples present: {data["template_triples_present"]}',
                  f'- Controlled documents: {data["controlled_document_instances"]}',
+                 f'- Substantive documents: {data["substantive_documents"]}',
+                 f'- Approved stub documents: {len(data["approved_stub_documents"])}',
+                 f'- Draft stub documents: {len(data["draft_stub_documents"])}',
                  f'- Mapped generated targets: {data["generated_targets"]}',
                  f'- Generated drift-free: {data["drift_free"]}', '',
                  '## Overdue human-owned reviews', '']
@@ -65,6 +73,10 @@ if __name__ == '__main__':
         lines += ['', '## Drafts not updated in 60 days', '']
         lines.extend('- `' + path + '`' for path in data['drafts_without_updates_over_60_days'])
         if not data['drafts_without_updates_over_60_days']:
+            lines.append('- None detected.')
+        lines += ['', '## Approved title-only stubs', '']
+        lines.extend('- `' + path + '`' for path in data['approved_stub_documents'])
+        if not data['approved_stub_documents']:
             lines.append('- None detected.')
         lines += ['', 'External links and prose semantics were not checked.']
         args.markdown_output.write_text('\n'.join(lines) + '\n')

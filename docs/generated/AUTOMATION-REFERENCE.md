@@ -61,6 +61,7 @@ Generated inventory of the sync engine and mapped source files.
 ## Scripts
 
 - `scripts/doc-control/build_catalogs.py`
+- `scripts/doc-control/check_catalog.py`
 - `scripts/doc-control/check_ownership.py`
 - `scripts/doc-control/check_sync_map.py`
 - `scripts/doc-control/completeness.py`
@@ -69,10 +70,16 @@ Generated inventory of the sync engine and mapped source files.
 - `scripts/doc-control/health.py`
 - `scripts/doc-control/library.py`
 - `scripts/doc-control/release_snapshot.py`
+- `scripts/doc-control/require-docs-check.py`
+- `scripts/doc-control/stub_check.py`
 - `scripts/doc-control/test_evidence.py`
 - `scripts/doc-sync/check-doc-drift.py`
 - `scripts/doc-sync/engine.py`
 - `scripts/doc-sync/generate-all.py`
 - `scripts/doc-sync/update-doc-state.py`
 - `scripts/intelligence/change_analyzer.py`
+- `scripts/intelligence/context.py`
+- `scripts/intelligence/enforce.py`
+- `scripts/intelligence/profile.py`
+- `scripts/intelligence/recommend.py`
 - `scripts/validate/frontmatter_validator.py`

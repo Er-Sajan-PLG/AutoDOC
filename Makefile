@@ -1,6 +1,6 @@
 PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 BASE ?= origin/master
-.PHONY: help setup lint generate check test ci docs-verify docs-drift docs-metadata docs-ownership docs-inventory docs-freshness docs-sync docs-health docs-staged-impact evidence check-evidence self-doc report
+.PHONY: help setup lint generate check test ci docs-verify docs-drift docs-metadata docs-ownership docs-inventory docs-freshness docs-sync docs-health docs-stubs docs-catalog docs-profile docs-recommend docs-hint docs-explain docs-enforce docs-baseline docs-require-check hooks-install docs-staged-impact evidence check-evidence self-doc report
 
 help: ## Show available commands and their purposes
 	@awk '$$0 !~ /^[[:space:]]/ && $$0 !~ /^#/ && index($$0, "## " ) {i=index($$0, "## " ); n=substr($$0,1,i-1); sub(/:[^:]*$$/,"",n); gsub(/\\:/,":",n); gsub(/[[:space:]]+$$/,"",n); printf "%-22s %s\n",n,substr($$0,i+3)}' $(MAKEFILE_LIST)
@@ -41,10 +41,46 @@ docs-sync: ## Validate mapped source paths, targets, generators and review rules
 docs-health: ## Measure health and template coverage without claiming semantic correctness
 	$(PYTHON) scripts/doc-control/health.py
 
+docs-stubs: ## Fail approved human docs with no section or content beyond the title
+	$(PYTHON) scripts/doc-control/stub_check.py
+
+docs-catalog: ## Validate catalog schema, rules, index and declared context
+	$(PYTHON) scripts/doc-control/check_catalog.py
+	$(PYTHON) scripts/doc-control/build_catalogs.py --check
+	$(PYTHON) scripts/intelligence/context.py --config autodoc.toml
+
+docs-profile: ## Detect project facts (flags) from file presence
+	$(PYTHON) scripts/intelligence/profile.py
+
+docs-recommend: ## List catalog types that apply here, with reasons and recorded decisions
+	$(PYTHON) scripts/intelligence/recommend.py
+
+docs-hint: ## Suggest a phase from history; a hint never sets enforcement
+	$(PYTHON) scripts/intelligence/recommend.py --hint
+
+docs-explain: ## Explain one catalog type (usage: make docs-explain DOC=DOC-A08-001)
+	@test -n "$(DOC)" || { echo 'set DOC=<catalog type id>'; exit 2; }
+	$(PYTHON) scripts/intelligence/recommend.py --explain "$(DOC)"
+
+docs-enforce: ## Enforce obligations and structural checks at the declared phase's severity
+	$(PYTHON) scripts/intelligence/enforce.py
+
+docs-baseline: ## Record current findings as the adoption baseline (machine-generated JSON)
+	$(PYTHON) scripts/intelligence/enforce.py --write-baseline
+
+docs-require-check: ## Print (or with APPLY=1 set) the required branch-protection check
+	@test -z "$(APPLY)" || echo 'APPLY=1: this changes repository settings.'
+	$(PYTHON) $(if $(APPLY),scripts/doc-control/require-docs-check.py --apply,scripts/doc-control/require-docs-check.py)
+
+hooks-install: ## Install the pre-push enforcement hook (convenience; CI is the real gate)
+	@test -d .git || { echo 'not a git worktree'; exit 2; }
+	@ln -sf "$(CURDIR)/scripts/hooks/pre-push" .git/hooks/pre-push
+	@echo 'Installed .git/hooks/pre-push. Bypassable with git push --no-verify; the required CI check is the real gate.'
+
 docs-staged-impact: ## Verify staged source changes have mapped human-doc co-changes
 	$(PYTHON) scripts/intelligence/change_analyzer.py --staged
 
-docs-verify: docs-metadata docs-inventory docs-ownership docs-freshness docs-sync docs-drift ## Validate governed docs and mapped facts
+docs-verify: docs-metadata docs-inventory docs-ownership docs-freshness docs-sync docs-drift docs-stubs docs-catalog ## Validate governed docs and mapped facts
 	$(PYTHON) scripts/doc-control/library.py --check
 	$(PYTHON) scripts/doc-control/completeness.py
 	$(PYTHON) scripts/doc-control/guards.py
@@ -60,7 +96,7 @@ self-doc: ## Check map, inventory, ownership, and staged (or BASE-to-HEAD) self-
 test: ## Run the complete pytest suite
 	$(PYTHON) -m pytest -v
 
-ci: check self-doc test evidence ## Run canonical docs, self-documentation, tests and unsigned evidence verification
+ci: check docs-enforce self-doc test evidence ## Run canonical docs, enforcement, self-documentation, tests and unsigned evidence verification
 
 evidence: ## Run actual tests and package scoped unsigned evidence in evidence/out/
 	mkdir -p evidence/out
@@ -87,6 +123,14 @@ docs\:staged: docs-staged-impact ## Alias for staged change impact check
 docs\:index: ## Rebuild the controlled frontmatter index
 	$(PYTHON) scripts/doc-sync/generate-all.py --only index
 docs\:health: docs-health ## Alias for health report
+docs\:stubs: docs-stubs ## Alias for approved-stub check
+docs\:catalog: docs-catalog ## Alias for catalog schema/rules check
+docs\:profile: docs-profile ## Alias for project profile
+docs\:recommend: docs-recommend ## Alias for applicability report
+docs\:hint: docs-hint ## Alias for phase suggestion
+docs\:explain: docs-explain ## Alias for one obligation explanation
+docs\:enforce: docs-enforce ## Alias for the enforcement gate
+docs\:baseline: docs-baseline ## Alias for recording the adoption baseline
 docs\:verify: docs-verify ## Alias for full governed-doc verification
 docs\:check: check ## Alias for PR-equivalent local check
 docs\:self-doc: self-doc ## Alias for self-documentation check

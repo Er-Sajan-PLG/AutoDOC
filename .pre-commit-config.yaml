@@ -62,3 +62,21 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+      - id: doc-stub-check
+        name: Check approved documents are not title-only stubs
+        entry: python scripts/doc-control/stub_check.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-catalog-check
+        name: Validate catalog schema, rules and generated index
+        entry: python scripts/doc-control/check_catalog.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: doc-context-check
+        name: Validate the declared context in autodoc.toml
+        entry: python scripts/intelligence/context.py --config autodoc.toml
+        language: system
+        pass_filenames: false
+        always_run: true

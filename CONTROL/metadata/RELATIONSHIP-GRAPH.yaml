@@ -79,6 +79,16 @@
       "kind": "related"
     },
     {
+      "from": "DOC-REF-001",
+      "to": "DOC-ARC-001",
+      "kind": "related"
+    },
+    {
+      "from": "DOC-REF-001",
+      "to": "DOC-GOV-001",
+      "kind": "related"
+    },
+    {
       "from": "EX-AGENT-001",
       "to": "EXAMPLE-PROJECT-DOCS-ARCHITECTURE-MD",
       "kind": "related"

@@ -15,6 +15,14 @@ tasks:
   docs:staged: {cmds: ['make docs:staged']}
   docs:verify: {cmds: ['make docs:verify']}
   docs:health: {cmds: ['make docs:health']}
+  docs:stubs: {cmds: ['make docs:stubs']}
+  docs:catalog: {cmds: ['make docs:catalog']}
+  docs:profile: {cmds: ['make docs:profile']}
+  docs:recommend: {cmds: ['make docs:recommend']}
+  docs:hint: {cmds: ['make docs:hint']}
+  docs:explain: {cmds: ['make docs:explain DOC={{.DOC}}']}
+  docs:enforce: {cmds: ['make docs:enforce']}
+  docs:baseline: {cmds: ['make docs:baseline']}
   docs:check: {cmds: ['make docs:check']}
   docs:index: {cmds: ['make docs:index']}
   docs:self-doc: {cmds: ['make docs:self-doc']}

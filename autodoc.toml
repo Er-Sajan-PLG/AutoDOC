@@ -1,0 +1,64 @@
+# AutoDOC declared context. Read with tomllib (Python 3.11+), so the runtime stays
+# standard-library-only. Humans edit TOML here; machines write JSON elsewhere. Nothing in this
+# file is inferred: every value is a declaration, and every fact override carries a reason.
+
+schema = 1
+
+phase = "build"
+#
+# Phase is a declaration, never an automatic transition. `make docs-hint` suggested `build`
+# (source files and a README exist, no tags, under a year of history) and the owner confirmed
+# it. Under build: missing required documents warn (a baseline is allowed), recommended ones are
+# informational, structural breakage fails, and drift and freshness are off.
+#   idea | prototype | build | beta | live | mature | sunset
+
+phase_declared = "2026-09-30"
+# Date the current phase was declared. The report shows how old the declaration is and suggests
+# a review once it is over a year old; `autodoc promote` will write it. A date without a phase
+# is rejected.
+
+audience = []      # external-users | contributors | operators | auditors | successors
+kinds = []         # see CONTROL/metadata/CONTEXT-MODEL.json
+obligations = []   # e.g. ["gdpr", "soc2"]: declared duties only, never inferred
+
+[facts]
+# Override a detected fact only when detection is wrong for this repository, and say why.
+# Example: has_cli = { value = "false", reason = "the entry point is a private scheduler, not a CLI" }
+
+[not_applicable]
+# A skipped document is a decision with a reason, not a failure. Bare string or { reason = "..." }.
+# Example: "DOC-A07-001" = "the service stores no personal data"
+
+[satisfied_by]
+# Where a requirement is already answered, when that is not a file this repository owns
+# (a wiki page, a docs site). A URL is recorded and existence-checked only by a human; local
+# paths are verified by the checker.
+# Example: "DOC-A06-001" = ["https://wiki.example.com/architecture/threat-model"]
+
+[instantiated]
+# catalog type id -> the controlled document that satisfies it. Derived from the adoption record
+# (docs/00-governance/ADOPTION.md); a mapping is a claim that the file really is that document.
+"DEV-B04-001" = "docs/05-architecture/AUTODOC-ARCHITECTURE.md"
+"DEV-B08-001" = "CURRENT-STATE.md"
+"DEV-B08-002" = "NEXT-ACTION.md"
+"DEV-B08-003" = "RECENT-CHANGES.md"
+"DEV-B09-001" = "AGENTS.md"
+"DEV-B10-001" = "QUICK-START.md"
+"DEV-B11-003" = "CONTROL/policies/FRESHNESS-SLA-POLICY.md"
+"DOC-A09-005" = "CONTRIBUTING.md"
+
+[severity]
+# Override the phase default for a rule. Only rules something honours are accepted; a severity
+# for an unhonoured rule is inert data and is rejected. Only deliberate policy is pinned here:
+# a pin that merely repeats the phase block is noise, and one that contradicts it hides the
+# phase (the report lists pins, and the phase block is stated in the same report).
+#
+# `stubs` and `tribal` are stricter than the build default on purpose: an approved document
+# with no content is a broken promise, and an instruction nobody outside can follow should not
+# pass review. `freshness.*` is off under build, but this repository keeps review dates and an
+# SLA policy, so overdue reviews are enforced here. `recommend.*` is deliberately not pinned:
+# the 12 open core decisions stay warnings until they are recorded.
+stubs = "error"
+tribal = "error"
+"freshness.critical" = "error"
+"freshness.review" = "warn"

@@ -347,6 +347,8 @@
         "CATALOG-A/INDEX.yaml",
         "CATALOG-B/INDEX.yaml",
         "CATALOG-C/INDEX.yaml",
+        "CONTROL/metadata/CATALOG-RULES.json",
+        "CONTROL/metadata/CATALOG-SCHEMA.json",
         "TEMPLATES/**"
       ],
       "targets": [

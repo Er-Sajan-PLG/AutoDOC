@@ -42,8 +42,14 @@ Authoritative catalogs / source files / Markdown metadata
                        pre-commit and CI
 ```
 
-- **Sources of truth:** `CATALOG-*/INDEX.yaml` (JSON-compatible YAML) define document types;
-  `docs/.doc-sync-map.yaml` defines generated, human-review, living-state and changelog rules.
+- **Sources of truth:** `CATALOG-*/INDEX.yaml` (JSON-compatible YAML) define document types and are
+  **generated**: `CONTROL/metadata/CATALOG-RULES.json` holds the hand-seeded names plus every
+  derived field (type, phase, maturity, `tier`, `applies_when`) and `build_catalogs.py` renders it,
+  so classification is data a reviewer can diff rather than heuristics in Python.
+  `CONTROL/metadata/CATALOG-SCHEMA.json` describes the index, and `check_catalog.py` validates it
+  with an explicit keyword subset that fails on any keyword it does not implement, then cross-checks
+  tiers, sentinels, templates and the flag vocabulary. `docs/.doc-sync-map.yaml` defines generated,
+  human-review, living-state and changelog rules.
   The task API routes, config, described environment, bounded SQL and alert declaration have
   separate sources; tool examples have explicit authorization sources and no LLM or network.
 - **Generated facts:** `engine.py` renders in memory for drift checks. Generator outputs are
@@ -63,12 +69,71 @@ Authoritative catalogs / source files / Markdown metadata
   controlled docs. The master index, human-owned inventory and relationship graph come from frontmatter.
   The Mermaid reference adds concrete source-to-target and catalog-to-template edges.
   Template examples are synthetic. The agent working-state helper only changes observable blocks.
+  Approved human documents must carry a section and content beyond their title; `stub_check.py`
+  fails title-only index placeholders, while draft placeholders only warn.
 - **Trust boundaries:** a sync map changed in a PR is code-like input. `safe_path` constrains
   generator targets to the checkout. Running user-supplied generator code in CI still executes
   untrusted PR code; use least-privilege `contents: read` and do not provide production secrets.
   No CI workflow pushes generated changes to a branch.
 - **Freshness:** age checks block only overdue critical human-owned documents. Generated facts
   use drift checks instead. A draft status does not imply owner approval or branch protection.
+- **Applicability is a decision, not an inference:**
+
+      Obligations = Catalog x Context -> (applies?, severity, enforcement)
+
+  `CONTROL/metadata/CONTEXT-MODEL.json` holds the phase ladder and the declared vocabularies
+  (kinds, audiences, declared duties). `scripts/intelligence/context.py` reads `autodoc.toml`,
+  applies the documented shorthands, and **fails on any unrecognised context**; a missing file is
+  an empty context and an empty context is advisory-only. `scripts/intelligence/profile.py`
+  records what files exist as fifteen **three-valued** facts: `true`, `false`, or `unknown`.
+  `unknown` is the honest answer when no configured source could be evaluated — a repository
+  whose ecosystem has no reader, or one with no manifest at all — and it propagates: a predicate
+  over an unknown fact yields **undetermined**, which is reported, never counted as satisfied and
+  never failed. Every fact names its exactness (`exact` or `heuristic`) and its limits.
+
+- **Severity scales with the declared phase, never with detection.** The phase sets what a
+  violation *does*, family by family:
+
+  | Phase | Missing required | Missing recommended | Structural breakage | Drift / freshness |
+  | --- | --- | --- | --- | --- |
+  | Idea, Prototype | Advisory | Advisory | Advisory | Off |
+  | Build | Warn (baseline allowed) | Info | Fail | Off |
+  | Beta | Fail | Warn | Fail | Warn |
+  | Live, Mature | Fail | Warn | Fail | Fail |
+  | Sunset | Only the sunset profile is active (status, license, security contact, deprecation or successor pointer, archive notes); everything else is off. | | | |
+
+  An undeclared phase is advisory: nothing fails unless a pin says otherwise. Structural breakage means broken local links
+  and unfilled placeholders. A core type also carries `phase_min`, so a type that is optional
+  early and required later reads as `early` rather than as missing. Applicability and severity
+  are separate: `recommend.py` decides whether a type applies, and the phase decides how hard
+  that is enforced. A family at `off` is named in the report rather than silently skipped.
+
+- **Enforcement is one policy, applied once** (`scripts/intelligence/enforce.py`). Every check
+  family — requirements, drift, stubs, placeholders, local links, committed key markers, tribal
+  instructions and freshness — resolves its severity through the same precedence: an explicit
+  `[severity]` override in `autodoc.toml`, then the declared phase's enforcement block, then
+  `report`. An undeclared phase reports everything and fails nothing. This repository declares
+  `phase = "build"` and keeps four pins that are deliberately stricter than that block (`stubs`,
+  `tribal`, both `freshness.*`); a pin that merely repeated the phase default was removed as
+  noise. Findings carry rule id, severity, location, reason, fix hint and the context that caused
+  them ("phase=build and has_public_api_surface=true"); the machine output carries the same as
+  `because`, `enforced` (true/false) and `enforced_reason`, and the report states the capability
+  level that ran. Undetermined items are reported and never failed.
+
+- **Adoption has a baseline** (`autodoc-baseline.json`, machine-generated, schema in
+  `CONTROL/metadata/BASELINE-SCHEMA.json`). Findings recorded during adoption are suppressed and
+  counted; findings that no longer occur are listed as stale so the ratchet can be pruned with
+  `--write-baseline`. A new violation is never suppressed by an old entry, because entries are
+  keyed by rule and location.
+
+- **The resolver** (`scripts/intelligence/recommend.py`) joins profile, catalog and the recorded
+  decisions in `autodoc.toml` — `[instantiated]`, `[satisfied_by]` (locations that count, local
+  paths verified and URLs recorded but never fetched) and `[not_applicable]` (a reason is
+  mandatory). A skip whose predicate is now true is reported as a **stale decision** and
+  re-surfaced. `--check` fails only what the declared phase says must fail, and `--explain`
+  prints the derivation chain for one requirement. `assess` marks the 81 types with no detectable
+  predicate, so they are never auto-recommended. The fact vocabulary is closed: `check_catalog.py`
+  fails on a predicate token nothing can detect, and on a fact no catalog entry consumes.
 
 ## Verification and references
 Run `make ci` (or `python -m unittest discover -s tests -v` offline), `python scripts/doc-sync/check-doc-drift.py`,

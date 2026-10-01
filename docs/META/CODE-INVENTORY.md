@@ -55,7 +55,24 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/adopt.py` | 15 | function | `scan` | `(project)` |
 | `scripts/adopt.py` | 22 | function | `main` | `()` |
 | `scripts/doc-control/build_catalogs.py` | 1 | module | `scripts.doc-control.build_catalogs` | — |
-| `scripts/doc-control/build_catalogs.py` | 50 | function | `entries` | `(items, prefix)` |
+| `scripts/doc-control/build_catalogs.py` | 22 | function | `load_rules` | `()` |
+| `scripts/doc-control/build_catalogs.py` | 29 | function | `kind` | `(name, domain, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 44 | function | `phase` | `(domain, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 54 | function | `maturity` | `(domain, phase_label, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 59 | function | `applies_when` | `(doc_id, domain, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 70 | function | `tier` | `(doc_id, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 81 | function | `entries` | `(seed, prefix, rules)` |
+| `scripts/doc-control/build_catalogs.py` | 106 | function | `render` | `(rules)` |
+| `scripts/doc-control/build_catalogs.py` | 111 | function | `run` | `(check=False)` |
+| `scripts/doc-control/check_catalog.py` | 1 | module | `scripts.doc-control.check_catalog` | — |
+| `scripts/doc-control/check_catalog.py` | 36 | function | `load` | `(path)` |
+| `scripts/doc-control/check_catalog.py` | 40 | function | `implements` | `(value, expected)` |
+| `scripts/doc-control/check_catalog.py` | 52 | function | `validate` | `(instance, schema, path='$', errors=None)` |
+| `scripts/doc-control/check_catalog.py` | 113 | function | `detector_specs` | `()` |
+| `scripts/doc-control/check_catalog.py` | 120 | function | `detectors` | `()` |
+| `scripts/doc-control/check_catalog.py` | 125 | function | `tokens_of` | `(document)` |
+| `scripts/doc-control/check_catalog.py` | 133 | function | `index_documents` | `(index)` |
+| `scripts/doc-control/check_catalog.py` | 137 | function | `check` | `(indices=None)` |
 | `scripts/doc-control/check_ownership.py` | 1 | module | `scripts.doc-control.check_ownership` | — |
 | `scripts/doc-control/check_ownership.py` | 11 | function | `check` | `()` |
 | `scripts/doc-control/check_sync_map.py` | 1 | module | `scripts.doc-control.check_sync_map` | — |
@@ -68,15 +85,27 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/doc-control/evidence_pack.py` | 43 | function | `make_pack` | `(test_path, output)` |
 | `scripts/doc-control/evidence_pack.py` | 113 | function | `verify` | `(output)` |
 | `scripts/doc-control/guards.py` | 1 | module | `scripts.doc-control.guards` | — |
-| `scripts/doc-control/guards.py` | 15 | function | `check_text` | `(path, text)` |
-| `scripts/doc-control/guards.py` | 32 | function | `check` | `(staged=False)` |
+| `scripts/doc-control/guards.py` | 22 | function | `collect_text` | `(path, text)` |
+| `scripts/doc-control/guards.py` | 44 | function | `check_text` | `(path, text)` |
+| `scripts/doc-control/guards.py` | 49 | function | `_sources` | `(staged=False)` |
+| `scripts/doc-control/guards.py` | 69 | function | `collect` | `(staged=False)` |
+| `scripts/doc-control/guards.py` | 77 | function | `check` | `(staged=False)` |
 | `scripts/doc-control/health.py` | 1 | module | `scripts.doc-control.health` | — |
-| `scripts/doc-control/health.py` | 13 | function | `health` | `()` |
+| `scripts/doc-control/health.py` | 15 | function | `health` | `()` |
 | `scripts/doc-control/library.py` | 1 | module | `scripts.doc-control.library` | — |
 | `scripts/doc-control/library.py` | 9 | function | `render` | `(doc, variant)` |
 | `scripts/doc-control/library.py` | 45 | function | `run` | `(check)` |
 | `scripts/doc-control/release_snapshot.py` | 1 | module | `scripts.doc-control.release_snapshot` | — |
 | `scripts/doc-control/release_snapshot.py` | 15 | function | `snapshot` | `(tag, output)` |
+| `scripts/doc-control/require-docs-check.py` | 1 | module | `scripts.doc-control.require-docs-check` | — |
+| `scripts/doc-control/require-docs-check.py` | 18 | function | `gh` | `(*args, **kwargs)` |
+| `scripts/doc-control/require-docs-check.py` | 22 | function | `payload` | `(check=CHECK_NAME)` |
+| `scripts/doc-control/require-docs-check.py` | 27 | function | `main` | `()` |
+| `scripts/doc-control/stub_check.py` | 1 | module | `scripts.doc-control.stub_check` | — |
+| `scripts/doc-control/stub_check.py` | 24 | function | `substance` | `(text)` |
+| `scripts/doc-control/stub_check.py` | 48 | function | `scan` | `()` |
+| `scripts/doc-control/stub_check.py` | 63 | function | `collect` | `()` |
+| `scripts/doc-control/stub_check.py` | 79 | function | `check` | `()` |
 | `scripts/doc-control/test_evidence.py` | 1 | module | `scripts.doc-control.test_evidence` | — |
 | `scripts/doc-control/test_evidence.py` | 18 | function | `junit_counts` | `(path)` |
 | `scripts/doc-control/test_evidence.py` | 32 | function | `main` | `()` |
@@ -84,50 +113,109 @@ AST-extracted Python declarations; no call graph or behavior claims.
 | `scripts/doc-sync/engine.py` | 1 | module | `scripts.doc-sync.engine` | — |
 | `scripts/doc-sync/engine.py` | 20 | function | `safe_path` | `(value)` |
 | `scripts/doc-sync/engine.py` | 27 | function | `load_map` | `()` |
-| `scripts/doc-sync/engine.py` | 51 | function | `paths` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 55 | function | `header` | `(doc_id, title, source)` |
-| `scripts/doc-sync/engine.py` | 66 | function | `api` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 76 | function | `config` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 85 | function | `env` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 91 | function | `sql` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 103 | function | `automation` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 117 | function | `catalog` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 140 | function | `workflows` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 163 | function | `outline` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 179 | function | `code_inventory` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 192 | function | `test_inventory` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 202 | function | `dependencies` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 217 | function | `completeness` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 241 | function | `agent_tools` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 259 | function | `agent_prompts` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 272 | function | `agent_model` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 288 | function | `local_tool_reference` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 298 | function | `environment_reference` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 308 | function | `alert_catalog` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 317 | function | `catalog_facets` | `()` |
-| `scripts/doc-sync/engine.py` | 333 | function | `catalog_view` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 356 | function | `catalog_navigation` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 368 | function | `human_inventory` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 382 | function | `relationship_graph` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 395 | function | `master_index` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 404 | function | `check_supersedes_cycles` | `(links)` |
-| `scripts/doc-sync/engine.py` | 416 | function | `relationship_visualization` | `(entry)` |
-| `scripts/doc-sync/engine.py` | 462 | function | `generate` | `(check=False, only=None)` |
-| `scripts/doc-sync/engine.py` | 490 | function | `git` | `(*args)` |
-| `scripts/doc-sync/engine.py` | 494 | function | `changed` | `(base=None, staged=False)` |
-| `scripts/doc-sync/engine.py` | 502 | function | `matches` | `(file, pattern)` |
-| `scripts/doc-sync/engine.py` | 506 | function | `impact` | `(base=None, staged=False)` |
-| `scripts/doc-sync/engine.py` | 532 | function | `parse_frontmatter` | `(path)` |
-| `scripts/doc-sync/engine.py` | 536 | function | `parse_frontmatter_text` | `(text)` |
-| `scripts/doc-sync/engine.py` | 554 | function | `controlled` | `()` |
-| `scripts/doc-sync/engine.py` | 567 | function | `validate_staged` | `()` |
-| `scripts/doc-sync/engine.py` | 603 | function | `validate` | `(freshness=False, now=None)` |
-| `scripts/doc-sync/engine.py` | 674 | function | `replace_block` | `(text, body)` |
-| `scripts/doc-sync/engine.py` | 683 | function | `update_state` | `(base=None, staged=False)` |
-| `scripts/doc-sync/engine.py` | 714 | function | `main` | `()` |
+| `scripts/doc-sync/engine.py` | 55 | function | `paths` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 59 | function | `header` | `(doc_id, title, source)` |
+| `scripts/doc-sync/engine.py` | 70 | function | `api` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 80 | function | `config` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 89 | function | `env` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 95 | function | `sql` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 107 | function | `automation` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 121 | function | `catalog` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 144 | function | `workflows` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 167 | function | `outline` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 183 | function | `code_inventory` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 196 | function | `test_inventory` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 206 | function | `dependencies` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 221 | function | `completeness` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 245 | function | `agent_tools` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 263 | function | `agent_prompts` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 276 | function | `agent_model` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 292 | function | `local_tool_reference` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 302 | function | `environment_reference` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 312 | function | `alert_catalog` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 321 | function | `catalog_facets` | `()` |
+| `scripts/doc-sync/engine.py` | 337 | function | `catalog_view` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 362 | function | `catalog_navigation` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 374 | function | `human_inventory` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 388 | function | `relationship_graph` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 401 | function | `master_index` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 410 | function | `check_supersedes_cycles` | `(links)` |
+| `scripts/doc-sync/engine.py` | 422 | function | `relationship_visualization` | `(entry)` |
+| `scripts/doc-sync/engine.py` | 468 | function | `generate` | `(check=False, only=None, findings=None)` |
+| `scripts/doc-sync/engine.py` | 500 | function | `git` | `(*args)` |
+| `scripts/doc-sync/engine.py` | 504 | function | `changed` | `(base=None, staged=False)` |
+| `scripts/doc-sync/engine.py` | 512 | function | `matches` | `(file, pattern)` |
+| `scripts/doc-sync/engine.py` | 516 | function | `impact` | `(base=None, staged=False)` |
+| `scripts/doc-sync/engine.py` | 542 | function | `parse_frontmatter` | `(path)` |
+| `scripts/doc-sync/engine.py` | 546 | function | `parse_frontmatter_text` | `(text)` |
+| `scripts/doc-sync/engine.py` | 564 | function | `controlled` | `()` |
+| `scripts/doc-sync/engine.py` | 577 | function | `validate_staged` | `()` |
+| `scripts/doc-sync/engine.py` | 613 | function | `validate` | `(freshness=False, now=None, findings=None)` |
+| `scripts/doc-sync/engine.py` | 695 | function | `replace_block` | `(text, body)` |
+| `scripts/doc-sync/engine.py` | 704 | function | `update_state` | `(base=None, staged=False)` |
+| `scripts/doc-sync/engine.py` | 735 | function | `main` | `()` |
 | `scripts/doc-sync/generate-all.py` | 1 | module | `scripts.doc-sync.generate-all` | — |
 | `scripts/doc-sync/update-doc-state.py` | 1 | module | `scripts.doc-sync.update-doc-state` | — |
 | `scripts/init-project.py` | 1 | module | `scripts.init-project` | — |
 | `scripts/init-project.py` | 14 | function | `main` | `()` |
 | `scripts/intelligence/change_analyzer.py` | 1 | module | `scripts.intelligence.change_analyzer` | — |
+| `scripts/intelligence/context.py` | 1 | module | `scripts.intelligence.context` | — |
+| `scripts/intelligence/context.py` | 33 | function | `load_module` | `(name, path)` |
+| `scripts/intelligence/context.py` | 41 | function | `load_model` | `()` |
+| `scripts/intelligence/context.py` | 48 | function | `load` | `(path)` |
+| `scripts/intelligence/context.py` | 56 | function | `normalise` | `(raw)` |
+| `scripts/intelligence/context.py` | 109 | function | `catalog_ids` | `()` |
+| `scripts/intelligence/context.py` | 124 | function | `resolve_aliases` | `(context)` |
+| `scripts/intelligence/context.py` | 150 | function | `validate` | `(context, model=None)` |
+| `scripts/intelligence/context.py` | 204 | function | `validate_model` | `(model=None)` |
+| `scripts/intelligence/context.py` | 271 | function | `enforcement` | `(phase, model=None)` |
+| `scripts/intelligence/context.py` | 283 | function | `check_severity` | `(context, family, model=None)` |
+| `scripts/intelligence/context.py` | 301 | function | `phase_age` | `(context, today=None)` |
+| `scripts/intelligence/context.py` | 312 | function | `_git` | `(root, *args)` |
+| `scripts/intelligence/context.py` | 320 | function | `phase_hints` | `(root, profile_document=None, today=None)` |
+| `scripts/intelligence/enforce.py` | 1 | module | `scripts.intelligence.enforce` | — |
+| `scripts/intelligence/enforce.py` | 47 | function | `load_module` | `(name, path)` |
+| `scripts/intelligence/enforce.py` | 62 | function | `fingerprint` | `(detail)` |
+| `scripts/intelligence/enforce.py` | 72 | function | `key_of` | `(finding)` |
+| `scripts/intelligence/enforce.py` | 78 | function | `repo_scope` | `(root)` |
+| `scripts/intelligence/enforce.py` | 101 | function | `repo_relative` | `(location, root)` |
+| `scripts/intelligence/enforce.py` | 109 | function | `collect_findings` | `(profile_document, context, documents, groups, enforcement, root=None)` |
+| `scripts/intelligence/enforce.py` | 162 | function | `load_baseline` | `(path)` |
+| `scripts/intelligence/enforce.py` | 178 | function | `apply_baseline` | `(findings, baseline, today=None)` |
+| `scripts/intelligence/enforce.py` | 212 | function | `write_baseline` | `(path, findings, phase, today=None)` |
+| `scripts/intelligence/enforce.py` | 236 | function | `summarize` | `(findings, suppressed, stale, enforcement)` |
+| `scripts/intelligence/enforce.py` | 251 | function | `report` | `(data, findings, suppressed, stale, enforcement, exit_code)` |
+| `scripts/intelligence/enforce.py` | 323 | function | `build` | `(args)` |
+| `scripts/intelligence/enforce.py` | 352 | function | `machine_document` | `(data, findings, suppressed, stale, enforcement, summary)` |
+| `scripts/intelligence/enforce.py` | 364 | function | `run` | `(args)` |
+| `scripts/intelligence/enforce.py` | 400 | function | `main` | `()` |
+| `scripts/intelligence/profile.py` | 1 | module | `scripts.intelligence.profile` | — |
+| `scripts/intelligence/profile.py` | 159 | function | `tracked_files` | `(root)` |
+| `scripts/intelligence/profile.py` | 177 | function | `skipped_dir` | `(relative)` |
+| `scripts/intelligence/profile.py` | 182 | function | `skipped_dirs` | `(root, files)` |
+| `scripts/intelligence/profile.py` | 196 | function | `matches` | `(relative, pattern)` |
+| `scripts/intelligence/profile.py` | 207 | function | `read_manifest` | `(root, name, cache)` |
+| `scripts/intelligence/profile.py` | 227 | function | `probe` | `(root, pack, name, cache)` |
+| `scripts/intelligence/profile.py` | 264 | function | `content_hits` | `(root, source, files, cache)` |
+| `scripts/intelligence/profile.py` | 284 | function | `evaluate` | `(spec, files, ecosystems, cache, root, evidence)` |
+| `scripts/intelligence/profile.py` | 314 | function | `profile` | `(root, declared=None)` |
+| `scripts/intelligence/profile.py` | 349 | function | `summary` | `(document)` |
+| `scripts/intelligence/recommend.py` | 1 | module | `scripts.intelligence.recommend` | — |
+| `scripts/intelligence/recommend.py` | 27 | function | `load_module` | `(name, relative)` |
+| `scripts/intelligence/recommend.py` | 39 | function | `catalog` | `()` |
+| `scripts/intelligence/recommend.py` | 50 | function | `predicate` | `(document)` |
+| `scripts/intelligence/recommend.py` | 58 | function | `token_state` | `(token, facts, context, model=None)` |
+| `scripts/intelligence/recommend.py` | 75 | function | `state_of` | `(document, facts, context, model=None)` |
+| `scripts/intelligence/recommend.py` | 102 | function | `severity_for` | `(document, state, decision, enforcement, context)` |
+| `scripts/intelligence/recommend.py` | 130 | function | `enforced_reason` | `(item, enforcement)` |
+| `scripts/intelligence/recommend.py` | 157 | function | `effective_severity` | `(item, enforcement, context)` |
+| `scripts/intelligence/recommend.py` | 177 | function | `evaluate` | `(documents, profile_document, context, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 222 | function | `score` | `(documents, groups, enforcement)` |
+| `scripts/intelligence/recommend.py` | 245 | function | `because` | `(item, enforcement)` |
+| `scripts/intelligence/recommend.py` | 252 | function | `findings` | `(documents, context, groups, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 341 | function | `check` | `(documents, context, groups, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 352 | function | `explain` | `(document, profile_document, context, enforcement=None)` |
+| `scripts/intelligence/recommend.py` | 389 | function | `report` | `(data)` |
+| `scripts/intelligence/recommend.py` | 452 | function | `build` | `(args)` |
+| `scripts/intelligence/recommend.py` | 475 | function | `main` | `()` |
 | `scripts/validate/frontmatter_validator.py` | 1 | module | `scripts.validate.frontmatter_validator` | — |

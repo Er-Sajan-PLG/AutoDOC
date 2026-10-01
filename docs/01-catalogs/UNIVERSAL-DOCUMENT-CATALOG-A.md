@@ -24,198 +24,199 @@ auto_generated: true
 
 # Active development — catalog A
 
-Generated crosswalk of existing stable IDs. `required_for` is an applicability suggestion, not an assurance a project needs every type.
+Generated crosswalk of existing stable IDs. `applies_when` is a detectable predicate evaluated against a project profile (`make docs-recommend`); `always` means every project, `assess` means no predicate exists and a human decides. A tier is an applicability suggestion, not evidence a project needs every type.
 
 ## A01-PRODUCT
 
 Product strategy and vision.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A01-001` | Product vision | Record product vision for product strategy and vision. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A01-002` | Business case | Record business case for product strategy and vision. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A01-003` | Product requirements | Record product requirements for product strategy and vision. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A01-004` | Roadmap | Record roadmap for product strategy and vision. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A01-005` | Scope statement | Record scope statement for product strategy and vision. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A01-006` | Stakeholder RACI | Record stakeholder raci for product strategy and vision. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A01-001` | Product vision | contextual | — | assess | Record product vision for product strategy and vision. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A01-002` | Business case | contextual | — | assess | Record business case for product strategy and vision. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A01-003` | Product requirements | contextual | — | assess | Record product requirements for product strategy and vision. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A01-004` | Roadmap | contextual | — | assess | Record roadmap for product strategy and vision. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A01-005` | Scope statement | contextual | — | assess | Record scope statement for product strategy and vision. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A01-006` | Stakeholder RACI | contextual | — | assess | Record stakeholder raci for product strategy and vision. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A02-REQUIREMENTS
 
 Requirements engineering.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A02-001` | SRS | Record srs for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A02-002` | NFR catalog | Record nfr catalog for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A02-003` | Use case | Record use case for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A02-004` | User story | Record user story for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A02-005` | Acceptance criteria | Record acceptance criteria for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A02-006` | Traceability matrix | Record traceability matrix for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A02-007` | Requirements change log | Record requirements change log for requirements engineering. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A02-001` | SRS | contextual | — | assess | Record srs for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A02-002` | NFR catalog | contextual | — | assess | Record nfr catalog for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A02-003` | Use case | contextual | — | assess | Record use case for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A02-004` | User story | contextual | — | assess | Record user story for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A02-005` | Acceptance criteria | contextual | — | assess | Record acceptance criteria for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A02-006` | Traceability matrix | contextual | — | assess | Record traceability matrix for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A02-007` | Requirements change log | contextual | — | assess | Record requirements change log for requirements engineering. | project team | active development | project owner | human-review | Hardened | — |
 
 ## A09-DEVELOPMENT
 
 Development process.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A09-001` | Coding standard | Record coding standard for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-002` | Git workflow | Record git workflow for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-003` | Pull request guide | Record pull request guide for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-004` | Code review policy | Record code review policy for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-005` | Contributing guide | Record contributing guide for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-006` | Dependency policy | Record dependency policy for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-007` | RFC | Record rfc for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A09-008` | Technical debt register | Record technical debt register for development process. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A09-001` | Coding standard | extended | — | assess | Record coding standard for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-002` | Git workflow | contextual | — | assess | Record git workflow for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-003` | Pull request guide | contextual | — | assess | Record pull request guide for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-004` | Code review policy | contextual | — | assess | Record code review policy for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-005` | Contributing guide | core | live | is_public | Record contributing guide for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-006` | Dependency policy | extended | — | assess | Record dependency policy for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-007` | RFC | contextual | — | assess | Record rfc for development process. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A09-008` | Technical debt register | contextual | — | assess | Record technical debt register for development process. | project team | active development | project owner | human-review | Hardened | — |
 
 ## A11-TESTING
 
 Testing and quality.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A11-001` | Test strategy | Record test strategy for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-002` | Test plan | Record test plan for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-003` | Unit test specification | Record unit test specification for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-004` | Integration test specification | Record integration test specification for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-005` | End to end test specification | Record end to end test specification for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-006` | Contract test specification | Record contract test specification for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-007` | Security test specification | Record security test specification for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-008` | Chaos test specification | Record chaos test specification for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-009` | Performance test plan | Record performance test plan for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-010` | Accessibility test plan | Record accessibility test plan for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-011` | Migration test plan | Record migration test plan for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-012` | UAT plan | Record uat plan for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A11-013` | Defect taxonomy | Record defect taxonomy for testing and quality. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A11-001` | Test strategy | contextual | — | has_tests | Record test strategy for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-002` | Test plan | extended | — | has_tests | Record test plan for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-003` | Unit test specification | extended | — | has_tests | Record unit test specification for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-004` | Integration test specification | extended | — | has_tests | Record integration test specification for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-005` | End to end test specification | contextual | — | has_tests | Record end to end test specification for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-006` | Contract test specification | contextual | — | has_tests | Record contract test specification for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-007` | Security test specification | contextual | — | has_tests | Record security test specification for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-008` | Chaos test specification | contextual | — | has_tests | Record chaos test specification for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-009` | Performance test plan | contextual | — | has_tests | Record performance test plan for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-010` | Accessibility test plan | contextual | — | has_tests | Record accessibility test plan for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-011` | Migration test plan | contextual | — | has_tests | Record migration test plan for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-012` | UAT plan | contextual | — | assess | Record uat plan for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A11-013` | Defect taxonomy | contextual | — | has_tests | Record defect taxonomy for testing and quality. | project team | active development | project owner | human-review | Hardened | — |
 
 ## B01-FOUNDATION
 
 Context and goals.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B01-001` | Problem statement | Record problem statement for context and goals. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B01-002` | Goals and non goals | Record goals and non goals for context and goals. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B01-003` | Scope | Record scope for context and goals. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B01-004` | Stakeholder map | Record stakeholder map for context and goals. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B01-005` | Success metrics | Record success metrics for context and goals. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
+| `DEV-B01-001` | Problem statement | core | idea | always | Record problem statement for context and goals. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B01-002` | Goals and non goals | core | idea | always | Record goals and non goals for context and goals. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B01-003` | Scope | core | idea | always | Record scope for context and goals. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B01-004` | Stakeholder map | contextual | — | always | Record stakeholder map for context and goals. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B01-005` | Success metrics | contextual | — | always | Record success metrics for context and goals. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B01-006` | README | core | idea | always | Record readme for context and goals. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B02-RESEARCH
 
 Discovery and exploration.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B02-001` | Research notes | Record research notes for discovery and exploration. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B02-002` | Competitive analysis | Record competitive analysis for discovery and exploration. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B02-003` | Spike | Record spike for discovery and exploration. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B02-004` | Assumption log | Record assumption log for discovery and exploration. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B02-001` | Research notes | contextual | — | assess | Record research notes for discovery and exploration. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B02-002` | Competitive analysis | contextual | — | assess | Record competitive analysis for discovery and exploration. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B02-003` | Spike | contextual | — | assess | Record spike for discovery and exploration. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B02-004` | Assumption log | contextual | — | assess | Record assumption log for discovery and exploration. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B03-PLANNING
 
 Planning and delivery.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B03-001` | Milestones | Record milestones for planning and delivery. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B03-002` | Task backlog | Record task backlog for planning and delivery. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B03-003` | Risks and dependencies | Record risks and dependencies for planning and delivery. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B03-004` | Delivery plan | Record delivery plan for planning and delivery. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B03-001` | Milestones | contextual | — | assess | Record milestones for planning and delivery. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B03-002` | Task backlog | contextual | — | assess | Record task backlog for planning and delivery. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B03-003` | Risks and dependencies | extended | — | always | Record risks and dependencies for planning and delivery. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B03-004` | Delivery plan | contextual | — | assess | Record delivery plan for planning and delivery. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B04-ARCHITECTURE
 
 Early architecture.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B04-001` | System overview | Record system overview for early architecture. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B04-002` | ADR | Record adr for early architecture. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B04-003` | C4 sketch | Record c4 sketch for early architecture. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B04-004` | Threat model | Record threat model for early architecture. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
+| `DEV-B04-001` | System overview | core | build | always | Record system overview for early architecture. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B04-002` | ADR | core | build | always | Record adr for early architecture. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B04-003` | C4 sketch | extended | — | has_deploy | Record c4 sketch for early architecture. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B04-004` | Threat model | extended | — | has_deploy | Record threat model for early architecture. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B05-CONTRACTS
 
 Implementation contracts.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B05-001` | Module contract | Record module contract for implementation contracts. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B05-002` | Type definitions | Record type definitions for implementation contracts. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B05-003` | Error handling | Record error handling for implementation contracts. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B05-004` | API contract | Record api contract for implementation contracts. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B05-001` | Module contract | core | build | always | Record module contract for implementation contracts. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B05-002` | Type definitions | extended | — | always | Record type definitions for implementation contracts. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B05-003` | Error handling | extended | — | always | Record error handling for implementation contracts. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B05-004` | API contract | extended | — | has_public_api_surface | Record api contract for implementation contracts. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B06-IMPLEMENTATION
 
 Implementation guidance.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B06-001` | Coding plan | Record coding plan for implementation guidance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B06-002` | Implementation log | Record implementation log for implementation guidance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B06-003` | Debugging notes | Record debugging notes for implementation guidance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B06-004` | Migration plan | Record migration plan for implementation guidance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B06-001` | Coding plan | contextual | — | assess | Record coding plan for implementation guidance. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B06-002` | Implementation log | contextual | — | assess | Record implementation log for implementation guidance. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B06-003` | Debugging notes | contextual | — | assess | Record debugging notes for implementation guidance. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B06-004` | Migration plan | extended | — | has_persistent_state | Record migration plan for implementation guidance. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B07-TESTING
 
 Validation.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B07-001` | Test strategy | Record test strategy for validation. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B07-002` | Acceptance criteria | Record acceptance criteria for validation. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B07-003` | Test results | Record test results for validation. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
-| `DEV-B07-004` | UAT | Record uat for validation. | project team | active development | project owner | human-review | general | Project-Phase | Core | — |
+| `DEV-B07-001` | Test strategy | core | build | has_tests | Record test strategy for validation. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B07-002` | Acceptance criteria | extended | — | has_tests | Record acceptance criteria for validation. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B07-003` | Test results | extended | — | has_tests | Record test results for validation. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B07-004` | UAT | contextual | — | assess | Record uat for validation. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B08-TRACKING
 
 Handoff and tracking.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B08-001` | Current state | Record current state for handoff and tracking. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B08-002` | Next action | Record next action for handoff and tracking. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B08-003` | Recent changes | Record recent changes for handoff and tracking. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B08-004` | Handoff notes | Record handoff notes for handoff and tracking. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B08-001` | Current state | core | build | always | Record current state for handoff and tracking. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B08-002` | Next action | core | build | always | Record next action for handoff and tracking. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B08-003` | Recent changes | core | build | always | Record recent changes for handoff and tracking. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B08-004` | Handoff notes | contextual | — | always | Record handoff notes for handoff and tracking. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B09-AGENT-CONTEXT
 
 AI agent context.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B09-001` | AGENTS.md | Record agents.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-002` | CLAUDE.md | Record claude.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-003` | Cursor rules | Record cursor rules for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-004` | AI-CONTEXT.md | Record ai-context.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-005` | SYSTEM-PROMPT-FOR-CODING-AGENT.md | Record system-prompt-for-coding-agent.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-006` | AGENT-WORKFLOW.md | Record agent-workflow.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-007` | CURRENT-STATE.md | Record current-state.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-008` | NEXT-ACTION.md | Record next-action.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-009` | RECENT-CHANGES.md | Record recent-changes.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-010` | AGENT-MEMORY.md | Record agent-memory.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-011` | CONTEXT-SNAPSHOT.md | Record context-snapshot.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-012` | TASK-FOR-AGENT.md | Record task-for-agent.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-013` | TOOL-USAGE-GUIDE-FOR-AGENT.md | Record tool-usage-guide-for-agent.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
-| `DEV-B09-014` | ANTI-PATTERNS-FOR-AGENT.md | Record anti-patterns-for-agent.md for ai agent context. | project team | active development | project owner | human-review | ai-agent | Project-Phase | Recommended | — |
+| `DEV-B09-001` | AGENTS.md | core | build | uses_agents | Record agents.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-002` | CLAUDE.md | contextual | — | uses_agents | Record claude.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-003` | Cursor rules | contextual | — | uses_agents | Record cursor rules for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-004` | AI-CONTEXT.md | contextual | — | uses_agents | Record ai-context.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-005` | SYSTEM-PROMPT-FOR-CODING-AGENT.md | contextual | — | uses_agents | Record system-prompt-for-coding-agent.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-006` | AGENT-WORKFLOW.md | contextual | — | uses_agents | Record agent-workflow.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-007` | CURRENT-STATE.md | contextual | — | uses_agents | Record current-state.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-008` | NEXT-ACTION.md | contextual | — | uses_agents | Record next-action.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-009` | RECENT-CHANGES.md | contextual | — | uses_agents | Record recent-changes.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-010` | AGENT-MEMORY.md | extended | — | uses_agents | Record agent-memory.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-011` | CONTEXT-SNAPSHOT.md | contextual | — | uses_agents | Record context-snapshot.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-012` | TASK-FOR-AGENT.md | contextual | — | uses_agents | Record task-for-agent.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-013` | TOOL-USAGE-GUIDE-FOR-AGENT.md | contextual | — | uses_agents | Record tool-usage-guide-for-agent.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B09-014` | ANTI-PATTERNS-FOR-AGENT.md | extended | — | uses_agents | Record anti-patterns-for-agent.md for ai agent context. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B10-SETUP
 
 Project setup.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B10-001` | Local setup | Record local setup for project setup. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B10-002` | Environment matrix | Record environment matrix for project setup. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B10-003` | Dependency setup | Record dependency setup for project setup. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B10-004` | Developer onboarding | Record developer onboarding for project setup. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B10-001` | Local setup | core | build | always | Record local setup for project setup. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B10-002` | Environment matrix | contextual | — | always | Record environment matrix for project setup. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B10-003` | Dependency setup | core | build | always | Record dependency setup for project setup. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B10-004` | Developer onboarding | contextual | — | always | Record developer onboarding for project setup. | project team | active development | project owner | human-review | Project-Phase | — |
 
 ## B11-META
 
 Documentation governance.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEV-B11-001` | Documentation index | Record documentation index for documentation governance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B11-002` | Ownership matrix | Record ownership matrix for documentation governance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B11-003` | Freshness policy | Record freshness policy for documentation governance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
-| `DEV-B11-004` | Document control procedure | Record document control procedure for documentation governance. | project team | active development | project owner | human-review | assess | Project-Phase | Contextual | — |
+| `DEV-B11-001` | Documentation index | contextual | — | always | Record documentation index for documentation governance. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B11-002` | Ownership matrix | extended | — | always | Record ownership matrix for documentation governance. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B11-003` | Freshness policy | extended | — | always | Record freshness policy for documentation governance. | project team | active development | project owner | human-review | Project-Phase | — |
+| `DEV-B11-004` | Document control procedure | contextual | — | always | Record document control procedure for documentation governance. | project team | active development | project owner | human-review | Project-Phase | — |

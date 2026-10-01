@@ -32,7 +32,7 @@ Filter by phase/domain and follow the linked view. Source IDs remain in the vers
 | A | [A02-REQUIREMENTS](UNIVERSAL-DOCUMENT-CATALOG-A.md#a02-requirements) | 7 |
 | A | [A09-DEVELOPMENT](UNIVERSAL-DOCUMENT-CATALOG-A.md#a09-development) | 8 |
 | A | [A11-TESTING](UNIVERSAL-DOCUMENT-CATALOG-A.md#a11-testing) | 13 |
-| A | [B01-FOUNDATION](UNIVERSAL-DOCUMENT-CATALOG-A.md#b01-foundation) | 5 |
+| A | [B01-FOUNDATION](UNIVERSAL-DOCUMENT-CATALOG-A.md#b01-foundation) | 6 |
 | A | [B02-RESEARCH](UNIVERSAL-DOCUMENT-CATALOG-A.md#b02-research) | 4 |
 | A | [B03-PLANNING](UNIVERSAL-DOCUMENT-CATALOG-A.md#b03-planning) | 4 |
 | A | [B04-ARCHITECTURE](UNIVERSAL-DOCUMENT-CATALOG-A.md#b04-architecture) | 4 |

@@ -24,166 +24,166 @@ auto_generated: true
 
 # Architecture, data and quality — catalog B
 
-Generated crosswalk of existing stable IDs. `required_for` is an applicability suggestion, not an assurance a project needs every type.
+Generated crosswalk of existing stable IDs. `applies_when` is a detectable predicate evaluated against a project profile (`make docs-recommend`); `always` means every project, `assess` means no predicate exists and a human decides. A tier is an applicability suggestion, not evidence a project needs every type.
 
 ## A03-ARCHITECTURE
 
 Systems architecture.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A03-001` | C4 context | Record c4 context for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-002` | C4 container | Record c4 container for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-003` | C4 component | Record c4 component for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-004` | C4 code | Record c4 code for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-005` | ADR | Record adr for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-006` | Quality attribute scenarios | Record quality attribute scenarios for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-007` | Deployment view | Record deployment view for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-008` | Data flow | Record data flow for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-009` | Network topology | Record network topology for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-010` | Trust boundaries | Record trust boundaries for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A03-011` | Integration landscape | Record integration landscape for systems architecture. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A03-001` | C4 context | contextual | — | assess | Record c4 context for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-002` | C4 container | contextual | — | assess | Record c4 container for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-003` | C4 component | contextual | — | assess | Record c4 component for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-004` | C4 code | contextual | — | assess | Record c4 code for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-005` | ADR | contextual | — | assess | Record adr for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-006` | Quality attribute scenarios | contextual | — | assess | Record quality attribute scenarios for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-007` | Deployment view | contextual | — | assess | Record deployment view for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-008` | Data flow | contextual | — | assess | Record data flow for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-009` | Network topology | contextual | — | assess | Record network topology for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-010` | Trust boundaries | contextual | — | assess | Record trust boundaries for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A03-011` | Integration landscape | contextual | — | assess | Record integration landscape for systems architecture. | project team | active development | project owner | human-review | Hardened | — |
 
 ## A04-DESIGN
 
 Detailed technical design.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A04-001` | Component design | Record component design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-002` | State machine | Record state machine for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-003` | Algorithm design | Record algorithm design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-004` | Authentication design | Record authentication design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-005` | Authorization design | Record authorization design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-006` | Session design | Record session design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-007` | Database design | Record database design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-008` | Caching design | Record caching design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-009` | Queue worker design | Record queue worker design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-010` | Retry circuit breaker | Record retry circuit breaker for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-011` | Feature flag design | Record feature flag design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A04-012` | Migration design | Record migration design for detailed technical design. | project team | active development | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A04-001` | Component design | contextual | — | assess | Record component design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-002` | State machine | contextual | — | assess | Record state machine for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-003` | Algorithm design | contextual | — | assess | Record algorithm design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-004` | Authentication design | contextual | — | assess | Record authentication design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-005` | Authorization design | contextual | — | assess | Record authorization design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-006` | Session design | contextual | — | assess | Record session design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-007` | Database design | contextual | — | assess | Record database design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-008` | Caching design | contextual | — | assess | Record caching design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-009` | Queue worker design | contextual | — | assess | Record queue worker design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-010` | Retry circuit breaker | contextual | — | assess | Record retry circuit breaker for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-011` | Feature flag design | contextual | — | assess | Record feature flag design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
+| `DOC-A04-012` | Migration design | contextual | — | assess | Record migration design for detailed technical design. | project team | active development | project owner | human-review | Hardened | — |
 
 ## A05-DATA
 
 Data and information management.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A05-001` | Data model | Record data model for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-002` | Database schema | Record database schema for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-003` | Data dictionary | Record data dictionary for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-004` | Data lineage | Record data lineage for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-005` | Data classification | Record data classification for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-006` | Retention policy | Record retention policy for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-007` | ETL specification | Record etl specification for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-008` | Data quality | Record data quality for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-009` | PII inventory | Record pii inventory for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A05-010` | Disposal procedure | Record disposal procedure for data and information management. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A05-001` | Data model | core | build | has_persistent_state | Record data model for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-002` | Database schema | extended | — | has_persistent_state | Record database schema for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-003` | Data dictionary | extended | — | has_persistent_state | Record data dictionary for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-004` | Data lineage | contextual | — | has_persistent_state | Record data lineage for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-005` | Data classification | contextual | — | has_persistent_state | Record data classification for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-006` | Retention policy | contextual | — | has_persistent_state | Record retention policy for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-007` | ETL specification | contextual | — | has_persistent_state | Record etl specification for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-008` | Data quality | contextual | — | has_persistent_state | Record data quality for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-009` | PII inventory | contextual | — | has_persistent_state | Record pii inventory for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A05-010` | Disposal procedure | contextual | — | has_persistent_state | Record disposal procedure for data and information management. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A06-SECURITY
 
 Security engineering.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A06-001` | Threat model | Record threat model for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-002` | Security architecture | Record security architecture for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-003` | Security requirements | Record security requirements for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-004` | Cryptography specification | Record cryptography specification for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-005` | Key management | Record key management for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-006` | Secret management | Record secret management for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-007` | Access control matrix | Record access control matrix for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-008` | Vulnerability management | Record vulnerability management for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-009` | Penetration test report | Record penetration test report for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A06-010` | Incident response plan | Record incident response plan for security engineering. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A06-001` | Threat model | extended | — | has_network_listener | Record threat model for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-002` | Security architecture | extended | — | has_deploy | Record security architecture for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-003` | Security requirements | contextual | — | has_deploy | Record security requirements for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-004` | Cryptography specification | contextual | — | has_deploy | Record cryptography specification for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-005` | Key management | contextual | — | has_deploy | Record key management for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-006` | Secret management | contextual | — | has_secrets_or_credentials_config | Record secret management for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-007` | Access control matrix | extended | — | has_deploy | Record access control matrix for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-008` | Vulnerability management | contextual | — | has_deploy | Record vulnerability management for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-009` | Penetration test report | contextual | — | has_deploy | Record penetration test report for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A06-010` | Incident response plan | contextual | — | has_deploy | Record incident response plan for security engineering. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A07-PRIVACY
 
 Privacy and compliance.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A07-001` | ROPA | Record ropa for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A07-002` | DPIA | Record dpia for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A07-003` | Consent management | Record consent management for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A07-004` | Data processing agreement | Record data processing agreement for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A07-005` | Subprocessor inventory | Record subprocessor inventory for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A07-006` | Regulatory control mapping | Record regulatory control mapping for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A07-007` | Privacy request log | Record privacy request log for privacy and compliance. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A07-001` | ROPA | contextual | — | any | Record ropa for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-002` | DPIA | contextual | — | any | Record dpia for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-003` | Consent management | contextual | — | assess | Record consent management for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-004` | Data processing agreement | contextual | — | assess | Record data processing agreement for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-005` | Subprocessor inventory | contextual | — | assess | Record subprocessor inventory for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-006` | Regulatory control mapping | contextual | — | any | Record regulatory control mapping for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A07-007` | Privacy request log | contextual | — | assess | Record privacy request log for privacy and compliance. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A08-APIS
 
 APIs and interfaces.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A08-001` | OpenAPI | Record openapi for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-002` | GraphQL schema | Record graphql schema for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-003` | Protobuf contract | Record protobuf contract for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-004` | AsyncAPI | Record asyncapi for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-005` | Webhook contract | Record webhook contract for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-006` | Error catalog | Record error catalog for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-007` | Rate limits | Record rate limits for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-008` | SDK guide | Record sdk guide for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-009` | Integration guide | Record integration guide for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
-| `DOC-A08-010` | Compatibility matrix | Record compatibility matrix for apis and interfaces. | project team | pre-release | project owner | human-review | api, web, saas | Hardened | Recommended | — |
+| `DOC-A08-001` | OpenAPI | core | beta | has_public_api_surface | Record openapi for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-002` | GraphQL schema | contextual | — | has_public_api_surface | Record graphql schema for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-003` | Protobuf contract | contextual | — | has_public_api_surface | Record protobuf contract for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-004` | AsyncAPI | contextual | — | has_public_api_surface | Record asyncapi for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-005` | Webhook contract | contextual | — | has_public_api_surface | Record webhook contract for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-006` | Error catalog | extended | — | has_public_api_surface | Record error catalog for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-007` | Rate limits | contextual | — | has_public_api_surface | Record rate limits for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-008` | SDK guide | contextual | — | has_public_api_surface | Record sdk guide for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-009` | Integration guide | extended | — | has_public_api_surface | Record integration guide for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A08-010` | Compatibility matrix | contextual | — | has_public_api_surface | Record compatibility matrix for apis and interfaces. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A12-PERFORMANCE
 
 Performance and reliability.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A12-001` | SLI SLO SLA | Record sli slo sla for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A12-002` | Error budget policy | Record error budget policy for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A12-003` | Capacity model | Record capacity model for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A12-004` | Scaling policy | Record scaling policy for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A12-005` | Load shedding | Record load shedding for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A12-006` | Latency budget | Record latency budget for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A12-007` | Cost model | Record cost model for performance and reliability. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A12-001` | SLI SLO SLA | extended | — | has_deploy | Record sli slo sla for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A12-002` | Error budget policy | extended | — | has_deploy | Record error budget policy for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A12-003` | Capacity model | contextual | — | has_deploy | Record capacity model for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A12-004` | Scaling policy | contextual | — | has_deploy | Record scaling policy for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A12-005` | Load shedding | contextual | — | has_deploy | Record load shedding for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A12-006` | Latency budget | contextual | — | has_deploy | Record latency budget for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A12-007` | Cost model | contextual | — | has_deploy | Record cost model for performance and reliability. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A13-INFRASTRUCTURE
 
 Infrastructure and environments.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A13-001` | Infrastructure as code guide | Record infrastructure as code guide for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A13-002` | Network design | Record network design for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A13-003` | Kubernetes architecture | Record kubernetes architecture for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A13-004` | DNS certificate inventory | Record dns certificate inventory for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A13-005` | Environment matrix | Record environment matrix for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A13-006` | Golden image | Record golden image for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A13-007` | Platform catalog | Record platform catalog for infrastructure and environments. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A13-001` | Infrastructure as code guide | extended | — | has_docker | Record infrastructure as code guide for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A13-002` | Network design | contextual | — | has_deploy | Record network design for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A13-003` | Kubernetes architecture | contextual | — | has_deploy | Record kubernetes architecture for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A13-004` | DNS certificate inventory | contextual | — | has_deploy | Record dns certificate inventory for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A13-005` | Environment matrix | contextual | — | has_deploy | Record environment matrix for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A13-006` | Golden image | contextual | — | has_deploy | Record golden image for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A13-007` | Platform catalog | contextual | — | has_deploy | Record platform catalog for infrastructure and environments. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A14-CONFIGURATION
 
 Configuration and change.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A14-001` | Configuration item register | Record configuration item register for configuration and change. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A14-002` | CMDB | Record cmdb for configuration and change. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A14-003` | Change advisory record | Record change advisory record for configuration and change. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A14-004` | RFC process | Record rfc process for configuration and change. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A14-005` | Environment variable schema | Record environment variable schema for configuration and change. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
-| `DOC-A14-006` | Drift detection | Record drift detection for configuration and change. | project team | pre-release | project owner | human-review | assess | Hardened | Contextual | — |
+| `DOC-A14-001` | Configuration item register | contextual | — | has_env | Record configuration item register for configuration and change. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A14-002` | CMDB | contextual | — | has_env | Record cmdb for configuration and change. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A14-003` | Change advisory record | contextual | — | has_env | Record change advisory record for configuration and change. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A14-004` | RFC process | contextual | — | has_env | Record rfc process for configuration and change. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A14-005` | Environment variable schema | core | beta | has_env | Record environment variable schema for configuration and change. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A14-006` | Drift detection | extended | — | has_env | Record drift detection for configuration and change. | project team | pre-release | project owner | human-review | Hardened | — |
 
 ## A21-AI-ML
 
 AI ML and agents.
 
-| Type ID | Document | Purpose | Audience | When | Owner type | Mode | Required for | Maturity | Priority | Related IDs |
+| Type ID | Document | Tier | Requires phase | Applies when | Purpose | Audience | When | Owner type | Mode | Maturity | Related IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-A21-001` | Model card | Record model card for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-002` | Model registry | Record model registry for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-003` | Prompt registry | Record prompt registry for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-004` | Tool authorization matrix | Record tool authorization matrix for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-005` | Agent behavior specification | Record agent behavior specification for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-006` | AI safety policy | Record ai safety policy for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-007` | Sandbox specification | Record sandbox specification for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-008` | Autonomy levels | Record autonomy levels for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-009` | AI incident log | Record ai incident log for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-010` | Evaluation gate | Record evaluation gate for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-011` | RAG architecture | Record rag architecture for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
-| `DOC-A21-012` | Human in the loop | Record human in the loop for ai ml and agents. | project team | pre-release | project owner | human-review | ai-agent | Hardened | Recommended | — |
+| `DOC-A21-001` | Model card | extended | — | has_ai | Record model card for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-002` | Model registry | contextual | — | has_ai | Record model registry for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-003` | Prompt registry | extended | — | has_ai | Record prompt registry for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-004` | Tool authorization matrix | extended | — | has_ai | Record tool authorization matrix for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-005` | Agent behavior specification | extended | — | has_ai | Record agent behavior specification for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-006` | AI safety policy | contextual | — | has_ai | Record ai safety policy for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-007` | Sandbox specification | contextual | — | has_ai | Record sandbox specification for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-008` | Autonomy levels | contextual | — | has_ai | Record autonomy levels for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-009` | AI incident log | contextual | — | has_ai | Record ai incident log for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-010` | Evaluation gate | contextual | — | has_ai | Record evaluation gate for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-011` | RAG architecture | contextual | — | has_ai | Record rag architecture for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
+| `DOC-A21-012` | Human in the loop | extended | — | has_ai | Record human in the loop for ai ml and agents. | project team | pre-release | project owner | human-review | Hardened | — |
