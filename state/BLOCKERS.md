@@ -1,6 +1,8 @@
 # BLOCKERS — active blockers and dependencies
 
-**Last reconciled:** 2026-10-01T13:10Z (B-001 cleared; the round's remaining items are execution)
+**Last reconciled:** 2026-10-01T14:08Z (B-001 and B-002 cleared; PR #2 merged and the post-merge
+test passed; the only open owner action is applying the branch protection, which is a setting
+rather than a blocker on this work)
 
 | ID | Blocker | Blocks | Owner who can clear it | Raised |
 | --- | --- | --- | --- | --- |
