@@ -162,6 +162,14 @@
       "last_reviewed": "2026-09-26"
     },
     {
+      "id": "DOC-P3-GOV-006",
+      "path": "docs/00-governance/CORE-LIST-REVIEW.md",
+      "owner": "@Er-Sajan-PLG",
+      "status": "draft",
+      "type": "REF",
+      "last_reviewed": "2026-10-01"
+    },
+    {
       "id": "DOC-P2-003",
       "path": "docs/00-governance/DOCUMENT-CONTROL.md",
       "owner": "@Er-Sajan-PLG",

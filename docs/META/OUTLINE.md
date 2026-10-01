@@ -3262,6 +3262,14 @@ ATX headings from configured human-owned Markdown sources.
 
 - L1 line 22: Branch protection requirements (not configured)
 
+## `docs/00-governance/CORE-LIST-REVIEW.md`
+
+- L1 line 22: Core list review — owner decision requested
+- L2 line 40: The 27 core types
+- L2 line 74: The five profiles, as deltas of that list
+- L2 line 88: The calls I would like you to make explicitly
+- L2 line 101: What happens on approval
+
 ## `docs/00-governance/DOCUMENT-CONTROL.md`
 
 - L1 line 22: Document control
